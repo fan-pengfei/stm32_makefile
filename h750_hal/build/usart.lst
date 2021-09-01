@@ -1,0 +1,478 @@
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccRe440X.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m7
+   3              		.eabi_attribute 28, 1
+   4              		.fpu fpv5-d16
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.thumb
+  15              		.syntax unified
+  16              		.file	"usart.c"
+  17              		.text
+  18              	.Ltext0:
+  19              		.cfi_sections	.debug_frame
+  20              		.section	.text.MX_USART1_UART_Init,"ax",%progbits
+  21              		.align	2
+  22              		.global	MX_USART1_UART_Init
+  23              		.thumb
+  24              		.thumb_func
+  26              	MX_USART1_UART_Init:
+  27              	.LFB141:
+  28              		.file 1 "Core/Src/usart.c"
+   1:Core/Src/usart.c **** /**
+   2:Core/Src/usart.c ****   ******************************************************************************
+   3:Core/Src/usart.c ****   * @file    usart.c
+   4:Core/Src/usart.c ****   * @brief   This file provides code for the configuration
+   5:Core/Src/usart.c ****   *          of the USART instances.
+   6:Core/Src/usart.c ****   ******************************************************************************
+   7:Core/Src/usart.c ****   * @attention
+   8:Core/Src/usart.c ****   *
+   9:Core/Src/usart.c ****   * <h2><center>&copy; Copyright (c) 2021 STMicroelectronics.
+  10:Core/Src/usart.c ****   * All rights reserved.</center></h2>
+  11:Core/Src/usart.c ****   *
+  12:Core/Src/usart.c ****   * This software component is licensed by ST under Ultimate Liberty license
+  13:Core/Src/usart.c ****   * SLA0044, the "License"; You may not use this file except in compliance with
+  14:Core/Src/usart.c ****   * the License. You may obtain a copy of the License at:
+  15:Core/Src/usart.c ****   *                             www.st.com/SLA0044
+  16:Core/Src/usart.c ****   *
+  17:Core/Src/usart.c ****   ******************************************************************************
+  18:Core/Src/usart.c ****   */
+  19:Core/Src/usart.c **** 
+  20:Core/Src/usart.c **** /* Includes ------------------------------------------------------------------*/
+  21:Core/Src/usart.c **** #include "usart.h"
+  22:Core/Src/usart.c **** 
+  23:Core/Src/usart.c **** /* USER CODE BEGIN 0 */
+  24:Core/Src/usart.c **** 
+  25:Core/Src/usart.c **** /* USER CODE END 0 */
+  26:Core/Src/usart.c **** 
+  27:Core/Src/usart.c **** UART_HandleTypeDef huart1;
+  28:Core/Src/usart.c **** 
+  29:Core/Src/usart.c **** /* USART1 init function */
+  30:Core/Src/usart.c **** 
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccRe440X.s 			page 2
+
+
+  31:Core/Src/usart.c **** void MX_USART1_UART_Init(void)
+  32:Core/Src/usart.c **** {
+  29              		.loc 1 32 0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33 0000 08B5     		push	{r3, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 3, -8
+  37              		.cfi_offset 14, -4
+  33:Core/Src/usart.c **** 
+  34:Core/Src/usart.c ****   huart1.Instance = USART1;
+  38              		.loc 1 34 0
+  39 0002 1548     		ldr	r0, .L7
+  40 0004 154B     		ldr	r3, .L7+4
+  41 0006 0360     		str	r3, [r0]
+  35:Core/Src/usart.c ****   huart1.Init.BaudRate = 115200;
+  42              		.loc 1 35 0
+  43 0008 4FF4E133 		mov	r3, #115200
+  44 000c 4360     		str	r3, [r0, #4]
+  36:Core/Src/usart.c ****   huart1.Init.WordLength = UART_WORDLENGTH_8B;
+  45              		.loc 1 36 0
+  46 000e 0023     		movs	r3, #0
+  47 0010 8360     		str	r3, [r0, #8]
+  37:Core/Src/usart.c ****   huart1.Init.StopBits = UART_STOPBITS_1;
+  48              		.loc 1 37 0
+  49 0012 C360     		str	r3, [r0, #12]
+  38:Core/Src/usart.c ****   huart1.Init.Parity = UART_PARITY_NONE;
+  50              		.loc 1 38 0
+  51 0014 0361     		str	r3, [r0, #16]
+  39:Core/Src/usart.c ****   huart1.Init.Mode = UART_MODE_TX_RX;
+  52              		.loc 1 39 0
+  53 0016 0C22     		movs	r2, #12
+  54 0018 4261     		str	r2, [r0, #20]
+  40:Core/Src/usart.c ****   huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  55              		.loc 1 40 0
+  56 001a 8361     		str	r3, [r0, #24]
+  41:Core/Src/usart.c ****   huart1.Init.OverSampling = UART_OVERSAMPLING_16;
+  57              		.loc 1 41 0
+  58 001c C361     		str	r3, [r0, #28]
+  42:Core/Src/usart.c ****   huart1.Init.OneBitSampling = UART_ONE_BIT_SAMPLE_DISABLE;
+  59              		.loc 1 42 0
+  60 001e 0362     		str	r3, [r0, #32]
+  43:Core/Src/usart.c ****   huart1.Init.ClockPrescaler = UART_PRESCALER_DIV1;
+  61              		.loc 1 43 0
+  62 0020 4362     		str	r3, [r0, #36]
+  44:Core/Src/usart.c ****   huart1.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT;
+  63              		.loc 1 44 0
+  64 0022 8362     		str	r3, [r0, #40]
+  45:Core/Src/usart.c ****   if (HAL_UART_Init(&huart1) != HAL_OK)
+  65              		.loc 1 45 0
+  66 0024 FFF7FEFF 		bl	HAL_UART_Init
+  67              	.LVL0:
+  68 0028 08B1     		cbz	r0, .L2
+  46:Core/Src/usart.c ****   {
+  47:Core/Src/usart.c ****     Error_Handler();
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccRe440X.s 			page 3
+
+
+  69              		.loc 1 47 0
+  70 002a FFF7FEFF 		bl	Error_Handler
+  71              	.LVL1:
+  72              	.L2:
+  48:Core/Src/usart.c ****   }
+  49:Core/Src/usart.c ****   if (HAL_UARTEx_SetTxFifoThreshold(&huart1, UART_TXFIFO_THRESHOLD_1_8) != HAL_OK)
+  73              		.loc 1 49 0
+  74 002e 0021     		movs	r1, #0
+  75 0030 0948     		ldr	r0, .L7
+  76 0032 FFF7FEFF 		bl	HAL_UARTEx_SetTxFifoThreshold
+  77              	.LVL2:
+  78 0036 08B1     		cbz	r0, .L3
+  50:Core/Src/usart.c ****   {
+  51:Core/Src/usart.c ****     Error_Handler();
+  79              		.loc 1 51 0
+  80 0038 FFF7FEFF 		bl	Error_Handler
+  81              	.LVL3:
+  82              	.L3:
+  52:Core/Src/usart.c ****   }
+  53:Core/Src/usart.c ****   if (HAL_UARTEx_SetRxFifoThreshold(&huart1, UART_RXFIFO_THRESHOLD_1_8) != HAL_OK)
+  83              		.loc 1 53 0
+  84 003c 0021     		movs	r1, #0
+  85 003e 0648     		ldr	r0, .L7
+  86 0040 FFF7FEFF 		bl	HAL_UARTEx_SetRxFifoThreshold
+  87              	.LVL4:
+  88 0044 08B1     		cbz	r0, .L4
+  54:Core/Src/usart.c ****   {
+  55:Core/Src/usart.c ****     Error_Handler();
+  89              		.loc 1 55 0
+  90 0046 FFF7FEFF 		bl	Error_Handler
+  91              	.LVL5:
+  92              	.L4:
+  56:Core/Src/usart.c ****   }
+  57:Core/Src/usart.c ****   if (HAL_UARTEx_DisableFifoMode(&huart1) != HAL_OK)
+  93              		.loc 1 57 0
+  94 004a 0348     		ldr	r0, .L7
+  95 004c FFF7FEFF 		bl	HAL_UARTEx_DisableFifoMode
+  96              	.LVL6:
+  97 0050 08B1     		cbz	r0, .L1
+  58:Core/Src/usart.c ****   {
+  59:Core/Src/usart.c ****     Error_Handler();
+  98              		.loc 1 59 0
+  99 0052 FFF7FEFF 		bl	Error_Handler
+ 100              	.LVL7:
+ 101              	.L1:
+ 102 0056 08BD     		pop	{r3, pc}
+ 103              	.L8:
+ 104              		.align	2
+ 105              	.L7:
+ 106 0058 00000000 		.word	huart1
+ 107 005c 00100140 		.word	1073811456
+ 108              		.cfi_endproc
+ 109              	.LFE141:
+ 111              		.section	.text.HAL_UART_MspInit,"ax",%progbits
+ 112              		.align	2
+ 113              		.global	HAL_UART_MspInit
+ 114              		.thumb
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccRe440X.s 			page 4
+
+
+ 115              		.thumb_func
+ 117              	HAL_UART_MspInit:
+ 118              	.LFB142:
+  60:Core/Src/usart.c ****   }
+  61:Core/Src/usart.c **** 
+  62:Core/Src/usart.c **** }
+  63:Core/Src/usart.c **** 
+  64:Core/Src/usart.c **** void HAL_UART_MspInit(UART_HandleTypeDef* uartHandle)
+  65:Core/Src/usart.c **** {
+ 119              		.loc 1 65 0
+ 120              		.cfi_startproc
+ 121              		@ args = 0, pretend = 0, frame = 32
+ 122              		@ frame_needed = 0, uses_anonymous_args = 0
+ 123              	.LVL8:
+ 124 0000 00B5     		push	{lr}
+ 125              	.LCFI1:
+ 126              		.cfi_def_cfa_offset 4
+ 127              		.cfi_offset 14, -4
+ 128 0002 89B0     		sub	sp, sp, #36
+ 129              	.LCFI2:
+ 130              		.cfi_def_cfa_offset 40
+  66:Core/Src/usart.c **** 
+  67:Core/Src/usart.c ****   GPIO_InitTypeDef GPIO_InitStruct = {0};
+ 131              		.loc 1 67 0
+ 132 0004 0023     		movs	r3, #0
+ 133 0006 0393     		str	r3, [sp, #12]
+ 134 0008 0493     		str	r3, [sp, #16]
+ 135 000a 0593     		str	r3, [sp, #20]
+ 136 000c 0693     		str	r3, [sp, #24]
+ 137 000e 0793     		str	r3, [sp, #28]
+  68:Core/Src/usart.c ****   if(uartHandle->Instance==USART1)
+ 138              		.loc 1 68 0
+ 139 0010 0268     		ldr	r2, [r0]
+ 140 0012 03F18043 		add	r3, r3, #1073741824
+ 141 0016 03F58833 		add	r3, r3, #69632
+ 142 001a 9A42     		cmp	r2, r3
+ 143 001c 2BD1     		bne	.L9
+ 144              	.LBB2:
+  69:Core/Src/usart.c ****   {
+  70:Core/Src/usart.c ****   /* USER CODE BEGIN USART1_MspInit 0 */
+  71:Core/Src/usart.c **** 
+  72:Core/Src/usart.c ****   /* USER CODE END USART1_MspInit 0 */
+  73:Core/Src/usart.c ****     /* USART1 clock enable */
+  74:Core/Src/usart.c ****     __HAL_RCC_USART1_CLK_ENABLE();
+ 145              		.loc 1 74 0
+ 146 001e 174B     		ldr	r3, .L12
+ 147 0020 D3F8F020 		ldr	r2, [r3, #240]
+ 148 0024 42F01002 		orr	r2, r2, #16
+ 149 0028 C3F8F020 		str	r2, [r3, #240]
+ 150 002c D3F8F020 		ldr	r2, [r3, #240]
+ 151 0030 02F01002 		and	r2, r2, #16
+ 152 0034 0192     		str	r2, [sp, #4]
+ 153 0036 019A     		ldr	r2, [sp, #4]
+ 154              	.LBE2:
+ 155              	.LBB3:
+  75:Core/Src/usart.c **** 
+  76:Core/Src/usart.c ****     __HAL_RCC_GPIOB_CLK_ENABLE();
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccRe440X.s 			page 5
+
+
+ 156              		.loc 1 76 0
+ 157 0038 D3F8E020 		ldr	r2, [r3, #224]
+ 158 003c 42F00202 		orr	r2, r2, #2
+ 159 0040 C3F8E020 		str	r2, [r3, #224]
+ 160 0044 D3F8E030 		ldr	r3, [r3, #224]
+ 161 0048 03F00203 		and	r3, r3, #2
+ 162 004c 0293     		str	r3, [sp, #8]
+ 163 004e 029B     		ldr	r3, [sp, #8]
+ 164              	.LBE3:
+  77:Core/Src/usart.c ****     /**USART1 GPIO Configuration
+  78:Core/Src/usart.c ****     PB14     ------> USART1_TX
+  79:Core/Src/usart.c ****     PB15     ------> USART1_RX
+  80:Core/Src/usart.c ****     */
+  81:Core/Src/usart.c ****     GPIO_InitStruct.Pin = GPIO_PIN_14|GPIO_PIN_15;
+ 165              		.loc 1 81 0
+ 166 0050 4FF44043 		mov	r3, #49152
+ 167 0054 0393     		str	r3, [sp, #12]
+  82:Core/Src/usart.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 168              		.loc 1 82 0
+ 169 0056 0223     		movs	r3, #2
+ 170 0058 0493     		str	r3, [sp, #16]
+  83:Core/Src/usart.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+  84:Core/Src/usart.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  85:Core/Src/usart.c ****     GPIO_InitStruct.Alternate = GPIO_AF4_USART1;
+ 171              		.loc 1 85 0
+ 172 005a 0423     		movs	r3, #4
+ 173 005c 0793     		str	r3, [sp, #28]
+  86:Core/Src/usart.c ****     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+ 174              		.loc 1 86 0
+ 175 005e 03A9     		add	r1, sp, #12
+ 176 0060 0748     		ldr	r0, .L12+4
+ 177              	.LVL9:
+ 178 0062 FFF7FEFF 		bl	HAL_GPIO_Init
+ 179              	.LVL10:
+  87:Core/Src/usart.c **** 
+  88:Core/Src/usart.c ****     /* USART1 interrupt Init */
+  89:Core/Src/usart.c ****     HAL_NVIC_SetPriority(USART1_IRQn, 5, 0);
+ 180              		.loc 1 89 0
+ 181 0066 0022     		movs	r2, #0
+ 182 0068 0521     		movs	r1, #5
+ 183 006a 2520     		movs	r0, #37
+ 184 006c FFF7FEFF 		bl	HAL_NVIC_SetPriority
+ 185              	.LVL11:
+  90:Core/Src/usart.c ****     HAL_NVIC_EnableIRQ(USART1_IRQn);
+ 186              		.loc 1 90 0
+ 187 0070 2520     		movs	r0, #37
+ 188 0072 FFF7FEFF 		bl	HAL_NVIC_EnableIRQ
+ 189              	.LVL12:
+ 190              	.L9:
+  91:Core/Src/usart.c ****   /* USER CODE BEGIN USART1_MspInit 1 */
+  92:Core/Src/usart.c **** 
+  93:Core/Src/usart.c ****   /* USER CODE END USART1_MspInit 1 */
+  94:Core/Src/usart.c ****   }
+  95:Core/Src/usart.c **** }
+ 191              		.loc 1 95 0
+ 192 0076 09B0     		add	sp, sp, #36
+ 193              	.LCFI3:
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccRe440X.s 			page 6
+
+
+ 194              		.cfi_def_cfa_offset 4
+ 195              		@ sp needed
+ 196 0078 5DF804FB 		ldr	pc, [sp], #4
+ 197              	.L13:
+ 198              		.align	2
+ 199              	.L12:
+ 200 007c 00440258 		.word	1476543488
+ 201 0080 00040258 		.word	1476527104
+ 202              		.cfi_endproc
+ 203              	.LFE142:
+ 205              		.section	.text.HAL_UART_MspDeInit,"ax",%progbits
+ 206              		.align	2
+ 207              		.global	HAL_UART_MspDeInit
+ 208              		.thumb
+ 209              		.thumb_func
+ 211              	HAL_UART_MspDeInit:
+ 212              	.LFB143:
+  96:Core/Src/usart.c **** 
+  97:Core/Src/usart.c **** void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
+  98:Core/Src/usart.c **** {
+ 213              		.loc 1 98 0
+ 214              		.cfi_startproc
+ 215              		@ args = 0, pretend = 0, frame = 0
+ 216              		@ frame_needed = 0, uses_anonymous_args = 0
+ 217              	.LVL13:
+ 218 0000 08B5     		push	{r3, lr}
+ 219              	.LCFI4:
+ 220              		.cfi_def_cfa_offset 8
+ 221              		.cfi_offset 3, -8
+ 222              		.cfi_offset 14, -4
+  99:Core/Src/usart.c **** 
+ 100:Core/Src/usart.c ****   if(uartHandle->Instance==USART1)
+ 223              		.loc 1 100 0
+ 224 0002 0268     		ldr	r2, [r0]
+ 225 0004 094B     		ldr	r3, .L17
+ 226 0006 9A42     		cmp	r2, r3
+ 227 0008 0ED1     		bne	.L14
+ 101:Core/Src/usart.c ****   {
+ 102:Core/Src/usart.c ****   /* USER CODE BEGIN USART1_MspDeInit 0 */
+ 103:Core/Src/usart.c **** 
+ 104:Core/Src/usart.c ****   /* USER CODE END USART1_MspDeInit 0 */
+ 105:Core/Src/usart.c ****     /* Peripheral clock disable */
+ 106:Core/Src/usart.c ****     __HAL_RCC_USART1_CLK_DISABLE();
+ 228              		.loc 1 106 0
+ 229 000a 094A     		ldr	r2, .L17+4
+ 230 000c D2F8F030 		ldr	r3, [r2, #240]
+ 231 0010 23F01003 		bic	r3, r3, #16
+ 232 0014 C2F8F030 		str	r3, [r2, #240]
+ 107:Core/Src/usart.c **** 
+ 108:Core/Src/usart.c ****     /**USART1 GPIO Configuration
+ 109:Core/Src/usart.c ****     PB14     ------> USART1_TX
+ 110:Core/Src/usart.c ****     PB15     ------> USART1_RX
+ 111:Core/Src/usart.c ****     */
+ 112:Core/Src/usart.c ****     HAL_GPIO_DeInit(GPIOB, GPIO_PIN_14|GPIO_PIN_15);
+ 233              		.loc 1 112 0
+ 234 0018 4FF44041 		mov	r1, #49152
+ 235 001c 0548     		ldr	r0, .L17+8
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccRe440X.s 			page 7
+
+
+ 236              	.LVL14:
+ 237 001e FFF7FEFF 		bl	HAL_GPIO_DeInit
+ 238              	.LVL15:
+ 113:Core/Src/usart.c **** 
+ 114:Core/Src/usart.c ****     /* USART1 interrupt Deinit */
+ 115:Core/Src/usart.c ****     HAL_NVIC_DisableIRQ(USART1_IRQn);
+ 239              		.loc 1 115 0
+ 240 0022 2520     		movs	r0, #37
+ 241 0024 FFF7FEFF 		bl	HAL_NVIC_DisableIRQ
+ 242              	.LVL16:
+ 243              	.L14:
+ 244 0028 08BD     		pop	{r3, pc}
+ 245              	.L18:
+ 246 002a 00BF     		.align	2
+ 247              	.L17:
+ 248 002c 00100140 		.word	1073811456
+ 249 0030 00440258 		.word	1476543488
+ 250 0034 00040258 		.word	1476527104
+ 251              		.cfi_endproc
+ 252              	.LFE143:
+ 254              		.section	.text._write,"ax",%progbits
+ 255              		.align	2
+ 256              		.global	_write
+ 257              		.thumb
+ 258              		.thumb_func
+ 260              	_write:
+ 261              	.LFB144:
+ 116:Core/Src/usart.c ****   /* USER CODE BEGIN USART1_MspDeInit 1 */
+ 117:Core/Src/usart.c **** 
+ 118:Core/Src/usart.c ****   /* USER CODE END USART1_MspDeInit 1 */
+ 119:Core/Src/usart.c ****   }
+ 120:Core/Src/usart.c **** }
+ 121:Core/Src/usart.c **** 
+ 122:Core/Src/usart.c **** /* USER CODE BEGIN 1 */
+ 123:Core/Src/usart.c **** int _write(int fd, char *pBuffer, int size)
+ 124:Core/Src/usart.c **** {
+ 262              		.loc 1 124 0
+ 263              		.cfi_startproc
+ 264              		@ args = 0, pretend = 0, frame = 0
+ 265              		@ frame_needed = 0, uses_anonymous_args = 0
+ 266              	.LVL17:
+ 267 0000 08B5     		push	{r3, lr}
+ 268              	.LCFI5:
+ 269              		.cfi_def_cfa_offset 8
+ 270              		.cfi_offset 3, -8
+ 271              		.cfi_offset 14, -4
+ 125:Core/Src/usart.c ****     HAL_UART_Transmit(&huart1,(uint8_t *)pBuffer,size,0xffff);
+ 272              		.loc 1 125 0
+ 273 0002 4FF6FF73 		movw	r3, #65535
+ 274 0006 92B2     		uxth	r2, r2
+ 275              	.LVL18:
+ 276 0008 0248     		ldr	r0, .L21
+ 277              	.LVL19:
+ 278 000a FFF7FEFF 		bl	HAL_UART_Transmit
+ 279              	.LVL20:
+ 126:Core/Src/usart.c ****     return 0;
+ 127:Core/Src/usart.c **** }
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccRe440X.s 			page 8
+
+
+ 280              		.loc 1 127 0
+ 281 000e 0020     		movs	r0, #0
+ 282 0010 08BD     		pop	{r3, pc}
+ 283              	.L22:
+ 284 0012 00BF     		.align	2
+ 285              	.L21:
+ 286 0014 00000000 		.word	huart1
+ 287              		.cfi_endproc
+ 288              	.LFE144:
+ 290              		.comm	huart1,140,4
+ 291              		.text
+ 292              	.Letext0:
+ 293              		.file 2 "d:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\mach
+ 294              		.file 3 "d:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\sys\
+ 295              		.file 4 "Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h750xx.h"
+ 296              		.file 5 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h"
+ 297              		.file 6 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_gpio.h"
+ 298              		.file 7 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h"
+ 299              		.file 8 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h"
+ 300              		.file 9 "Drivers/CMSIS/Include/core_cm7.h"
+ 301              		.file 10 "Core/Inc/main.h"
+ 302              		.file 11 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h"
+ 303              		.file 12 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_cortex.h"
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccRe440X.s 			page 9
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 usart.c
+C:\Users\xiaofei\AppData\Local\Temp\ccRe440X.s:21     .text.MX_USART1_UART_Init:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccRe440X.s:26     .text.MX_USART1_UART_Init:00000000 MX_USART1_UART_Init
+C:\Users\xiaofei\AppData\Local\Temp\ccRe440X.s:106    .text.MX_USART1_UART_Init:00000058 $d
+                            *COM*:0000008c huart1
+C:\Users\xiaofei\AppData\Local\Temp\ccRe440X.s:112    .text.HAL_UART_MspInit:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccRe440X.s:117    .text.HAL_UART_MspInit:00000000 HAL_UART_MspInit
+C:\Users\xiaofei\AppData\Local\Temp\ccRe440X.s:200    .text.HAL_UART_MspInit:0000007c $d
+C:\Users\xiaofei\AppData\Local\Temp\ccRe440X.s:206    .text.HAL_UART_MspDeInit:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccRe440X.s:211    .text.HAL_UART_MspDeInit:00000000 HAL_UART_MspDeInit
+C:\Users\xiaofei\AppData\Local\Temp\ccRe440X.s:248    .text.HAL_UART_MspDeInit:0000002c $d
+C:\Users\xiaofei\AppData\Local\Temp\ccRe440X.s:255    .text._write:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccRe440X.s:260    .text._write:00000000 _write
+C:\Users\xiaofei\AppData\Local\Temp\ccRe440X.s:286    .text._write:00000014 $d
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+HAL_UART_Init
+Error_Handler
+HAL_UARTEx_SetTxFifoThreshold
+HAL_UARTEx_SetRxFifoThreshold
+HAL_UARTEx_DisableFifoMode
+HAL_GPIO_Init
+HAL_NVIC_SetPriority
+HAL_NVIC_EnableIRQ
+HAL_GPIO_DeInit
+HAL_NVIC_DisableIRQ
+HAL_UART_Transmit

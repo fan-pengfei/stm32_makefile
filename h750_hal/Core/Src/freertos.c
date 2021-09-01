@@ -23,7 +23,7 @@
 #include "task.h"
 #include "main.h"
 #include "cmsis_os.h"
-
+#include "test.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "usbd_cdc_if.h"
@@ -31,7 +31,7 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-
+extern UART_HandleTypeDef huart1;
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -132,7 +132,8 @@ void StartDefaultTask(void const * argument)
     {
         i++;
         HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
-        usb_printf("Hello!\r\n");
+        usb_printf("Hello!%d\r\n",test);
+
         osDelay(200);
     }
   /* USER CODE END StartDefaultTask */
