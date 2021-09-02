@@ -1,0 +1,1449 @@
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m7
+   3              		.eabi_attribute 28, 1
+   4              		.fpu fpv5-d16
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.thumb
+  15              		.syntax unified
+  16              		.file	"stm32h7xx_hal.c"
+  17              		.section	.text.HAL_MspInit,"ax",%progbits
+  18              		.align	2
+  19              		.weak	HAL_MspInit
+  20              		.thumb
+  21              		.thumb_func
+  23              	HAL_MspInit:
+  24              		@ args = 0, pretend = 0, frame = 0
+  25              		@ frame_needed = 0, uses_anonymous_args = 0
+  26              		@ link register save eliminated.
+  27 0000 7047     		bx	lr
+  29 0002 00BF     		.section	.text.HAL_MspDeInit,"ax",%progbits
+  30              		.align	2
+  31              		.weak	HAL_MspDeInit
+  32              		.thumb
+  33              		.thumb_func
+  35              	HAL_MspDeInit:
+  36              		@ args = 0, pretend = 0, frame = 0
+  37              		@ frame_needed = 0, uses_anonymous_args = 0
+  38              		@ link register save eliminated.
+  39 0000 7047     		bx	lr
+  41 0002 00BF     		.section	.text.HAL_DeInit,"ax",%progbits
+  42              		.align	2
+  43              		.global	HAL_DeInit
+  44              		.thumb
+  45              		.thumb_func
+  47              	HAL_DeInit:
+  48              		@ args = 0, pretend = 0, frame = 0
+  49              		@ frame_needed = 0, uses_anonymous_args = 0
+  50 0000 10B5     		push	{r4, lr}
+  51 0002 194B     		ldr	r3, .L5
+  52 0004 194A     		ldr	r2, .L5+4
+  53 0006 DA67     		str	r2, [r3, #124]
+  54 0008 0024     		movs	r4, #0
+  55 000a DC67     		str	r4, [r3, #124]
+  56 000c 184A     		ldr	r2, .L5+8
+  57 000e C3F88020 		str	r2, [r3, #128]
+  58 0012 C3F88040 		str	r4, [r3, #128]
+  59 0016 40F27122 		movw	r2, #625
+  60 001a C3F88420 		str	r2, [r3, #132]
+  61 001e C3F88440 		str	r4, [r3, #132]
+  62 0022 144A     		ldr	r2, .L5+12
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s 			page 2
+
+
+  63 0024 C3F88820 		str	r2, [r3, #136]
+  64 0028 C3F88840 		str	r4, [r3, #136]
+  65 002c 1822     		movs	r2, #24
+  66 002e C3F88C20 		str	r2, [r3, #140]
+  67 0032 C3F88C40 		str	r4, [r3, #140]
+  68 0036 104A     		ldr	r2, .L5+16
+  69 0038 C3F89020 		str	r2, [r3, #144]
+  70 003c C3F89040 		str	r4, [r3, #144]
+  71 0040 4FF49B72 		mov	r2, #310
+  72 0044 C3F89420 		str	r2, [r3, #148]
+  73 0048 C3F89440 		str	r4, [r3, #148]
+  74 004c 0B4A     		ldr	r2, .L5+20
+  75 004e C3F89820 		str	r2, [r3, #152]
+  76 0052 C3F89840 		str	r4, [r3, #152]
+  77 0056 0A4A     		ldr	r2, .L5+24
+  78 0058 C3F89C20 		str	r2, [r3, #156]
+  79 005c C3F89C40 		str	r4, [r3, #156]
+  80 0060 FFF7FEFF 		bl	HAL_MspDeInit
+  81 0064 2046     		mov	r0, r4
+  82 0066 10BD     		pop	{r4, pc}
+  83              	.L6:
+  84              		.align	2
+  85              	.L5:
+  86 0068 00440258 		.word	1476543488
+  87 006c 31500100 		.word	86065
+  88 0070 23C0000A 		.word	167821347
+  89 0074 FF072803 		.word	52955135
+  90 0078 FFC3FFE8 		.word	-385891329
+  91 007c 3330D731 		.word	836186163
+  92 0080 AADE2000 		.word	2154154
+  94              		.section	.text.HAL_InitTick,"ax",%progbits
+  95              		.align	2
+  96              		.weak	HAL_InitTick
+  97              		.thumb
+  98              		.thumb_func
+ 100              	HAL_InitTick:
+ 101              		@ args = 0, pretend = 0, frame = 0
+ 102              		@ frame_needed = 0, uses_anonymous_args = 0
+ 103 0000 104B     		ldr	r3, .L13
+ 104 0002 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 105 0004 C3B1     		cbz	r3, .L9
+ 106 0006 10B5     		push	{r4, lr}
+ 107 0008 0446     		mov	r4, r0
+ 108 000a 4FF47A70 		mov	r0, #1000
+ 109 000e B0FBF3F3 		udiv	r3, r0, r3
+ 110 0012 0D4A     		ldr	r2, .L13+4
+ 111 0014 1068     		ldr	r0, [r2]
+ 112 0016 B0FBF3F0 		udiv	r0, r0, r3
+ 113 001a FFF7FEFF 		bl	HAL_SYSTICK_Config
+ 114 001e 68B9     		cbnz	r0, .L10
+ 115 0020 0F2C     		cmp	r4, #15
+ 116 0022 0DD8     		bhi	.L11
+ 117 0024 0022     		movs	r2, #0
+ 118 0026 2146     		mov	r1, r4
+ 119 0028 4FF0FF30 		mov	r0, #-1
+ 120 002c FFF7FEFF 		bl	HAL_NVIC_SetPriority
+ 121 0030 064B     		ldr	r3, .L13+8
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s 			page 3
+
+
+ 122 0032 1C60     		str	r4, [r3]
+ 123 0034 0020     		movs	r0, #0
+ 124 0036 10BD     		pop	{r4, pc}
+ 125              	.L9:
+ 126 0038 0120     		movs	r0, #1
+ 127 003a 7047     		bx	lr
+ 128              	.L10:
+ 129 003c 0120     		movs	r0, #1
+ 130 003e 10BD     		pop	{r4, pc}
+ 131              	.L11:
+ 132 0040 0120     		movs	r0, #1
+ 133 0042 10BD     		pop	{r4, pc}
+ 134              	.L14:
+ 135              		.align	2
+ 136              	.L13:
+ 137 0044 00000000 		.word	.LANCHOR0
+ 138 0048 00000000 		.word	SystemCoreClock
+ 139 004c 00000000 		.word	.LANCHOR1
+ 141              		.section	.text.HAL_Init,"ax",%progbits
+ 142              		.align	2
+ 143              		.global	HAL_Init
+ 144              		.thumb
+ 145              		.thumb_func
+ 147              	HAL_Init:
+ 148              		@ args = 0, pretend = 0, frame = 0
+ 149              		@ frame_needed = 0, uses_anonymous_args = 0
+ 150 0000 10B5     		push	{r4, lr}
+ 151 0002 0320     		movs	r0, #3
+ 152 0004 FFF7FEFF 		bl	HAL_NVIC_SetPriorityGrouping
+ 153 0008 FFF7FEFF 		bl	HAL_RCC_GetSysClockFreq
+ 154 000c 0F49     		ldr	r1, .L19
+ 155 000e 8B69     		ldr	r3, [r1, #24]
+ 156 0010 C3F30323 		ubfx	r3, r3, #8, #4
+ 157 0014 0E4A     		ldr	r2, .L19+4
+ 158 0016 D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
+ 159 0018 03F01F03 		and	r3, r3, #31
+ 160 001c D840     		lsrs	r0, r0, r3
+ 161 001e 8B69     		ldr	r3, [r1, #24]
+ 162 0020 03F00F03 		and	r3, r3, #15
+ 163 0024 D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
+ 164 0026 03F01F03 		and	r3, r3, #31
+ 165 002a 20FA03F3 		lsr	r3, r0, r3
+ 166 002e 094A     		ldr	r2, .L19+8
+ 167 0030 1360     		str	r3, [r2]
+ 168 0032 094B     		ldr	r3, .L19+12
+ 169 0034 1860     		str	r0, [r3]
+ 170 0036 0020     		movs	r0, #0
+ 171 0038 FFF7FEFF 		bl	HAL_InitTick
+ 172 003c 18B9     		cbnz	r0, .L17
+ 173 003e 0446     		mov	r4, r0
+ 174 0040 FFF7FEFF 		bl	HAL_MspInit
+ 175 0044 00E0     		b	.L16
+ 176              	.L17:
+ 177 0046 0124     		movs	r4, #1
+ 178              	.L16:
+ 179 0048 2046     		mov	r0, r4
+ 180 004a 10BD     		pop	{r4, pc}
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s 			page 4
+
+
+ 181              	.L20:
+ 182              		.align	2
+ 183              	.L19:
+ 184 004c 00440258 		.word	1476543488
+ 185 0050 00000000 		.word	D1CorePrescTable
+ 186 0054 00000000 		.word	SystemD2Clock
+ 187 0058 00000000 		.word	SystemCoreClock
+ 189              		.section	.text.HAL_IncTick,"ax",%progbits
+ 190              		.align	2
+ 191              		.weak	HAL_IncTick
+ 192              		.thumb
+ 193              		.thumb_func
+ 195              	HAL_IncTick:
+ 196              		@ args = 0, pretend = 0, frame = 0
+ 197              		@ frame_needed = 0, uses_anonymous_args = 0
+ 198              		@ link register save eliminated.
+ 199 0000 034B     		ldr	r3, .L22
+ 200 0002 1978     		ldrb	r1, [r3]	@ zero_extendqisi2
+ 201 0004 034A     		ldr	r2, .L22+4
+ 202 0006 1368     		ldr	r3, [r2]
+ 203 0008 0B44     		add	r3, r3, r1
+ 204 000a 1360     		str	r3, [r2]
+ 205 000c 7047     		bx	lr
+ 206              	.L23:
+ 207 000e 00BF     		.align	2
+ 208              	.L22:
+ 209 0010 00000000 		.word	.LANCHOR0
+ 210 0014 00000000 		.word	uwTick
+ 212              		.section	.text.HAL_GetTick,"ax",%progbits
+ 213              		.align	2
+ 214              		.weak	HAL_GetTick
+ 215              		.thumb
+ 216              		.thumb_func
+ 218              	HAL_GetTick:
+ 219              		@ args = 0, pretend = 0, frame = 0
+ 220              		@ frame_needed = 0, uses_anonymous_args = 0
+ 221              		@ link register save eliminated.
+ 222 0000 014B     		ldr	r3, .L25
+ 223 0002 1868     		ldr	r0, [r3]
+ 224 0004 7047     		bx	lr
+ 225              	.L26:
+ 226 0006 00BF     		.align	2
+ 227              	.L25:
+ 228 0008 00000000 		.word	uwTick
+ 230              		.section	.text.HAL_GetTickPrio,"ax",%progbits
+ 231              		.align	2
+ 232              		.global	HAL_GetTickPrio
+ 233              		.thumb
+ 234              		.thumb_func
+ 236              	HAL_GetTickPrio:
+ 237              		@ args = 0, pretend = 0, frame = 0
+ 238              		@ frame_needed = 0, uses_anonymous_args = 0
+ 239              		@ link register save eliminated.
+ 240 0000 014B     		ldr	r3, .L28
+ 241 0002 1868     		ldr	r0, [r3]
+ 242 0004 7047     		bx	lr
+ 243              	.L29:
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s 			page 5
+
+
+ 244 0006 00BF     		.align	2
+ 245              	.L28:
+ 246 0008 00000000 		.word	.LANCHOR1
+ 248              		.section	.text.HAL_SetTickFreq,"ax",%progbits
+ 249              		.align	2
+ 250              		.global	HAL_SetTickFreq
+ 251              		.thumb
+ 252              		.thumb_func
+ 254              	HAL_SetTickFreq:
+ 255              		@ args = 0, pretend = 0, frame = 0
+ 256              		@ frame_needed = 0, uses_anonymous_args = 0
+ 257 0000 10B5     		push	{r4, lr}
+ 258 0002 084B     		ldr	r3, .L34
+ 259 0004 1C78     		ldrb	r4, [r3]	@ zero_extendqisi2
+ 260 0006 8442     		cmp	r4, r0
+ 261 0008 09D0     		beq	.L32
+ 262 000a 1870     		strb	r0, [r3]
+ 263 000c 064B     		ldr	r3, .L34+4
+ 264 000e 1868     		ldr	r0, [r3]
+ 265 0010 FFF7FEFF 		bl	HAL_InitTick
+ 266 0014 0346     		mov	r3, r0
+ 267 0016 18B1     		cbz	r0, .L31
+ 268 0018 024A     		ldr	r2, .L34
+ 269 001a 1470     		strb	r4, [r2]
+ 270 001c 00E0     		b	.L31
+ 271              	.L32:
+ 272 001e 0023     		movs	r3, #0
+ 273              	.L31:
+ 274 0020 1846     		mov	r0, r3
+ 275 0022 10BD     		pop	{r4, pc}
+ 276              	.L35:
+ 277              		.align	2
+ 278              	.L34:
+ 279 0024 00000000 		.word	.LANCHOR0
+ 280 0028 00000000 		.word	.LANCHOR1
+ 282              		.section	.text.HAL_GetTickFreq,"ax",%progbits
+ 283              		.align	2
+ 284              		.global	HAL_GetTickFreq
+ 285              		.thumb
+ 286              		.thumb_func
+ 288              	HAL_GetTickFreq:
+ 289              		@ args = 0, pretend = 0, frame = 0
+ 290              		@ frame_needed = 0, uses_anonymous_args = 0
+ 291              		@ link register save eliminated.
+ 292 0000 014B     		ldr	r3, .L37
+ 293 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 294 0004 7047     		bx	lr
+ 295              	.L38:
+ 296 0006 00BF     		.align	2
+ 297              	.L37:
+ 298 0008 00000000 		.word	.LANCHOR0
+ 300              		.section	.text.HAL_Delay,"ax",%progbits
+ 301              		.align	2
+ 302              		.weak	HAL_Delay
+ 303              		.thumb
+ 304              		.thumb_func
+ 306              	HAL_Delay:
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s 			page 6
+
+
+ 307              		@ args = 0, pretend = 0, frame = 0
+ 308              		@ frame_needed = 0, uses_anonymous_args = 0
+ 309 0000 38B5     		push	{r3, r4, r5, lr}
+ 310 0002 0446     		mov	r4, r0
+ 311 0004 FFF7FEFF 		bl	HAL_GetTick
+ 312 0008 0546     		mov	r5, r0
+ 313 000a B4F1FF3F 		cmp	r4, #-1
+ 314 000e 02D0     		beq	.L41
+ 315 0010 044B     		ldr	r3, .L43
+ 316 0012 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 317 0014 1C44     		add	r4, r4, r3
+ 318              	.L41:
+ 319 0016 FFF7FEFF 		bl	HAL_GetTick
+ 320 001a 401B     		subs	r0, r0, r5
+ 321 001c 8442     		cmp	r4, r0
+ 322 001e FAD8     		bhi	.L41
+ 323 0020 38BD     		pop	{r3, r4, r5, pc}
+ 324              	.L44:
+ 325 0022 00BF     		.align	2
+ 326              	.L43:
+ 327 0024 00000000 		.word	.LANCHOR0
+ 329              		.section	.text.HAL_SuspendTick,"ax",%progbits
+ 330              		.align	2
+ 331              		.weak	HAL_SuspendTick
+ 332              		.thumb
+ 333              		.thumb_func
+ 335              	HAL_SuspendTick:
+ 336              		@ args = 0, pretend = 0, frame = 0
+ 337              		@ frame_needed = 0, uses_anonymous_args = 0
+ 338              		@ link register save eliminated.
+ 339 0000 024A     		ldr	r2, .L46
+ 340 0002 1368     		ldr	r3, [r2]
+ 341 0004 23F00203 		bic	r3, r3, #2
+ 342 0008 1360     		str	r3, [r2]
+ 343 000a 7047     		bx	lr
+ 344              	.L47:
+ 345              		.align	2
+ 346              	.L46:
+ 347 000c 10E000E0 		.word	-536813552
+ 349              		.section	.text.HAL_ResumeTick,"ax",%progbits
+ 350              		.align	2
+ 351              		.weak	HAL_ResumeTick
+ 352              		.thumb
+ 353              		.thumb_func
+ 355              	HAL_ResumeTick:
+ 356              		@ args = 0, pretend = 0, frame = 0
+ 357              		@ frame_needed = 0, uses_anonymous_args = 0
+ 358              		@ link register save eliminated.
+ 359 0000 024A     		ldr	r2, .L49
+ 360 0002 1368     		ldr	r3, [r2]
+ 361 0004 43F00203 		orr	r3, r3, #2
+ 362 0008 1360     		str	r3, [r2]
+ 363 000a 7047     		bx	lr
+ 364              	.L50:
+ 365              		.align	2
+ 366              	.L49:
+ 367 000c 10E000E0 		.word	-536813552
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s 			page 7
+
+
+ 369              		.section	.text.HAL_GetHalVersion,"ax",%progbits
+ 370              		.align	2
+ 371              		.global	HAL_GetHalVersion
+ 372              		.thumb
+ 373              		.thumb_func
+ 375              	HAL_GetHalVersion:
+ 376              		@ args = 0, pretend = 0, frame = 0
+ 377              		@ frame_needed = 0, uses_anonymous_args = 0
+ 378              		@ link register save eliminated.
+ 379 0000 0048     		ldr	r0, .L52
+ 380 0002 7047     		bx	lr
+ 381              	.L53:
+ 382              		.align	2
+ 383              	.L52:
+ 384 0004 00000901 		.word	17367040
+ 386              		.section	.text.HAL_GetREVID,"ax",%progbits
+ 387              		.align	2
+ 388              		.global	HAL_GetREVID
+ 389              		.thumb
+ 390              		.thumb_func
+ 392              	HAL_GetREVID:
+ 393              		@ args = 0, pretend = 0, frame = 0
+ 394              		@ frame_needed = 0, uses_anonymous_args = 0
+ 395              		@ link register save eliminated.
+ 396 0000 014B     		ldr	r3, .L55
+ 397 0002 1868     		ldr	r0, [r3]
+ 398 0004 000C     		lsrs	r0, r0, #16
+ 399 0006 7047     		bx	lr
+ 400              	.L56:
+ 401              		.align	2
+ 402              	.L55:
+ 403 0008 0010005C 		.word	1543507968
+ 405              		.section	.text.HAL_GetDEVID,"ax",%progbits
+ 406              		.align	2
+ 407              		.global	HAL_GetDEVID
+ 408              		.thumb
+ 409              		.thumb_func
+ 411              	HAL_GetDEVID:
+ 412              		@ args = 0, pretend = 0, frame = 0
+ 413              		@ frame_needed = 0, uses_anonymous_args = 0
+ 414              		@ link register save eliminated.
+ 415 0000 024B     		ldr	r3, .L58
+ 416 0002 1868     		ldr	r0, [r3]
+ 417 0004 C0F30B00 		ubfx	r0, r0, #0, #12
+ 418 0008 7047     		bx	lr
+ 419              	.L59:
+ 420 000a 00BF     		.align	2
+ 421              	.L58:
+ 422 000c 0010005C 		.word	1543507968
+ 424              		.section	.text.HAL_GetUIDw0,"ax",%progbits
+ 425              		.align	2
+ 426              		.global	HAL_GetUIDw0
+ 427              		.thumb
+ 428              		.thumb_func
+ 430              	HAL_GetUIDw0:
+ 431              		@ args = 0, pretend = 0, frame = 0
+ 432              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s 			page 8
+
+
+ 433              		@ link register save eliminated.
+ 434 0000 014B     		ldr	r3, .L61
+ 435 0002 1868     		ldr	r0, [r3]
+ 436 0004 7047     		bx	lr
+ 437              	.L62:
+ 438 0006 00BF     		.align	2
+ 439              	.L61:
+ 440 0008 00E8F11F 		.word	535947264
+ 442              		.section	.text.HAL_GetUIDw1,"ax",%progbits
+ 443              		.align	2
+ 444              		.global	HAL_GetUIDw1
+ 445              		.thumb
+ 446              		.thumb_func
+ 448              	HAL_GetUIDw1:
+ 449              		@ args = 0, pretend = 0, frame = 0
+ 450              		@ frame_needed = 0, uses_anonymous_args = 0
+ 451              		@ link register save eliminated.
+ 452 0000 014B     		ldr	r3, .L64
+ 453 0002 1868     		ldr	r0, [r3]
+ 454 0004 7047     		bx	lr
+ 455              	.L65:
+ 456 0006 00BF     		.align	2
+ 457              	.L64:
+ 458 0008 04E8F11F 		.word	535947268
+ 460              		.section	.text.HAL_GetUIDw2,"ax",%progbits
+ 461              		.align	2
+ 462              		.global	HAL_GetUIDw2
+ 463              		.thumb
+ 464              		.thumb_func
+ 466              	HAL_GetUIDw2:
+ 467              		@ args = 0, pretend = 0, frame = 0
+ 468              		@ frame_needed = 0, uses_anonymous_args = 0
+ 469              		@ link register save eliminated.
+ 470 0000 014B     		ldr	r3, .L67
+ 471 0002 1868     		ldr	r0, [r3]
+ 472 0004 7047     		bx	lr
+ 473              	.L68:
+ 474 0006 00BF     		.align	2
+ 475              	.L67:
+ 476 0008 08E8F11F 		.word	535947272
+ 478              		.section	.text.HAL_SYSCFG_VREFBUF_VoltageScalingConfig,"ax",%progbits
+ 479              		.align	2
+ 480              		.global	HAL_SYSCFG_VREFBUF_VoltageScalingConfig
+ 481              		.thumb
+ 482              		.thumb_func
+ 484              	HAL_SYSCFG_VREFBUF_VoltageScalingConfig:
+ 485              		@ args = 0, pretend = 0, frame = 0
+ 486              		@ frame_needed = 0, uses_anonymous_args = 0
+ 487              		@ link register save eliminated.
+ 488 0000 034A     		ldr	r2, .L70
+ 489 0002 1368     		ldr	r3, [r2]
+ 490 0004 23F07003 		bic	r3, r3, #112
+ 491 0008 1843     		orrs	r0, r0, r3
+ 492 000a 1060     		str	r0, [r2]
+ 493 000c 7047     		bx	lr
+ 494              	.L71:
+ 495 000e 00BF     		.align	2
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s 			page 9
+
+
+ 496              	.L70:
+ 497 0010 003C0058 		.word	1476410368
+ 499              		.section	.text.HAL_SYSCFG_VREFBUF_HighImpedanceConfig,"ax",%progbits
+ 500              		.align	2
+ 501              		.global	HAL_SYSCFG_VREFBUF_HighImpedanceConfig
+ 502              		.thumb
+ 503              		.thumb_func
+ 505              	HAL_SYSCFG_VREFBUF_HighImpedanceConfig:
+ 506              		@ args = 0, pretend = 0, frame = 0
+ 507              		@ frame_needed = 0, uses_anonymous_args = 0
+ 508              		@ link register save eliminated.
+ 509 0000 034A     		ldr	r2, .L73
+ 510 0002 1368     		ldr	r3, [r2]
+ 511 0004 23F00203 		bic	r3, r3, #2
+ 512 0008 1843     		orrs	r0, r0, r3
+ 513 000a 1060     		str	r0, [r2]
+ 514 000c 7047     		bx	lr
+ 515              	.L74:
+ 516 000e 00BF     		.align	2
+ 517              	.L73:
+ 518 0010 003C0058 		.word	1476410368
+ 520              		.section	.text.HAL_SYSCFG_VREFBUF_TrimmingConfig,"ax",%progbits
+ 521              		.align	2
+ 522              		.global	HAL_SYSCFG_VREFBUF_TrimmingConfig
+ 523              		.thumb
+ 524              		.thumb_func
+ 526              	HAL_SYSCFG_VREFBUF_TrimmingConfig:
+ 527              		@ args = 0, pretend = 0, frame = 0
+ 528              		@ frame_needed = 0, uses_anonymous_args = 0
+ 529              		@ link register save eliminated.
+ 530 0000 034A     		ldr	r2, .L76
+ 531 0002 5368     		ldr	r3, [r2, #4]
+ 532 0004 23F03F03 		bic	r3, r3, #63
+ 533 0008 1843     		orrs	r0, r0, r3
+ 534 000a 5060     		str	r0, [r2, #4]
+ 535 000c 7047     		bx	lr
+ 536              	.L77:
+ 537 000e 00BF     		.align	2
+ 538              	.L76:
+ 539 0010 003C0058 		.word	1476410368
+ 541              		.section	.text.HAL_SYSCFG_EnableVREFBUF,"ax",%progbits
+ 542              		.align	2
+ 543              		.global	HAL_SYSCFG_EnableVREFBUF
+ 544              		.thumb
+ 545              		.thumb_func
+ 547              	HAL_SYSCFG_EnableVREFBUF:
+ 548              		@ args = 0, pretend = 0, frame = 0
+ 549              		@ frame_needed = 0, uses_anonymous_args = 0
+ 550 0000 10B5     		push	{r4, lr}
+ 551 0002 0B4A     		ldr	r2, .L84
+ 552 0004 1368     		ldr	r3, [r2]
+ 553 0006 43F00103 		orr	r3, r3, #1
+ 554 000a 1360     		str	r3, [r2]
+ 555 000c FFF7FEFF 		bl	HAL_GetTick
+ 556 0010 0446     		mov	r4, r0
+ 557 0012 04E0     		b	.L79
+ 558              	.L81:
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s 			page 10
+
+
+ 559 0014 FFF7FEFF 		bl	HAL_GetTick
+ 560 0018 001B     		subs	r0, r0, r4
+ 561 001a 0A28     		cmp	r0, #10
+ 562 001c 06D8     		bhi	.L82
+ 563              	.L79:
+ 564 001e 044B     		ldr	r3, .L84
+ 565 0020 1B68     		ldr	r3, [r3]
+ 566 0022 13F0080F 		tst	r3, #8
+ 567 0026 F5D0     		beq	.L81
+ 568 0028 0020     		movs	r0, #0
+ 569 002a 10BD     		pop	{r4, pc}
+ 570              	.L82:
+ 571 002c 0320     		movs	r0, #3
+ 572 002e 10BD     		pop	{r4, pc}
+ 573              	.L85:
+ 574              		.align	2
+ 575              	.L84:
+ 576 0030 003C0058 		.word	1476410368
+ 578              		.section	.text.HAL_SYSCFG_DisableVREFBUF,"ax",%progbits
+ 579              		.align	2
+ 580              		.global	HAL_SYSCFG_DisableVREFBUF
+ 581              		.thumb
+ 582              		.thumb_func
+ 584              	HAL_SYSCFG_DisableVREFBUF:
+ 585              		@ args = 0, pretend = 0, frame = 0
+ 586              		@ frame_needed = 0, uses_anonymous_args = 0
+ 587              		@ link register save eliminated.
+ 588 0000 024A     		ldr	r2, .L87
+ 589 0002 1368     		ldr	r3, [r2]
+ 590 0004 23F00103 		bic	r3, r3, #1
+ 591 0008 1360     		str	r3, [r2]
+ 592 000a 7047     		bx	lr
+ 593              	.L88:
+ 594              		.align	2
+ 595              	.L87:
+ 596 000c 003C0058 		.word	1476410368
+ 598              		.section	.text.HAL_SYSCFG_ETHInterfaceSelect,"ax",%progbits
+ 599              		.align	2
+ 600              		.global	HAL_SYSCFG_ETHInterfaceSelect
+ 601              		.thumb
+ 602              		.thumb_func
+ 604              	HAL_SYSCFG_ETHInterfaceSelect:
+ 605              		@ args = 0, pretend = 0, frame = 0
+ 606              		@ frame_needed = 0, uses_anonymous_args = 0
+ 607              		@ link register save eliminated.
+ 608 0000 034A     		ldr	r2, .L90
+ 609 0002 5368     		ldr	r3, [r2, #4]
+ 610 0004 23F46003 		bic	r3, r3, #14680064
+ 611 0008 1843     		orrs	r0, r0, r3
+ 612 000a 5060     		str	r0, [r2, #4]
+ 613 000c 7047     		bx	lr
+ 614              	.L91:
+ 615 000e 00BF     		.align	2
+ 616              	.L90:
+ 617 0010 00040058 		.word	1476396032
+ 619              		.section	.text.HAL_SYSCFG_AnalogSwitchConfig,"ax",%progbits
+ 620              		.align	2
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s 			page 11
+
+
+ 621              		.global	HAL_SYSCFG_AnalogSwitchConfig
+ 622              		.thumb
+ 623              		.thumb_func
+ 625              	HAL_SYSCFG_AnalogSwitchConfig:
+ 626              		@ args = 0, pretend = 0, frame = 0
+ 627              		@ frame_needed = 0, uses_anonymous_args = 0
+ 628              		@ link register save eliminated.
+ 629 0000 034A     		ldr	r2, .L93
+ 630 0002 5368     		ldr	r3, [r2, #4]
+ 631 0004 23EA0000 		bic	r0, r3, r0
+ 632 0008 0143     		orrs	r1, r1, r0
+ 633 000a 5160     		str	r1, [r2, #4]
+ 634 000c 7047     		bx	lr
+ 635              	.L94:
+ 636 000e 00BF     		.align	2
+ 637              	.L93:
+ 638 0010 00040058 		.word	1476396032
+ 640              		.section	.text.HAL_SYSCFG_EnableBOOST,"ax",%progbits
+ 641              		.align	2
+ 642              		.global	HAL_SYSCFG_EnableBOOST
+ 643              		.thumb
+ 644              		.thumb_func
+ 646              	HAL_SYSCFG_EnableBOOST:
+ 647              		@ args = 0, pretend = 0, frame = 0
+ 648              		@ frame_needed = 0, uses_anonymous_args = 0
+ 649              		@ link register save eliminated.
+ 650 0000 024A     		ldr	r2, .L96
+ 651 0002 5368     		ldr	r3, [r2, #4]
+ 652 0004 43F48073 		orr	r3, r3, #256
+ 653 0008 5360     		str	r3, [r2, #4]
+ 654 000a 7047     		bx	lr
+ 655              	.L97:
+ 656              		.align	2
+ 657              	.L96:
+ 658 000c 00040058 		.word	1476396032
+ 660              		.section	.text.HAL_SYSCFG_DisableBOOST,"ax",%progbits
+ 661              		.align	2
+ 662              		.global	HAL_SYSCFG_DisableBOOST
+ 663              		.thumb
+ 664              		.thumb_func
+ 666              	HAL_SYSCFG_DisableBOOST:
+ 667              		@ args = 0, pretend = 0, frame = 0
+ 668              		@ frame_needed = 0, uses_anonymous_args = 0
+ 669              		@ link register save eliminated.
+ 670 0000 024A     		ldr	r2, .L99
+ 671 0002 5368     		ldr	r3, [r2, #4]
+ 672 0004 23F48073 		bic	r3, r3, #256
+ 673 0008 5360     		str	r3, [r2, #4]
+ 674 000a 7047     		bx	lr
+ 675              	.L100:
+ 676              		.align	2
+ 677              	.L99:
+ 678 000c 00040058 		.word	1476396032
+ 680              		.section	.text.HAL_SYSCFG_CM7BootAddConfig,"ax",%progbits
+ 681              		.align	2
+ 682              		.global	HAL_SYSCFG_CM7BootAddConfig
+ 683              		.thumb
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s 			page 12
+
+
+ 684              		.thumb_func
+ 686              	HAL_SYSCFG_CM7BootAddConfig:
+ 687              		@ args = 0, pretend = 0, frame = 0
+ 688              		@ frame_needed = 0, uses_anonymous_args = 0
+ 689              		@ link register save eliminated.
+ 690 0000 48B9     		cbnz	r0, .L102
+ 691 0002 0A48     		ldr	r0, .L104
+ 692 0004 D0F80823 		ldr	r2, [r0, #776]
+ 693 0008 93B2     		uxth	r3, r2
+ 694 000a 094A     		ldr	r2, .L104+4
+ 695 000c 0A40     		ands	r2, r2, r1
+ 696 000e 1A43     		orrs	r2, r2, r3
+ 697 0010 C0F80823 		str	r2, [r0, #776]
+ 698 0014 7047     		bx	lr
+ 699              	.L102:
+ 700 0016 054A     		ldr	r2, .L104
+ 701 0018 D2F80C03 		ldr	r0, [r2, #780]
+ 702 001c 044B     		ldr	r3, .L104+4
+ 703 001e 0340     		ands	r3, r3, r0
+ 704 0020 43EA1143 		orr	r3, r3, r1, lsr #16
+ 705 0024 C2F80C33 		str	r3, [r2, #780]
+ 706 0028 7047     		bx	lr
+ 707              	.L105:
+ 708 002a 00BF     		.align	2
+ 709              	.L104:
+ 710 002c 00040058 		.word	1476396032
+ 711 0030 0000FFFF 		.word	-65536
+ 713              		.section	.text.HAL_EnableCompensationCell,"ax",%progbits
+ 714              		.align	2
+ 715              		.global	HAL_EnableCompensationCell
+ 716              		.thumb
+ 717              		.thumb_func
+ 719              	HAL_EnableCompensationCell:
+ 720              		@ args = 0, pretend = 0, frame = 0
+ 721              		@ frame_needed = 0, uses_anonymous_args = 0
+ 722              		@ link register save eliminated.
+ 723 0000 024A     		ldr	r2, .L107
+ 724 0002 136A     		ldr	r3, [r2, #32]
+ 725 0004 43F00103 		orr	r3, r3, #1
+ 726 0008 1362     		str	r3, [r2, #32]
+ 727 000a 7047     		bx	lr
+ 728              	.L108:
+ 729              		.align	2
+ 730              	.L107:
+ 731 000c 00040058 		.word	1476396032
+ 733              		.section	.text.HAL_DisableCompensationCell,"ax",%progbits
+ 734              		.align	2
+ 735              		.global	HAL_DisableCompensationCell
+ 736              		.thumb
+ 737              		.thumb_func
+ 739              	HAL_DisableCompensationCell:
+ 740              		@ args = 0, pretend = 0, frame = 0
+ 741              		@ frame_needed = 0, uses_anonymous_args = 0
+ 742              		@ link register save eliminated.
+ 743 0000 024A     		ldr	r2, .L110
+ 744 0002 136A     		ldr	r3, [r2, #32]
+ 745 0004 23F00103 		bic	r3, r3, #1
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s 			page 13
+
+
+ 746 0008 1362     		str	r3, [r2, #32]
+ 747 000a 7047     		bx	lr
+ 748              	.L111:
+ 749              		.align	2
+ 750              	.L110:
+ 751 000c 00040058 		.word	1476396032
+ 753              		.section	.text.HAL_SYSCFG_EnableIOSpeedOptimize,"ax",%progbits
+ 754              		.align	2
+ 755              		.global	HAL_SYSCFG_EnableIOSpeedOptimize
+ 756              		.thumb
+ 757              		.thumb_func
+ 759              	HAL_SYSCFG_EnableIOSpeedOptimize:
+ 760              		@ args = 0, pretend = 0, frame = 0
+ 761              		@ frame_needed = 0, uses_anonymous_args = 0
+ 762              		@ link register save eliminated.
+ 763 0000 024A     		ldr	r2, .L113
+ 764 0002 136A     		ldr	r3, [r2, #32]
+ 765 0004 43F48033 		orr	r3, r3, #65536
+ 766 0008 1362     		str	r3, [r2, #32]
+ 767 000a 7047     		bx	lr
+ 768              	.L114:
+ 769              		.align	2
+ 770              	.L113:
+ 771 000c 00040058 		.word	1476396032
+ 773              		.section	.text.HAL_SYSCFG_DisableIOSpeedOptimize,"ax",%progbits
+ 774              		.align	2
+ 775              		.global	HAL_SYSCFG_DisableIOSpeedOptimize
+ 776              		.thumb
+ 777              		.thumb_func
+ 779              	HAL_SYSCFG_DisableIOSpeedOptimize:
+ 780              		@ args = 0, pretend = 0, frame = 0
+ 781              		@ frame_needed = 0, uses_anonymous_args = 0
+ 782              		@ link register save eliminated.
+ 783 0000 024A     		ldr	r2, .L116
+ 784 0002 136A     		ldr	r3, [r2, #32]
+ 785 0004 23F48033 		bic	r3, r3, #65536
+ 786 0008 1362     		str	r3, [r2, #32]
+ 787 000a 7047     		bx	lr
+ 788              	.L117:
+ 789              		.align	2
+ 790              	.L116:
+ 791 000c 00040058 		.word	1476396032
+ 793              		.section	.text.HAL_SYSCFG_CompensationCodeSelect,"ax",%progbits
+ 794              		.align	2
+ 795              		.global	HAL_SYSCFG_CompensationCodeSelect
+ 796              		.thumb
+ 797              		.thumb_func
+ 799              	HAL_SYSCFG_CompensationCodeSelect:
+ 800              		@ args = 0, pretend = 0, frame = 0
+ 801              		@ frame_needed = 0, uses_anonymous_args = 0
+ 802              		@ link register save eliminated.
+ 803 0000 034A     		ldr	r2, .L119
+ 804 0002 136A     		ldr	r3, [r2, #32]
+ 805 0004 23F00203 		bic	r3, r3, #2
+ 806 0008 1843     		orrs	r0, r0, r3
+ 807 000a 1062     		str	r0, [r2, #32]
+ 808 000c 7047     		bx	lr
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s 			page 14
+
+
+ 809              	.L120:
+ 810 000e 00BF     		.align	2
+ 811              	.L119:
+ 812 0010 00040058 		.word	1476396032
+ 814              		.section	.text.HAL_SYSCFG_CompensationCodeConfig,"ax",%progbits
+ 815              		.align	2
+ 816              		.global	HAL_SYSCFG_CompensationCodeConfig
+ 817              		.thumb
+ 818              		.thumb_func
+ 820              	HAL_SYSCFG_CompensationCodeConfig:
+ 821              		@ args = 0, pretend = 0, frame = 0
+ 822              		@ frame_needed = 0, uses_anonymous_args = 0
+ 823              		@ link register save eliminated.
+ 824 0000 044A     		ldr	r2, .L122
+ 825 0002 936A     		ldr	r3, [r2, #40]
+ 826 0004 23F0FF03 		bic	r3, r3, #255
+ 827 0008 41EA0011 		orr	r1, r1, r0, lsl #4
+ 828 000c 1943     		orrs	r1, r1, r3
+ 829 000e 9162     		str	r1, [r2, #40]
+ 830 0010 7047     		bx	lr
+ 831              	.L123:
+ 832 0012 00BF     		.align	2
+ 833              	.L122:
+ 834 0014 00040058 		.word	1476396032
+ 836              		.section	.text.HAL_DBGMCU_EnableDBGSleepMode,"ax",%progbits
+ 837              		.align	2
+ 838              		.global	HAL_DBGMCU_EnableDBGSleepMode
+ 839              		.thumb
+ 840              		.thumb_func
+ 842              	HAL_DBGMCU_EnableDBGSleepMode:
+ 843              		@ args = 0, pretend = 0, frame = 0
+ 844              		@ frame_needed = 0, uses_anonymous_args = 0
+ 845              		@ link register save eliminated.
+ 846 0000 024A     		ldr	r2, .L125
+ 847 0002 5368     		ldr	r3, [r2, #4]
+ 848 0004 43F00103 		orr	r3, r3, #1
+ 849 0008 5360     		str	r3, [r2, #4]
+ 850 000a 7047     		bx	lr
+ 851              	.L126:
+ 852              		.align	2
+ 853              	.L125:
+ 854 000c 0010005C 		.word	1543507968
+ 856              		.section	.text.HAL_DBGMCU_DisableDBGSleepMode,"ax",%progbits
+ 857              		.align	2
+ 858              		.global	HAL_DBGMCU_DisableDBGSleepMode
+ 859              		.thumb
+ 860              		.thumb_func
+ 862              	HAL_DBGMCU_DisableDBGSleepMode:
+ 863              		@ args = 0, pretend = 0, frame = 0
+ 864              		@ frame_needed = 0, uses_anonymous_args = 0
+ 865              		@ link register save eliminated.
+ 866 0000 024A     		ldr	r2, .L128
+ 867 0002 5368     		ldr	r3, [r2, #4]
+ 868 0004 23F00103 		bic	r3, r3, #1
+ 869 0008 5360     		str	r3, [r2, #4]
+ 870 000a 7047     		bx	lr
+ 871              	.L129:
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s 			page 15
+
+
+ 872              		.align	2
+ 873              	.L128:
+ 874 000c 0010005C 		.word	1543507968
+ 876              		.section	.text.HAL_DBGMCU_EnableDBGStopMode,"ax",%progbits
+ 877              		.align	2
+ 878              		.global	HAL_DBGMCU_EnableDBGStopMode
+ 879              		.thumb
+ 880              		.thumb_func
+ 882              	HAL_DBGMCU_EnableDBGStopMode:
+ 883              		@ args = 0, pretend = 0, frame = 0
+ 884              		@ frame_needed = 0, uses_anonymous_args = 0
+ 885              		@ link register save eliminated.
+ 886 0000 024A     		ldr	r2, .L131
+ 887 0002 5368     		ldr	r3, [r2, #4]
+ 888 0004 43F00203 		orr	r3, r3, #2
+ 889 0008 5360     		str	r3, [r2, #4]
+ 890 000a 7047     		bx	lr
+ 891              	.L132:
+ 892              		.align	2
+ 893              	.L131:
+ 894 000c 0010005C 		.word	1543507968
+ 896              		.section	.text.HAL_DBGMCU_DisableDBGStopMode,"ax",%progbits
+ 897              		.align	2
+ 898              		.global	HAL_DBGMCU_DisableDBGStopMode
+ 899              		.thumb
+ 900              		.thumb_func
+ 902              	HAL_DBGMCU_DisableDBGStopMode:
+ 903              		@ args = 0, pretend = 0, frame = 0
+ 904              		@ frame_needed = 0, uses_anonymous_args = 0
+ 905              		@ link register save eliminated.
+ 906 0000 024A     		ldr	r2, .L134
+ 907 0002 5368     		ldr	r3, [r2, #4]
+ 908 0004 23F00203 		bic	r3, r3, #2
+ 909 0008 5360     		str	r3, [r2, #4]
+ 910 000a 7047     		bx	lr
+ 911              	.L135:
+ 912              		.align	2
+ 913              	.L134:
+ 914 000c 0010005C 		.word	1543507968
+ 916              		.section	.text.HAL_DBGMCU_EnableDBGStandbyMode,"ax",%progbits
+ 917              		.align	2
+ 918              		.global	HAL_DBGMCU_EnableDBGStandbyMode
+ 919              		.thumb
+ 920              		.thumb_func
+ 922              	HAL_DBGMCU_EnableDBGStandbyMode:
+ 923              		@ args = 0, pretend = 0, frame = 0
+ 924              		@ frame_needed = 0, uses_anonymous_args = 0
+ 925              		@ link register save eliminated.
+ 926 0000 024A     		ldr	r2, .L137
+ 927 0002 5368     		ldr	r3, [r2, #4]
+ 928 0004 43F00403 		orr	r3, r3, #4
+ 929 0008 5360     		str	r3, [r2, #4]
+ 930 000a 7047     		bx	lr
+ 931              	.L138:
+ 932              		.align	2
+ 933              	.L137:
+ 934 000c 0010005C 		.word	1543507968
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s 			page 16
+
+
+ 936              		.section	.text.HAL_DBGMCU_DisableDBGStandbyMode,"ax",%progbits
+ 937              		.align	2
+ 938              		.global	HAL_DBGMCU_DisableDBGStandbyMode
+ 939              		.thumb
+ 940              		.thumb_func
+ 942              	HAL_DBGMCU_DisableDBGStandbyMode:
+ 943              		@ args = 0, pretend = 0, frame = 0
+ 944              		@ frame_needed = 0, uses_anonymous_args = 0
+ 945              		@ link register save eliminated.
+ 946 0000 024A     		ldr	r2, .L140
+ 947 0002 5368     		ldr	r3, [r2, #4]
+ 948 0004 23F00403 		bic	r3, r3, #4
+ 949 0008 5360     		str	r3, [r2, #4]
+ 950 000a 7047     		bx	lr
+ 951              	.L141:
+ 952              		.align	2
+ 953              	.L140:
+ 954 000c 0010005C 		.word	1543507968
+ 956              		.section	.text.HAL_EnableDomain3DBGStopMode,"ax",%progbits
+ 957              		.align	2
+ 958              		.global	HAL_EnableDomain3DBGStopMode
+ 959              		.thumb
+ 960              		.thumb_func
+ 962              	HAL_EnableDomain3DBGStopMode:
+ 963              		@ args = 0, pretend = 0, frame = 0
+ 964              		@ frame_needed = 0, uses_anonymous_args = 0
+ 965              		@ link register save eliminated.
+ 966 0000 024A     		ldr	r2, .L143
+ 967 0002 5368     		ldr	r3, [r2, #4]
+ 968 0004 43F08003 		orr	r3, r3, #128
+ 969 0008 5360     		str	r3, [r2, #4]
+ 970 000a 7047     		bx	lr
+ 971              	.L144:
+ 972              		.align	2
+ 973              	.L143:
+ 974 000c 0010005C 		.word	1543507968
+ 976              		.section	.text.HAL_DisableDomain3DBGStopMode,"ax",%progbits
+ 977              		.align	2
+ 978              		.global	HAL_DisableDomain3DBGStopMode
+ 979              		.thumb
+ 980              		.thumb_func
+ 982              	HAL_DisableDomain3DBGStopMode:
+ 983              		@ args = 0, pretend = 0, frame = 0
+ 984              		@ frame_needed = 0, uses_anonymous_args = 0
+ 985              		@ link register save eliminated.
+ 986 0000 024A     		ldr	r2, .L146
+ 987 0002 5368     		ldr	r3, [r2, #4]
+ 988 0004 23F08003 		bic	r3, r3, #128
+ 989 0008 5360     		str	r3, [r2, #4]
+ 990 000a 7047     		bx	lr
+ 991              	.L147:
+ 992              		.align	2
+ 993              	.L146:
+ 994 000c 0010005C 		.word	1543507968
+ 996              		.section	.text.HAL_EnableDomain3DBGStandbyMode,"ax",%progbits
+ 997              		.align	2
+ 998              		.global	HAL_EnableDomain3DBGStandbyMode
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s 			page 17
+
+
+ 999              		.thumb
+ 1000              		.thumb_func
+ 1002              	HAL_EnableDomain3DBGStandbyMode:
+ 1003              		@ args = 0, pretend = 0, frame = 0
+ 1004              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1005              		@ link register save eliminated.
+ 1006 0000 024A     		ldr	r2, .L149
+ 1007 0002 5368     		ldr	r3, [r2, #4]
+ 1008 0004 43F48073 		orr	r3, r3, #256
+ 1009 0008 5360     		str	r3, [r2, #4]
+ 1010 000a 7047     		bx	lr
+ 1011              	.L150:
+ 1012              		.align	2
+ 1013              	.L149:
+ 1014 000c 0010005C 		.word	1543507968
+ 1016              		.section	.text.HAL_DisableDomain3DBGStandbyMode,"ax",%progbits
+ 1017              		.align	2
+ 1018              		.global	HAL_DisableDomain3DBGStandbyMode
+ 1019              		.thumb
+ 1020              		.thumb_func
+ 1022              	HAL_DisableDomain3DBGStandbyMode:
+ 1023              		@ args = 0, pretend = 0, frame = 0
+ 1024              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1025              		@ link register save eliminated.
+ 1026 0000 024A     		ldr	r2, .L152
+ 1027 0002 5368     		ldr	r3, [r2, #4]
+ 1028 0004 23F48073 		bic	r3, r3, #256
+ 1029 0008 5360     		str	r3, [r2, #4]
+ 1030 000a 7047     		bx	lr
+ 1031              	.L153:
+ 1032              		.align	2
+ 1033              	.L152:
+ 1034 000c 0010005C 		.word	1543507968
+ 1036              		.section	.text.HAL_SetFMCMemorySwappingConfig,"ax",%progbits
+ 1037              		.align	2
+ 1038              		.global	HAL_SetFMCMemorySwappingConfig
+ 1039              		.thumb
+ 1040              		.thumb_func
+ 1042              	HAL_SetFMCMemorySwappingConfig:
+ 1043              		@ args = 0, pretend = 0, frame = 0
+ 1044              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1045              		@ link register save eliminated.
+ 1046 0000 034A     		ldr	r2, .L155
+ 1047 0002 1368     		ldr	r3, [r2]
+ 1048 0004 23F04073 		bic	r3, r3, #50331648
+ 1049 0008 1843     		orrs	r0, r0, r3
+ 1050 000a 1060     		str	r0, [r2]
+ 1051 000c 7047     		bx	lr
+ 1052              	.L156:
+ 1053 000e 00BF     		.align	2
+ 1054              	.L155:
+ 1055 0010 00400052 		.word	1375748096
+ 1057              		.section	.text.HAL_GetFMCMemorySwappingConfig,"ax",%progbits
+ 1058              		.align	2
+ 1059              		.global	HAL_GetFMCMemorySwappingConfig
+ 1060              		.thumb
+ 1061              		.thumb_func
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s 			page 18
+
+
+ 1063              	HAL_GetFMCMemorySwappingConfig:
+ 1064              		@ args = 0, pretend = 0, frame = 0
+ 1065              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1066              		@ link register save eliminated.
+ 1067 0000 024B     		ldr	r3, .L158
+ 1068 0002 1868     		ldr	r0, [r3]
+ 1069 0004 00F04070 		and	r0, r0, #50331648
+ 1070 0008 7047     		bx	lr
+ 1071              	.L159:
+ 1072 000a 00BF     		.align	2
+ 1073              	.L158:
+ 1074 000c 00400052 		.word	1375748096
+ 1076              		.section	.text.HAL_EXTI_EdgeConfig,"ax",%progbits
+ 1077              		.align	2
+ 1078              		.global	HAL_EXTI_EdgeConfig
+ 1079              		.thumb
+ 1080              		.thumb_func
+ 1082              	HAL_EXTI_EdgeConfig:
+ 1083              		@ args = 0, pretend = 0, frame = 0
+ 1084              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1085              		@ link register save eliminated.
+ 1086 0000 F0B4     		push	{r4, r5, r6, r7}
+ 1087 0002 4309     		lsrs	r3, r0, #5
+ 1088 0004 5C01     		lsls	r4, r3, #5
+ 1089 0006 0F4A     		ldr	r2, .L164
+ 1090 0008 A658     		ldr	r6, [r4, r2]
+ 1091 000a 00F01F00 		and	r0, r0, #31
+ 1092 000e 0125     		movs	r5, #1
+ 1093 0010 05FA00F0 		lsl	r0, r5, r0
+ 1094 0014 C743     		mvns	r7, r0
+ 1095 0016 3E40     		ands	r6, r6, r7
+ 1096 0018 A650     		str	r6, [r4, r2]
+ 1097 001a 03F13073 		add	r3, r3, #46137344
+ 1098 001e 5B01     		lsls	r3, r3, #5
+ 1099 0020 1D68     		ldr	r5, [r3]
+ 1100 0022 3D40     		ands	r5, r5, r7
+ 1101 0024 1D60     		str	r5, [r3]
+ 1102 0026 11F4801F 		tst	r1, #1048576
+ 1103 002a 02D0     		beq	.L161
+ 1104 002c 1D68     		ldr	r5, [r3]
+ 1105 002e 0543     		orrs	r5, r5, r0
+ 1106 0030 1D60     		str	r5, [r3]
+ 1107              	.L161:
+ 1108 0032 11F4001F 		tst	r1, #2097152
+ 1109 0036 02D0     		beq	.L160
+ 1110 0038 A358     		ldr	r3, [r4, r2]
+ 1111 003a 1843     		orrs	r0, r0, r3
+ 1112 003c A050     		str	r0, [r4, r2]
+ 1113              	.L160:
+ 1114 003e F0BC     		pop	{r4, r5, r6, r7}
+ 1115 0040 7047     		bx	lr
+ 1116              	.L165:
+ 1117 0042 00BF     		.align	2
+ 1118              	.L164:
+ 1119 0044 04000058 		.word	1476395012
+ 1121              		.section	.text.HAL_EXTI_GenerateSWInterrupt,"ax",%progbits
+ 1122              		.align	2
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s 			page 19
+
+
+ 1123              		.global	HAL_EXTI_GenerateSWInterrupt
+ 1124              		.thumb
+ 1125              		.thumb_func
+ 1127              	HAL_EXTI_GenerateSWInterrupt:
+ 1128              		@ args = 0, pretend = 0, frame = 0
+ 1129              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1130              		@ link register save eliminated.
+ 1131 0000 10B4     		push	{r4}
+ 1132 0002 20F01F01 		bic	r1, r0, #31
+ 1133 0006 064A     		ldr	r2, .L168
+ 1134 0008 8C58     		ldr	r4, [r1, r2]
+ 1135 000a 00F01F00 		and	r0, r0, #31
+ 1136 000e 0123     		movs	r3, #1
+ 1137 0010 03FA00F0 		lsl	r0, r3, r0
+ 1138 0014 2043     		orrs	r0, r0, r4
+ 1139 0016 8850     		str	r0, [r1, r2]
+ 1140 0018 5DF8044B 		ldr	r4, [sp], #4
+ 1141 001c 7047     		bx	lr
+ 1142              	.L169:
+ 1143 001e 00BF     		.align	2
+ 1144              	.L168:
+ 1145 0020 08000058 		.word	1476395016
+ 1147              		.section	.text.HAL_EXTI_D1_ClearFlag,"ax",%progbits
+ 1148              		.align	2
+ 1149              		.global	HAL_EXTI_D1_ClearFlag
+ 1150              		.thumb
+ 1151              		.thumb_func
+ 1153              	HAL_EXTI_D1_ClearFlag:
+ 1154              		@ args = 0, pretend = 0, frame = 0
+ 1155              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1156              		@ link register save eliminated.
+ 1157 0000 4309     		lsrs	r3, r0, #5
+ 1158 0002 1B01     		lsls	r3, r3, #4
+ 1159 0004 00F01F00 		and	r0, r0, #31
+ 1160 0008 0122     		movs	r2, #1
+ 1161 000a 02FA00F0 		lsl	r0, r2, r0
+ 1162 000e 014A     		ldr	r2, .L171
+ 1163 0010 9850     		str	r0, [r3, r2]
+ 1164 0012 7047     		bx	lr
+ 1165              	.L172:
+ 1166              		.align	2
+ 1167              	.L171:
+ 1168 0014 88000058 		.word	1476395144
+ 1170              		.section	.text.HAL_EXTI_D1_EventInputConfig,"ax",%progbits
+ 1171              		.align	2
+ 1172              		.global	HAL_EXTI_D1_EventInputConfig
+ 1173              		.thumb
+ 1174              		.thumb_func
+ 1176              	HAL_EXTI_D1_EventInputConfig:
+ 1177              		@ args = 0, pretend = 0, frame = 0
+ 1178              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1179              		@ link register save eliminated.
+ 1180 0000 70B4     		push	{r4, r5, r6}
+ 1181 0002 11F4803F 		tst	r1, #65536
+ 1182 0006 19D0     		beq	.L174
+ 1183 0008 62B9     		cbnz	r2, .L175
+ 1184 000a 1B4B     		ldr	r3, .L179
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s 			page 20
+
+
+ 1185 000c 03EB5013 		add	r3, r3, r0, lsr #5
+ 1186 0010 1B01     		lsls	r3, r3, #4
+ 1187 0012 1D68     		ldr	r5, [r3]
+ 1188 0014 00F01F06 		and	r6, r0, #31
+ 1189 0018 0124     		movs	r4, #1
+ 1190 001a B440     		lsls	r4, r4, r6
+ 1191 001c 25EA0404 		bic	r4, r5, r4
+ 1192 0020 1C60     		str	r4, [r3]
+ 1193 0022 0BE0     		b	.L174
+ 1194              	.L175:
+ 1195 0024 144B     		ldr	r3, .L179
+ 1196 0026 03EB5013 		add	r3, r3, r0, lsr #5
+ 1197 002a 1B01     		lsls	r3, r3, #4
+ 1198 002c 1E68     		ldr	r6, [r3]
+ 1199 002e 00F01F04 		and	r4, r0, #31
+ 1200 0032 0125     		movs	r5, #1
+ 1201 0034 05FA04F4 		lsl	r4, r5, r4
+ 1202 0038 3443     		orrs	r4, r4, r6
+ 1203 003a 1C60     		str	r4, [r3]
+ 1204              	.L174:
+ 1205 003c 11F4003F 		tst	r1, #131072
+ 1206 0040 18D0     		beq	.L173
+ 1207 0042 62B9     		cbnz	r2, .L177
+ 1208 0044 4309     		lsrs	r3, r0, #5
+ 1209 0046 1B01     		lsls	r3, r3, #4
+ 1210 0048 0C4C     		ldr	r4, .L179+4
+ 1211 004a 1A59     		ldr	r2, [r3, r4]
+ 1212 004c 00F01F00 		and	r0, r0, #31
+ 1213 0050 0121     		movs	r1, #1
+ 1214 0052 01FA00F0 		lsl	r0, r1, r0
+ 1215 0056 22EA0000 		bic	r0, r2, r0
+ 1216 005a 1851     		str	r0, [r3, r4]
+ 1217 005c 0AE0     		b	.L173
+ 1218              	.L177:
+ 1219 005e 4209     		lsrs	r2, r0, #5
+ 1220 0060 1201     		lsls	r2, r2, #4
+ 1221 0062 0649     		ldr	r1, .L179+4
+ 1222 0064 5458     		ldr	r4, [r2, r1]
+ 1223 0066 00F01F00 		and	r0, r0, #31
+ 1224 006a 0123     		movs	r3, #1
+ 1225 006c 03FA00F0 		lsl	r0, r3, r0
+ 1226 0070 2043     		orrs	r0, r0, r4
+ 1227 0072 5050     		str	r0, [r2, r1]
+ 1228              	.L173:
+ 1229 0074 70BC     		pop	{r4, r5, r6}
+ 1230 0076 7047     		bx	lr
+ 1231              	.L180:
+ 1232              		.align	2
+ 1233              	.L179:
+ 1234 0078 08008005 		.word	92274696
+ 1235 007c 84000058 		.word	1476395140
+ 1237              		.section	.text.HAL_EXTI_D3_EventInputConfig,"ax",%progbits
+ 1238              		.align	2
+ 1239              		.global	HAL_EXTI_D3_EventInputConfig
+ 1240              		.thumb
+ 1241              		.thumb_func
+ 1243              	HAL_EXTI_D3_EventInputConfig:
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s 			page 21
+
+
+ 1244              		@ args = 0, pretend = 0, frame = 0
+ 1245              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1246              		@ link register save eliminated.
+ 1247 0000 70B4     		push	{r4, r5, r6}
+ 1248 0002 59B9     		cbnz	r1, .L182
+ 1249 0004 20F01F03 		bic	r3, r0, #31
+ 1250 0008 174D     		ldr	r5, .L187
+ 1251 000a 5C59     		ldr	r4, [r3, r5]
+ 1252 000c 00F01F06 		and	r6, r0, #31
+ 1253 0010 0121     		movs	r1, #1
+ 1254 0012 B140     		lsls	r1, r1, r6
+ 1255 0014 24EA0101 		bic	r1, r4, r1
+ 1256 0018 5951     		str	r1, [r3, r5]
+ 1257 001a 0AE0     		b	.L183
+ 1258              	.L182:
+ 1259 001c 20F01F04 		bic	r4, r0, #31
+ 1260 0020 114D     		ldr	r5, .L187
+ 1261 0022 6659     		ldr	r6, [r4, r5]
+ 1262 0024 00F01F03 		and	r3, r0, #31
+ 1263 0028 0121     		movs	r1, #1
+ 1264 002a 01FA03F3 		lsl	r3, r1, r3
+ 1265 002e 3343     		orrs	r3, r3, r6
+ 1266 0030 6351     		str	r3, [r4, r5]
+ 1267              	.L183:
+ 1268 0032 10F0100F 		tst	r0, #16
+ 1269 0036 04D1     		bne	.L184
+ 1270 0038 20F01F01 		bic	r1, r0, #31
+ 1271 003c 0B4B     		ldr	r3, .L187+4
+ 1272 003e 0B44     		add	r3, r3, r1
+ 1273 0040 03E0     		b	.L185
+ 1274              	.L184:
+ 1275 0042 20F01F01 		bic	r1, r0, #31
+ 1276 0046 0A4B     		ldr	r3, .L187+8
+ 1277 0048 0B44     		add	r3, r3, r1
+ 1278              	.L185:
+ 1279 004a 1C68     		ldr	r4, [r3]
+ 1280 004c 4000     		lsls	r0, r0, #1
+ 1281 004e 00F01E00 		and	r0, r0, #30
+ 1282 0052 0321     		movs	r1, #3
+ 1283 0054 8140     		lsls	r1, r1, r0
+ 1284 0056 24EA0101 		bic	r1, r4, r1
+ 1285 005a 02FA00F0 		lsl	r0, r2, r0
+ 1286 005e 0843     		orrs	r0, r0, r1
+ 1287 0060 1860     		str	r0, [r3]
+ 1288 0062 70BC     		pop	{r4, r5, r6}
+ 1289 0064 7047     		bx	lr
+ 1290              	.L188:
+ 1291 0066 00BF     		.align	2
+ 1292              	.L187:
+ 1293 0068 0C000058 		.word	1476395020
+ 1294 006c 10000058 		.word	1476395024
+ 1295 0070 14000058 		.word	1476395028
+ 1297              		.global	uwTickFreq
+ 1298              		.global	uwTickPrio
+ 1299              		.comm	uwTick,4,4
+ 1300              		.section	.data.uwTickPrio,"aw",%progbits
+ 1301              		.align	2
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s 			page 22
+
+
+ 1302              		.set	.LANCHOR1,. + 0
+ 1305              	uwTickPrio:
+ 1306 0000 10000000 		.word	16
+ 1307              		.section	.data.uwTickFreq,"aw",%progbits
+ 1308              		.set	.LANCHOR0,. + 0
+ 1311              	uwTickFreq:
+ 1312 0000 01       		.byte	1
+ 1313              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160919 (release) [ARM/embedded-5-bran
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s 			page 23
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32h7xx_hal.c
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:18     .text.HAL_MspInit:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:23     .text.HAL_MspInit:00000000 HAL_MspInit
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:30     .text.HAL_MspDeInit:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:35     .text.HAL_MspDeInit:00000000 HAL_MspDeInit
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:42     .text.HAL_DeInit:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:47     .text.HAL_DeInit:00000000 HAL_DeInit
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:86     .text.HAL_DeInit:00000068 $d
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:95     .text.HAL_InitTick:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:100    .text.HAL_InitTick:00000000 HAL_InitTick
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:137    .text.HAL_InitTick:00000044 $d
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:142    .text.HAL_Init:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:147    .text.HAL_Init:00000000 HAL_Init
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:184    .text.HAL_Init:0000004c $d
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:190    .text.HAL_IncTick:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:195    .text.HAL_IncTick:00000000 HAL_IncTick
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:209    .text.HAL_IncTick:00000010 $d
+                            *COM*:00000004 uwTick
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:213    .text.HAL_GetTick:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:218    .text.HAL_GetTick:00000000 HAL_GetTick
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:228    .text.HAL_GetTick:00000008 $d
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:231    .text.HAL_GetTickPrio:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:236    .text.HAL_GetTickPrio:00000000 HAL_GetTickPrio
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:246    .text.HAL_GetTickPrio:00000008 $d
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:249    .text.HAL_SetTickFreq:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:254    .text.HAL_SetTickFreq:00000000 HAL_SetTickFreq
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:279    .text.HAL_SetTickFreq:00000024 $d
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:283    .text.HAL_GetTickFreq:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:288    .text.HAL_GetTickFreq:00000000 HAL_GetTickFreq
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:298    .text.HAL_GetTickFreq:00000008 $d
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:301    .text.HAL_Delay:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:306    .text.HAL_Delay:00000000 HAL_Delay
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:327    .text.HAL_Delay:00000024 $d
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:330    .text.HAL_SuspendTick:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:335    .text.HAL_SuspendTick:00000000 HAL_SuspendTick
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:347    .text.HAL_SuspendTick:0000000c $d
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:350    .text.HAL_ResumeTick:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:355    .text.HAL_ResumeTick:00000000 HAL_ResumeTick
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:367    .text.HAL_ResumeTick:0000000c $d
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:370    .text.HAL_GetHalVersion:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:375    .text.HAL_GetHalVersion:00000000 HAL_GetHalVersion
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:384    .text.HAL_GetHalVersion:00000004 $d
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:387    .text.HAL_GetREVID:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:392    .text.HAL_GetREVID:00000000 HAL_GetREVID
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:403    .text.HAL_GetREVID:00000008 $d
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:406    .text.HAL_GetDEVID:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:411    .text.HAL_GetDEVID:00000000 HAL_GetDEVID
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:422    .text.HAL_GetDEVID:0000000c $d
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:425    .text.HAL_GetUIDw0:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:430    .text.HAL_GetUIDw0:00000000 HAL_GetUIDw0
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:440    .text.HAL_GetUIDw0:00000008 $d
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:443    .text.HAL_GetUIDw1:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:448    .text.HAL_GetUIDw1:00000000 HAL_GetUIDw1
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:458    .text.HAL_GetUIDw1:00000008 $d
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:461    .text.HAL_GetUIDw2:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:466    .text.HAL_GetUIDw2:00000000 HAL_GetUIDw2
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s 			page 24
+
+
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:476    .text.HAL_GetUIDw2:00000008 $d
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:479    .text.HAL_SYSCFG_VREFBUF_VoltageScalingConfig:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:484    .text.HAL_SYSCFG_VREFBUF_VoltageScalingConfig:00000000 HAL_SYSCFG_VREFBUF_VoltageScalingConfig
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:497    .text.HAL_SYSCFG_VREFBUF_VoltageScalingConfig:00000010 $d
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:500    .text.HAL_SYSCFG_VREFBUF_HighImpedanceConfig:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:505    .text.HAL_SYSCFG_VREFBUF_HighImpedanceConfig:00000000 HAL_SYSCFG_VREFBUF_HighImpedanceConfig
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:518    .text.HAL_SYSCFG_VREFBUF_HighImpedanceConfig:00000010 $d
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:521    .text.HAL_SYSCFG_VREFBUF_TrimmingConfig:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:526    .text.HAL_SYSCFG_VREFBUF_TrimmingConfig:00000000 HAL_SYSCFG_VREFBUF_TrimmingConfig
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:539    .text.HAL_SYSCFG_VREFBUF_TrimmingConfig:00000010 $d
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:542    .text.HAL_SYSCFG_EnableVREFBUF:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:547    .text.HAL_SYSCFG_EnableVREFBUF:00000000 HAL_SYSCFG_EnableVREFBUF
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:576    .text.HAL_SYSCFG_EnableVREFBUF:00000030 $d
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:579    .text.HAL_SYSCFG_DisableVREFBUF:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:584    .text.HAL_SYSCFG_DisableVREFBUF:00000000 HAL_SYSCFG_DisableVREFBUF
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:596    .text.HAL_SYSCFG_DisableVREFBUF:0000000c $d
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:599    .text.HAL_SYSCFG_ETHInterfaceSelect:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:604    .text.HAL_SYSCFG_ETHInterfaceSelect:00000000 HAL_SYSCFG_ETHInterfaceSelect
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:617    .text.HAL_SYSCFG_ETHInterfaceSelect:00000010 $d
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:620    .text.HAL_SYSCFG_AnalogSwitchConfig:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:625    .text.HAL_SYSCFG_AnalogSwitchConfig:00000000 HAL_SYSCFG_AnalogSwitchConfig
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:638    .text.HAL_SYSCFG_AnalogSwitchConfig:00000010 $d
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:641    .text.HAL_SYSCFG_EnableBOOST:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:646    .text.HAL_SYSCFG_EnableBOOST:00000000 HAL_SYSCFG_EnableBOOST
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:658    .text.HAL_SYSCFG_EnableBOOST:0000000c $d
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:661    .text.HAL_SYSCFG_DisableBOOST:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:666    .text.HAL_SYSCFG_DisableBOOST:00000000 HAL_SYSCFG_DisableBOOST
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:678    .text.HAL_SYSCFG_DisableBOOST:0000000c $d
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:681    .text.HAL_SYSCFG_CM7BootAddConfig:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:686    .text.HAL_SYSCFG_CM7BootAddConfig:00000000 HAL_SYSCFG_CM7BootAddConfig
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:710    .text.HAL_SYSCFG_CM7BootAddConfig:0000002c $d
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:714    .text.HAL_EnableCompensationCell:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:719    .text.HAL_EnableCompensationCell:00000000 HAL_EnableCompensationCell
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:731    .text.HAL_EnableCompensationCell:0000000c $d
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:734    .text.HAL_DisableCompensationCell:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:739    .text.HAL_DisableCompensationCell:00000000 HAL_DisableCompensationCell
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:751    .text.HAL_DisableCompensationCell:0000000c $d
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:754    .text.HAL_SYSCFG_EnableIOSpeedOptimize:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:759    .text.HAL_SYSCFG_EnableIOSpeedOptimize:00000000 HAL_SYSCFG_EnableIOSpeedOptimize
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:771    .text.HAL_SYSCFG_EnableIOSpeedOptimize:0000000c $d
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:774    .text.HAL_SYSCFG_DisableIOSpeedOptimize:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:779    .text.HAL_SYSCFG_DisableIOSpeedOptimize:00000000 HAL_SYSCFG_DisableIOSpeedOptimize
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:791    .text.HAL_SYSCFG_DisableIOSpeedOptimize:0000000c $d
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:794    .text.HAL_SYSCFG_CompensationCodeSelect:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:799    .text.HAL_SYSCFG_CompensationCodeSelect:00000000 HAL_SYSCFG_CompensationCodeSelect
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:812    .text.HAL_SYSCFG_CompensationCodeSelect:00000010 $d
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:815    .text.HAL_SYSCFG_CompensationCodeConfig:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:820    .text.HAL_SYSCFG_CompensationCodeConfig:00000000 HAL_SYSCFG_CompensationCodeConfig
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:834    .text.HAL_SYSCFG_CompensationCodeConfig:00000014 $d
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:837    .text.HAL_DBGMCU_EnableDBGSleepMode:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:842    .text.HAL_DBGMCU_EnableDBGSleepMode:00000000 HAL_DBGMCU_EnableDBGSleepMode
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:854    .text.HAL_DBGMCU_EnableDBGSleepMode:0000000c $d
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:857    .text.HAL_DBGMCU_DisableDBGSleepMode:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:862    .text.HAL_DBGMCU_DisableDBGSleepMode:00000000 HAL_DBGMCU_DisableDBGSleepMode
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:874    .text.HAL_DBGMCU_DisableDBGSleepMode:0000000c $d
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:877    .text.HAL_DBGMCU_EnableDBGStopMode:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:882    .text.HAL_DBGMCU_EnableDBGStopMode:00000000 HAL_DBGMCU_EnableDBGStopMode
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s 			page 25
+
+
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:894    .text.HAL_DBGMCU_EnableDBGStopMode:0000000c $d
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:897    .text.HAL_DBGMCU_DisableDBGStopMode:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:902    .text.HAL_DBGMCU_DisableDBGStopMode:00000000 HAL_DBGMCU_DisableDBGStopMode
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:914    .text.HAL_DBGMCU_DisableDBGStopMode:0000000c $d
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:917    .text.HAL_DBGMCU_EnableDBGStandbyMode:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:922    .text.HAL_DBGMCU_EnableDBGStandbyMode:00000000 HAL_DBGMCU_EnableDBGStandbyMode
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:934    .text.HAL_DBGMCU_EnableDBGStandbyMode:0000000c $d
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:937    .text.HAL_DBGMCU_DisableDBGStandbyMode:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:942    .text.HAL_DBGMCU_DisableDBGStandbyMode:00000000 HAL_DBGMCU_DisableDBGStandbyMode
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:954    .text.HAL_DBGMCU_DisableDBGStandbyMode:0000000c $d
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:957    .text.HAL_EnableDomain3DBGStopMode:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:962    .text.HAL_EnableDomain3DBGStopMode:00000000 HAL_EnableDomain3DBGStopMode
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:974    .text.HAL_EnableDomain3DBGStopMode:0000000c $d
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:977    .text.HAL_DisableDomain3DBGStopMode:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:982    .text.HAL_DisableDomain3DBGStopMode:00000000 HAL_DisableDomain3DBGStopMode
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:994    .text.HAL_DisableDomain3DBGStopMode:0000000c $d
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:997    .text.HAL_EnableDomain3DBGStandbyMode:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:1002   .text.HAL_EnableDomain3DBGStandbyMode:00000000 HAL_EnableDomain3DBGStandbyMode
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:1014   .text.HAL_EnableDomain3DBGStandbyMode:0000000c $d
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:1017   .text.HAL_DisableDomain3DBGStandbyMode:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:1022   .text.HAL_DisableDomain3DBGStandbyMode:00000000 HAL_DisableDomain3DBGStandbyMode
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:1034   .text.HAL_DisableDomain3DBGStandbyMode:0000000c $d
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:1037   .text.HAL_SetFMCMemorySwappingConfig:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:1042   .text.HAL_SetFMCMemorySwappingConfig:00000000 HAL_SetFMCMemorySwappingConfig
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:1055   .text.HAL_SetFMCMemorySwappingConfig:00000010 $d
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:1058   .text.HAL_GetFMCMemorySwappingConfig:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:1063   .text.HAL_GetFMCMemorySwappingConfig:00000000 HAL_GetFMCMemorySwappingConfig
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:1074   .text.HAL_GetFMCMemorySwappingConfig:0000000c $d
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:1077   .text.HAL_EXTI_EdgeConfig:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:1082   .text.HAL_EXTI_EdgeConfig:00000000 HAL_EXTI_EdgeConfig
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:1119   .text.HAL_EXTI_EdgeConfig:00000044 $d
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:1122   .text.HAL_EXTI_GenerateSWInterrupt:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:1127   .text.HAL_EXTI_GenerateSWInterrupt:00000000 HAL_EXTI_GenerateSWInterrupt
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:1145   .text.HAL_EXTI_GenerateSWInterrupt:00000020 $d
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:1148   .text.HAL_EXTI_D1_ClearFlag:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:1153   .text.HAL_EXTI_D1_ClearFlag:00000000 HAL_EXTI_D1_ClearFlag
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:1168   .text.HAL_EXTI_D1_ClearFlag:00000014 $d
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:1171   .text.HAL_EXTI_D1_EventInputConfig:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:1176   .text.HAL_EXTI_D1_EventInputConfig:00000000 HAL_EXTI_D1_EventInputConfig
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:1234   .text.HAL_EXTI_D1_EventInputConfig:00000078 $d
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:1238   .text.HAL_EXTI_D3_EventInputConfig:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:1243   .text.HAL_EXTI_D3_EventInputConfig:00000000 HAL_EXTI_D3_EventInputConfig
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:1293   .text.HAL_EXTI_D3_EventInputConfig:00000068 $d
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:1311   .data.uwTickFreq:00000000 uwTickFreq
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:1305   .data.uwTickPrio:00000000 uwTickPrio
+C:\Users\xiaofei\AppData\Local\Temp\cclVnpBh.s:1301   .data.uwTickPrio:00000000 $d
+
+UNDEFINED SYMBOLS
+HAL_SYSTICK_Config
+HAL_NVIC_SetPriority
+SystemCoreClock
+HAL_NVIC_SetPriorityGrouping
+HAL_RCC_GetSysClockFreq
+D1CorePrescTable
+SystemD2Clock

@@ -1,0 +1,222 @@
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccMOmyDN.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m7
+   3              		.eabi_attribute 28, 1
+   4              		.fpu fpv5-d16
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.thumb
+  15              		.syntax unified
+  16              		.file	"usart.c"
+  17              		.section	.text.MX_USART1_UART_Init,"ax",%progbits
+  18              		.align	2
+  19              		.global	MX_USART1_UART_Init
+  20              		.thumb
+  21              		.thumb_func
+  23              	MX_USART1_UART_Init:
+  24              		@ args = 0, pretend = 0, frame = 0
+  25              		@ frame_needed = 0, uses_anonymous_args = 0
+  26 0000 08B5     		push	{r3, lr}
+  27 0002 1548     		ldr	r0, .L7
+  28 0004 154B     		ldr	r3, .L7+4
+  29 0006 0360     		str	r3, [r0]
+  30 0008 4FF4E133 		mov	r3, #115200
+  31 000c 4360     		str	r3, [r0, #4]
+  32 000e 0023     		movs	r3, #0
+  33 0010 8360     		str	r3, [r0, #8]
+  34 0012 C360     		str	r3, [r0, #12]
+  35 0014 0361     		str	r3, [r0, #16]
+  36 0016 0C22     		movs	r2, #12
+  37 0018 4261     		str	r2, [r0, #20]
+  38 001a 8361     		str	r3, [r0, #24]
+  39 001c C361     		str	r3, [r0, #28]
+  40 001e 0362     		str	r3, [r0, #32]
+  41 0020 4362     		str	r3, [r0, #36]
+  42 0022 8362     		str	r3, [r0, #40]
+  43 0024 FFF7FEFF 		bl	HAL_UART_Init
+  44 0028 08B1     		cbz	r0, .L2
+  45 002a FFF7FEFF 		bl	Error_Handler
+  46              	.L2:
+  47 002e 0021     		movs	r1, #0
+  48 0030 0948     		ldr	r0, .L7
+  49 0032 FFF7FEFF 		bl	HAL_UARTEx_SetTxFifoThreshold
+  50 0036 08B1     		cbz	r0, .L3
+  51 0038 FFF7FEFF 		bl	Error_Handler
+  52              	.L3:
+  53 003c 0021     		movs	r1, #0
+  54 003e 0648     		ldr	r0, .L7
+  55 0040 FFF7FEFF 		bl	HAL_UARTEx_SetRxFifoThreshold
+  56 0044 08B1     		cbz	r0, .L4
+  57 0046 FFF7FEFF 		bl	Error_Handler
+  58              	.L4:
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccMOmyDN.s 			page 2
+
+
+  59 004a 0348     		ldr	r0, .L7
+  60 004c FFF7FEFF 		bl	HAL_UARTEx_DisableFifoMode
+  61 0050 08B1     		cbz	r0, .L1
+  62 0052 FFF7FEFF 		bl	Error_Handler
+  63              	.L1:
+  64 0056 08BD     		pop	{r3, pc}
+  65              	.L8:
+  66              		.align	2
+  67              	.L7:
+  68 0058 00000000 		.word	huart1
+  69 005c 00100140 		.word	1073811456
+  71              		.section	.text.HAL_UART_MspInit,"ax",%progbits
+  72              		.align	2
+  73              		.global	HAL_UART_MspInit
+  74              		.thumb
+  75              		.thumb_func
+  77              	HAL_UART_MspInit:
+  78              		@ args = 0, pretend = 0, frame = 32
+  79              		@ frame_needed = 0, uses_anonymous_args = 0
+  80 0000 00B5     		push	{lr}
+  81 0002 89B0     		sub	sp, sp, #36
+  82 0004 0023     		movs	r3, #0
+  83 0006 0393     		str	r3, [sp, #12]
+  84 0008 0493     		str	r3, [sp, #16]
+  85 000a 0593     		str	r3, [sp, #20]
+  86 000c 0693     		str	r3, [sp, #24]
+  87 000e 0793     		str	r3, [sp, #28]
+  88 0010 0268     		ldr	r2, [r0]
+  89 0012 03F18043 		add	r3, r3, #1073741824
+  90 0016 03F58833 		add	r3, r3, #69632
+  91 001a 9A42     		cmp	r2, r3
+  92 001c 2BD1     		bne	.L9
+  93 001e 174B     		ldr	r3, .L12
+  94 0020 D3F8F020 		ldr	r2, [r3, #240]
+  95 0024 42F01002 		orr	r2, r2, #16
+  96 0028 C3F8F020 		str	r2, [r3, #240]
+  97 002c D3F8F020 		ldr	r2, [r3, #240]
+  98 0030 02F01002 		and	r2, r2, #16
+  99 0034 0192     		str	r2, [sp, #4]
+ 100 0036 019A     		ldr	r2, [sp, #4]
+ 101 0038 D3F8E020 		ldr	r2, [r3, #224]
+ 102 003c 42F00102 		orr	r2, r2, #1
+ 103 0040 C3F8E020 		str	r2, [r3, #224]
+ 104 0044 D3F8E030 		ldr	r3, [r3, #224]
+ 105 0048 03F00103 		and	r3, r3, #1
+ 106 004c 0293     		str	r3, [sp, #8]
+ 107 004e 029B     		ldr	r3, [sp, #8]
+ 108 0050 4FF4C063 		mov	r3, #1536
+ 109 0054 0393     		str	r3, [sp, #12]
+ 110 0056 0223     		movs	r3, #2
+ 111 0058 0493     		str	r3, [sp, #16]
+ 112 005a 0723     		movs	r3, #7
+ 113 005c 0793     		str	r3, [sp, #28]
+ 114 005e 03A9     		add	r1, sp, #12
+ 115 0060 0748     		ldr	r0, .L12+4
+ 116 0062 FFF7FEFF 		bl	HAL_GPIO_Init
+ 117 0066 0022     		movs	r2, #0
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccMOmyDN.s 			page 3
+
+
+ 118 0068 0521     		movs	r1, #5
+ 119 006a 2520     		movs	r0, #37
+ 120 006c FFF7FEFF 		bl	HAL_NVIC_SetPriority
+ 121 0070 2520     		movs	r0, #37
+ 122 0072 FFF7FEFF 		bl	HAL_NVIC_EnableIRQ
+ 123              	.L9:
+ 124 0076 09B0     		add	sp, sp, #36
+ 125              		@ sp needed
+ 126 0078 5DF804FB 		ldr	pc, [sp], #4
+ 127              	.L13:
+ 128              		.align	2
+ 129              	.L12:
+ 130 007c 00440258 		.word	1476543488
+ 131 0080 00000258 		.word	1476526080
+ 133              		.section	.text.HAL_UART_MspDeInit,"ax",%progbits
+ 134              		.align	2
+ 135              		.global	HAL_UART_MspDeInit
+ 136              		.thumb
+ 137              		.thumb_func
+ 139              	HAL_UART_MspDeInit:
+ 140              		@ args = 0, pretend = 0, frame = 0
+ 141              		@ frame_needed = 0, uses_anonymous_args = 0
+ 142 0000 08B5     		push	{r3, lr}
+ 143 0002 0268     		ldr	r2, [r0]
+ 144 0004 094B     		ldr	r3, .L17
+ 145 0006 9A42     		cmp	r2, r3
+ 146 0008 0ED1     		bne	.L14
+ 147 000a 094A     		ldr	r2, .L17+4
+ 148 000c D2F8F030 		ldr	r3, [r2, #240]
+ 149 0010 23F01003 		bic	r3, r3, #16
+ 150 0014 C2F8F030 		str	r3, [r2, #240]
+ 151 0018 4FF4C061 		mov	r1, #1536
+ 152 001c 0548     		ldr	r0, .L17+8
+ 153 001e FFF7FEFF 		bl	HAL_GPIO_DeInit
+ 154 0022 2520     		movs	r0, #37
+ 155 0024 FFF7FEFF 		bl	HAL_NVIC_DisableIRQ
+ 156              	.L14:
+ 157 0028 08BD     		pop	{r3, pc}
+ 158              	.L18:
+ 159 002a 00BF     		.align	2
+ 160              	.L17:
+ 161 002c 00100140 		.word	1073811456
+ 162 0030 00440258 		.word	1476543488
+ 163 0034 00000258 		.word	1476526080
+ 165              		.section	.text._write,"ax",%progbits
+ 166              		.align	2
+ 167              		.global	_write
+ 168              		.thumb
+ 169              		.thumb_func
+ 171              	_write:
+ 172              		@ args = 0, pretend = 0, frame = 0
+ 173              		@ frame_needed = 0, uses_anonymous_args = 0
+ 174 0000 08B5     		push	{r3, lr}
+ 175 0002 4FF6FF73 		movw	r3, #65535
+ 176 0006 92B2     		uxth	r2, r2
+ 177 0008 0248     		ldr	r0, .L21
+ 178 000a FFF7FEFF 		bl	HAL_UART_Transmit
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccMOmyDN.s 			page 4
+
+
+ 179 000e 0020     		movs	r0, #0
+ 180 0010 08BD     		pop	{r3, pc}
+ 181              	.L22:
+ 182 0012 00BF     		.align	2
+ 183              	.L21:
+ 184 0014 00000000 		.word	huart1
+ 186              		.comm	huart1,140,4
+ 187              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160919 (release) [ARM/embedded-5-bran
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccMOmyDN.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 usart.c
+C:\Users\xiaofei\AppData\Local\Temp\ccMOmyDN.s:18     .text.MX_USART1_UART_Init:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccMOmyDN.s:23     .text.MX_USART1_UART_Init:00000000 MX_USART1_UART_Init
+C:\Users\xiaofei\AppData\Local\Temp\ccMOmyDN.s:68     .text.MX_USART1_UART_Init:00000058 $d
+                            *COM*:0000008c huart1
+C:\Users\xiaofei\AppData\Local\Temp\ccMOmyDN.s:72     .text.HAL_UART_MspInit:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccMOmyDN.s:77     .text.HAL_UART_MspInit:00000000 HAL_UART_MspInit
+C:\Users\xiaofei\AppData\Local\Temp\ccMOmyDN.s:130    .text.HAL_UART_MspInit:0000007c $d
+C:\Users\xiaofei\AppData\Local\Temp\ccMOmyDN.s:134    .text.HAL_UART_MspDeInit:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccMOmyDN.s:139    .text.HAL_UART_MspDeInit:00000000 HAL_UART_MspDeInit
+C:\Users\xiaofei\AppData\Local\Temp\ccMOmyDN.s:161    .text.HAL_UART_MspDeInit:0000002c $d
+C:\Users\xiaofei\AppData\Local\Temp\ccMOmyDN.s:166    .text._write:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccMOmyDN.s:171    .text._write:00000000 _write
+C:\Users\xiaofei\AppData\Local\Temp\ccMOmyDN.s:184    .text._write:00000014 $d
+
+UNDEFINED SYMBOLS
+HAL_UART_Init
+Error_Handler
+HAL_UARTEx_SetTxFifoThreshold
+HAL_UARTEx_SetRxFifoThreshold
+HAL_UARTEx_DisableFifoMode
+HAL_GPIO_Init
+HAL_NVIC_SetPriority
+HAL_NVIC_EnableIRQ
+HAL_GPIO_DeInit
+HAL_NVIC_DisableIRQ
+HAL_UART_Transmit

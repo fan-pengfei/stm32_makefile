@@ -1,0 +1,60 @@
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\cc9ByaeR.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m7
+   3              		.eabi_attribute 28, 1
+   4              		.fpu fpv5-d16
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.thumb
+  15              		.syntax unified
+  16              		.file	"stm32h7xx_hal_msp.c"
+  17              		.section	.text.HAL_MspInit,"ax",%progbits
+  18              		.align	2
+  19              		.global	HAL_MspInit
+  20              		.thumb
+  21              		.thumb_func
+  23              	HAL_MspInit:
+  24              		@ args = 0, pretend = 0, frame = 8
+  25              		@ frame_needed = 0, uses_anonymous_args = 0
+  26 0000 00B5     		push	{lr}
+  27 0002 83B0     		sub	sp, sp, #12
+  28 0004 0A4B     		ldr	r3, .L3
+  29 0006 D3F8F420 		ldr	r2, [r3, #244]
+  30 000a 42F00202 		orr	r2, r2, #2
+  31 000e C3F8F420 		str	r2, [r3, #244]
+  32 0012 D3F8F430 		ldr	r3, [r3, #244]
+  33 0016 03F00203 		and	r3, r3, #2
+  34 001a 0193     		str	r3, [sp, #4]
+  35 001c 019B     		ldr	r3, [sp, #4]
+  36 001e 0022     		movs	r2, #0
+  37 0020 0F21     		movs	r1, #15
+  38 0022 6FF00100 		mvn	r0, #1
+  39 0026 FFF7FEFF 		bl	HAL_NVIC_SetPriority
+  40 002a 03B0     		add	sp, sp, #12
+  41              		@ sp needed
+  42 002c 5DF804FB 		ldr	pc, [sp], #4
+  43              	.L4:
+  44              		.align	2
+  45              	.L3:
+  46 0030 00440258 		.word	1476543488
+  48              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160919 (release) [ARM/embedded-5-bran
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\cc9ByaeR.s 			page 2
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32h7xx_hal_msp.c
+C:\Users\xiaofei\AppData\Local\Temp\cc9ByaeR.s:18     .text.HAL_MspInit:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\cc9ByaeR.s:23     .text.HAL_MspInit:00000000 HAL_MspInit
+C:\Users\xiaofei\AppData\Local\Temp\cc9ByaeR.s:46     .text.HAL_MspInit:00000030 $d
+
+UNDEFINED SYMBOLS
+HAL_NVIC_SetPriority

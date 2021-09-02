@@ -1,0 +1,1152 @@
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m7
+   3              		.eabi_attribute 28, 1
+   4              		.fpu fpv5-d16
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.thumb
+  15              		.syntax unified
+  16              		.file	"stm32h7xx_hal_flash_ex.c"
+  17              		.section	.text.FLASH_MassErase,"ax",%progbits
+  18              		.align	2
+  19              		.thumb
+  20              		.thumb_func
+  22              	FLASH_MassErase:
+  23              		@ args = 0, pretend = 0, frame = 0
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25              		@ link register save eliminated.
+  26 0000 11F0010F 		tst	r1, #1
+  27 0004 0BD0     		beq	.L1
+  28 0006 064B     		ldr	r3, .L3
+  29 0008 DA68     		ldr	r2, [r3, #12]
+  30 000a 22F03002 		bic	r2, r2, #48
+  31 000e DA60     		str	r2, [r3, #12]
+  32 0010 DA68     		ldr	r2, [r3, #12]
+  33 0012 1043     		orrs	r0, r0, r2
+  34 0014 D860     		str	r0, [r3, #12]
+  35 0016 DA68     		ldr	r2, [r3, #12]
+  36 0018 42F08802 		orr	r2, r2, #136
+  37 001c DA60     		str	r2, [r3, #12]
+  38              	.L1:
+  39 001e 7047     		bx	lr
+  40              	.L4:
+  41              		.align	2
+  42              	.L3:
+  43 0020 00200052 		.word	1375739904
+  45              		.section	.text.FLASH_OB_EnableWRP,"ax",%progbits
+  46              		.align	2
+  47              		.thumb
+  48              		.thumb_func
+  50              	FLASH_OB_EnableWRP:
+  51              		@ args = 0, pretend = 0, frame = 0
+  52              		@ frame_needed = 0, uses_anonymous_args = 0
+  53              		@ link register save eliminated.
+  54 0000 11F0010F 		tst	r1, #1
+  55 0004 05D0     		beq	.L5
+  56 0006 034A     		ldr	r2, .L7
+  57 0008 D36B     		ldr	r3, [r2, #60]
+  58 000a C0B2     		uxtb	r0, r0
+  59 000c 23EA0000 		bic	r0, r3, r0
+  60 0010 D063     		str	r0, [r2, #60]
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s 			page 2
+
+
+  61              	.L5:
+  62 0012 7047     		bx	lr
+  63              	.L8:
+  64              		.align	2
+  65              	.L7:
+  66 0014 00200052 		.word	1375739904
+  68              		.section	.text.FLASH_OB_DisableWRP,"ax",%progbits
+  69              		.align	2
+  70              		.thumb
+  71              		.thumb_func
+  73              	FLASH_OB_DisableWRP:
+  74              		@ args = 0, pretend = 0, frame = 0
+  75              		@ frame_needed = 0, uses_anonymous_args = 0
+  76              		@ link register save eliminated.
+  77 0000 11F0010F 		tst	r1, #1
+  78 0004 04D0     		beq	.L9
+  79 0006 034B     		ldr	r3, .L11
+  80 0008 DA6B     		ldr	r2, [r3, #60]
+  81 000a C0B2     		uxtb	r0, r0
+  82 000c 1043     		orrs	r0, r0, r2
+  83 000e D863     		str	r0, [r3, #60]
+  84              	.L9:
+  85 0010 7047     		bx	lr
+  86              	.L12:
+  87 0012 00BF     		.align	2
+  88              	.L11:
+  89 0014 00200052 		.word	1375739904
+  91              		.section	.text.FLASH_OB_GetWRP,"ax",%progbits
+  92              		.align	2
+  93              		.thumb
+  94              		.thumb_func
+  96              	FLASH_OB_GetWRP:
+  97              		@ args = 0, pretend = 0, frame = 0
+  98              		@ frame_needed = 0, uses_anonymous_args = 0
+  99              		@ link register save eliminated.
+ 100 0000 012A     		cmp	r2, #1
+ 101 0002 02D1     		bne	.L17
+ 102 0004 064B     		ldr	r3, .L18
+ 103 0006 9B6B     		ldr	r3, [r3, #56]
+ 104 0008 00E0     		b	.L14
+ 105              	.L17:
+ 106 000a 0023     		movs	r3, #0
+ 107              	.L14:
+ 108 000c DB43     		mvns	r3, r3
+ 109 000e DBB2     		uxtb	r3, r3
+ 110 0010 0B60     		str	r3, [r1]
+ 111 0012 0BB9     		cbnz	r3, .L15
+ 112 0014 0360     		str	r3, [r0]
+ 113 0016 7047     		bx	lr
+ 114              	.L15:
+ 115 0018 0123     		movs	r3, #1
+ 116 001a 0360     		str	r3, [r0]
+ 117 001c 7047     		bx	lr
+ 118              	.L19:
+ 119 001e 00BF     		.align	2
+ 120              	.L18:
+ 121 0020 00200052 		.word	1375739904
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s 			page 3
+
+
+ 123              		.section	.text.FLASH_OB_RDPConfig,"ax",%progbits
+ 124              		.align	2
+ 125              		.thumb
+ 126              		.thumb_func
+ 128              	FLASH_OB_RDPConfig:
+ 129              		@ args = 0, pretend = 0, frame = 0
+ 130              		@ frame_needed = 0, uses_anonymous_args = 0
+ 131              		@ link register save eliminated.
+ 132 0000 034A     		ldr	r2, .L21
+ 133 0002 136A     		ldr	r3, [r2, #32]
+ 134 0004 23F47F43 		bic	r3, r3, #65280
+ 135 0008 1843     		orrs	r0, r0, r3
+ 136 000a 1062     		str	r0, [r2, #32]
+ 137 000c 7047     		bx	lr
+ 138              	.L22:
+ 139 000e 00BF     		.align	2
+ 140              	.L21:
+ 141 0010 00200052 		.word	1375739904
+ 143              		.section	.text.FLASH_OB_GetRDP,"ax",%progbits
+ 144              		.align	2
+ 145              		.thumb
+ 146              		.thumb_func
+ 148              	FLASH_OB_GetRDP:
+ 149              		@ args = 0, pretend = 0, frame = 0
+ 150              		@ frame_needed = 0, uses_anonymous_args = 0
+ 151              		@ link register save eliminated.
+ 152 0000 064B     		ldr	r3, .L26
+ 153 0002 D869     		ldr	r0, [r3, #28]
+ 154 0004 00F47F40 		and	r0, r0, #65280
+ 155 0008 B0F52A4F 		cmp	r0, #43520
+ 156 000c 18BF     		it	ne
+ 157 000e B0F54C4F 		cmpne	r0, #52224
+ 158 0012 01D0     		beq	.L24
+ 159 0014 4FF4AA40 		mov	r0, #21760
+ 160              	.L24:
+ 161 0018 7047     		bx	lr
+ 162              	.L27:
+ 163 001a 00BF     		.align	2
+ 164              	.L26:
+ 165 001c 00200052 		.word	1375739904
+ 167              		.section	.text.FLASH_OB_UserConfig,"ax",%progbits
+ 168              		.align	2
+ 169              		.thumb
+ 170              		.thumb_func
+ 172              	FLASH_OB_UserConfig:
+ 173              		@ args = 0, pretend = 0, frame = 0
+ 174              		@ frame_needed = 0, uses_anonymous_args = 0
+ 175              		@ link register save eliminated.
+ 176 0000 10B4     		push	{r4}
+ 177 0002 10F0010F 		tst	r0, #1
+ 178 0006 03D0     		beq	.L37
+ 179 0008 01F01002 		and	r2, r1, #16
+ 180 000c 1023     		movs	r3, #16
+ 181 000e 01E0     		b	.L29
+ 182              	.L37:
+ 183 0010 0023     		movs	r3, #0
+ 184 0012 1A46     		mov	r2, r3
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s 			page 4
+
+
+ 185              	.L29:
+ 186 0014 10F0020F 		tst	r0, #2
+ 187 0018 04D0     		beq	.L30
+ 188 001a 01F04004 		and	r4, r1, #64
+ 189 001e 2243     		orrs	r2, r2, r4
+ 190 0020 43F04003 		orr	r3, r3, #64
+ 191              	.L30:
+ 192 0024 10F0040F 		tst	r0, #4
+ 193 0028 04D0     		beq	.L31
+ 194 002a 01F08004 		and	r4, r1, #128
+ 195 002e 2243     		orrs	r2, r2, r4
+ 196 0030 43F08003 		orr	r3, r3, #128
+ 197              	.L31:
+ 198 0034 10F0080F 		tst	r0, #8
+ 199 0038 04D0     		beq	.L32
+ 200 003a 01F40034 		and	r4, r1, #131072
+ 201 003e 2243     		orrs	r2, r2, r4
+ 202 0040 43F40033 		orr	r3, r3, #131072
+ 203              	.L32:
+ 204 0044 10F0100F 		tst	r0, #16
+ 205 0048 04D0     		beq	.L33
+ 206 004a 01F48024 		and	r4, r1, #262144
+ 207 004e 2243     		orrs	r2, r2, r4
+ 208 0050 43F48023 		orr	r3, r3, #262144
+ 209              	.L33:
+ 210 0054 10F0200F 		tst	r0, #32
+ 211 0058 04D0     		beq	.L34
+ 212 005a 01F4C014 		and	r4, r1, #1572864
+ 213 005e 2243     		orrs	r2, r2, r4
+ 214 0060 43F4C013 		orr	r3, r3, #1572864
+ 215              	.L34:
+ 216 0064 10F0400F 		tst	r0, #64
+ 217 0068 04D0     		beq	.L35
+ 218 006a 01F40014 		and	r4, r1, #2097152
+ 219 006e 2243     		orrs	r2, r2, r4
+ 220 0070 43F40013 		orr	r3, r3, #2097152
+ 221              	.L35:
+ 222 0074 10F0800F 		tst	r0, #128
+ 223 0078 04D0     		beq	.L36
+ 224 007a 01F00051 		and	r1, r1, #536870912
+ 225 007e 0A43     		orrs	r2, r2, r1
+ 226 0080 43F00053 		orr	r3, r3, #536870912
+ 227              	.L36:
+ 228 0084 0448     		ldr	r0, .L39
+ 229 0086 016A     		ldr	r1, [r0, #32]
+ 230 0088 21EA0303 		bic	r3, r1, r3
+ 231 008c 1A43     		orrs	r2, r2, r3
+ 232 008e 0262     		str	r2, [r0, #32]
+ 233 0090 5DF8044B 		ldr	r4, [sp], #4
+ 234 0094 7047     		bx	lr
+ 235              	.L40:
+ 236 0096 00BF     		.align	2
+ 237              	.L39:
+ 238 0098 00200052 		.word	1375739904
+ 240              		.section	.text.FLASH_OB_GetUser,"ax",%progbits
+ 241              		.align	2
+ 242              		.thumb
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s 			page 5
+
+
+ 243              		.thumb_func
+ 245              	FLASH_OB_GetUser:
+ 246              		@ args = 0, pretend = 0, frame = 0
+ 247              		@ frame_needed = 0, uses_anonymous_args = 0
+ 248              		@ link register save eliminated.
+ 249 0000 024B     		ldr	r3, .L42
+ 250 0002 DB69     		ldr	r3, [r3, #28]
+ 251 0004 0248     		ldr	r0, .L42+4
+ 252 0006 1840     		ands	r0, r0, r3
+ 253 0008 7047     		bx	lr
+ 254              	.L43:
+ 255 000a 00BF     		.align	2
+ 256              	.L42:
+ 257 000c 00200052 		.word	1375739904
+ 258 0010 F300FFFF 		.word	-65293
+ 260              		.section	.text.FLASH_OB_PCROPConfig,"ax",%progbits
+ 261              		.align	2
+ 262              		.thumb
+ 263              		.thumb_func
+ 265              	FLASH_OB_PCROPConfig:
+ 266              		@ args = 0, pretend = 0, frame = 0
+ 267              		@ frame_needed = 0, uses_anonymous_args = 0
+ 268              		@ link register save eliminated.
+ 269 0000 13F0010F 		tst	r3, #1
+ 270 0004 0AD0     		beq	.L44
+ 271 0006 01F17841 		add	r1, r1, #-134217728
+ 272 000a 02F17842 		add	r2, r2, #-134217728
+ 273 000e 120A     		lsrs	r2, r2, #8
+ 274 0010 1204     		lsls	r2, r2, #16
+ 275 0012 42EA1121 		orr	r1, r2, r1, lsr #8
+ 276 0016 0143     		orrs	r1, r1, r0
+ 277 0018 014B     		ldr	r3, .L46
+ 278 001a D962     		str	r1, [r3, #44]
+ 279              	.L44:
+ 280 001c 7047     		bx	lr
+ 281              	.L47:
+ 282 001e 00BF     		.align	2
+ 283              	.L46:
+ 284 0020 00200052 		.word	1375739904
+ 286              		.section	.text.FLASH_OB_GetPCROP,"ax",%progbits
+ 287              		.align	2
+ 288              		.thumb
+ 289              		.thumb_func
+ 291              	FLASH_OB_GetPCROP:
+ 292              		@ args = 0, pretend = 0, frame = 0
+ 293              		@ frame_needed = 0, uses_anonymous_args = 0
+ 294              		@ link register save eliminated.
+ 295 0000 30B4     		push	{r4, r5}
+ 296 0002 012B     		cmp	r3, #1
+ 297 0004 04D1     		bne	.L50
+ 298 0006 0B4B     		ldr	r3, .L52
+ 299 0008 9C6A     		ldr	r4, [r3, #40]
+ 300 000a 4FF00065 		mov	r5, #134217728
+ 301 000e 01E0     		b	.L49
+ 302              	.L50:
+ 303 0010 0025     		movs	r5, #0
+ 304 0012 2C46     		mov	r4, r5
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s 			page 6
+
+
+ 305              	.L49:
+ 306 0014 04F00043 		and	r3, r4, #-2147483648
+ 307 0018 0360     		str	r3, [r0]
+ 308 001a 074B     		ldr	r3, .L52+4
+ 309 001c 03EA0423 		and	r3, r3, r4, lsl #8
+ 310 0020 2B44     		add	r3, r3, r5
+ 311 0022 0B60     		str	r3, [r1]
+ 312 0024 C4F30B44 		ubfx	r4, r4, #16, #12
+ 313 0028 05EB0424 		add	r4, r5, r4, lsl #8
+ 314 002c 1460     		str	r4, [r2]
+ 315 002e 30BC     		pop	{r4, r5}
+ 316 0030 7047     		bx	lr
+ 317              	.L53:
+ 318 0032 00BF     		.align	2
+ 319              	.L52:
+ 320 0034 00200052 		.word	1375739904
+ 321 0038 00FF0F00 		.word	1048320
+ 323              		.section	.text.FLASH_OB_BOR_LevelConfig,"ax",%progbits
+ 324              		.align	2
+ 325              		.thumb
+ 326              		.thumb_func
+ 328              	FLASH_OB_BOR_LevelConfig:
+ 329              		@ args = 0, pretend = 0, frame = 0
+ 330              		@ frame_needed = 0, uses_anonymous_args = 0
+ 331              		@ link register save eliminated.
+ 332 0000 034A     		ldr	r2, .L55
+ 333 0002 136A     		ldr	r3, [r2, #32]
+ 334 0004 23F00C03 		bic	r3, r3, #12
+ 335 0008 1843     		orrs	r0, r0, r3
+ 336 000a 1062     		str	r0, [r2, #32]
+ 337 000c 7047     		bx	lr
+ 338              	.L56:
+ 339 000e 00BF     		.align	2
+ 340              	.L55:
+ 341 0010 00200052 		.word	1375739904
+ 343              		.section	.text.FLASH_OB_GetBOR,"ax",%progbits
+ 344              		.align	2
+ 345              		.thumb
+ 346              		.thumb_func
+ 348              	FLASH_OB_GetBOR:
+ 349              		@ args = 0, pretend = 0, frame = 0
+ 350              		@ frame_needed = 0, uses_anonymous_args = 0
+ 351              		@ link register save eliminated.
+ 352 0000 024B     		ldr	r3, .L58
+ 353 0002 D869     		ldr	r0, [r3, #28]
+ 354 0004 00F00C00 		and	r0, r0, #12
+ 355 0008 7047     		bx	lr
+ 356              	.L59:
+ 357 000a 00BF     		.align	2
+ 358              	.L58:
+ 359 000c 00200052 		.word	1375739904
+ 361              		.section	.text.FLASH_OB_BootAddConfig,"ax",%progbits
+ 362              		.align	2
+ 363              		.thumb
+ 364              		.thumb_func
+ 366              	FLASH_OB_BootAddConfig:
+ 367              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s 			page 7
+
+
+ 368              		@ frame_needed = 0, uses_anonymous_args = 0
+ 369              		@ link register save eliminated.
+ 370 0000 30B4     		push	{r4, r5}
+ 371 0002 10F0010F 		tst	r0, #1
+ 372 0006 06D0     		beq	.L61
+ 373 0008 084C     		ldr	r4, .L64
+ 374 000a 656C     		ldr	r5, [r4, #68]
+ 375 000c 084B     		ldr	r3, .L64+4
+ 376 000e 2B40     		ands	r3, r3, r5
+ 377 0010 43EA1143 		orr	r3, r3, r1, lsr #16
+ 378 0014 6364     		str	r3, [r4, #68]
+ 379              	.L61:
+ 380 0016 10F0020F 		tst	r0, #2
+ 381 001a 04D0     		beq	.L60
+ 382 001c 0349     		ldr	r1, .L64
+ 383 001e 4B6C     		ldr	r3, [r1, #68]
+ 384 0020 9BB2     		uxth	r3, r3
+ 385 0022 1A43     		orrs	r2, r2, r3
+ 386 0024 4A64     		str	r2, [r1, #68]
+ 387              	.L60:
+ 388 0026 30BC     		pop	{r4, r5}
+ 389 0028 7047     		bx	lr
+ 390              	.L65:
+ 391 002a 00BF     		.align	2
+ 392              	.L64:
+ 393 002c 00200052 		.word	1375739904
+ 394 0030 0000FFFF 		.word	-65536
+ 396              		.section	.text.FLASH_OB_GetBootAdd,"ax",%progbits
+ 397              		.align	2
+ 398              		.thumb
+ 399              		.thumb_func
+ 401              	FLASH_OB_GetBootAdd:
+ 402              		@ args = 0, pretend = 0, frame = 0
+ 403              		@ frame_needed = 0, uses_anonymous_args = 0
+ 404              		@ link register save eliminated.
+ 405 0000 034B     		ldr	r3, .L67
+ 406 0002 1A6C     		ldr	r2, [r3, #64]
+ 407 0004 1304     		lsls	r3, r2, #16
+ 408 0006 0360     		str	r3, [r0]
+ 409 0008 024B     		ldr	r3, .L67+4
+ 410 000a 1340     		ands	r3, r3, r2
+ 411 000c 0B60     		str	r3, [r1]
+ 412 000e 7047     		bx	lr
+ 413              	.L68:
+ 414              		.align	2
+ 415              	.L67:
+ 416 0010 00200052 		.word	1375739904
+ 417 0014 0000FFFF 		.word	-65536
+ 419              		.section	.text.FLASH_OB_SecureAreaConfig,"ax",%progbits
+ 420              		.align	2
+ 421              		.thumb
+ 422              		.thumb_func
+ 424              	FLASH_OB_SecureAreaConfig:
+ 425              		@ args = 0, pretend = 0, frame = 0
+ 426              		@ frame_needed = 0, uses_anonymous_args = 0
+ 427              		@ link register save eliminated.
+ 428 0000 13F0010F 		tst	r3, #1
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s 			page 8
+
+
+ 429 0004 0CD0     		beq	.L69
+ 430 0006 01F17841 		add	r1, r1, #-134217728
+ 431 000a 02F17842 		add	r2, r2, #-134217728
+ 432 000e 120A     		lsrs	r2, r2, #8
+ 433 0010 1204     		lsls	r2, r2, #16
+ 434 0012 42EA1121 		orr	r1, r2, r1, lsr #8
+ 435 0016 00F00040 		and	r0, r0, #-2147483648
+ 436 001a 0143     		orrs	r1, r1, r0
+ 437 001c 014B     		ldr	r3, .L71
+ 438 001e 5963     		str	r1, [r3, #52]
+ 439              	.L69:
+ 440 0020 7047     		bx	lr
+ 441              	.L72:
+ 442 0022 00BF     		.align	2
+ 443              	.L71:
+ 444 0024 00200052 		.word	1375739904
+ 446              		.section	.text.FLASH_OB_GetSecureArea,"ax",%progbits
+ 447              		.align	2
+ 448              		.thumb
+ 449              		.thumb_func
+ 451              	FLASH_OB_GetSecureArea:
+ 452              		@ args = 0, pretend = 0, frame = 0
+ 453              		@ frame_needed = 0, uses_anonymous_args = 0
+ 454              		@ link register save eliminated.
+ 455 0000 30B4     		push	{r4, r5}
+ 456 0002 012B     		cmp	r3, #1
+ 457 0004 04D1     		bne	.L75
+ 458 0006 0B4B     		ldr	r3, .L77
+ 459 0008 1C6B     		ldr	r4, [r3, #48]
+ 460 000a 4FF00065 		mov	r5, #134217728
+ 461 000e 01E0     		b	.L74
+ 462              	.L75:
+ 463 0010 0025     		movs	r5, #0
+ 464 0012 2C46     		mov	r4, r5
+ 465              	.L74:
+ 466 0014 04F00043 		and	r3, r4, #-2147483648
+ 467 0018 0360     		str	r3, [r0]
+ 468 001a 074B     		ldr	r3, .L77+4
+ 469 001c 03EA0423 		and	r3, r3, r4, lsl #8
+ 470 0020 2B44     		add	r3, r3, r5
+ 471 0022 0B60     		str	r3, [r1]
+ 472 0024 C4F30B44 		ubfx	r4, r4, #16, #12
+ 473 0028 05EB0424 		add	r4, r5, r4, lsl #8
+ 474 002c 1460     		str	r4, [r2]
+ 475 002e 30BC     		pop	{r4, r5}
+ 476 0030 7047     		bx	lr
+ 477              	.L78:
+ 478 0032 00BF     		.align	2
+ 479              	.L77:
+ 480 0034 00200052 		.word	1375739904
+ 481 0038 00FF0F00 		.word	1048320
+ 483              		.section	.text.FLASH_CRC_AddSector,"ax",%progbits
+ 484              		.align	2
+ 485              		.thumb
+ 486              		.thumb_func
+ 488              	FLASH_CRC_AddSector:
+ 489              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s 			page 9
+
+
+ 490              		@ frame_needed = 0, uses_anonymous_args = 0
+ 491              		@ link register save eliminated.
+ 492 0000 0129     		cmp	r1, #1
+ 493 0002 09D1     		bne	.L79
+ 494 0004 054B     		ldr	r3, .L81
+ 495 0006 1A6D     		ldr	r2, [r3, #80]
+ 496 0008 22F00702 		bic	r2, r2, #7
+ 497 000c 1A65     		str	r2, [r3, #80]
+ 498 000e 1A6D     		ldr	r2, [r3, #80]
+ 499 0010 1043     		orrs	r0, r0, r2
+ 500 0012 40F40070 		orr	r0, r0, #512
+ 501 0016 1865     		str	r0, [r3, #80]
+ 502              	.L79:
+ 503 0018 7047     		bx	lr
+ 504              	.L82:
+ 505 001a 00BF     		.align	2
+ 506              	.L81:
+ 507 001c 00200052 		.word	1375739904
+ 509              		.section	.text.FLASH_CRC_SelectAddress,"ax",%progbits
+ 510              		.align	2
+ 511              		.thumb
+ 512              		.thumb_func
+ 514              	FLASH_CRC_SelectAddress:
+ 515              		@ args = 0, pretend = 0, frame = 0
+ 516              		@ frame_needed = 0, uses_anonymous_args = 0
+ 517              		@ link register save eliminated.
+ 518 0000 012A     		cmp	r2, #1
+ 519 0002 02D1     		bne	.L83
+ 520 0004 014B     		ldr	r3, .L85
+ 521 0006 5865     		str	r0, [r3, #84]
+ 522 0008 9965     		str	r1, [r3, #88]
+ 523              	.L83:
+ 524 000a 7047     		bx	lr
+ 525              	.L86:
+ 526              		.align	2
+ 527              	.L85:
+ 528 000c 00200052 		.word	1375739904
+ 530              		.section	.text.HAL_FLASHEx_OBProgram,"ax",%progbits
+ 531              		.align	2
+ 532              		.global	HAL_FLASHEx_OBProgram
+ 533              		.thumb
+ 534              		.thumb_func
+ 536              	HAL_FLASHEx_OBProgram:
+ 537              		@ args = 0, pretend = 0, frame = 0
+ 538              		@ frame_needed = 0, uses_anonymous_args = 0
+ 539 0000 38B5     		push	{r3, r4, r5, lr}
+ 540 0002 2F4B     		ldr	r3, .L101
+ 541 0004 1B7D     		ldrb	r3, [r3, #20]	@ zero_extendqisi2
+ 542 0006 012B     		cmp	r3, #1
+ 543 0008 57D0     		beq	.L98
+ 544 000a 0446     		mov	r4, r0
+ 545 000c 2C4B     		ldr	r3, .L101
+ 546 000e 0121     		movs	r1, #1
+ 547 0010 1975     		strb	r1, [r3, #20]
+ 548 0012 0022     		movs	r2, #0
+ 549 0014 9A61     		str	r2, [r3, #24]
+ 550 0016 4CF25030 		movw	r0, #50000
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s 			page 10
+
+
+ 551 001a FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 552 001e 08B1     		cbz	r0, .L99
+ 553 0020 0125     		movs	r5, #1
+ 554 0022 00E0     		b	.L89
+ 555              	.L99:
+ 556 0024 0025     		movs	r5, #0
+ 557              	.L89:
+ 558 0026 002D     		cmp	r5, #0
+ 559 0028 42D1     		bne	.L90
+ 560 002a 2368     		ldr	r3, [r4]
+ 561 002c 13F0010F 		tst	r3, #1
+ 562 0030 0BD0     		beq	.L91
+ 563 0032 6368     		ldr	r3, [r4, #4]
+ 564 0034 012B     		cmp	r3, #1
+ 565 0036 04D1     		bne	.L92
+ 566 0038 E169     		ldr	r1, [r4, #28]
+ 567 003a A068     		ldr	r0, [r4, #8]
+ 568 003c FFF7FEFF 		bl	FLASH_OB_EnableWRP
+ 569 0040 03E0     		b	.L91
+ 570              	.L92:
+ 571 0042 E169     		ldr	r1, [r4, #28]
+ 572 0044 A068     		ldr	r0, [r4, #8]
+ 573 0046 FFF7FEFF 		bl	FLASH_OB_DisableWRP
+ 574              	.L91:
+ 575 004a 2368     		ldr	r3, [r4]
+ 576 004c 13F0020F 		tst	r3, #2
+ 577 0050 02D0     		beq	.L93
+ 578 0052 E068     		ldr	r0, [r4, #12]
+ 579 0054 FFF7FEFF 		bl	FLASH_OB_RDPConfig
+ 580              	.L93:
+ 581 0058 2368     		ldr	r3, [r4]
+ 582 005a 13F0040F 		tst	r3, #4
+ 583 005e 03D0     		beq	.L94
+ 584 0060 A169     		ldr	r1, [r4, #24]
+ 585 0062 6069     		ldr	r0, [r4, #20]
+ 586 0064 FFF7FEFF 		bl	FLASH_OB_UserConfig
+ 587              	.L94:
+ 588 0068 2368     		ldr	r3, [r4]
+ 589 006a 13F0080F 		tst	r3, #8
+ 590 006e 05D0     		beq	.L95
+ 591 0070 E369     		ldr	r3, [r4, #28]
+ 592 0072 A26A     		ldr	r2, [r4, #40]
+ 593 0074 616A     		ldr	r1, [r4, #36]
+ 594 0076 206A     		ldr	r0, [r4, #32]
+ 595 0078 FFF7FEFF 		bl	FLASH_OB_PCROPConfig
+ 596              	.L95:
+ 597 007c 2368     		ldr	r3, [r4]
+ 598 007e 13F0100F 		tst	r3, #16
+ 599 0082 02D0     		beq	.L96
+ 600 0084 2069     		ldr	r0, [r4, #16]
+ 601 0086 FFF7FEFF 		bl	FLASH_OB_BOR_LevelConfig
+ 602              	.L96:
+ 603 008a 2368     		ldr	r3, [r4]
+ 604 008c 13F0400F 		tst	r3, #64
+ 605 0090 04D0     		beq	.L97
+ 606 0092 626B     		ldr	r2, [r4, #52]
+ 607 0094 216B     		ldr	r1, [r4, #48]
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s 			page 11
+
+
+ 608 0096 E06A     		ldr	r0, [r4, #44]
+ 609 0098 FFF7FEFF 		bl	FLASH_OB_BootAddConfig
+ 610              	.L97:
+ 611 009c 2368     		ldr	r3, [r4]
+ 612 009e 13F0200F 		tst	r3, #32
+ 613 00a2 05D0     		beq	.L90
+ 614 00a4 E369     		ldr	r3, [r4, #28]
+ 615 00a6 226C     		ldr	r2, [r4, #64]
+ 616 00a8 E16B     		ldr	r1, [r4, #60]
+ 617 00aa A06B     		ldr	r0, [r4, #56]
+ 618 00ac FFF7FEFF 		bl	FLASH_OB_SecureAreaConfig
+ 619              	.L90:
+ 620 00b0 0022     		movs	r2, #0
+ 621 00b2 034B     		ldr	r3, .L101
+ 622 00b4 1A75     		strb	r2, [r3, #20]
+ 623 00b6 2846     		mov	r0, r5
+ 624 00b8 38BD     		pop	{r3, r4, r5, pc}
+ 625              	.L98:
+ 626 00ba 0220     		movs	r0, #2
+ 627 00bc 38BD     		pop	{r3, r4, r5, pc}
+ 628              	.L102:
+ 629 00be 00BF     		.align	2
+ 630              	.L101:
+ 631 00c0 00000000 		.word	pFlash
+ 633              		.section	.text.HAL_FLASHEx_OBGetConfig,"ax",%progbits
+ 634              		.align	2
+ 635              		.global	HAL_FLASHEx_OBGetConfig
+ 636              		.thumb
+ 637              		.thumb_func
+ 639              	HAL_FLASHEx_OBGetConfig:
+ 640              		@ args = 0, pretend = 0, frame = 0
+ 641              		@ frame_needed = 0, uses_anonymous_args = 0
+ 642 0000 10B5     		push	{r4, lr}
+ 643 0002 0446     		mov	r4, r0
+ 644 0004 1623     		movs	r3, #22
+ 645 0006 0360     		str	r3, [r0]
+ 646 0008 FFF7FEFF 		bl	FLASH_OB_GetRDP
+ 647 000c E060     		str	r0, [r4, #12]
+ 648 000e FFF7FEFF 		bl	FLASH_OB_GetUser
+ 649 0012 A061     		str	r0, [r4, #24]
+ 650 0014 FFF7FEFF 		bl	FLASH_OB_GetBOR
+ 651 0018 2061     		str	r0, [r4, #16]
+ 652 001a E269     		ldr	r2, [r4, #28]
+ 653 001c 012A     		cmp	r2, #1
+ 654 001e 1AD1     		bne	.L104
+ 655 0020 2368     		ldr	r3, [r4]
+ 656 0022 43F02903 		orr	r3, r3, #41
+ 657 0026 2146     		mov	r1, r4
+ 658 0028 41F8083B 		str	r3, [r1], #8
+ 659 002c 201D     		adds	r0, r4, #4
+ 660 002e FFF7FEFF 		bl	FLASH_OB_GetWRP
+ 661 0032 E369     		ldr	r3, [r4, #28]
+ 662 0034 04F12802 		add	r2, r4, #40
+ 663 0038 04F12401 		add	r1, r4, #36
+ 664 003c 04F12000 		add	r0, r4, #32
+ 665 0040 FFF7FEFF 		bl	FLASH_OB_GetPCROP
+ 666 0044 E369     		ldr	r3, [r4, #28]
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s 			page 12
+
+
+ 667 0046 04F14002 		add	r2, r4, #64
+ 668 004a 04F13C01 		add	r1, r4, #60
+ 669 004e 04F13800 		add	r0, r4, #56
+ 670 0052 FFF7FEFF 		bl	FLASH_OB_GetSecureArea
+ 671              	.L104:
+ 672 0056 04F13401 		add	r1, r4, #52
+ 673 005a 04F13000 		add	r0, r4, #48
+ 674 005e FFF7FEFF 		bl	FLASH_OB_GetBootAdd
+ 675 0062 2368     		ldr	r3, [r4]
+ 676 0064 43F04003 		orr	r3, r3, #64
+ 677 0068 2360     		str	r3, [r4]
+ 678 006a 10BD     		pop	{r4, pc}
+ 680              		.section	.text.HAL_FLASHEx_Unlock_Bank1,"ax",%progbits
+ 681              		.align	2
+ 682              		.global	HAL_FLASHEx_Unlock_Bank1
+ 683              		.thumb
+ 684              		.thumb_func
+ 686              	HAL_FLASHEx_Unlock_Bank1:
+ 687              		@ args = 0, pretend = 0, frame = 0
+ 688              		@ frame_needed = 0, uses_anonymous_args = 0
+ 689              		@ link register save eliminated.
+ 690 0000 0A4B     		ldr	r3, .L110
+ 691 0002 DB68     		ldr	r3, [r3, #12]
+ 692 0004 13F0010F 		tst	r3, #1
+ 693 0008 0BD0     		beq	.L108
+ 694 000a 084B     		ldr	r3, .L110
+ 695 000c 084A     		ldr	r2, .L110+4
+ 696 000e 5A60     		str	r2, [r3, #4]
+ 697 0010 02F18832 		add	r2, r2, #-2004318072
+ 698 0014 5A60     		str	r2, [r3, #4]
+ 699 0016 DB68     		ldr	r3, [r3, #12]
+ 700 0018 13F0010F 		tst	r3, #1
+ 701 001c 03D0     		beq	.L109
+ 702 001e 0120     		movs	r0, #1
+ 703 0020 7047     		bx	lr
+ 704              	.L108:
+ 705 0022 0020     		movs	r0, #0
+ 706 0024 7047     		bx	lr
+ 707              	.L109:
+ 708 0026 0020     		movs	r0, #0
+ 709 0028 7047     		bx	lr
+ 710              	.L111:
+ 711 002a 00BF     		.align	2
+ 712              	.L110:
+ 713 002c 00200052 		.word	1375739904
+ 714 0030 23016745 		.word	1164378403
+ 716              		.section	.text.HAL_FLASHEx_Lock_Bank1,"ax",%progbits
+ 717              		.align	2
+ 718              		.global	HAL_FLASHEx_Lock_Bank1
+ 719              		.thumb
+ 720              		.thumb_func
+ 722              	HAL_FLASHEx_Lock_Bank1:
+ 723              		@ args = 0, pretend = 0, frame = 0
+ 724              		@ frame_needed = 0, uses_anonymous_args = 0
+ 725              		@ link register save eliminated.
+ 726 0000 034A     		ldr	r2, .L113
+ 727 0002 D368     		ldr	r3, [r2, #12]
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s 			page 13
+
+
+ 728 0004 43F00103 		orr	r3, r3, #1
+ 729 0008 D360     		str	r3, [r2, #12]
+ 730 000a 0020     		movs	r0, #0
+ 731 000c 7047     		bx	lr
+ 732              	.L114:
+ 733 000e 00BF     		.align	2
+ 734              	.L113:
+ 735 0010 00200052 		.word	1375739904
+ 737              		.section	.text.HAL_FLASHEx_ComputeCRC,"ax",%progbits
+ 738              		.align	2
+ 739              		.global	HAL_FLASHEx_ComputeCRC
+ 740              		.thumb
+ 741              		.thumb_func
+ 743              	HAL_FLASHEx_ComputeCRC:
+ 744              		@ args = 0, pretend = 0, frame = 0
+ 745              		@ frame_needed = 0, uses_anonymous_args = 0
+ 746 0000 70B5     		push	{r4, r5, r6, lr}
+ 747 0002 0446     		mov	r4, r0
+ 748 0004 0E46     		mov	r6, r1
+ 749 0006 4CF25030 		movw	r0, #50000
+ 750 000a FFF7FEFF 		bl	FLASH_OB_WaitForLastOperation
+ 751 000e 0346     		mov	r3, r0
+ 752 0010 0028     		cmp	r0, #0
+ 753 0012 4AD1     		bne	.L116
+ 754 0014 A268     		ldr	r2, [r4, #8]
+ 755 0016 012A     		cmp	r2, #1
+ 756 0018 47D1     		bne	.L116
+ 757 001a 254A     		ldr	r2, .L123
+ 758 001c D368     		ldr	r3, [r2, #12]
+ 759 001e 43F40043 		orr	r3, r3, #32768
+ 760 0022 D360     		str	r3, [r2, #12]
+ 761 0024 5369     		ldr	r3, [r2, #20]
+ 762 0026 43F0C053 		orr	r3, r3, #402653184
+ 763 002a 5361     		str	r3, [r2, #20]
+ 764 002c 116D     		ldr	r1, [r2, #80]
+ 765 002e 6068     		ldr	r0, [r4, #4]
+ 766 0030 2368     		ldr	r3, [r4]
+ 767 0032 0343     		orrs	r3, r3, r0
+ 768 0034 0B43     		orrs	r3, r3, r1
+ 769 0036 43F40033 		orr	r3, r3, #131072
+ 770 003a 1365     		str	r3, [r2, #80]
+ 771 003c 2368     		ldr	r3, [r4]
+ 772 003e B3F5807F 		cmp	r3, #256
+ 773 0042 10D1     		bne	.L117
+ 774 0044 136D     		ldr	r3, [r2, #80]
+ 775 0046 43F48063 		orr	r3, r3, #1024
+ 776 004a 1365     		str	r3, [r2, #80]
+ 777 004c E568     		ldr	r5, [r4, #12]
+ 778 004e 04E0     		b	.L118
+ 779              	.L119:
+ 780 0050 0121     		movs	r1, #1
+ 781 0052 2846     		mov	r0, r5
+ 782 0054 FFF7FEFF 		bl	FLASH_CRC_AddSector
+ 783 0058 0135     		adds	r5, r5, #1
+ 784              	.L118:
+ 785 005a 2269     		ldr	r2, [r4, #16]
+ 786 005c E368     		ldr	r3, [r4, #12]
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s 			page 14
+
+
+ 787 005e 1344     		add	r3, r3, r2
+ 788 0060 9D42     		cmp	r5, r3
+ 789 0062 F5D3     		bcc	.L119
+ 790 0064 0DE0     		b	.L120
+ 791              	.L117:
+ 792 0066 134A     		ldr	r2, .L123+4
+ 793 0068 9342     		cmp	r3, r2
+ 794 006a 05D1     		bne	.L121
+ 795 006c 104A     		ldr	r2, .L123
+ 796 006e 136D     		ldr	r3, [r2, #80]
+ 797 0070 43F48003 		orr	r3, r3, #4194304
+ 798 0074 1365     		str	r3, [r2, #80]
+ 799 0076 04E0     		b	.L120
+ 800              	.L121:
+ 801 0078 0122     		movs	r2, #1
+ 802 007a A169     		ldr	r1, [r4, #24]
+ 803 007c 6069     		ldr	r0, [r4, #20]
+ 804 007e FFF7FEFF 		bl	FLASH_CRC_SelectAddress
+ 805              	.L120:
+ 806 0082 0B4C     		ldr	r4, .L123
+ 807 0084 236D     		ldr	r3, [r4, #80]
+ 808 0086 43F48033 		orr	r3, r3, #65536
+ 809 008a 2365     		str	r3, [r4, #80]
+ 810 008c 0121     		movs	r1, #1
+ 811 008e 4CF25030 		movw	r0, #50000
+ 812 0092 FFF7FEFF 		bl	FLASH_CRC_WaitForLastOperation
+ 813 0096 0346     		mov	r3, r0
+ 814 0098 E26D     		ldr	r2, [r4, #92]
+ 815 009a 3260     		str	r2, [r6]
+ 816 009c E268     		ldr	r2, [r4, #12]
+ 817 009e 22F40042 		bic	r2, r2, #32768
+ 818 00a2 E260     		str	r2, [r4, #12]
+ 819 00a4 4FF0C052 		mov	r2, #402653184
+ 820 00a8 6261     		str	r2, [r4, #20]
+ 821              	.L116:
+ 822 00aa 1846     		mov	r0, r3
+ 823 00ac 70BD     		pop	{r4, r5, r6, pc}
+ 824              	.L124:
+ 825 00ae 00BF     		.align	2
+ 826              	.L123:
+ 827 00b0 00200052 		.word	1375739904
+ 828 00b4 00014000 		.word	4194560
+ 830              		.section	.text.FLASH_Erase_Sector,"ax",%progbits
+ 831              		.align	2
+ 832              		.global	FLASH_Erase_Sector
+ 833              		.thumb
+ 834              		.thumb_func
+ 836              	FLASH_Erase_Sector:
+ 837              		@ args = 0, pretend = 0, frame = 0
+ 838              		@ frame_needed = 0, uses_anonymous_args = 0
+ 839              		@ link register save eliminated.
+ 840 0000 11F0010F 		tst	r1, #1
+ 841 0004 0BD0     		beq	.L125
+ 842 0006 064B     		ldr	r3, .L127
+ 843 0008 D968     		ldr	r1, [r3, #12]
+ 844 000a 21F4E661 		bic	r1, r1, #1840
+ 845 000e D960     		str	r1, [r3, #12]
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s 			page 15
+
+
+ 846 0010 D968     		ldr	r1, [r3, #12]
+ 847 0012 42EA0022 		orr	r2, r2, r0, lsl #8
+ 848 0016 0A43     		orrs	r2, r2, r1
+ 849 0018 42F08402 		orr	r2, r2, #132
+ 850 001c DA60     		str	r2, [r3, #12]
+ 851              	.L125:
+ 852 001e 7047     		bx	lr
+ 853              	.L128:
+ 854              		.align	2
+ 855              	.L127:
+ 856 0020 00200052 		.word	1375739904
+ 858              		.section	.text.HAL_FLASHEx_Erase,"ax",%progbits
+ 859              		.align	2
+ 860              		.global	HAL_FLASHEx_Erase
+ 861              		.thumb
+ 862              		.thumb_func
+ 864              	HAL_FLASHEx_Erase:
+ 865              		@ args = 0, pretend = 0, frame = 0
+ 866              		@ frame_needed = 0, uses_anonymous_args = 0
+ 867 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 868 0002 2E4B     		ldr	r3, .L144
+ 869 0004 1B7D     		ldrb	r3, [r3, #20]	@ zero_extendqisi2
+ 870 0006 012B     		cmp	r3, #1
+ 871 0008 56D0     		beq	.L139
+ 872 000a 0F46     		mov	r7, r1
+ 873 000c 0446     		mov	r4, r0
+ 874 000e 2B4B     		ldr	r3, .L144
+ 875 0010 0122     		movs	r2, #1
+ 876 0012 1A75     		strb	r2, [r3, #20]
+ 877 0014 0022     		movs	r2, #0
+ 878 0016 9A61     		str	r2, [r3, #24]
+ 879 0018 4368     		ldr	r3, [r0, #4]
+ 880 001a 13F0010F 		tst	r3, #1
+ 881 001e 07D0     		beq	.L140
+ 882 0020 0121     		movs	r1, #1
+ 883 0022 4CF25030 		movw	r0, #50000
+ 884 0026 FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 885 002a 18B9     		cbnz	r0, .L141
+ 886 002c 0026     		movs	r6, #0
+ 887 002e 02E0     		b	.L131
+ 888              	.L140:
+ 889 0030 0026     		movs	r6, #0
+ 890 0032 00E0     		b	.L131
+ 891              	.L141:
+ 892 0034 0126     		movs	r6, #1
+ 893              	.L131:
+ 894 0036 002E     		cmp	r6, #0
+ 895 0038 39D1     		bne	.L132
+ 896 003a 2368     		ldr	r3, [r4]
+ 897 003c 012B     		cmp	r3, #1
+ 898 003e 14D1     		bne	.L133
+ 899 0040 6168     		ldr	r1, [r4, #4]
+ 900 0042 2069     		ldr	r0, [r4, #16]
+ 901 0044 FFF7FEFF 		bl	FLASH_MassErase
+ 902 0048 6368     		ldr	r3, [r4, #4]
+ 903 004a 13F0010F 		tst	r3, #1
+ 904 004e 2ED0     		beq	.L132
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s 			page 16
+
+
+ 905 0050 0121     		movs	r1, #1
+ 906 0052 4CF25030 		movw	r0, #50000
+ 907 0056 FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 908 005a 00B1     		cbz	r0, .L134
+ 909 005c 0126     		movs	r6, #1
+ 910              	.L134:
+ 911 005e 184A     		ldr	r2, .L144+4
+ 912 0060 D368     		ldr	r3, [r2, #12]
+ 913 0062 23F00803 		bic	r3, r3, #8
+ 914 0066 D360     		str	r3, [r2, #12]
+ 915 0068 21E0     		b	.L132
+ 916              	.L133:
+ 917 006a 4FF0FF33 		mov	r3, #-1
+ 918 006e 3B60     		str	r3, [r7]
+ 919 0070 A568     		ldr	r5, [r4, #8]
+ 920 0072 17E0     		b	.L135
+ 921              	.L138:
+ 922 0074 2269     		ldr	r2, [r4, #16]
+ 923 0076 6168     		ldr	r1, [r4, #4]
+ 924 0078 2846     		mov	r0, r5
+ 925 007a FFF7FEFF 		bl	FLASH_Erase_Sector
+ 926 007e 6368     		ldr	r3, [r4, #4]
+ 927 0080 13F0010F 		tst	r3, #1
+ 928 0084 0AD0     		beq	.L136
+ 929 0086 0121     		movs	r1, #1
+ 930 0088 4CF25030 		movw	r0, #50000
+ 931 008c FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 932 0090 0646     		mov	r6, r0
+ 933 0092 0B4A     		ldr	r2, .L144+4
+ 934 0094 D168     		ldr	r1, [r2, #12]
+ 935 0096 0B4B     		ldr	r3, .L144+8
+ 936 0098 0B40     		ands	r3, r3, r1
+ 937 009a D360     		str	r3, [r2, #12]
+ 938              	.L136:
+ 939 009c 0EB1     		cbz	r6, .L137
+ 940 009e 3D60     		str	r5, [r7]
+ 941 00a0 05E0     		b	.L132
+ 942              	.L137:
+ 943 00a2 0135     		adds	r5, r5, #1
+ 944              	.L135:
+ 945 00a4 E268     		ldr	r2, [r4, #12]
+ 946 00a6 A368     		ldr	r3, [r4, #8]
+ 947 00a8 1344     		add	r3, r3, r2
+ 948 00aa 9D42     		cmp	r5, r3
+ 949 00ac E2D3     		bcc	.L138
+ 950              	.L132:
+ 951 00ae 0022     		movs	r2, #0
+ 952 00b0 024B     		ldr	r3, .L144
+ 953 00b2 1A75     		strb	r2, [r3, #20]
+ 954 00b4 3046     		mov	r0, r6
+ 955 00b6 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 956              	.L139:
+ 957 00b8 0220     		movs	r0, #2
+ 958 00ba F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 959              	.L145:
+ 960              		.align	2
+ 961              	.L144:
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s 			page 17
+
+
+ 962 00bc 00000000 		.word	pFlash
+ 963 00c0 00200052 		.word	1375739904
+ 964 00c4 FBF8FFFF 		.word	-1797
+ 966              		.section	.text.HAL_FLASHEx_Erase_IT,"ax",%progbits
+ 967              		.align	2
+ 968              		.global	HAL_FLASHEx_Erase_IT
+ 969              		.thumb
+ 970              		.thumb_func
+ 972              	HAL_FLASHEx_Erase_IT:
+ 973              		@ args = 0, pretend = 0, frame = 0
+ 974              		@ frame_needed = 0, uses_anonymous_args = 0
+ 975 0000 38B5     		push	{r3, r4, r5, lr}
+ 976 0002 254B     		ldr	r3, .L158
+ 977 0004 1B7D     		ldrb	r3, [r3, #20]	@ zero_extendqisi2
+ 978 0006 012B     		cmp	r3, #1
+ 979 0008 44D0     		beq	.L154
+ 980 000a 0446     		mov	r4, r0
+ 981 000c 224B     		ldr	r3, .L158
+ 982 000e 0122     		movs	r2, #1
+ 983 0010 1A75     		strb	r2, [r3, #20]
+ 984 0012 0022     		movs	r2, #0
+ 985 0014 9A61     		str	r2, [r3, #24]
+ 986 0016 4368     		ldr	r3, [r0, #4]
+ 987 0018 13F0010F 		tst	r3, #1
+ 988 001c 07D0     		beq	.L155
+ 989 001e 0121     		movs	r1, #1
+ 990 0020 4CF25030 		movw	r0, #50000
+ 991 0024 FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 992 0028 18B9     		cbnz	r0, .L156
+ 993 002a 0025     		movs	r5, #0
+ 994 002c 02E0     		b	.L148
+ 995              	.L155:
+ 996 002e 0025     		movs	r5, #0
+ 997 0030 00E0     		b	.L148
+ 998              	.L156:
+ 999 0032 0125     		movs	r5, #1
+ 1000              	.L148:
+ 1001 0034 25B1     		cbz	r5, .L149
+ 1002 0036 0022     		movs	r2, #0
+ 1003 0038 174B     		ldr	r3, .L158
+ 1004 003a 1A75     		strb	r2, [r3, #20]
+ 1005 003c 2846     		mov	r0, r5
+ 1006 003e 38BD     		pop	{r3, r4, r5, pc}
+ 1007              	.L149:
+ 1008 0040 6368     		ldr	r3, [r4, #4]
+ 1009 0042 13F0010F 		tst	r3, #1
+ 1010 0046 04D0     		beq	.L150
+ 1011 0048 144A     		ldr	r2, .L158+4
+ 1012 004a D368     		ldr	r3, [r2, #12]
+ 1013 004c 43F4DE03 		orr	r3, r3, #7274496
+ 1014 0050 D360     		str	r3, [r2, #12]
+ 1015              	.L150:
+ 1016 0052 2368     		ldr	r3, [r4]
+ 1017 0054 012B     		cmp	r3, #1
+ 1018 0056 0ED1     		bne	.L151
+ 1019 0058 6168     		ldr	r1, [r4, #4]
+ 1020 005a 0129     		cmp	r1, #1
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s 			page 18
+
+
+ 1021 005c 03D1     		bne	.L152
+ 1022 005e 0222     		movs	r2, #2
+ 1023 0060 0D4B     		ldr	r3, .L158
+ 1024 0062 1A70     		strb	r2, [r3]
+ 1025 0064 02E0     		b	.L153
+ 1026              	.L152:
+ 1027 0066 0722     		movs	r2, #7
+ 1028 0068 0B4B     		ldr	r3, .L158
+ 1029 006a 1A70     		strb	r2, [r3]
+ 1030              	.L153:
+ 1031 006c 2069     		ldr	r0, [r4, #16]
+ 1032 006e FFF7FEFF 		bl	FLASH_MassErase
+ 1033 0072 2846     		mov	r0, r5
+ 1034 0074 38BD     		pop	{r3, r4, r5, pc}
+ 1035              	.L151:
+ 1036 0076 084B     		ldr	r3, .L158
+ 1037 0078 0122     		movs	r2, #1
+ 1038 007a 1A70     		strb	r2, [r3]
+ 1039 007c E268     		ldr	r2, [r4, #12]
+ 1040 007e 5A60     		str	r2, [r3, #4]
+ 1041 0080 A268     		ldr	r2, [r4, #8]
+ 1042 0082 DA60     		str	r2, [r3, #12]
+ 1043 0084 2269     		ldr	r2, [r4, #16]
+ 1044 0086 9A60     		str	r2, [r3, #8]
+ 1045 0088 6168     		ldr	r1, [r4, #4]
+ 1046 008a A068     		ldr	r0, [r4, #8]
+ 1047 008c FFF7FEFF 		bl	FLASH_Erase_Sector
+ 1048 0090 2846     		mov	r0, r5
+ 1049 0092 38BD     		pop	{r3, r4, r5, pc}
+ 1050              	.L154:
+ 1051 0094 0220     		movs	r0, #2
+ 1052 0096 38BD     		pop	{r3, r4, r5, pc}
+ 1053              	.L159:
+ 1054              		.align	2
+ 1055              	.L158:
+ 1056 0098 00000000 		.word	pFlash
+ 1057 009c 00200052 		.word	1375739904
+ 1059              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160919 (release) [ARM/embedded-5-bran
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s 			page 19
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32h7xx_hal_flash_ex.c
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:18     .text.FLASH_MassErase:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:22     .text.FLASH_MassErase:00000000 FLASH_MassErase
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:43     .text.FLASH_MassErase:00000020 $d
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:46     .text.FLASH_OB_EnableWRP:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:50     .text.FLASH_OB_EnableWRP:00000000 FLASH_OB_EnableWRP
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:66     .text.FLASH_OB_EnableWRP:00000014 $d
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:69     .text.FLASH_OB_DisableWRP:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:73     .text.FLASH_OB_DisableWRP:00000000 FLASH_OB_DisableWRP
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:89     .text.FLASH_OB_DisableWRP:00000014 $d
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:92     .text.FLASH_OB_GetWRP:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:96     .text.FLASH_OB_GetWRP:00000000 FLASH_OB_GetWRP
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:121    .text.FLASH_OB_GetWRP:00000020 $d
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:124    .text.FLASH_OB_RDPConfig:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:128    .text.FLASH_OB_RDPConfig:00000000 FLASH_OB_RDPConfig
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:141    .text.FLASH_OB_RDPConfig:00000010 $d
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:144    .text.FLASH_OB_GetRDP:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:148    .text.FLASH_OB_GetRDP:00000000 FLASH_OB_GetRDP
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:165    .text.FLASH_OB_GetRDP:0000001c $d
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:168    .text.FLASH_OB_UserConfig:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:172    .text.FLASH_OB_UserConfig:00000000 FLASH_OB_UserConfig
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:238    .text.FLASH_OB_UserConfig:00000098 $d
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:241    .text.FLASH_OB_GetUser:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:245    .text.FLASH_OB_GetUser:00000000 FLASH_OB_GetUser
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:257    .text.FLASH_OB_GetUser:0000000c $d
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:261    .text.FLASH_OB_PCROPConfig:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:265    .text.FLASH_OB_PCROPConfig:00000000 FLASH_OB_PCROPConfig
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:284    .text.FLASH_OB_PCROPConfig:00000020 $d
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:287    .text.FLASH_OB_GetPCROP:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:291    .text.FLASH_OB_GetPCROP:00000000 FLASH_OB_GetPCROP
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:320    .text.FLASH_OB_GetPCROP:00000034 $d
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:324    .text.FLASH_OB_BOR_LevelConfig:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:328    .text.FLASH_OB_BOR_LevelConfig:00000000 FLASH_OB_BOR_LevelConfig
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:341    .text.FLASH_OB_BOR_LevelConfig:00000010 $d
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:344    .text.FLASH_OB_GetBOR:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:348    .text.FLASH_OB_GetBOR:00000000 FLASH_OB_GetBOR
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:359    .text.FLASH_OB_GetBOR:0000000c $d
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:362    .text.FLASH_OB_BootAddConfig:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:366    .text.FLASH_OB_BootAddConfig:00000000 FLASH_OB_BootAddConfig
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:393    .text.FLASH_OB_BootAddConfig:0000002c $d
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:397    .text.FLASH_OB_GetBootAdd:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:401    .text.FLASH_OB_GetBootAdd:00000000 FLASH_OB_GetBootAdd
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:416    .text.FLASH_OB_GetBootAdd:00000010 $d
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:420    .text.FLASH_OB_SecureAreaConfig:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:424    .text.FLASH_OB_SecureAreaConfig:00000000 FLASH_OB_SecureAreaConfig
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:444    .text.FLASH_OB_SecureAreaConfig:00000024 $d
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:447    .text.FLASH_OB_GetSecureArea:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:451    .text.FLASH_OB_GetSecureArea:00000000 FLASH_OB_GetSecureArea
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:480    .text.FLASH_OB_GetSecureArea:00000034 $d
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:484    .text.FLASH_CRC_AddSector:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:488    .text.FLASH_CRC_AddSector:00000000 FLASH_CRC_AddSector
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:507    .text.FLASH_CRC_AddSector:0000001c $d
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:510    .text.FLASH_CRC_SelectAddress:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:514    .text.FLASH_CRC_SelectAddress:00000000 FLASH_CRC_SelectAddress
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:528    .text.FLASH_CRC_SelectAddress:0000000c $d
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:531    .text.HAL_FLASHEx_OBProgram:00000000 $t
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s 			page 20
+
+
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:536    .text.HAL_FLASHEx_OBProgram:00000000 HAL_FLASHEx_OBProgram
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:631    .text.HAL_FLASHEx_OBProgram:000000c0 $d
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:634    .text.HAL_FLASHEx_OBGetConfig:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:639    .text.HAL_FLASHEx_OBGetConfig:00000000 HAL_FLASHEx_OBGetConfig
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:681    .text.HAL_FLASHEx_Unlock_Bank1:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:686    .text.HAL_FLASHEx_Unlock_Bank1:00000000 HAL_FLASHEx_Unlock_Bank1
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:713    .text.HAL_FLASHEx_Unlock_Bank1:0000002c $d
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:717    .text.HAL_FLASHEx_Lock_Bank1:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:722    .text.HAL_FLASHEx_Lock_Bank1:00000000 HAL_FLASHEx_Lock_Bank1
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:735    .text.HAL_FLASHEx_Lock_Bank1:00000010 $d
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:738    .text.HAL_FLASHEx_ComputeCRC:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:743    .text.HAL_FLASHEx_ComputeCRC:00000000 HAL_FLASHEx_ComputeCRC
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:827    .text.HAL_FLASHEx_ComputeCRC:000000b0 $d
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:831    .text.FLASH_Erase_Sector:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:836    .text.FLASH_Erase_Sector:00000000 FLASH_Erase_Sector
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:856    .text.FLASH_Erase_Sector:00000020 $d
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:859    .text.HAL_FLASHEx_Erase:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:864    .text.HAL_FLASHEx_Erase:00000000 HAL_FLASHEx_Erase
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:962    .text.HAL_FLASHEx_Erase:000000bc $d
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:967    .text.HAL_FLASHEx_Erase_IT:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:972    .text.HAL_FLASHEx_Erase_IT:00000000 HAL_FLASHEx_Erase_IT
+C:\Users\xiaofei\AppData\Local\Temp\ccykk9sj.s:1056   .text.HAL_FLASHEx_Erase_IT:00000098 $d
+
+UNDEFINED SYMBOLS
+FLASH_WaitForLastOperation
+pFlash
+FLASH_OB_WaitForLastOperation
+FLASH_CRC_WaitForLastOperation

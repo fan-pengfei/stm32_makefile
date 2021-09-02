@@ -1,0 +1,3468 @@
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m7
+   3              		.eabi_attribute 28, 1
+   4              		.fpu fpv5-d16
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.thumb
+  15              		.syntax unified
+  16              		.file	"stm32h7xx_hal_tim_ex.c"
+  17              		.section	.text.TIM_CCxNChannelCmd,"ax",%progbits
+  18              		.align	2
+  19              		.thumb
+  20              		.thumb_func
+  22              	TIM_CCxNChannelCmd:
+  23              		@ args = 0, pretend = 0, frame = 0
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25              		@ link register save eliminated.
+  26 0000 10B4     		push	{r4}
+  27 0002 01F01F01 		and	r1, r1, #31
+  28 0006 0423     		movs	r3, #4
+  29 0008 03FA01F4 		lsl	r4, r3, r1
+  30 000c 036A     		ldr	r3, [r0, #32]
+  31 000e 23EA0403 		bic	r3, r3, r4
+  32 0012 0362     		str	r3, [r0, #32]
+  33 0014 036A     		ldr	r3, [r0, #32]
+  34 0016 8A40     		lsls	r2, r2, r1
+  35 0018 1A43     		orrs	r2, r2, r3
+  36 001a 0262     		str	r2, [r0, #32]
+  37 001c 5DF8044B 		ldr	r4, [sp], #4
+  38 0020 7047     		bx	lr
+  40 0022 00BF     		.section	.text.TIM_DMAErrorCCxN,"ax",%progbits
+  41              		.align	2
+  42              		.thumb
+  43              		.thumb_func
+  45              	TIM_DMAErrorCCxN:
+  46              		@ args = 0, pretend = 0, frame = 0
+  47              		@ frame_needed = 0, uses_anonymous_args = 0
+  48 0000 10B5     		push	{r4, lr}
+  49 0002 846B     		ldr	r4, [r0, #56]
+  50 0004 636A     		ldr	r3, [r4, #36]
+  51 0006 9842     		cmp	r0, r3
+  52 0008 04D1     		bne	.L4
+  53 000a 0123     		movs	r3, #1
+  54 000c 2377     		strb	r3, [r4, #28]
+  55 000e 84F84430 		strb	r3, [r4, #68]
+  56 0012 10E0     		b	.L5
+  57              	.L4:
+  58 0014 A36A     		ldr	r3, [r4, #40]
+  59 0016 9842     		cmp	r0, r3
+  60 0018 05D1     		bne	.L6
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 2
+
+
+  61 001a 0223     		movs	r3, #2
+  62 001c 2377     		strb	r3, [r4, #28]
+  63 001e 0123     		movs	r3, #1
+  64 0020 84F84530 		strb	r3, [r4, #69]
+  65 0024 07E0     		b	.L5
+  66              	.L6:
+  67 0026 E36A     		ldr	r3, [r4, #44]
+  68 0028 9842     		cmp	r0, r3
+  69 002a 04D1     		bne	.L5
+  70 002c 0423     		movs	r3, #4
+  71 002e 2377     		strb	r3, [r4, #28]
+  72 0030 0123     		movs	r3, #1
+  73 0032 84F84630 		strb	r3, [r4, #70]
+  74              	.L5:
+  75 0036 2046     		mov	r0, r4
+  76 0038 FFF7FEFF 		bl	HAL_TIM_ErrorCallback
+  77 003c 0023     		movs	r3, #0
+  78 003e 2377     		strb	r3, [r4, #28]
+  79 0040 10BD     		pop	{r4, pc}
+  81 0042 00BF     		.section	.text.TIM_DMADelayPulseNCplt,"ax",%progbits
+  82              		.align	2
+  83              		.thumb
+  84              		.thumb_func
+  86              	TIM_DMADelayPulseNCplt:
+  87              		@ args = 0, pretend = 0, frame = 0
+  88              		@ frame_needed = 0, uses_anonymous_args = 0
+  89 0000 10B5     		push	{r4, lr}
+  90 0002 846B     		ldr	r4, [r0, #56]
+  91 0004 636A     		ldr	r3, [r4, #36]
+  92 0006 9842     		cmp	r0, r3
+  93 0008 07D1     		bne	.L9
+  94 000a 0123     		movs	r3, #1
+  95 000c 2377     		strb	r3, [r4, #28]
+  96 000e C369     		ldr	r3, [r0, #28]
+  97 0010 1BBB     		cbnz	r3, .L10
+  98 0012 0123     		movs	r3, #1
+  99 0014 84F84430 		strb	r3, [r4, #68]
+ 100 0018 1FE0     		b	.L10
+ 101              	.L9:
+ 102 001a A36A     		ldr	r3, [r4, #40]
+ 103 001c 9842     		cmp	r0, r3
+ 104 001e 07D1     		bne	.L11
+ 105 0020 0223     		movs	r3, #2
+ 106 0022 2377     		strb	r3, [r4, #28]
+ 107 0024 C369     		ldr	r3, [r0, #28]
+ 108 0026 C3B9     		cbnz	r3, .L10
+ 109 0028 0123     		movs	r3, #1
+ 110 002a 84F84530 		strb	r3, [r4, #69]
+ 111 002e 14E0     		b	.L10
+ 112              	.L11:
+ 113 0030 E36A     		ldr	r3, [r4, #44]
+ 114 0032 9842     		cmp	r0, r3
+ 115 0034 07D1     		bne	.L12
+ 116 0036 0423     		movs	r3, #4
+ 117 0038 2377     		strb	r3, [r4, #28]
+ 118 003a C369     		ldr	r3, [r0, #28]
+ 119 003c 6BB9     		cbnz	r3, .L10
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 3
+
+
+ 120 003e 0123     		movs	r3, #1
+ 121 0040 84F84630 		strb	r3, [r4, #70]
+ 122 0044 09E0     		b	.L10
+ 123              	.L12:
+ 124 0046 236B     		ldr	r3, [r4, #48]
+ 125 0048 9842     		cmp	r0, r3
+ 126 004a 06D1     		bne	.L10
+ 127 004c 0823     		movs	r3, #8
+ 128 004e 2377     		strb	r3, [r4, #28]
+ 129 0050 C369     		ldr	r3, [r0, #28]
+ 130 0052 13B9     		cbnz	r3, .L10
+ 131 0054 0123     		movs	r3, #1
+ 132 0056 84F84730 		strb	r3, [r4, #71]
+ 133              	.L10:
+ 134 005a 2046     		mov	r0, r4
+ 135 005c FFF7FEFF 		bl	HAL_TIM_PWM_PulseFinishedCallback
+ 136 0060 0023     		movs	r3, #0
+ 137 0062 2377     		strb	r3, [r4, #28]
+ 138 0064 10BD     		pop	{r4, pc}
+ 140 0066 00BF     		.section	.text.HAL_TIMEx_HallSensor_MspInit,"ax",%progbits
+ 141              		.align	2
+ 142              		.weak	HAL_TIMEx_HallSensor_MspInit
+ 143              		.thumb
+ 144              		.thumb_func
+ 146              	HAL_TIMEx_HallSensor_MspInit:
+ 147              		@ args = 0, pretend = 0, frame = 0
+ 148              		@ frame_needed = 0, uses_anonymous_args = 0
+ 149              		@ link register save eliminated.
+ 150 0000 7047     		bx	lr
+ 152 0002 00BF     		.section	.text.HAL_TIMEx_HallSensor_Init,"ax",%progbits
+ 153              		.align	2
+ 154              		.global	HAL_TIMEx_HallSensor_Init
+ 155              		.thumb
+ 156              		.thumb_func
+ 158              	HAL_TIMEx_HallSensor_Init:
+ 159              		@ args = 0, pretend = 0, frame = 32
+ 160              		@ frame_needed = 0, uses_anonymous_args = 0
+ 161 0000 0028     		cmp	r0, #0
+ 162 0002 64D0     		beq	.L18
+ 163 0004 70B5     		push	{r4, r5, r6, lr}
+ 164 0006 88B0     		sub	sp, sp, #32
+ 165 0008 0446     		mov	r4, r0
+ 166 000a 0E46     		mov	r6, r1
+ 167 000c 90F83D30 		ldrb	r3, [r0, #61]	@ zero_extendqisi2
+ 168 0010 13F0FF0F 		tst	r3, #255
+ 169 0014 04D1     		bne	.L17
+ 170 0016 0023     		movs	r3, #0
+ 171 0018 80F83C30 		strb	r3, [r0, #60]
+ 172 001c FFF7FEFF 		bl	HAL_TIMEx_HallSensor_MspInit
+ 173              	.L17:
+ 174 0020 0223     		movs	r3, #2
+ 175 0022 84F83D30 		strb	r3, [r4, #61]
+ 176 0026 211D     		adds	r1, r4, #4
+ 177 0028 2068     		ldr	r0, [r4]
+ 178 002a FFF7FEFF 		bl	TIM_Base_SetConfig
+ 179 002e B368     		ldr	r3, [r6, #8]
+ 180 0030 0322     		movs	r2, #3
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 4
+
+
+ 181 0032 3168     		ldr	r1, [r6]
+ 182 0034 2068     		ldr	r0, [r4]
+ 183 0036 FFF7FEFF 		bl	TIM_TI1_SetConfig
+ 184 003a 2268     		ldr	r2, [r4]
+ 185 003c 9369     		ldr	r3, [r2, #24]
+ 186 003e 23F00C03 		bic	r3, r3, #12
+ 187 0042 9361     		str	r3, [r2, #24]
+ 188 0044 2268     		ldr	r2, [r4]
+ 189 0046 9169     		ldr	r1, [r2, #24]
+ 190 0048 7368     		ldr	r3, [r6, #4]
+ 191 004a 0B43     		orrs	r3, r3, r1
+ 192 004c 9361     		str	r3, [r2, #24]
+ 193 004e 2268     		ldr	r2, [r4]
+ 194 0050 5368     		ldr	r3, [r2, #4]
+ 195 0052 43F08003 		orr	r3, r3, #128
+ 196 0056 5360     		str	r3, [r2, #4]
+ 197 0058 2268     		ldr	r2, [r4]
+ 198 005a 9168     		ldr	r1, [r2, #8]
+ 199 005c 1E4B     		ldr	r3, .L21
+ 200 005e 0B40     		ands	r3, r3, r1
+ 201 0060 9360     		str	r3, [r2, #8]
+ 202 0062 2268     		ldr	r2, [r4]
+ 203 0064 9368     		ldr	r3, [r2, #8]
+ 204 0066 43F04003 		orr	r3, r3, #64
+ 205 006a 9360     		str	r3, [r2, #8]
+ 206 006c 2268     		ldr	r2, [r4]
+ 207 006e 9168     		ldr	r1, [r2, #8]
+ 208 0070 1A4B     		ldr	r3, .L21+4
+ 209 0072 0B40     		ands	r3, r3, r1
+ 210 0074 9360     		str	r3, [r2, #8]
+ 211 0076 2268     		ldr	r2, [r4]
+ 212 0078 9368     		ldr	r3, [r2, #8]
+ 213 007a 43F00403 		orr	r3, r3, #4
+ 214 007e 9360     		str	r3, [r2, #8]
+ 215 0080 0025     		movs	r5, #0
+ 216 0082 0595     		str	r5, [sp, #20]
+ 217 0084 0695     		str	r5, [sp, #24]
+ 218 0086 7023     		movs	r3, #112
+ 219 0088 0193     		str	r3, [sp, #4]
+ 220 008a 0795     		str	r5, [sp, #28]
+ 221 008c 0495     		str	r5, [sp, #16]
+ 222 008e 0395     		str	r5, [sp, #12]
+ 223 0090 F368     		ldr	r3, [r6, #12]
+ 224 0092 0293     		str	r3, [sp, #8]
+ 225 0094 01A9     		add	r1, sp, #4
+ 226 0096 2068     		ldr	r0, [r4]
+ 227 0098 FFF7FEFF 		bl	TIM_OC2_SetConfig
+ 228 009c 2268     		ldr	r2, [r4]
+ 229 009e 5368     		ldr	r3, [r2, #4]
+ 230 00a0 23F07003 		bic	r3, r3, #112
+ 231 00a4 5360     		str	r3, [r2, #4]
+ 232 00a6 2268     		ldr	r2, [r4]
+ 233 00a8 5368     		ldr	r3, [r2, #4]
+ 234 00aa 43F05003 		orr	r3, r3, #80
+ 235 00ae 5360     		str	r3, [r2, #4]
+ 236 00b0 0123     		movs	r3, #1
+ 237 00b2 84F84830 		strb	r3, [r4, #72]
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 5
+
+
+ 238 00b6 84F83E30 		strb	r3, [r4, #62]
+ 239 00ba 84F83F30 		strb	r3, [r4, #63]
+ 240 00be 84F84430 		strb	r3, [r4, #68]
+ 241 00c2 84F84530 		strb	r3, [r4, #69]
+ 242 00c6 84F83D30 		strb	r3, [r4, #61]
+ 243 00ca 2846     		mov	r0, r5
+ 244 00cc 01E0     		b	.L16
+ 245              	.L18:
+ 246 00ce 0120     		movs	r0, #1
+ 247 00d0 7047     		bx	lr
+ 248              	.L16:
+ 249 00d2 08B0     		add	sp, sp, #32
+ 250              		@ sp needed
+ 251 00d4 70BD     		pop	{r4, r5, r6, pc}
+ 252              	.L22:
+ 253 00d6 00BF     		.align	2
+ 254              	.L21:
+ 255 00d8 8FFFCFFF 		.word	-3145841
+ 256 00dc F8FFFEFF 		.word	-65544
+ 258              		.section	.text.HAL_TIMEx_HallSensor_MspDeInit,"ax",%progbits
+ 259              		.align	2
+ 260              		.weak	HAL_TIMEx_HallSensor_MspDeInit
+ 261              		.thumb
+ 262              		.thumb_func
+ 264              	HAL_TIMEx_HallSensor_MspDeInit:
+ 265              		@ args = 0, pretend = 0, frame = 0
+ 266              		@ frame_needed = 0, uses_anonymous_args = 0
+ 267              		@ link register save eliminated.
+ 268 0000 7047     		bx	lr
+ 270 0002 00BF     		.section	.text.HAL_TIMEx_HallSensor_DeInit,"ax",%progbits
+ 271              		.align	2
+ 272              		.global	HAL_TIMEx_HallSensor_DeInit
+ 273              		.thumb
+ 274              		.thumb_func
+ 276              	HAL_TIMEx_HallSensor_DeInit:
+ 277              		@ args = 0, pretend = 0, frame = 0
+ 278              		@ frame_needed = 0, uses_anonymous_args = 0
+ 279 0000 10B5     		push	{r4, lr}
+ 280 0002 0446     		mov	r4, r0
+ 281 0004 0223     		movs	r3, #2
+ 282 0006 80F83D30 		strb	r3, [r0, #61]
+ 283 000a 0368     		ldr	r3, [r0]
+ 284 000c 196A     		ldr	r1, [r3, #32]
+ 285 000e 41F21112 		movw	r2, #4369
+ 286 0012 1142     		tst	r1, r2
+ 287 0014 08D1     		bne	.L25
+ 288 0016 196A     		ldr	r1, [r3, #32]
+ 289 0018 40F24442 		movw	r2, #1092
+ 290 001c 1142     		tst	r1, r2
+ 291 001e 03D1     		bne	.L25
+ 292 0020 1A68     		ldr	r2, [r3]
+ 293 0022 22F00102 		bic	r2, r2, #1
+ 294 0026 1A60     		str	r2, [r3]
+ 295              	.L25:
+ 296 0028 2046     		mov	r0, r4
+ 297 002a FFF7FEFF 		bl	HAL_TIMEx_HallSensor_MspDeInit
+ 298 002e 0020     		movs	r0, #0
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 6
+
+
+ 299 0030 84F84800 		strb	r0, [r4, #72]
+ 300 0034 84F83E00 		strb	r0, [r4, #62]
+ 301 0038 84F83F00 		strb	r0, [r4, #63]
+ 302 003c 84F84400 		strb	r0, [r4, #68]
+ 303 0040 84F84500 		strb	r0, [r4, #69]
+ 304 0044 84F83D00 		strb	r0, [r4, #61]
+ 305 0048 84F83C00 		strb	r0, [r4, #60]
+ 306 004c 10BD     		pop	{r4, pc}
+ 308 004e 00BF     		.section	.text.HAL_TIMEx_HallSensor_Start,"ax",%progbits
+ 309              		.align	2
+ 310              		.global	HAL_TIMEx_HallSensor_Start
+ 311              		.thumb
+ 312              		.thumb_func
+ 314              	HAL_TIMEx_HallSensor_Start:
+ 315              		@ args = 0, pretend = 0, frame = 0
+ 316              		@ frame_needed = 0, uses_anonymous_args = 0
+ 317 0000 10B5     		push	{r4, lr}
+ 318 0002 90F83E10 		ldrb	r1, [r0, #62]	@ zero_extendqisi2
+ 319 0006 C9B2     		uxtb	r1, r1
+ 320 0008 90F83F20 		ldrb	r2, [r0, #63]	@ zero_extendqisi2
+ 321 000c D2B2     		uxtb	r2, r2
+ 322 000e 90F84430 		ldrb	r3, [r0, #68]	@ zero_extendqisi2
+ 323 0012 DCB2     		uxtb	r4, r3
+ 324 0014 90F84530 		ldrb	r3, [r0, #69]	@ zero_extendqisi2
+ 325 0018 012A     		cmp	r2, #1
+ 326 001a 08BF     		it	eq
+ 327 001c 0129     		cmpeq	r1, #1
+ 328 001e 25D1     		bne	.L29
+ 329 0020 DBB2     		uxtb	r3, r3
+ 330 0022 13F1FF33 		adds	r3, r3, #-1
+ 331 0026 18BF     		it	ne
+ 332 0028 0123     		movne	r3, #1
+ 333 002a 012C     		cmp	r4, #1
+ 334 002c 20D1     		bne	.L30
+ 335 002e FBB9     		cbnz	r3, .L30
+ 336 0030 0446     		mov	r4, r0
+ 337 0032 0223     		movs	r3, #2
+ 338 0034 80F83E30 		strb	r3, [r0, #62]
+ 339 0038 80F83F30 		strb	r3, [r0, #63]
+ 340 003c 80F84430 		strb	r3, [r0, #68]
+ 341 0040 80F84530 		strb	r3, [r0, #69]
+ 342 0044 0122     		movs	r2, #1
+ 343 0046 0021     		movs	r1, #0
+ 344 0048 0068     		ldr	r0, [r0]
+ 345 004a FFF7FEFF 		bl	TIM_CCxChannelCmd
+ 346 004e 2268     		ldr	r2, [r4]
+ 347 0050 9168     		ldr	r1, [r2, #8]
+ 348 0052 094B     		ldr	r3, .L33
+ 349 0054 0B40     		ands	r3, r3, r1
+ 350 0056 062B     		cmp	r3, #6
+ 351 0058 18BF     		it	ne
+ 352 005a B3F5803F 		cmpne	r3, #65536
+ 353 005e 09D0     		beq	.L31
+ 354 0060 1368     		ldr	r3, [r2]
+ 355 0062 43F00103 		orr	r3, r3, #1
+ 356 0066 1360     		str	r3, [r2]
+ 357 0068 0020     		movs	r0, #0
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 7
+
+
+ 358 006a 10BD     		pop	{r4, pc}
+ 359              	.L29:
+ 360 006c 0120     		movs	r0, #1
+ 361 006e 10BD     		pop	{r4, pc}
+ 362              	.L30:
+ 363 0070 0120     		movs	r0, #1
+ 364 0072 10BD     		pop	{r4, pc}
+ 365              	.L31:
+ 366 0074 0020     		movs	r0, #0
+ 367 0076 10BD     		pop	{r4, pc}
+ 368              	.L34:
+ 369              		.align	2
+ 370              	.L33:
+ 371 0078 07000100 		.word	65543
+ 373              		.section	.text.HAL_TIMEx_HallSensor_Stop,"ax",%progbits
+ 374              		.align	2
+ 375              		.global	HAL_TIMEx_HallSensor_Stop
+ 376              		.thumb
+ 377              		.thumb_func
+ 379              	HAL_TIMEx_HallSensor_Stop:
+ 380              		@ args = 0, pretend = 0, frame = 0
+ 381              		@ frame_needed = 0, uses_anonymous_args = 0
+ 382 0000 10B5     		push	{r4, lr}
+ 383 0002 0446     		mov	r4, r0
+ 384 0004 0022     		movs	r2, #0
+ 385 0006 1146     		mov	r1, r2
+ 386 0008 0068     		ldr	r0, [r0]
+ 387 000a FFF7FEFF 		bl	TIM_CCxChannelCmd
+ 388 000e 2368     		ldr	r3, [r4]
+ 389 0010 196A     		ldr	r1, [r3, #32]
+ 390 0012 41F21112 		movw	r2, #4369
+ 391 0016 1142     		tst	r1, r2
+ 392 0018 08D1     		bne	.L36
+ 393 001a 196A     		ldr	r1, [r3, #32]
+ 394 001c 40F24442 		movw	r2, #1092
+ 395 0020 1142     		tst	r1, r2
+ 396 0022 03D1     		bne	.L36
+ 397 0024 1A68     		ldr	r2, [r3]
+ 398 0026 22F00102 		bic	r2, r2, #1
+ 399 002a 1A60     		str	r2, [r3]
+ 400              	.L36:
+ 401 002c 0123     		movs	r3, #1
+ 402 002e 84F83E30 		strb	r3, [r4, #62]
+ 403 0032 84F83F30 		strb	r3, [r4, #63]
+ 404 0036 84F84430 		strb	r3, [r4, #68]
+ 405 003a 84F84530 		strb	r3, [r4, #69]
+ 406 003e 0020     		movs	r0, #0
+ 407 0040 10BD     		pop	{r4, pc}
+ 409 0042 00BF     		.section	.text.HAL_TIMEx_HallSensor_Start_IT,"ax",%progbits
+ 410              		.align	2
+ 411              		.global	HAL_TIMEx_HallSensor_Start_IT
+ 412              		.thumb
+ 413              		.thumb_func
+ 415              	HAL_TIMEx_HallSensor_Start_IT:
+ 416              		@ args = 0, pretend = 0, frame = 0
+ 417              		@ frame_needed = 0, uses_anonymous_args = 0
+ 418 0000 10B5     		push	{r4, lr}
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 8
+
+
+ 419 0002 90F83E10 		ldrb	r1, [r0, #62]	@ zero_extendqisi2
+ 420 0006 C9B2     		uxtb	r1, r1
+ 421 0008 90F83F20 		ldrb	r2, [r0, #63]	@ zero_extendqisi2
+ 422 000c D2B2     		uxtb	r2, r2
+ 423 000e 90F84430 		ldrb	r3, [r0, #68]	@ zero_extendqisi2
+ 424 0012 DCB2     		uxtb	r4, r3
+ 425 0014 90F84530 		ldrb	r3, [r0, #69]	@ zero_extendqisi2
+ 426 0018 012A     		cmp	r2, #1
+ 427 001a 08BF     		it	eq
+ 428 001c 0129     		cmpeq	r1, #1
+ 429 001e 2AD1     		bne	.L40
+ 430 0020 DBB2     		uxtb	r3, r3
+ 431 0022 13F1FF33 		adds	r3, r3, #-1
+ 432 0026 18BF     		it	ne
+ 433 0028 0123     		movne	r3, #1
+ 434 002a 012C     		cmp	r4, #1
+ 435 002c 25D1     		bne	.L41
+ 436 002e 23BB     		cbnz	r3, .L41
+ 437 0030 0446     		mov	r4, r0
+ 438 0032 0223     		movs	r3, #2
+ 439 0034 80F83E30 		strb	r3, [r0, #62]
+ 440 0038 80F83F30 		strb	r3, [r0, #63]
+ 441 003c 80F84430 		strb	r3, [r0, #68]
+ 442 0040 80F84530 		strb	r3, [r0, #69]
+ 443 0044 0268     		ldr	r2, [r0]
+ 444 0046 D368     		ldr	r3, [r2, #12]
+ 445 0048 43F00203 		orr	r3, r3, #2
+ 446 004c D360     		str	r3, [r2, #12]
+ 447 004e 0122     		movs	r2, #1
+ 448 0050 0021     		movs	r1, #0
+ 449 0052 0068     		ldr	r0, [r0]
+ 450 0054 FFF7FEFF 		bl	TIM_CCxChannelCmd
+ 451 0058 2268     		ldr	r2, [r4]
+ 452 005a 9168     		ldr	r1, [r2, #8]
+ 453 005c 094B     		ldr	r3, .L44
+ 454 005e 0B40     		ands	r3, r3, r1
+ 455 0060 062B     		cmp	r3, #6
+ 456 0062 18BF     		it	ne
+ 457 0064 B3F5803F 		cmpne	r3, #65536
+ 458 0068 09D0     		beq	.L42
+ 459 006a 1368     		ldr	r3, [r2]
+ 460 006c 43F00103 		orr	r3, r3, #1
+ 461 0070 1360     		str	r3, [r2]
+ 462 0072 0020     		movs	r0, #0
+ 463 0074 10BD     		pop	{r4, pc}
+ 464              	.L40:
+ 465 0076 0120     		movs	r0, #1
+ 466 0078 10BD     		pop	{r4, pc}
+ 467              	.L41:
+ 468 007a 0120     		movs	r0, #1
+ 469 007c 10BD     		pop	{r4, pc}
+ 470              	.L42:
+ 471 007e 0020     		movs	r0, #0
+ 472 0080 10BD     		pop	{r4, pc}
+ 473              	.L45:
+ 474 0082 00BF     		.align	2
+ 475              	.L44:
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 9
+
+
+ 476 0084 07000100 		.word	65543
+ 478              		.section	.text.HAL_TIMEx_HallSensor_Stop_IT,"ax",%progbits
+ 479              		.align	2
+ 480              		.global	HAL_TIMEx_HallSensor_Stop_IT
+ 481              		.thumb
+ 482              		.thumb_func
+ 484              	HAL_TIMEx_HallSensor_Stop_IT:
+ 485              		@ args = 0, pretend = 0, frame = 0
+ 486              		@ frame_needed = 0, uses_anonymous_args = 0
+ 487 0000 10B5     		push	{r4, lr}
+ 488 0002 0446     		mov	r4, r0
+ 489 0004 0022     		movs	r2, #0
+ 490 0006 1146     		mov	r1, r2
+ 491 0008 0068     		ldr	r0, [r0]
+ 492 000a FFF7FEFF 		bl	TIM_CCxChannelCmd
+ 493 000e 2268     		ldr	r2, [r4]
+ 494 0010 D368     		ldr	r3, [r2, #12]
+ 495 0012 23F00203 		bic	r3, r3, #2
+ 496 0016 D360     		str	r3, [r2, #12]
+ 497 0018 2368     		ldr	r3, [r4]
+ 498 001a 196A     		ldr	r1, [r3, #32]
+ 499 001c 41F21112 		movw	r2, #4369
+ 500 0020 1142     		tst	r1, r2
+ 501 0022 08D1     		bne	.L47
+ 502 0024 196A     		ldr	r1, [r3, #32]
+ 503 0026 40F24442 		movw	r2, #1092
+ 504 002a 1142     		tst	r1, r2
+ 505 002c 03D1     		bne	.L47
+ 506 002e 1A68     		ldr	r2, [r3]
+ 507 0030 22F00102 		bic	r2, r2, #1
+ 508 0034 1A60     		str	r2, [r3]
+ 509              	.L47:
+ 510 0036 0123     		movs	r3, #1
+ 511 0038 84F83E30 		strb	r3, [r4, #62]
+ 512 003c 84F83F30 		strb	r3, [r4, #63]
+ 513 0040 84F84430 		strb	r3, [r4, #68]
+ 514 0044 84F84530 		strb	r3, [r4, #69]
+ 515 0048 0020     		movs	r0, #0
+ 516 004a 10BD     		pop	{r4, pc}
+ 518              		.section	.text.HAL_TIMEx_HallSensor_Start_DMA,"ax",%progbits
+ 519              		.align	2
+ 520              		.global	HAL_TIMEx_HallSensor_Start_DMA
+ 521              		.thumb
+ 522              		.thumb_func
+ 524              	HAL_TIMEx_HallSensor_Start_DMA:
+ 525              		@ args = 0, pretend = 0, frame = 0
+ 526              		@ frame_needed = 0, uses_anonymous_args = 0
+ 527 0000 70B5     		push	{r4, r5, r6, lr}
+ 528 0002 90F83E50 		ldrb	r5, [r0, #62]	@ zero_extendqisi2
+ 529 0006 EDB2     		uxtb	r5, r5
+ 530 0008 90F84440 		ldrb	r4, [r0, #68]	@ zero_extendqisi2
+ 531 000c E4B2     		uxtb	r4, r4
+ 532 000e 022C     		cmp	r4, #2
+ 533 0010 18BF     		it	ne
+ 534 0012 022D     		cmpne	r5, #2
+ 535 0014 3DD0     		beq	.L51
+ 536 0016 012D     		cmp	r5, #1
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 10
+
+
+ 537 0018 08BF     		it	eq
+ 538 001a 012C     		cmpeq	r4, #1
+ 539 001c 3BD1     		bne	.L52
+ 540 001e B1FA81F3 		clz	r3, r1
+ 541 0022 5B09     		lsrs	r3, r3, #5
+ 542 0024 002A     		cmp	r2, #0
+ 543 0026 08BF     		it	eq
+ 544 0028 0023     		moveq	r3, #0
+ 545 002a 002B     		cmp	r3, #0
+ 546 002c 35D1     		bne	.L53
+ 547 002e 1646     		mov	r6, r2
+ 548 0030 0D46     		mov	r5, r1
+ 549 0032 0446     		mov	r4, r0
+ 550 0034 0223     		movs	r3, #2
+ 551 0036 80F83E30 		strb	r3, [r0, #62]
+ 552 003a 80F84430 		strb	r3, [r0, #68]
+ 553 003e 0122     		movs	r2, #1
+ 554 0040 0021     		movs	r1, #0
+ 555 0042 0068     		ldr	r0, [r0]
+ 556 0044 FFF7FEFF 		bl	TIM_CCxChannelCmd
+ 557 0048 636A     		ldr	r3, [r4, #36]
+ 558 004a 164A     		ldr	r2, .L56
+ 559 004c DA63     		str	r2, [r3, #60]
+ 560 004e 636A     		ldr	r3, [r4, #36]
+ 561 0050 154A     		ldr	r2, .L56+4
+ 562 0052 1A64     		str	r2, [r3, #64]
+ 563 0054 636A     		ldr	r3, [r4, #36]
+ 564 0056 154A     		ldr	r2, .L56+8
+ 565 0058 DA64     		str	r2, [r3, #76]
+ 566 005a 2168     		ldr	r1, [r4]
+ 567 005c 3346     		mov	r3, r6
+ 568 005e 2A46     		mov	r2, r5
+ 569 0060 3431     		adds	r1, r1, #52
+ 570 0062 606A     		ldr	r0, [r4, #36]
+ 571 0064 FFF7FEFF 		bl	HAL_DMA_Start_IT
+ 572 0068 0346     		mov	r3, r0
+ 573 006a C0B9     		cbnz	r0, .L54
+ 574 006c 2168     		ldr	r1, [r4]
+ 575 006e CA68     		ldr	r2, [r1, #12]
+ 576 0070 42F40072 		orr	r2, r2, #512
+ 577 0074 CA60     		str	r2, [r1, #12]
+ 578 0076 2168     		ldr	r1, [r4]
+ 579 0078 8868     		ldr	r0, [r1, #8]
+ 580 007a 0D4A     		ldr	r2, .L56+12
+ 581 007c 0240     		ands	r2, r2, r0
+ 582 007e 062A     		cmp	r2, #6
+ 583 0080 18BF     		it	ne
+ 584 0082 B2F5803F 		cmpne	r2, #65536
+ 585 0086 0BD0     		beq	.L50
+ 586 0088 0A68     		ldr	r2, [r1]
+ 587 008a 42F00102 		orr	r2, r2, #1
+ 588 008e 0A60     		str	r2, [r1]
+ 589 0090 06E0     		b	.L50
+ 590              	.L51:
+ 591 0092 0223     		movs	r3, #2
+ 592 0094 04E0     		b	.L50
+ 593              	.L52:
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 11
+
+
+ 594 0096 0123     		movs	r3, #1
+ 595 0098 02E0     		b	.L50
+ 596              	.L53:
+ 597 009a 0123     		movs	r3, #1
+ 598 009c 00E0     		b	.L50
+ 599              	.L54:
+ 600 009e 0123     		movs	r3, #1
+ 601              	.L50:
+ 602 00a0 1846     		mov	r0, r3
+ 603 00a2 70BD     		pop	{r4, r5, r6, pc}
+ 604              	.L57:
+ 605              		.align	2
+ 606              	.L56:
+ 607 00a4 00000000 		.word	TIM_DMACaptureCplt
+ 608 00a8 00000000 		.word	TIM_DMACaptureHalfCplt
+ 609 00ac 00000000 		.word	TIM_DMAError
+ 610 00b0 07000100 		.word	65543
+ 612              		.section	.text.HAL_TIMEx_HallSensor_Stop_DMA,"ax",%progbits
+ 613              		.align	2
+ 614              		.global	HAL_TIMEx_HallSensor_Stop_DMA
+ 615              		.thumb
+ 616              		.thumb_func
+ 618              	HAL_TIMEx_HallSensor_Stop_DMA:
+ 619              		@ args = 0, pretend = 0, frame = 0
+ 620              		@ frame_needed = 0, uses_anonymous_args = 0
+ 621 0000 10B5     		push	{r4, lr}
+ 622 0002 0446     		mov	r4, r0
+ 623 0004 0022     		movs	r2, #0
+ 624 0006 1146     		mov	r1, r2
+ 625 0008 0068     		ldr	r0, [r0]
+ 626 000a FFF7FEFF 		bl	TIM_CCxChannelCmd
+ 627 000e 2268     		ldr	r2, [r4]
+ 628 0010 D368     		ldr	r3, [r2, #12]
+ 629 0012 23F40073 		bic	r3, r3, #512
+ 630 0016 D360     		str	r3, [r2, #12]
+ 631 0018 606A     		ldr	r0, [r4, #36]
+ 632 001a FFF7FEFF 		bl	HAL_DMA_Abort_IT
+ 633 001e 2368     		ldr	r3, [r4]
+ 634 0020 196A     		ldr	r1, [r3, #32]
+ 635 0022 41F21112 		movw	r2, #4369
+ 636 0026 1142     		tst	r1, r2
+ 637 0028 08D1     		bne	.L59
+ 638 002a 196A     		ldr	r1, [r3, #32]
+ 639 002c 40F24442 		movw	r2, #1092
+ 640 0030 1142     		tst	r1, r2
+ 641 0032 03D1     		bne	.L59
+ 642 0034 1A68     		ldr	r2, [r3]
+ 643 0036 22F00102 		bic	r2, r2, #1
+ 644 003a 1A60     		str	r2, [r3]
+ 645              	.L59:
+ 646 003c 0123     		movs	r3, #1
+ 647 003e 84F83E30 		strb	r3, [r4, #62]
+ 648 0042 84F84430 		strb	r3, [r4, #68]
+ 649 0046 0020     		movs	r0, #0
+ 650 0048 10BD     		pop	{r4, pc}
+ 652 004a 00BF     		.section	.text.HAL_TIMEx_OCN_Start,"ax",%progbits
+ 653              		.align	2
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 12
+
+
+ 654              		.global	HAL_TIMEx_OCN_Start
+ 655              		.thumb
+ 656              		.thumb_func
+ 658              	HAL_TIMEx_OCN_Start:
+ 659              		@ args = 0, pretend = 0, frame = 0
+ 660              		@ frame_needed = 0, uses_anonymous_args = 0
+ 661 0000 0A46     		mov	r2, r1
+ 662 0002 39B9     		cbnz	r1, .L62
+ 663 0004 90F84430 		ldrb	r3, [r0, #68]	@ zero_extendqisi2
+ 664 0008 DBB2     		uxtb	r3, r3
+ 665 000a 13F1FF33 		adds	r3, r3, #-1
+ 666 000e 18BF     		it	ne
+ 667 0010 0123     		movne	r3, #1
+ 668 0012 1AE0     		b	.L63
+ 669              	.L62:
+ 670 0014 0429     		cmp	r1, #4
+ 671 0016 07D1     		bne	.L64
+ 672 0018 90F84530 		ldrb	r3, [r0, #69]	@ zero_extendqisi2
+ 673 001c DBB2     		uxtb	r3, r3
+ 674 001e 13F1FF33 		adds	r3, r3, #-1
+ 675 0022 18BF     		it	ne
+ 676 0024 0123     		movne	r3, #1
+ 677 0026 10E0     		b	.L63
+ 678              	.L64:
+ 679 0028 0829     		cmp	r1, #8
+ 680 002a 07D1     		bne	.L65
+ 681 002c 90F84630 		ldrb	r3, [r0, #70]	@ zero_extendqisi2
+ 682 0030 DBB2     		uxtb	r3, r3
+ 683 0032 13F1FF33 		adds	r3, r3, #-1
+ 684 0036 18BF     		it	ne
+ 685 0038 0123     		movne	r3, #1
+ 686 003a 06E0     		b	.L63
+ 687              	.L65:
+ 688 003c 90F84730 		ldrb	r3, [r0, #71]	@ zero_extendqisi2
+ 689 0040 DBB2     		uxtb	r3, r3
+ 690 0042 13F1FF33 		adds	r3, r3, #-1
+ 691 0046 18BF     		it	ne
+ 692 0048 0123     		movne	r3, #1
+ 693              	.L63:
+ 694 004a 73BB     		cbnz	r3, .L71
+ 695 004c 10B5     		push	{r4, lr}
+ 696 004e 1AB9     		cbnz	r2, .L67
+ 697 0050 0223     		movs	r3, #2
+ 698 0052 80F84430 		strb	r3, [r0, #68]
+ 699 0056 0EE0     		b	.L68
+ 700              	.L67:
+ 701 0058 042A     		cmp	r2, #4
+ 702 005a 03D1     		bne	.L69
+ 703 005c 0223     		movs	r3, #2
+ 704 005e 80F84530 		strb	r3, [r0, #69]
+ 705 0062 08E0     		b	.L68
+ 706              	.L69:
+ 707 0064 082A     		cmp	r2, #8
+ 708 0066 03D1     		bne	.L70
+ 709 0068 0223     		movs	r3, #2
+ 710 006a 80F84630 		strb	r3, [r0, #70]
+ 711 006e 02E0     		b	.L68
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 13
+
+
+ 712              	.L70:
+ 713 0070 0223     		movs	r3, #2
+ 714 0072 80F84730 		strb	r3, [r0, #71]
+ 715              	.L68:
+ 716 0076 1146     		mov	r1, r2
+ 717 0078 0446     		mov	r4, r0
+ 718 007a 0422     		movs	r2, #4
+ 719 007c 0068     		ldr	r0, [r0]
+ 720 007e FFF7FEFF 		bl	TIM_CCxNChannelCmd
+ 721 0082 2268     		ldr	r2, [r4]
+ 722 0084 536C     		ldr	r3, [r2, #68]
+ 723 0086 43F40043 		orr	r3, r3, #32768
+ 724 008a 5364     		str	r3, [r2, #68]
+ 725 008c 2268     		ldr	r2, [r4]
+ 726 008e 9168     		ldr	r1, [r2, #8]
+ 727 0090 084B     		ldr	r3, .L74
+ 728 0092 0B40     		ands	r3, r3, r1
+ 729 0094 062B     		cmp	r3, #6
+ 730 0096 18BF     		it	ne
+ 731 0098 B3F5803F 		cmpne	r3, #65536
+ 732 009c 07D0     		beq	.L72
+ 733 009e 1368     		ldr	r3, [r2]
+ 734 00a0 43F00103 		orr	r3, r3, #1
+ 735 00a4 1360     		str	r3, [r2]
+ 736 00a6 0020     		movs	r0, #0
+ 737 00a8 10BD     		pop	{r4, pc}
+ 738              	.L71:
+ 739 00aa 0120     		movs	r0, #1
+ 740 00ac 7047     		bx	lr
+ 741              	.L72:
+ 742 00ae 0020     		movs	r0, #0
+ 743 00b0 10BD     		pop	{r4, pc}
+ 744              	.L75:
+ 745 00b2 00BF     		.align	2
+ 746              	.L74:
+ 747 00b4 07000100 		.word	65543
+ 749              		.section	.text.HAL_TIMEx_OCN_Stop,"ax",%progbits
+ 750              		.align	2
+ 751              		.global	HAL_TIMEx_OCN_Stop
+ 752              		.thumb
+ 753              		.thumb_func
+ 755              	HAL_TIMEx_OCN_Stop:
+ 756              		@ args = 0, pretend = 0, frame = 0
+ 757              		@ frame_needed = 0, uses_anonymous_args = 0
+ 758 0000 38B5     		push	{r3, r4, r5, lr}
+ 759 0002 0446     		mov	r4, r0
+ 760 0004 0D46     		mov	r5, r1
+ 761 0006 0022     		movs	r2, #0
+ 762 0008 0068     		ldr	r0, [r0]
+ 763 000a FFF7FEFF 		bl	TIM_CCxNChannelCmd
+ 764 000e 2368     		ldr	r3, [r4]
+ 765 0010 196A     		ldr	r1, [r3, #32]
+ 766 0012 41F21112 		movw	r2, #4369
+ 767 0016 1142     		tst	r1, r2
+ 768 0018 08D1     		bne	.L77
+ 769 001a 196A     		ldr	r1, [r3, #32]
+ 770 001c 40F24442 		movw	r2, #1092
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 14
+
+
+ 771 0020 1142     		tst	r1, r2
+ 772 0022 03D1     		bne	.L77
+ 773 0024 5A6C     		ldr	r2, [r3, #68]
+ 774 0026 22F40042 		bic	r2, r2, #32768
+ 775 002a 5A64     		str	r2, [r3, #68]
+ 776              	.L77:
+ 777 002c 2368     		ldr	r3, [r4]
+ 778 002e 196A     		ldr	r1, [r3, #32]
+ 779 0030 41F21112 		movw	r2, #4369
+ 780 0034 1142     		tst	r1, r2
+ 781 0036 08D1     		bne	.L78
+ 782 0038 196A     		ldr	r1, [r3, #32]
+ 783 003a 40F24442 		movw	r2, #1092
+ 784 003e 1142     		tst	r1, r2
+ 785 0040 03D1     		bne	.L78
+ 786 0042 1A68     		ldr	r2, [r3]
+ 787 0044 22F00102 		bic	r2, r2, #1
+ 788 0048 1A60     		str	r2, [r3]
+ 789              	.L78:
+ 790 004a 1DB9     		cbnz	r5, .L79
+ 791 004c 0123     		movs	r3, #1
+ 792 004e 84F84430 		strb	r3, [r4, #68]
+ 793 0052 0EE0     		b	.L80
+ 794              	.L79:
+ 795 0054 042D     		cmp	r5, #4
+ 796 0056 03D1     		bne	.L81
+ 797 0058 0123     		movs	r3, #1
+ 798 005a 84F84530 		strb	r3, [r4, #69]
+ 799 005e 08E0     		b	.L80
+ 800              	.L81:
+ 801 0060 082D     		cmp	r5, #8
+ 802 0062 03D1     		bne	.L82
+ 803 0064 0123     		movs	r3, #1
+ 804 0066 84F84630 		strb	r3, [r4, #70]
+ 805 006a 02E0     		b	.L80
+ 806              	.L82:
+ 807 006c 0123     		movs	r3, #1
+ 808 006e 84F84730 		strb	r3, [r4, #71]
+ 809              	.L80:
+ 810 0072 0020     		movs	r0, #0
+ 811 0074 38BD     		pop	{r3, r4, r5, pc}
+ 813 0076 00BF     		.section	.text.HAL_TIMEx_OCN_Start_IT,"ax",%progbits
+ 814              		.align	2
+ 815              		.global	HAL_TIMEx_OCN_Start_IT
+ 816              		.thumb
+ 817              		.thumb_func
+ 819              	HAL_TIMEx_OCN_Start_IT:
+ 820              		@ args = 0, pretend = 0, frame = 0
+ 821              		@ frame_needed = 0, uses_anonymous_args = 0
+ 822 0000 0B46     		mov	r3, r1
+ 823 0002 39B9     		cbnz	r1, .L85
+ 824 0004 90F84420 		ldrb	r2, [r0, #68]	@ zero_extendqisi2
+ 825 0008 D2B2     		uxtb	r2, r2
+ 826 000a 12F1FF32 		adds	r2, r2, #-1
+ 827 000e 18BF     		it	ne
+ 828 0010 0122     		movne	r2, #1
+ 829 0012 1AE0     		b	.L86
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 15
+
+
+ 830              	.L85:
+ 831 0014 0429     		cmp	r1, #4
+ 832 0016 07D1     		bne	.L87
+ 833 0018 90F84520 		ldrb	r2, [r0, #69]	@ zero_extendqisi2
+ 834 001c D2B2     		uxtb	r2, r2
+ 835 001e 12F1FF32 		adds	r2, r2, #-1
+ 836 0022 18BF     		it	ne
+ 837 0024 0122     		movne	r2, #1
+ 838 0026 10E0     		b	.L86
+ 839              	.L87:
+ 840 0028 0829     		cmp	r1, #8
+ 841 002a 07D1     		bne	.L88
+ 842 002c 90F84620 		ldrb	r2, [r0, #70]	@ zero_extendqisi2
+ 843 0030 D2B2     		uxtb	r2, r2
+ 844 0032 12F1FF32 		adds	r2, r2, #-1
+ 845 0036 18BF     		it	ne
+ 846 0038 0122     		movne	r2, #1
+ 847 003a 06E0     		b	.L86
+ 848              	.L88:
+ 849 003c 90F84720 		ldrb	r2, [r0, #71]	@ zero_extendqisi2
+ 850 0040 D2B2     		uxtb	r2, r2
+ 851 0042 12F1FF32 		adds	r2, r2, #-1
+ 852 0046 18BF     		it	ne
+ 853 0048 0122     		movne	r2, #1
+ 854              	.L86:
+ 855 004a 002A     		cmp	r2, #0
+ 856 004c 49D1     		bne	.L98
+ 857 004e 10B5     		push	{r4, lr}
+ 858 0050 1BB9     		cbnz	r3, .L90
+ 859 0052 0222     		movs	r2, #2
+ 860 0054 80F84420 		strb	r2, [r0, #68]
+ 861 0058 0EE0     		b	.L91
+ 862              	.L90:
+ 863 005a 042B     		cmp	r3, #4
+ 864 005c 03D1     		bne	.L92
+ 865 005e 0222     		movs	r2, #2
+ 866 0060 80F84520 		strb	r2, [r0, #69]
+ 867 0064 08E0     		b	.L91
+ 868              	.L92:
+ 869 0066 082B     		cmp	r3, #8
+ 870 0068 03D1     		bne	.L93
+ 871 006a 0222     		movs	r2, #2
+ 872 006c 80F84620 		strb	r2, [r0, #70]
+ 873 0070 02E0     		b	.L91
+ 874              	.L93:
+ 875 0072 0222     		movs	r2, #2
+ 876 0074 80F84720 		strb	r2, [r0, #71]
+ 877              	.L91:
+ 878 0078 042B     		cmp	r3, #4
+ 879 007a 08D0     		beq	.L95
+ 880 007c 082B     		cmp	r3, #8
+ 881 007e 0CD0     		beq	.L96
+ 882 0080 83B9     		cbnz	r3, .L94
+ 883 0082 0168     		ldr	r1, [r0]
+ 884 0084 CA68     		ldr	r2, [r1, #12]
+ 885 0086 42F00202 		orr	r2, r2, #2
+ 886 008a CA60     		str	r2, [r1, #12]
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 16
+
+
+ 887 008c 0AE0     		b	.L94
+ 888              	.L95:
+ 889 008e 0168     		ldr	r1, [r0]
+ 890 0090 CA68     		ldr	r2, [r1, #12]
+ 891 0092 42F00402 		orr	r2, r2, #4
+ 892 0096 CA60     		str	r2, [r1, #12]
+ 893 0098 04E0     		b	.L94
+ 894              	.L96:
+ 895 009a 0168     		ldr	r1, [r0]
+ 896 009c CA68     		ldr	r2, [r1, #12]
+ 897 009e 42F00802 		orr	r2, r2, #8
+ 898 00a2 CA60     		str	r2, [r1, #12]
+ 899              	.L94:
+ 900 00a4 1946     		mov	r1, r3
+ 901 00a6 0446     		mov	r4, r0
+ 902 00a8 0268     		ldr	r2, [r0]
+ 903 00aa D368     		ldr	r3, [r2, #12]
+ 904 00ac 43F08003 		orr	r3, r3, #128
+ 905 00b0 D360     		str	r3, [r2, #12]
+ 906 00b2 0422     		movs	r2, #4
+ 907 00b4 0068     		ldr	r0, [r0]
+ 908 00b6 FFF7FEFF 		bl	TIM_CCxNChannelCmd
+ 909 00ba 2268     		ldr	r2, [r4]
+ 910 00bc 536C     		ldr	r3, [r2, #68]
+ 911 00be 43F40043 		orr	r3, r3, #32768
+ 912 00c2 5364     		str	r3, [r2, #68]
+ 913 00c4 2268     		ldr	r2, [r4]
+ 914 00c6 9168     		ldr	r1, [r2, #8]
+ 915 00c8 084B     		ldr	r3, .L101
+ 916 00ca 0B40     		ands	r3, r3, r1
+ 917 00cc 062B     		cmp	r3, #6
+ 918 00ce 18BF     		it	ne
+ 919 00d0 B3F5803F 		cmpne	r3, #65536
+ 920 00d4 07D0     		beq	.L99
+ 921 00d6 1368     		ldr	r3, [r2]
+ 922 00d8 43F00103 		orr	r3, r3, #1
+ 923 00dc 1360     		str	r3, [r2]
+ 924 00de 0020     		movs	r0, #0
+ 925 00e0 10BD     		pop	{r4, pc}
+ 926              	.L98:
+ 927 00e2 0120     		movs	r0, #1
+ 928 00e4 7047     		bx	lr
+ 929              	.L99:
+ 930 00e6 0020     		movs	r0, #0
+ 931 00e8 10BD     		pop	{r4, pc}
+ 932              	.L102:
+ 933 00ea 00BF     		.align	2
+ 934              	.L101:
+ 935 00ec 07000100 		.word	65543
+ 937              		.section	.text.HAL_TIMEx_OCN_Stop_IT,"ax",%progbits
+ 938              		.align	2
+ 939              		.global	HAL_TIMEx_OCN_Stop_IT
+ 940              		.thumb
+ 941              		.thumb_func
+ 943              	HAL_TIMEx_OCN_Stop_IT:
+ 944              		@ args = 0, pretend = 0, frame = 0
+ 945              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 17
+
+
+ 946 0000 38B5     		push	{r3, r4, r5, lr}
+ 947 0002 0446     		mov	r4, r0
+ 948 0004 0D46     		mov	r5, r1
+ 949 0006 0429     		cmp	r1, #4
+ 950 0008 08D0     		beq	.L105
+ 951 000a 0829     		cmp	r1, #8
+ 952 000c 0CD0     		beq	.L106
+ 953 000e 81B9     		cbnz	r1, .L104
+ 954 0010 0268     		ldr	r2, [r0]
+ 955 0012 D368     		ldr	r3, [r2, #12]
+ 956 0014 23F00203 		bic	r3, r3, #2
+ 957 0018 D360     		str	r3, [r2, #12]
+ 958 001a 0AE0     		b	.L104
+ 959              	.L105:
+ 960 001c 0268     		ldr	r2, [r0]
+ 961 001e D368     		ldr	r3, [r2, #12]
+ 962 0020 23F00403 		bic	r3, r3, #4
+ 963 0024 D360     		str	r3, [r2, #12]
+ 964 0026 04E0     		b	.L104
+ 965              	.L106:
+ 966 0028 0268     		ldr	r2, [r0]
+ 967 002a D368     		ldr	r3, [r2, #12]
+ 968 002c 23F00803 		bic	r3, r3, #8
+ 969 0030 D360     		str	r3, [r2, #12]
+ 970              	.L104:
+ 971 0032 0022     		movs	r2, #0
+ 972 0034 2946     		mov	r1, r5
+ 973 0036 2068     		ldr	r0, [r4]
+ 974 0038 FFF7FEFF 		bl	TIM_CCxNChannelCmd
+ 975 003c 2368     		ldr	r3, [r4]
+ 976 003e 196A     		ldr	r1, [r3, #32]
+ 977 0040 40F24442 		movw	r2, #1092
+ 978 0044 1142     		tst	r1, r2
+ 979 0046 03D1     		bne	.L108
+ 980 0048 DA68     		ldr	r2, [r3, #12]
+ 981 004a 22F08002 		bic	r2, r2, #128
+ 982 004e DA60     		str	r2, [r3, #12]
+ 983              	.L108:
+ 984 0050 2368     		ldr	r3, [r4]
+ 985 0052 196A     		ldr	r1, [r3, #32]
+ 986 0054 41F21112 		movw	r2, #4369
+ 987 0058 1142     		tst	r1, r2
+ 988 005a 08D1     		bne	.L109
+ 989 005c 196A     		ldr	r1, [r3, #32]
+ 990 005e 40F24442 		movw	r2, #1092
+ 991 0062 1142     		tst	r1, r2
+ 992 0064 03D1     		bne	.L109
+ 993 0066 5A6C     		ldr	r2, [r3, #68]
+ 994 0068 22F40042 		bic	r2, r2, #32768
+ 995 006c 5A64     		str	r2, [r3, #68]
+ 996              	.L109:
+ 997 006e 2368     		ldr	r3, [r4]
+ 998 0070 196A     		ldr	r1, [r3, #32]
+ 999 0072 41F21112 		movw	r2, #4369
+ 1000 0076 1142     		tst	r1, r2
+ 1001 0078 08D1     		bne	.L110
+ 1002 007a 196A     		ldr	r1, [r3, #32]
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 18
+
+
+ 1003 007c 40F24442 		movw	r2, #1092
+ 1004 0080 1142     		tst	r1, r2
+ 1005 0082 03D1     		bne	.L110
+ 1006 0084 1A68     		ldr	r2, [r3]
+ 1007 0086 22F00102 		bic	r2, r2, #1
+ 1008 008a 1A60     		str	r2, [r3]
+ 1009              	.L110:
+ 1010 008c 1DB9     		cbnz	r5, .L111
+ 1011 008e 0123     		movs	r3, #1
+ 1012 0090 84F84430 		strb	r3, [r4, #68]
+ 1013 0094 0EE0     		b	.L112
+ 1014              	.L111:
+ 1015 0096 042D     		cmp	r5, #4
+ 1016 0098 03D1     		bne	.L113
+ 1017 009a 0123     		movs	r3, #1
+ 1018 009c 84F84530 		strb	r3, [r4, #69]
+ 1019 00a0 08E0     		b	.L112
+ 1020              	.L113:
+ 1021 00a2 082D     		cmp	r5, #8
+ 1022 00a4 03D1     		bne	.L114
+ 1023 00a6 0123     		movs	r3, #1
+ 1024 00a8 84F84630 		strb	r3, [r4, #70]
+ 1025 00ac 02E0     		b	.L112
+ 1026              	.L114:
+ 1027 00ae 0123     		movs	r3, #1
+ 1028 00b0 84F84730 		strb	r3, [r4, #71]
+ 1029              	.L112:
+ 1030 00b4 0020     		movs	r0, #0
+ 1031 00b6 38BD     		pop	{r3, r4, r5, pc}
+ 1033              		.section	.text.HAL_TIMEx_OCN_Start_DMA,"ax",%progbits
+ 1034              		.align	2
+ 1035              		.global	HAL_TIMEx_OCN_Start_DMA
+ 1036              		.thumb
+ 1037              		.thumb_func
+ 1039              	HAL_TIMEx_OCN_Start_DMA:
+ 1040              		@ args = 0, pretend = 0, frame = 0
+ 1041              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1042 0000 38B5     		push	{r3, r4, r5, lr}
+ 1043 0002 0D46     		mov	r5, r1
+ 1044 0004 39B9     		cbnz	r1, .L117
+ 1045 0006 90F84440 		ldrb	r4, [r0, #68]	@ zero_extendqisi2
+ 1046 000a E4B2     		uxtb	r4, r4
+ 1047 000c 022C     		cmp	r4, #2
+ 1048 000e 14BF     		ite	ne
+ 1049 0010 0024     		movne	r4, #0
+ 1050 0012 0124     		moveq	r4, #1
+ 1051 0014 1AE0     		b	.L118
+ 1052              	.L117:
+ 1053 0016 0429     		cmp	r1, #4
+ 1054 0018 07D1     		bne	.L119
+ 1055 001a 90F84540 		ldrb	r4, [r0, #69]	@ zero_extendqisi2
+ 1056 001e E4B2     		uxtb	r4, r4
+ 1057 0020 022C     		cmp	r4, #2
+ 1058 0022 14BF     		ite	ne
+ 1059 0024 0024     		movne	r4, #0
+ 1060 0026 0124     		moveq	r4, #1
+ 1061 0028 10E0     		b	.L118
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 19
+
+
+ 1062              	.L119:
+ 1063 002a 0829     		cmp	r1, #8
+ 1064 002c 07D1     		bne	.L120
+ 1065 002e 90F84640 		ldrb	r4, [r0, #70]	@ zero_extendqisi2
+ 1066 0032 E4B2     		uxtb	r4, r4
+ 1067 0034 022C     		cmp	r4, #2
+ 1068 0036 14BF     		ite	ne
+ 1069 0038 0024     		movne	r4, #0
+ 1070 003a 0124     		moveq	r4, #1
+ 1071 003c 06E0     		b	.L118
+ 1072              	.L120:
+ 1073 003e 90F84740 		ldrb	r4, [r0, #71]	@ zero_extendqisi2
+ 1074 0042 E4B2     		uxtb	r4, r4
+ 1075 0044 022C     		cmp	r4, #2
+ 1076 0046 14BF     		ite	ne
+ 1077 0048 0024     		movne	r4, #0
+ 1078 004a 0124     		moveq	r4, #1
+ 1079              	.L118:
+ 1080 004c 002C     		cmp	r4, #0
+ 1081 004e 40F0A380 		bne	.L134
+ 1082 0052 3DB9     		cbnz	r5, .L122
+ 1083 0054 90F84410 		ldrb	r1, [r0, #68]	@ zero_extendqisi2
+ 1084 0058 C9B2     		uxtb	r1, r1
+ 1085 005a 0129     		cmp	r1, #1
+ 1086 005c 14BF     		ite	ne
+ 1087 005e 0021     		movne	r1, #0
+ 1088 0060 0121     		moveq	r1, #1
+ 1089 0062 1AE0     		b	.L123
+ 1090              	.L122:
+ 1091 0064 042D     		cmp	r5, #4
+ 1092 0066 07D1     		bne	.L124
+ 1093 0068 90F84510 		ldrb	r1, [r0, #69]	@ zero_extendqisi2
+ 1094 006c C9B2     		uxtb	r1, r1
+ 1095 006e 0129     		cmp	r1, #1
+ 1096 0070 14BF     		ite	ne
+ 1097 0072 0021     		movne	r1, #0
+ 1098 0074 0121     		moveq	r1, #1
+ 1099 0076 10E0     		b	.L123
+ 1100              	.L124:
+ 1101 0078 082D     		cmp	r5, #8
+ 1102 007a 07D1     		bne	.L125
+ 1103 007c 90F84610 		ldrb	r1, [r0, #70]	@ zero_extendqisi2
+ 1104 0080 C9B2     		uxtb	r1, r1
+ 1105 0082 0129     		cmp	r1, #1
+ 1106 0084 14BF     		ite	ne
+ 1107 0086 0021     		movne	r1, #0
+ 1108 0088 0121     		moveq	r1, #1
+ 1109 008a 06E0     		b	.L123
+ 1110              	.L125:
+ 1111 008c 90F84710 		ldrb	r1, [r0, #71]	@ zero_extendqisi2
+ 1112 0090 C9B2     		uxtb	r1, r1
+ 1113 0092 0129     		cmp	r1, #1
+ 1114 0094 14BF     		ite	ne
+ 1115 0096 0021     		movne	r1, #0
+ 1116 0098 0121     		moveq	r1, #1
+ 1117              	.L123:
+ 1118 009a 0029     		cmp	r1, #0
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 20
+
+
+ 1119 009c 7ED0     		beq	.L135
+ 1120 009e B2FA82F1 		clz	r1, r2
+ 1121 00a2 4909     		lsrs	r1, r1, #5
+ 1122 00a4 002B     		cmp	r3, #0
+ 1123 00a6 08BF     		it	eq
+ 1124 00a8 0021     		moveq	r1, #0
+ 1125 00aa 0029     		cmp	r1, #0
+ 1126 00ac 78D1     		bne	.L136
+ 1127 00ae 1DB9     		cbnz	r5, .L126
+ 1128 00b0 0221     		movs	r1, #2
+ 1129 00b2 80F84410 		strb	r1, [r0, #68]
+ 1130 00b6 0EE0     		b	.L127
+ 1131              	.L126:
+ 1132 00b8 042D     		cmp	r5, #4
+ 1133 00ba 03D1     		bne	.L128
+ 1134 00bc 0221     		movs	r1, #2
+ 1135 00be 80F84510 		strb	r1, [r0, #69]
+ 1136 00c2 08E0     		b	.L127
+ 1137              	.L128:
+ 1138 00c4 082D     		cmp	r5, #8
+ 1139 00c6 03D1     		bne	.L129
+ 1140 00c8 0221     		movs	r1, #2
+ 1141 00ca 80F84610 		strb	r1, [r0, #70]
+ 1142 00ce 02E0     		b	.L127
+ 1143              	.L129:
+ 1144 00d0 0221     		movs	r1, #2
+ 1145 00d2 80F84710 		strb	r1, [r0, #71]
+ 1146              	.L127:
+ 1147 00d6 1146     		mov	r1, r2
+ 1148 00d8 0446     		mov	r4, r0
+ 1149 00da 042D     		cmp	r5, #4
+ 1150 00dc 19D0     		beq	.L131
+ 1151 00de 082D     		cmp	r5, #8
+ 1152 00e0 2DD0     		beq	.L132
+ 1153 00e2 002D     		cmp	r5, #0
+ 1154 00e4 3FD1     		bne	.L130
+ 1155 00e6 426A     		ldr	r2, [r0, #36]
+ 1156 00e8 3248     		ldr	r0, .L142
+ 1157 00ea D063     		str	r0, [r2, #60]
+ 1158 00ec 626A     		ldr	r2, [r4, #36]
+ 1159 00ee 3248     		ldr	r0, .L142+4
+ 1160 00f0 1064     		str	r0, [r2, #64]
+ 1161 00f2 626A     		ldr	r2, [r4, #36]
+ 1162 00f4 3148     		ldr	r0, .L142+8
+ 1163 00f6 D064     		str	r0, [r2, #76]
+ 1164 00f8 2268     		ldr	r2, [r4]
+ 1165 00fa 3432     		adds	r2, r2, #52
+ 1166 00fc 606A     		ldr	r0, [r4, #36]
+ 1167 00fe FFF7FEFF 		bl	HAL_DMA_Start_IT
+ 1168 0102 0028     		cmp	r0, #0
+ 1169 0104 4ED1     		bne	.L137
+ 1170 0106 2268     		ldr	r2, [r4]
+ 1171 0108 D368     		ldr	r3, [r2, #12]
+ 1172 010a 43F40073 		orr	r3, r3, #512
+ 1173 010e D360     		str	r3, [r2, #12]
+ 1174 0110 29E0     		b	.L130
+ 1175              	.L131:
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 21
+
+
+ 1176 0112 826A     		ldr	r2, [r0, #40]
+ 1177 0114 2748     		ldr	r0, .L142
+ 1178 0116 D063     		str	r0, [r2, #60]
+ 1179 0118 A26A     		ldr	r2, [r4, #40]
+ 1180 011a 2748     		ldr	r0, .L142+4
+ 1181 011c 1064     		str	r0, [r2, #64]
+ 1182 011e A26A     		ldr	r2, [r4, #40]
+ 1183 0120 2648     		ldr	r0, .L142+8
+ 1184 0122 D064     		str	r0, [r2, #76]
+ 1185 0124 2268     		ldr	r2, [r4]
+ 1186 0126 3832     		adds	r2, r2, #56
+ 1187 0128 A06A     		ldr	r0, [r4, #40]
+ 1188 012a FFF7FEFF 		bl	HAL_DMA_Start_IT
+ 1189 012e 0028     		cmp	r0, #0
+ 1190 0130 3AD1     		bne	.L138
+ 1191 0132 2268     		ldr	r2, [r4]
+ 1192 0134 D368     		ldr	r3, [r2, #12]
+ 1193 0136 43F48063 		orr	r3, r3, #1024
+ 1194 013a D360     		str	r3, [r2, #12]
+ 1195 013c 13E0     		b	.L130
+ 1196              	.L132:
+ 1197 013e C26A     		ldr	r2, [r0, #44]
+ 1198 0140 1C48     		ldr	r0, .L142
+ 1199 0142 D063     		str	r0, [r2, #60]
+ 1200 0144 E26A     		ldr	r2, [r4, #44]
+ 1201 0146 1C48     		ldr	r0, .L142+4
+ 1202 0148 1064     		str	r0, [r2, #64]
+ 1203 014a E26A     		ldr	r2, [r4, #44]
+ 1204 014c 1B48     		ldr	r0, .L142+8
+ 1205 014e D064     		str	r0, [r2, #76]
+ 1206 0150 2268     		ldr	r2, [r4]
+ 1207 0152 3C32     		adds	r2, r2, #60
+ 1208 0154 E06A     		ldr	r0, [r4, #44]
+ 1209 0156 FFF7FEFF 		bl	HAL_DMA_Start_IT
+ 1210 015a 38BB     		cbnz	r0, .L139
+ 1211 015c 2268     		ldr	r2, [r4]
+ 1212 015e D368     		ldr	r3, [r2, #12]
+ 1213 0160 43F40063 		orr	r3, r3, #2048
+ 1214 0164 D360     		str	r3, [r2, #12]
+ 1215              	.L130:
+ 1216 0166 0422     		movs	r2, #4
+ 1217 0168 2946     		mov	r1, r5
+ 1218 016a 2068     		ldr	r0, [r4]
+ 1219 016c FFF7FEFF 		bl	TIM_CCxNChannelCmd
+ 1220 0170 2268     		ldr	r2, [r4]
+ 1221 0172 536C     		ldr	r3, [r2, #68]
+ 1222 0174 43F40043 		orr	r3, r3, #32768
+ 1223 0178 5364     		str	r3, [r2, #68]
+ 1224 017a 2268     		ldr	r2, [r4]
+ 1225 017c 9168     		ldr	r1, [r2, #8]
+ 1226 017e 104B     		ldr	r3, .L142+12
+ 1227 0180 0B40     		ands	r3, r3, r1
+ 1228 0182 062B     		cmp	r3, #6
+ 1229 0184 18BF     		it	ne
+ 1230 0186 B3F5803F 		cmpne	r3, #65536
+ 1231 018a 11D0     		beq	.L140
+ 1232 018c 1368     		ldr	r3, [r2]
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 22
+
+
+ 1233 018e 43F00103 		orr	r3, r3, #1
+ 1234 0192 1360     		str	r3, [r2]
+ 1235 0194 0020     		movs	r0, #0
+ 1236 0196 38BD     		pop	{r3, r4, r5, pc}
+ 1237              	.L134:
+ 1238 0198 0220     		movs	r0, #2
+ 1239 019a 38BD     		pop	{r3, r4, r5, pc}
+ 1240              	.L135:
+ 1241 019c 0120     		movs	r0, #1
+ 1242 019e 38BD     		pop	{r3, r4, r5, pc}
+ 1243              	.L136:
+ 1244 01a0 0120     		movs	r0, #1
+ 1245 01a2 38BD     		pop	{r3, r4, r5, pc}
+ 1246              	.L137:
+ 1247 01a4 0120     		movs	r0, #1
+ 1248 01a6 38BD     		pop	{r3, r4, r5, pc}
+ 1249              	.L138:
+ 1250 01a8 0120     		movs	r0, #1
+ 1251 01aa 38BD     		pop	{r3, r4, r5, pc}
+ 1252              	.L139:
+ 1253 01ac 0120     		movs	r0, #1
+ 1254 01ae 38BD     		pop	{r3, r4, r5, pc}
+ 1255              	.L140:
+ 1256 01b0 0020     		movs	r0, #0
+ 1257 01b2 38BD     		pop	{r3, r4, r5, pc}
+ 1258              	.L143:
+ 1259              		.align	2
+ 1260              	.L142:
+ 1261 01b4 00000000 		.word	TIM_DMADelayPulseNCplt
+ 1262 01b8 00000000 		.word	TIM_DMADelayPulseHalfCplt
+ 1263 01bc 00000000 		.word	TIM_DMAErrorCCxN
+ 1264 01c0 07000100 		.word	65543
+ 1266              		.section	.text.HAL_TIMEx_OCN_Stop_DMA,"ax",%progbits
+ 1267              		.align	2
+ 1268              		.global	HAL_TIMEx_OCN_Stop_DMA
+ 1269              		.thumb
+ 1270              		.thumb_func
+ 1272              	HAL_TIMEx_OCN_Stop_DMA:
+ 1273              		@ args = 0, pretend = 0, frame = 0
+ 1274              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1275 0000 38B5     		push	{r3, r4, r5, lr}
+ 1276 0002 0446     		mov	r4, r0
+ 1277 0004 0D46     		mov	r5, r1
+ 1278 0006 0429     		cmp	r1, #4
+ 1279 0008 0BD0     		beq	.L146
+ 1280 000a 0829     		cmp	r1, #8
+ 1281 000c 12D0     		beq	.L147
+ 1282 000e C9B9     		cbnz	r1, .L145
+ 1283 0010 0268     		ldr	r2, [r0]
+ 1284 0012 D368     		ldr	r3, [r2, #12]
+ 1285 0014 23F40073 		bic	r3, r3, #512
+ 1286 0018 D360     		str	r3, [r2, #12]
+ 1287 001a 406A     		ldr	r0, [r0, #36]
+ 1288 001c FFF7FEFF 		bl	HAL_DMA_Abort_IT
+ 1289 0020 10E0     		b	.L145
+ 1290              	.L146:
+ 1291 0022 0268     		ldr	r2, [r0]
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 23
+
+
+ 1292 0024 D368     		ldr	r3, [r2, #12]
+ 1293 0026 23F48063 		bic	r3, r3, #1024
+ 1294 002a D360     		str	r3, [r2, #12]
+ 1295 002c 806A     		ldr	r0, [r0, #40]
+ 1296 002e FFF7FEFF 		bl	HAL_DMA_Abort_IT
+ 1297 0032 07E0     		b	.L145
+ 1298              	.L147:
+ 1299 0034 0268     		ldr	r2, [r0]
+ 1300 0036 D368     		ldr	r3, [r2, #12]
+ 1301 0038 23F40063 		bic	r3, r3, #2048
+ 1302 003c D360     		str	r3, [r2, #12]
+ 1303 003e C06A     		ldr	r0, [r0, #44]
+ 1304 0040 FFF7FEFF 		bl	HAL_DMA_Abort_IT
+ 1305              	.L145:
+ 1306 0044 0022     		movs	r2, #0
+ 1307 0046 2946     		mov	r1, r5
+ 1308 0048 2068     		ldr	r0, [r4]
+ 1309 004a FFF7FEFF 		bl	TIM_CCxNChannelCmd
+ 1310 004e 2368     		ldr	r3, [r4]
+ 1311 0050 196A     		ldr	r1, [r3, #32]
+ 1312 0052 41F21112 		movw	r2, #4369
+ 1313 0056 1142     		tst	r1, r2
+ 1314 0058 08D1     		bne	.L149
+ 1315 005a 196A     		ldr	r1, [r3, #32]
+ 1316 005c 40F24442 		movw	r2, #1092
+ 1317 0060 1142     		tst	r1, r2
+ 1318 0062 03D1     		bne	.L149
+ 1319 0064 5A6C     		ldr	r2, [r3, #68]
+ 1320 0066 22F40042 		bic	r2, r2, #32768
+ 1321 006a 5A64     		str	r2, [r3, #68]
+ 1322              	.L149:
+ 1323 006c 2368     		ldr	r3, [r4]
+ 1324 006e 196A     		ldr	r1, [r3, #32]
+ 1325 0070 41F21112 		movw	r2, #4369
+ 1326 0074 1142     		tst	r1, r2
+ 1327 0076 08D1     		bne	.L150
+ 1328 0078 196A     		ldr	r1, [r3, #32]
+ 1329 007a 40F24442 		movw	r2, #1092
+ 1330 007e 1142     		tst	r1, r2
+ 1331 0080 03D1     		bne	.L150
+ 1332 0082 1A68     		ldr	r2, [r3]
+ 1333 0084 22F00102 		bic	r2, r2, #1
+ 1334 0088 1A60     		str	r2, [r3]
+ 1335              	.L150:
+ 1336 008a 1DB9     		cbnz	r5, .L151
+ 1337 008c 0123     		movs	r3, #1
+ 1338 008e 84F84430 		strb	r3, [r4, #68]
+ 1339 0092 0EE0     		b	.L152
+ 1340              	.L151:
+ 1341 0094 042D     		cmp	r5, #4
+ 1342 0096 03D1     		bne	.L153
+ 1343 0098 0123     		movs	r3, #1
+ 1344 009a 84F84530 		strb	r3, [r4, #69]
+ 1345 009e 08E0     		b	.L152
+ 1346              	.L153:
+ 1347 00a0 082D     		cmp	r5, #8
+ 1348 00a2 03D1     		bne	.L154
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 24
+
+
+ 1349 00a4 0123     		movs	r3, #1
+ 1350 00a6 84F84630 		strb	r3, [r4, #70]
+ 1351 00aa 02E0     		b	.L152
+ 1352              	.L154:
+ 1353 00ac 0123     		movs	r3, #1
+ 1354 00ae 84F84730 		strb	r3, [r4, #71]
+ 1355              	.L152:
+ 1356 00b2 0020     		movs	r0, #0
+ 1357 00b4 38BD     		pop	{r3, r4, r5, pc}
+ 1359 00b6 00BF     		.section	.text.HAL_TIMEx_PWMN_Start,"ax",%progbits
+ 1360              		.align	2
+ 1361              		.global	HAL_TIMEx_PWMN_Start
+ 1362              		.thumb
+ 1363              		.thumb_func
+ 1365              	HAL_TIMEx_PWMN_Start:
+ 1366              		@ args = 0, pretend = 0, frame = 0
+ 1367              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1368 0000 0A46     		mov	r2, r1
+ 1369 0002 39B9     		cbnz	r1, .L157
+ 1370 0004 90F84430 		ldrb	r3, [r0, #68]	@ zero_extendqisi2
+ 1371 0008 DBB2     		uxtb	r3, r3
+ 1372 000a 13F1FF33 		adds	r3, r3, #-1
+ 1373 000e 18BF     		it	ne
+ 1374 0010 0123     		movne	r3, #1
+ 1375 0012 1AE0     		b	.L158
+ 1376              	.L157:
+ 1377 0014 0429     		cmp	r1, #4
+ 1378 0016 07D1     		bne	.L159
+ 1379 0018 90F84530 		ldrb	r3, [r0, #69]	@ zero_extendqisi2
+ 1380 001c DBB2     		uxtb	r3, r3
+ 1381 001e 13F1FF33 		adds	r3, r3, #-1
+ 1382 0022 18BF     		it	ne
+ 1383 0024 0123     		movne	r3, #1
+ 1384 0026 10E0     		b	.L158
+ 1385              	.L159:
+ 1386 0028 0829     		cmp	r1, #8
+ 1387 002a 07D1     		bne	.L160
+ 1388 002c 90F84630 		ldrb	r3, [r0, #70]	@ zero_extendqisi2
+ 1389 0030 DBB2     		uxtb	r3, r3
+ 1390 0032 13F1FF33 		adds	r3, r3, #-1
+ 1391 0036 18BF     		it	ne
+ 1392 0038 0123     		movne	r3, #1
+ 1393 003a 06E0     		b	.L158
+ 1394              	.L160:
+ 1395 003c 90F84730 		ldrb	r3, [r0, #71]	@ zero_extendqisi2
+ 1396 0040 DBB2     		uxtb	r3, r3
+ 1397 0042 13F1FF33 		adds	r3, r3, #-1
+ 1398 0046 18BF     		it	ne
+ 1399 0048 0123     		movne	r3, #1
+ 1400              	.L158:
+ 1401 004a 73BB     		cbnz	r3, .L166
+ 1402 004c 10B5     		push	{r4, lr}
+ 1403 004e 1AB9     		cbnz	r2, .L162
+ 1404 0050 0223     		movs	r3, #2
+ 1405 0052 80F84430 		strb	r3, [r0, #68]
+ 1406 0056 0EE0     		b	.L163
+ 1407              	.L162:
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 25
+
+
+ 1408 0058 042A     		cmp	r2, #4
+ 1409 005a 03D1     		bne	.L164
+ 1410 005c 0223     		movs	r3, #2
+ 1411 005e 80F84530 		strb	r3, [r0, #69]
+ 1412 0062 08E0     		b	.L163
+ 1413              	.L164:
+ 1414 0064 082A     		cmp	r2, #8
+ 1415 0066 03D1     		bne	.L165
+ 1416 0068 0223     		movs	r3, #2
+ 1417 006a 80F84630 		strb	r3, [r0, #70]
+ 1418 006e 02E0     		b	.L163
+ 1419              	.L165:
+ 1420 0070 0223     		movs	r3, #2
+ 1421 0072 80F84730 		strb	r3, [r0, #71]
+ 1422              	.L163:
+ 1423 0076 1146     		mov	r1, r2
+ 1424 0078 0446     		mov	r4, r0
+ 1425 007a 0422     		movs	r2, #4
+ 1426 007c 0068     		ldr	r0, [r0]
+ 1427 007e FFF7FEFF 		bl	TIM_CCxNChannelCmd
+ 1428 0082 2268     		ldr	r2, [r4]
+ 1429 0084 536C     		ldr	r3, [r2, #68]
+ 1430 0086 43F40043 		orr	r3, r3, #32768
+ 1431 008a 5364     		str	r3, [r2, #68]
+ 1432 008c 2268     		ldr	r2, [r4]
+ 1433 008e 9168     		ldr	r1, [r2, #8]
+ 1434 0090 084B     		ldr	r3, .L169
+ 1435 0092 0B40     		ands	r3, r3, r1
+ 1436 0094 062B     		cmp	r3, #6
+ 1437 0096 18BF     		it	ne
+ 1438 0098 B3F5803F 		cmpne	r3, #65536
+ 1439 009c 07D0     		beq	.L167
+ 1440 009e 1368     		ldr	r3, [r2]
+ 1441 00a0 43F00103 		orr	r3, r3, #1
+ 1442 00a4 1360     		str	r3, [r2]
+ 1443 00a6 0020     		movs	r0, #0
+ 1444 00a8 10BD     		pop	{r4, pc}
+ 1445              	.L166:
+ 1446 00aa 0120     		movs	r0, #1
+ 1447 00ac 7047     		bx	lr
+ 1448              	.L167:
+ 1449 00ae 0020     		movs	r0, #0
+ 1450 00b0 10BD     		pop	{r4, pc}
+ 1451              	.L170:
+ 1452 00b2 00BF     		.align	2
+ 1453              	.L169:
+ 1454 00b4 07000100 		.word	65543
+ 1456              		.section	.text.HAL_TIMEx_PWMN_Stop,"ax",%progbits
+ 1457              		.align	2
+ 1458              		.global	HAL_TIMEx_PWMN_Stop
+ 1459              		.thumb
+ 1460              		.thumb_func
+ 1462              	HAL_TIMEx_PWMN_Stop:
+ 1463              		@ args = 0, pretend = 0, frame = 0
+ 1464              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1465 0000 38B5     		push	{r3, r4, r5, lr}
+ 1466 0002 0446     		mov	r4, r0
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 26
+
+
+ 1467 0004 0D46     		mov	r5, r1
+ 1468 0006 0022     		movs	r2, #0
+ 1469 0008 0068     		ldr	r0, [r0]
+ 1470 000a FFF7FEFF 		bl	TIM_CCxNChannelCmd
+ 1471 000e 2368     		ldr	r3, [r4]
+ 1472 0010 196A     		ldr	r1, [r3, #32]
+ 1473 0012 41F21112 		movw	r2, #4369
+ 1474 0016 1142     		tst	r1, r2
+ 1475 0018 08D1     		bne	.L172
+ 1476 001a 196A     		ldr	r1, [r3, #32]
+ 1477 001c 40F24442 		movw	r2, #1092
+ 1478 0020 1142     		tst	r1, r2
+ 1479 0022 03D1     		bne	.L172
+ 1480 0024 5A6C     		ldr	r2, [r3, #68]
+ 1481 0026 22F40042 		bic	r2, r2, #32768
+ 1482 002a 5A64     		str	r2, [r3, #68]
+ 1483              	.L172:
+ 1484 002c 2368     		ldr	r3, [r4]
+ 1485 002e 196A     		ldr	r1, [r3, #32]
+ 1486 0030 41F21112 		movw	r2, #4369
+ 1487 0034 1142     		tst	r1, r2
+ 1488 0036 08D1     		bne	.L173
+ 1489 0038 196A     		ldr	r1, [r3, #32]
+ 1490 003a 40F24442 		movw	r2, #1092
+ 1491 003e 1142     		tst	r1, r2
+ 1492 0040 03D1     		bne	.L173
+ 1493 0042 1A68     		ldr	r2, [r3]
+ 1494 0044 22F00102 		bic	r2, r2, #1
+ 1495 0048 1A60     		str	r2, [r3]
+ 1496              	.L173:
+ 1497 004a 1DB9     		cbnz	r5, .L174
+ 1498 004c 0123     		movs	r3, #1
+ 1499 004e 84F84430 		strb	r3, [r4, #68]
+ 1500 0052 0EE0     		b	.L175
+ 1501              	.L174:
+ 1502 0054 042D     		cmp	r5, #4
+ 1503 0056 03D1     		bne	.L176
+ 1504 0058 0123     		movs	r3, #1
+ 1505 005a 84F84530 		strb	r3, [r4, #69]
+ 1506 005e 08E0     		b	.L175
+ 1507              	.L176:
+ 1508 0060 082D     		cmp	r5, #8
+ 1509 0062 03D1     		bne	.L177
+ 1510 0064 0123     		movs	r3, #1
+ 1511 0066 84F84630 		strb	r3, [r4, #70]
+ 1512 006a 02E0     		b	.L175
+ 1513              	.L177:
+ 1514 006c 0123     		movs	r3, #1
+ 1515 006e 84F84730 		strb	r3, [r4, #71]
+ 1516              	.L175:
+ 1517 0072 0020     		movs	r0, #0
+ 1518 0074 38BD     		pop	{r3, r4, r5, pc}
+ 1520 0076 00BF     		.section	.text.HAL_TIMEx_PWMN_Start_IT,"ax",%progbits
+ 1521              		.align	2
+ 1522              		.global	HAL_TIMEx_PWMN_Start_IT
+ 1523              		.thumb
+ 1524              		.thumb_func
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 27
+
+
+ 1526              	HAL_TIMEx_PWMN_Start_IT:
+ 1527              		@ args = 0, pretend = 0, frame = 0
+ 1528              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1529 0000 0B46     		mov	r3, r1
+ 1530 0002 39B9     		cbnz	r1, .L180
+ 1531 0004 90F84420 		ldrb	r2, [r0, #68]	@ zero_extendqisi2
+ 1532 0008 D2B2     		uxtb	r2, r2
+ 1533 000a 12F1FF32 		adds	r2, r2, #-1
+ 1534 000e 18BF     		it	ne
+ 1535 0010 0122     		movne	r2, #1
+ 1536 0012 1AE0     		b	.L181
+ 1537              	.L180:
+ 1538 0014 0429     		cmp	r1, #4
+ 1539 0016 07D1     		bne	.L182
+ 1540 0018 90F84520 		ldrb	r2, [r0, #69]	@ zero_extendqisi2
+ 1541 001c D2B2     		uxtb	r2, r2
+ 1542 001e 12F1FF32 		adds	r2, r2, #-1
+ 1543 0022 18BF     		it	ne
+ 1544 0024 0122     		movne	r2, #1
+ 1545 0026 10E0     		b	.L181
+ 1546              	.L182:
+ 1547 0028 0829     		cmp	r1, #8
+ 1548 002a 07D1     		bne	.L183
+ 1549 002c 90F84620 		ldrb	r2, [r0, #70]	@ zero_extendqisi2
+ 1550 0030 D2B2     		uxtb	r2, r2
+ 1551 0032 12F1FF32 		adds	r2, r2, #-1
+ 1552 0036 18BF     		it	ne
+ 1553 0038 0122     		movne	r2, #1
+ 1554 003a 06E0     		b	.L181
+ 1555              	.L183:
+ 1556 003c 90F84720 		ldrb	r2, [r0, #71]	@ zero_extendqisi2
+ 1557 0040 D2B2     		uxtb	r2, r2
+ 1558 0042 12F1FF32 		adds	r2, r2, #-1
+ 1559 0046 18BF     		it	ne
+ 1560 0048 0122     		movne	r2, #1
+ 1561              	.L181:
+ 1562 004a 002A     		cmp	r2, #0
+ 1563 004c 49D1     		bne	.L193
+ 1564 004e 10B5     		push	{r4, lr}
+ 1565 0050 1BB9     		cbnz	r3, .L185
+ 1566 0052 0222     		movs	r2, #2
+ 1567 0054 80F84420 		strb	r2, [r0, #68]
+ 1568 0058 0EE0     		b	.L186
+ 1569              	.L185:
+ 1570 005a 042B     		cmp	r3, #4
+ 1571 005c 03D1     		bne	.L187
+ 1572 005e 0222     		movs	r2, #2
+ 1573 0060 80F84520 		strb	r2, [r0, #69]
+ 1574 0064 08E0     		b	.L186
+ 1575              	.L187:
+ 1576 0066 082B     		cmp	r3, #8
+ 1577 0068 03D1     		bne	.L188
+ 1578 006a 0222     		movs	r2, #2
+ 1579 006c 80F84620 		strb	r2, [r0, #70]
+ 1580 0070 02E0     		b	.L186
+ 1581              	.L188:
+ 1582 0072 0222     		movs	r2, #2
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 28
+
+
+ 1583 0074 80F84720 		strb	r2, [r0, #71]
+ 1584              	.L186:
+ 1585 0078 042B     		cmp	r3, #4
+ 1586 007a 08D0     		beq	.L190
+ 1587 007c 082B     		cmp	r3, #8
+ 1588 007e 0CD0     		beq	.L191
+ 1589 0080 83B9     		cbnz	r3, .L189
+ 1590 0082 0168     		ldr	r1, [r0]
+ 1591 0084 CA68     		ldr	r2, [r1, #12]
+ 1592 0086 42F00202 		orr	r2, r2, #2
+ 1593 008a CA60     		str	r2, [r1, #12]
+ 1594 008c 0AE0     		b	.L189
+ 1595              	.L190:
+ 1596 008e 0168     		ldr	r1, [r0]
+ 1597 0090 CA68     		ldr	r2, [r1, #12]
+ 1598 0092 42F00402 		orr	r2, r2, #4
+ 1599 0096 CA60     		str	r2, [r1, #12]
+ 1600 0098 04E0     		b	.L189
+ 1601              	.L191:
+ 1602 009a 0168     		ldr	r1, [r0]
+ 1603 009c CA68     		ldr	r2, [r1, #12]
+ 1604 009e 42F00802 		orr	r2, r2, #8
+ 1605 00a2 CA60     		str	r2, [r1, #12]
+ 1606              	.L189:
+ 1607 00a4 1946     		mov	r1, r3
+ 1608 00a6 0446     		mov	r4, r0
+ 1609 00a8 0268     		ldr	r2, [r0]
+ 1610 00aa D368     		ldr	r3, [r2, #12]
+ 1611 00ac 43F08003 		orr	r3, r3, #128
+ 1612 00b0 D360     		str	r3, [r2, #12]
+ 1613 00b2 0422     		movs	r2, #4
+ 1614 00b4 0068     		ldr	r0, [r0]
+ 1615 00b6 FFF7FEFF 		bl	TIM_CCxNChannelCmd
+ 1616 00ba 2268     		ldr	r2, [r4]
+ 1617 00bc 536C     		ldr	r3, [r2, #68]
+ 1618 00be 43F40043 		orr	r3, r3, #32768
+ 1619 00c2 5364     		str	r3, [r2, #68]
+ 1620 00c4 2268     		ldr	r2, [r4]
+ 1621 00c6 9168     		ldr	r1, [r2, #8]
+ 1622 00c8 084B     		ldr	r3, .L196
+ 1623 00ca 0B40     		ands	r3, r3, r1
+ 1624 00cc 062B     		cmp	r3, #6
+ 1625 00ce 18BF     		it	ne
+ 1626 00d0 B3F5803F 		cmpne	r3, #65536
+ 1627 00d4 07D0     		beq	.L194
+ 1628 00d6 1368     		ldr	r3, [r2]
+ 1629 00d8 43F00103 		orr	r3, r3, #1
+ 1630 00dc 1360     		str	r3, [r2]
+ 1631 00de 0020     		movs	r0, #0
+ 1632 00e0 10BD     		pop	{r4, pc}
+ 1633              	.L193:
+ 1634 00e2 0120     		movs	r0, #1
+ 1635 00e4 7047     		bx	lr
+ 1636              	.L194:
+ 1637 00e6 0020     		movs	r0, #0
+ 1638 00e8 10BD     		pop	{r4, pc}
+ 1639              	.L197:
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 29
+
+
+ 1640 00ea 00BF     		.align	2
+ 1641              	.L196:
+ 1642 00ec 07000100 		.word	65543
+ 1644              		.section	.text.HAL_TIMEx_PWMN_Stop_IT,"ax",%progbits
+ 1645              		.align	2
+ 1646              		.global	HAL_TIMEx_PWMN_Stop_IT
+ 1647              		.thumb
+ 1648              		.thumb_func
+ 1650              	HAL_TIMEx_PWMN_Stop_IT:
+ 1651              		@ args = 0, pretend = 0, frame = 0
+ 1652              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1653 0000 38B5     		push	{r3, r4, r5, lr}
+ 1654 0002 0446     		mov	r4, r0
+ 1655 0004 0D46     		mov	r5, r1
+ 1656 0006 0429     		cmp	r1, #4
+ 1657 0008 08D0     		beq	.L200
+ 1658 000a 0829     		cmp	r1, #8
+ 1659 000c 0CD0     		beq	.L201
+ 1660 000e 81B9     		cbnz	r1, .L199
+ 1661 0010 0268     		ldr	r2, [r0]
+ 1662 0012 D368     		ldr	r3, [r2, #12]
+ 1663 0014 23F00203 		bic	r3, r3, #2
+ 1664 0018 D360     		str	r3, [r2, #12]
+ 1665 001a 0AE0     		b	.L199
+ 1666              	.L200:
+ 1667 001c 0268     		ldr	r2, [r0]
+ 1668 001e D368     		ldr	r3, [r2, #12]
+ 1669 0020 23F00403 		bic	r3, r3, #4
+ 1670 0024 D360     		str	r3, [r2, #12]
+ 1671 0026 04E0     		b	.L199
+ 1672              	.L201:
+ 1673 0028 0268     		ldr	r2, [r0]
+ 1674 002a D368     		ldr	r3, [r2, #12]
+ 1675 002c 23F00803 		bic	r3, r3, #8
+ 1676 0030 D360     		str	r3, [r2, #12]
+ 1677              	.L199:
+ 1678 0032 0022     		movs	r2, #0
+ 1679 0034 2946     		mov	r1, r5
+ 1680 0036 2068     		ldr	r0, [r4]
+ 1681 0038 FFF7FEFF 		bl	TIM_CCxNChannelCmd
+ 1682 003c 2368     		ldr	r3, [r4]
+ 1683 003e 196A     		ldr	r1, [r3, #32]
+ 1684 0040 40F24442 		movw	r2, #1092
+ 1685 0044 1142     		tst	r1, r2
+ 1686 0046 03D1     		bne	.L203
+ 1687 0048 DA68     		ldr	r2, [r3, #12]
+ 1688 004a 22F08002 		bic	r2, r2, #128
+ 1689 004e DA60     		str	r2, [r3, #12]
+ 1690              	.L203:
+ 1691 0050 2368     		ldr	r3, [r4]
+ 1692 0052 196A     		ldr	r1, [r3, #32]
+ 1693 0054 41F21112 		movw	r2, #4369
+ 1694 0058 1142     		tst	r1, r2
+ 1695 005a 08D1     		bne	.L204
+ 1696 005c 196A     		ldr	r1, [r3, #32]
+ 1697 005e 40F24442 		movw	r2, #1092
+ 1698 0062 1142     		tst	r1, r2
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 30
+
+
+ 1699 0064 03D1     		bne	.L204
+ 1700 0066 5A6C     		ldr	r2, [r3, #68]
+ 1701 0068 22F40042 		bic	r2, r2, #32768
+ 1702 006c 5A64     		str	r2, [r3, #68]
+ 1703              	.L204:
+ 1704 006e 2368     		ldr	r3, [r4]
+ 1705 0070 196A     		ldr	r1, [r3, #32]
+ 1706 0072 41F21112 		movw	r2, #4369
+ 1707 0076 1142     		tst	r1, r2
+ 1708 0078 08D1     		bne	.L205
+ 1709 007a 196A     		ldr	r1, [r3, #32]
+ 1710 007c 40F24442 		movw	r2, #1092
+ 1711 0080 1142     		tst	r1, r2
+ 1712 0082 03D1     		bne	.L205
+ 1713 0084 1A68     		ldr	r2, [r3]
+ 1714 0086 22F00102 		bic	r2, r2, #1
+ 1715 008a 1A60     		str	r2, [r3]
+ 1716              	.L205:
+ 1717 008c 1DB9     		cbnz	r5, .L206
+ 1718 008e 0123     		movs	r3, #1
+ 1719 0090 84F84430 		strb	r3, [r4, #68]
+ 1720 0094 0EE0     		b	.L207
+ 1721              	.L206:
+ 1722 0096 042D     		cmp	r5, #4
+ 1723 0098 03D1     		bne	.L208
+ 1724 009a 0123     		movs	r3, #1
+ 1725 009c 84F84530 		strb	r3, [r4, #69]
+ 1726 00a0 08E0     		b	.L207
+ 1727              	.L208:
+ 1728 00a2 082D     		cmp	r5, #8
+ 1729 00a4 03D1     		bne	.L209
+ 1730 00a6 0123     		movs	r3, #1
+ 1731 00a8 84F84630 		strb	r3, [r4, #70]
+ 1732 00ac 02E0     		b	.L207
+ 1733              	.L209:
+ 1734 00ae 0123     		movs	r3, #1
+ 1735 00b0 84F84730 		strb	r3, [r4, #71]
+ 1736              	.L207:
+ 1737 00b4 0020     		movs	r0, #0
+ 1738 00b6 38BD     		pop	{r3, r4, r5, pc}
+ 1740              		.section	.text.HAL_TIMEx_PWMN_Start_DMA,"ax",%progbits
+ 1741              		.align	2
+ 1742              		.global	HAL_TIMEx_PWMN_Start_DMA
+ 1743              		.thumb
+ 1744              		.thumb_func
+ 1746              	HAL_TIMEx_PWMN_Start_DMA:
+ 1747              		@ args = 0, pretend = 0, frame = 0
+ 1748              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1749 0000 38B5     		push	{r3, r4, r5, lr}
+ 1750 0002 0D46     		mov	r5, r1
+ 1751 0004 39B9     		cbnz	r1, .L212
+ 1752 0006 90F84440 		ldrb	r4, [r0, #68]	@ zero_extendqisi2
+ 1753 000a E4B2     		uxtb	r4, r4
+ 1754 000c 022C     		cmp	r4, #2
+ 1755 000e 14BF     		ite	ne
+ 1756 0010 0024     		movne	r4, #0
+ 1757 0012 0124     		moveq	r4, #1
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 31
+
+
+ 1758 0014 1AE0     		b	.L213
+ 1759              	.L212:
+ 1760 0016 0429     		cmp	r1, #4
+ 1761 0018 07D1     		bne	.L214
+ 1762 001a 90F84540 		ldrb	r4, [r0, #69]	@ zero_extendqisi2
+ 1763 001e E4B2     		uxtb	r4, r4
+ 1764 0020 022C     		cmp	r4, #2
+ 1765 0022 14BF     		ite	ne
+ 1766 0024 0024     		movne	r4, #0
+ 1767 0026 0124     		moveq	r4, #1
+ 1768 0028 10E0     		b	.L213
+ 1769              	.L214:
+ 1770 002a 0829     		cmp	r1, #8
+ 1771 002c 07D1     		bne	.L215
+ 1772 002e 90F84640 		ldrb	r4, [r0, #70]	@ zero_extendqisi2
+ 1773 0032 E4B2     		uxtb	r4, r4
+ 1774 0034 022C     		cmp	r4, #2
+ 1775 0036 14BF     		ite	ne
+ 1776 0038 0024     		movne	r4, #0
+ 1777 003a 0124     		moveq	r4, #1
+ 1778 003c 06E0     		b	.L213
+ 1779              	.L215:
+ 1780 003e 90F84740 		ldrb	r4, [r0, #71]	@ zero_extendqisi2
+ 1781 0042 E4B2     		uxtb	r4, r4
+ 1782 0044 022C     		cmp	r4, #2
+ 1783 0046 14BF     		ite	ne
+ 1784 0048 0024     		movne	r4, #0
+ 1785 004a 0124     		moveq	r4, #1
+ 1786              	.L213:
+ 1787 004c 002C     		cmp	r4, #0
+ 1788 004e 40F0A380 		bne	.L229
+ 1789 0052 3DB9     		cbnz	r5, .L217
+ 1790 0054 90F84410 		ldrb	r1, [r0, #68]	@ zero_extendqisi2
+ 1791 0058 C9B2     		uxtb	r1, r1
+ 1792 005a 0129     		cmp	r1, #1
+ 1793 005c 14BF     		ite	ne
+ 1794 005e 0021     		movne	r1, #0
+ 1795 0060 0121     		moveq	r1, #1
+ 1796 0062 1AE0     		b	.L218
+ 1797              	.L217:
+ 1798 0064 042D     		cmp	r5, #4
+ 1799 0066 07D1     		bne	.L219
+ 1800 0068 90F84510 		ldrb	r1, [r0, #69]	@ zero_extendqisi2
+ 1801 006c C9B2     		uxtb	r1, r1
+ 1802 006e 0129     		cmp	r1, #1
+ 1803 0070 14BF     		ite	ne
+ 1804 0072 0021     		movne	r1, #0
+ 1805 0074 0121     		moveq	r1, #1
+ 1806 0076 10E0     		b	.L218
+ 1807              	.L219:
+ 1808 0078 082D     		cmp	r5, #8
+ 1809 007a 07D1     		bne	.L220
+ 1810 007c 90F84610 		ldrb	r1, [r0, #70]	@ zero_extendqisi2
+ 1811 0080 C9B2     		uxtb	r1, r1
+ 1812 0082 0129     		cmp	r1, #1
+ 1813 0084 14BF     		ite	ne
+ 1814 0086 0021     		movne	r1, #0
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 32
+
+
+ 1815 0088 0121     		moveq	r1, #1
+ 1816 008a 06E0     		b	.L218
+ 1817              	.L220:
+ 1818 008c 90F84710 		ldrb	r1, [r0, #71]	@ zero_extendqisi2
+ 1819 0090 C9B2     		uxtb	r1, r1
+ 1820 0092 0129     		cmp	r1, #1
+ 1821 0094 14BF     		ite	ne
+ 1822 0096 0021     		movne	r1, #0
+ 1823 0098 0121     		moveq	r1, #1
+ 1824              	.L218:
+ 1825 009a 0029     		cmp	r1, #0
+ 1826 009c 7ED0     		beq	.L230
+ 1827 009e B2FA82F1 		clz	r1, r2
+ 1828 00a2 4909     		lsrs	r1, r1, #5
+ 1829 00a4 002B     		cmp	r3, #0
+ 1830 00a6 08BF     		it	eq
+ 1831 00a8 0021     		moveq	r1, #0
+ 1832 00aa 0029     		cmp	r1, #0
+ 1833 00ac 78D1     		bne	.L231
+ 1834 00ae 1DB9     		cbnz	r5, .L221
+ 1835 00b0 0221     		movs	r1, #2
+ 1836 00b2 80F84410 		strb	r1, [r0, #68]
+ 1837 00b6 0EE0     		b	.L222
+ 1838              	.L221:
+ 1839 00b8 042D     		cmp	r5, #4
+ 1840 00ba 03D1     		bne	.L223
+ 1841 00bc 0221     		movs	r1, #2
+ 1842 00be 80F84510 		strb	r1, [r0, #69]
+ 1843 00c2 08E0     		b	.L222
+ 1844              	.L223:
+ 1845 00c4 082D     		cmp	r5, #8
+ 1846 00c6 03D1     		bne	.L224
+ 1847 00c8 0221     		movs	r1, #2
+ 1848 00ca 80F84610 		strb	r1, [r0, #70]
+ 1849 00ce 02E0     		b	.L222
+ 1850              	.L224:
+ 1851 00d0 0221     		movs	r1, #2
+ 1852 00d2 80F84710 		strb	r1, [r0, #71]
+ 1853              	.L222:
+ 1854 00d6 1146     		mov	r1, r2
+ 1855 00d8 0446     		mov	r4, r0
+ 1856 00da 042D     		cmp	r5, #4
+ 1857 00dc 19D0     		beq	.L226
+ 1858 00de 082D     		cmp	r5, #8
+ 1859 00e0 2DD0     		beq	.L227
+ 1860 00e2 002D     		cmp	r5, #0
+ 1861 00e4 3FD1     		bne	.L225
+ 1862 00e6 426A     		ldr	r2, [r0, #36]
+ 1863 00e8 3248     		ldr	r0, .L237
+ 1864 00ea D063     		str	r0, [r2, #60]
+ 1865 00ec 626A     		ldr	r2, [r4, #36]
+ 1866 00ee 3248     		ldr	r0, .L237+4
+ 1867 00f0 1064     		str	r0, [r2, #64]
+ 1868 00f2 626A     		ldr	r2, [r4, #36]
+ 1869 00f4 3148     		ldr	r0, .L237+8
+ 1870 00f6 D064     		str	r0, [r2, #76]
+ 1871 00f8 2268     		ldr	r2, [r4]
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 33
+
+
+ 1872 00fa 3432     		adds	r2, r2, #52
+ 1873 00fc 606A     		ldr	r0, [r4, #36]
+ 1874 00fe FFF7FEFF 		bl	HAL_DMA_Start_IT
+ 1875 0102 0028     		cmp	r0, #0
+ 1876 0104 4ED1     		bne	.L232
+ 1877 0106 2268     		ldr	r2, [r4]
+ 1878 0108 D368     		ldr	r3, [r2, #12]
+ 1879 010a 43F40073 		orr	r3, r3, #512
+ 1880 010e D360     		str	r3, [r2, #12]
+ 1881 0110 29E0     		b	.L225
+ 1882              	.L226:
+ 1883 0112 826A     		ldr	r2, [r0, #40]
+ 1884 0114 2748     		ldr	r0, .L237
+ 1885 0116 D063     		str	r0, [r2, #60]
+ 1886 0118 A26A     		ldr	r2, [r4, #40]
+ 1887 011a 2748     		ldr	r0, .L237+4
+ 1888 011c 1064     		str	r0, [r2, #64]
+ 1889 011e A26A     		ldr	r2, [r4, #40]
+ 1890 0120 2648     		ldr	r0, .L237+8
+ 1891 0122 D064     		str	r0, [r2, #76]
+ 1892 0124 2268     		ldr	r2, [r4]
+ 1893 0126 3832     		adds	r2, r2, #56
+ 1894 0128 A06A     		ldr	r0, [r4, #40]
+ 1895 012a FFF7FEFF 		bl	HAL_DMA_Start_IT
+ 1896 012e 0028     		cmp	r0, #0
+ 1897 0130 3AD1     		bne	.L233
+ 1898 0132 2268     		ldr	r2, [r4]
+ 1899 0134 D368     		ldr	r3, [r2, #12]
+ 1900 0136 43F48063 		orr	r3, r3, #1024
+ 1901 013a D360     		str	r3, [r2, #12]
+ 1902 013c 13E0     		b	.L225
+ 1903              	.L227:
+ 1904 013e C26A     		ldr	r2, [r0, #44]
+ 1905 0140 1C48     		ldr	r0, .L237
+ 1906 0142 D063     		str	r0, [r2, #60]
+ 1907 0144 E26A     		ldr	r2, [r4, #44]
+ 1908 0146 1C48     		ldr	r0, .L237+4
+ 1909 0148 1064     		str	r0, [r2, #64]
+ 1910 014a E26A     		ldr	r2, [r4, #44]
+ 1911 014c 1B48     		ldr	r0, .L237+8
+ 1912 014e D064     		str	r0, [r2, #76]
+ 1913 0150 2268     		ldr	r2, [r4]
+ 1914 0152 3C32     		adds	r2, r2, #60
+ 1915 0154 E06A     		ldr	r0, [r4, #44]
+ 1916 0156 FFF7FEFF 		bl	HAL_DMA_Start_IT
+ 1917 015a 38BB     		cbnz	r0, .L234
+ 1918 015c 2268     		ldr	r2, [r4]
+ 1919 015e D368     		ldr	r3, [r2, #12]
+ 1920 0160 43F40063 		orr	r3, r3, #2048
+ 1921 0164 D360     		str	r3, [r2, #12]
+ 1922              	.L225:
+ 1923 0166 0422     		movs	r2, #4
+ 1924 0168 2946     		mov	r1, r5
+ 1925 016a 2068     		ldr	r0, [r4]
+ 1926 016c FFF7FEFF 		bl	TIM_CCxNChannelCmd
+ 1927 0170 2268     		ldr	r2, [r4]
+ 1928 0172 536C     		ldr	r3, [r2, #68]
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 34
+
+
+ 1929 0174 43F40043 		orr	r3, r3, #32768
+ 1930 0178 5364     		str	r3, [r2, #68]
+ 1931 017a 2268     		ldr	r2, [r4]
+ 1932 017c 9168     		ldr	r1, [r2, #8]
+ 1933 017e 104B     		ldr	r3, .L237+12
+ 1934 0180 0B40     		ands	r3, r3, r1
+ 1935 0182 062B     		cmp	r3, #6
+ 1936 0184 18BF     		it	ne
+ 1937 0186 B3F5803F 		cmpne	r3, #65536
+ 1938 018a 11D0     		beq	.L235
+ 1939 018c 1368     		ldr	r3, [r2]
+ 1940 018e 43F00103 		orr	r3, r3, #1
+ 1941 0192 1360     		str	r3, [r2]
+ 1942 0194 0020     		movs	r0, #0
+ 1943 0196 38BD     		pop	{r3, r4, r5, pc}
+ 1944              	.L229:
+ 1945 0198 0220     		movs	r0, #2
+ 1946 019a 38BD     		pop	{r3, r4, r5, pc}
+ 1947              	.L230:
+ 1948 019c 0120     		movs	r0, #1
+ 1949 019e 38BD     		pop	{r3, r4, r5, pc}
+ 1950              	.L231:
+ 1951 01a0 0120     		movs	r0, #1
+ 1952 01a2 38BD     		pop	{r3, r4, r5, pc}
+ 1953              	.L232:
+ 1954 01a4 0120     		movs	r0, #1
+ 1955 01a6 38BD     		pop	{r3, r4, r5, pc}
+ 1956              	.L233:
+ 1957 01a8 0120     		movs	r0, #1
+ 1958 01aa 38BD     		pop	{r3, r4, r5, pc}
+ 1959              	.L234:
+ 1960 01ac 0120     		movs	r0, #1
+ 1961 01ae 38BD     		pop	{r3, r4, r5, pc}
+ 1962              	.L235:
+ 1963 01b0 0020     		movs	r0, #0
+ 1964 01b2 38BD     		pop	{r3, r4, r5, pc}
+ 1965              	.L238:
+ 1966              		.align	2
+ 1967              	.L237:
+ 1968 01b4 00000000 		.word	TIM_DMADelayPulseNCplt
+ 1969 01b8 00000000 		.word	TIM_DMADelayPulseHalfCplt
+ 1970 01bc 00000000 		.word	TIM_DMAErrorCCxN
+ 1971 01c0 07000100 		.word	65543
+ 1973              		.section	.text.HAL_TIMEx_PWMN_Stop_DMA,"ax",%progbits
+ 1974              		.align	2
+ 1975              		.global	HAL_TIMEx_PWMN_Stop_DMA
+ 1976              		.thumb
+ 1977              		.thumb_func
+ 1979              	HAL_TIMEx_PWMN_Stop_DMA:
+ 1980              		@ args = 0, pretend = 0, frame = 0
+ 1981              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1982 0000 38B5     		push	{r3, r4, r5, lr}
+ 1983 0002 0446     		mov	r4, r0
+ 1984 0004 0D46     		mov	r5, r1
+ 1985 0006 0429     		cmp	r1, #4
+ 1986 0008 0BD0     		beq	.L241
+ 1987 000a 0829     		cmp	r1, #8
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 35
+
+
+ 1988 000c 12D0     		beq	.L242
+ 1989 000e C9B9     		cbnz	r1, .L240
+ 1990 0010 0268     		ldr	r2, [r0]
+ 1991 0012 D368     		ldr	r3, [r2, #12]
+ 1992 0014 23F40073 		bic	r3, r3, #512
+ 1993 0018 D360     		str	r3, [r2, #12]
+ 1994 001a 406A     		ldr	r0, [r0, #36]
+ 1995 001c FFF7FEFF 		bl	HAL_DMA_Abort_IT
+ 1996 0020 10E0     		b	.L240
+ 1997              	.L241:
+ 1998 0022 0268     		ldr	r2, [r0]
+ 1999 0024 D368     		ldr	r3, [r2, #12]
+ 2000 0026 23F48063 		bic	r3, r3, #1024
+ 2001 002a D360     		str	r3, [r2, #12]
+ 2002 002c 806A     		ldr	r0, [r0, #40]
+ 2003 002e FFF7FEFF 		bl	HAL_DMA_Abort_IT
+ 2004 0032 07E0     		b	.L240
+ 2005              	.L242:
+ 2006 0034 0268     		ldr	r2, [r0]
+ 2007 0036 D368     		ldr	r3, [r2, #12]
+ 2008 0038 23F40063 		bic	r3, r3, #2048
+ 2009 003c D360     		str	r3, [r2, #12]
+ 2010 003e C06A     		ldr	r0, [r0, #44]
+ 2011 0040 FFF7FEFF 		bl	HAL_DMA_Abort_IT
+ 2012              	.L240:
+ 2013 0044 0022     		movs	r2, #0
+ 2014 0046 2946     		mov	r1, r5
+ 2015 0048 2068     		ldr	r0, [r4]
+ 2016 004a FFF7FEFF 		bl	TIM_CCxNChannelCmd
+ 2017 004e 2368     		ldr	r3, [r4]
+ 2018 0050 196A     		ldr	r1, [r3, #32]
+ 2019 0052 41F21112 		movw	r2, #4369
+ 2020 0056 1142     		tst	r1, r2
+ 2021 0058 08D1     		bne	.L244
+ 2022 005a 196A     		ldr	r1, [r3, #32]
+ 2023 005c 40F24442 		movw	r2, #1092
+ 2024 0060 1142     		tst	r1, r2
+ 2025 0062 03D1     		bne	.L244
+ 2026 0064 5A6C     		ldr	r2, [r3, #68]
+ 2027 0066 22F40042 		bic	r2, r2, #32768
+ 2028 006a 5A64     		str	r2, [r3, #68]
+ 2029              	.L244:
+ 2030 006c 2368     		ldr	r3, [r4]
+ 2031 006e 196A     		ldr	r1, [r3, #32]
+ 2032 0070 41F21112 		movw	r2, #4369
+ 2033 0074 1142     		tst	r1, r2
+ 2034 0076 08D1     		bne	.L245
+ 2035 0078 196A     		ldr	r1, [r3, #32]
+ 2036 007a 40F24442 		movw	r2, #1092
+ 2037 007e 1142     		tst	r1, r2
+ 2038 0080 03D1     		bne	.L245
+ 2039 0082 1A68     		ldr	r2, [r3]
+ 2040 0084 22F00102 		bic	r2, r2, #1
+ 2041 0088 1A60     		str	r2, [r3]
+ 2042              	.L245:
+ 2043 008a 1DB9     		cbnz	r5, .L246
+ 2044 008c 0123     		movs	r3, #1
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 36
+
+
+ 2045 008e 84F84430 		strb	r3, [r4, #68]
+ 2046 0092 0EE0     		b	.L247
+ 2047              	.L246:
+ 2048 0094 042D     		cmp	r5, #4
+ 2049 0096 03D1     		bne	.L248
+ 2050 0098 0123     		movs	r3, #1
+ 2051 009a 84F84530 		strb	r3, [r4, #69]
+ 2052 009e 08E0     		b	.L247
+ 2053              	.L248:
+ 2054 00a0 082D     		cmp	r5, #8
+ 2055 00a2 03D1     		bne	.L249
+ 2056 00a4 0123     		movs	r3, #1
+ 2057 00a6 84F84630 		strb	r3, [r4, #70]
+ 2058 00aa 02E0     		b	.L247
+ 2059              	.L249:
+ 2060 00ac 0123     		movs	r3, #1
+ 2061 00ae 84F84730 		strb	r3, [r4, #71]
+ 2062              	.L247:
+ 2063 00b2 0020     		movs	r0, #0
+ 2064 00b4 38BD     		pop	{r3, r4, r5, pc}
+ 2066 00b6 00BF     		.section	.text.HAL_TIMEx_OnePulseN_Start,"ax",%progbits
+ 2067              		.align	2
+ 2068              		.global	HAL_TIMEx_OnePulseN_Start
+ 2069              		.thumb
+ 2070              		.thumb_func
+ 2072              	HAL_TIMEx_OnePulseN_Start:
+ 2073              		@ args = 0, pretend = 0, frame = 0
+ 2074              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2075 0000 38B5     		push	{r3, r4, r5, lr}
+ 2076 0002 0B46     		mov	r3, r1
+ 2077 0004 09B9     		cbnz	r1, .L274
+ 2078 0006 0425     		movs	r5, #4
+ 2079 0008 00E0     		b	.L252
+ 2080              	.L274:
+ 2081 000a 0025     		movs	r5, #0
+ 2082              	.L252:
+ 2083 000c 1DB9     		cbnz	r5, .L253
+ 2084 000e 90F83E10 		ldrb	r1, [r0, #62]	@ zero_extendqisi2
+ 2085 0012 C9B2     		uxtb	r1, r1
+ 2086 0014 07E0     		b	.L254
+ 2087              	.L253:
+ 2088 0016 1DB1     		cbz	r5, .L258
+ 2089 0018 90F83F10 		ldrb	r1, [r0, #63]	@ zero_extendqisi2
+ 2090 001c C9B2     		uxtb	r1, r1
+ 2091 001e 02E0     		b	.L254
+ 2092              	.L258:
+ 2093 0020 90F84310 		ldrb	r1, [r0, #67]	@ zero_extendqisi2
+ 2094 0024 C9B2     		uxtb	r1, r1
+ 2095              	.L254:
+ 2096 0026 1BB9     		cbnz	r3, .L259
+ 2097 0028 90F84420 		ldrb	r2, [r0, #68]	@ zero_extendqisi2
+ 2098 002c D2B2     		uxtb	r2, r2
+ 2099 002e 0EE0     		b	.L260
+ 2100              	.L259:
+ 2101 0030 042B     		cmp	r3, #4
+ 2102 0032 03D1     		bne	.L261
+ 2103 0034 90F84520 		ldrb	r2, [r0, #69]	@ zero_extendqisi2
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 37
+
+
+ 2104 0038 D2B2     		uxtb	r2, r2
+ 2105 003a 08E0     		b	.L260
+ 2106              	.L261:
+ 2107 003c 082B     		cmp	r3, #8
+ 2108 003e 03D1     		bne	.L262
+ 2109 0040 90F84620 		ldrb	r2, [r0, #70]	@ zero_extendqisi2
+ 2110 0044 D2B2     		uxtb	r2, r2
+ 2111 0046 02E0     		b	.L260
+ 2112              	.L262:
+ 2113 0048 90F84720 		ldrb	r2, [r0, #71]	@ zero_extendqisi2
+ 2114 004c D2B2     		uxtb	r2, r2
+ 2115              	.L260:
+ 2116 004e 0129     		cmp	r1, #1
+ 2117 0050 08BF     		it	eq
+ 2118 0052 012A     		cmpeq	r2, #1
+ 2119 0054 32D1     		bne	.L275
+ 2120 0056 1BB9     		cbnz	r3, .L264
+ 2121 0058 0222     		movs	r2, #2
+ 2122 005a 80F84420 		strb	r2, [r0, #68]
+ 2123 005e 0EE0     		b	.L265
+ 2124              	.L264:
+ 2125 0060 042B     		cmp	r3, #4
+ 2126 0062 03D1     		bne	.L266
+ 2127 0064 0222     		movs	r2, #2
+ 2128 0066 80F84520 		strb	r2, [r0, #69]
+ 2129 006a 08E0     		b	.L265
+ 2130              	.L266:
+ 2131 006c 082B     		cmp	r3, #8
+ 2132 006e 03D1     		bne	.L267
+ 2133 0070 0222     		movs	r2, #2
+ 2134 0072 80F84620 		strb	r2, [r0, #70]
+ 2135 0076 02E0     		b	.L265
+ 2136              	.L267:
+ 2137 0078 0222     		movs	r2, #2
+ 2138 007a 80F84720 		strb	r2, [r0, #71]
+ 2139              	.L265:
+ 2140 007e 1DB9     		cbnz	r5, .L268
+ 2141 0080 0222     		movs	r2, #2
+ 2142 0082 80F83E20 		strb	r2, [r0, #62]
+ 2143 0086 07E0     		b	.L269
+ 2144              	.L268:
+ 2145 0088 1DB1     		cbz	r5, .L273
+ 2146 008a 0222     		movs	r2, #2
+ 2147 008c 80F83F20 		strb	r2, [r0, #63]
+ 2148 0090 02E0     		b	.L269
+ 2149              	.L273:
+ 2150 0092 0222     		movs	r2, #2
+ 2151 0094 80F84320 		strb	r2, [r0, #67]
+ 2152              	.L269:
+ 2153 0098 1946     		mov	r1, r3
+ 2154 009a 0446     		mov	r4, r0
+ 2155 009c 0422     		movs	r2, #4
+ 2156 009e 0068     		ldr	r0, [r0]
+ 2157 00a0 FFF7FEFF 		bl	TIM_CCxNChannelCmd
+ 2158 00a4 0122     		movs	r2, #1
+ 2159 00a6 2946     		mov	r1, r5
+ 2160 00a8 2068     		ldr	r0, [r4]
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 38
+
+
+ 2161 00aa FFF7FEFF 		bl	TIM_CCxChannelCmd
+ 2162 00ae 2268     		ldr	r2, [r4]
+ 2163 00b0 536C     		ldr	r3, [r2, #68]
+ 2164 00b2 43F40043 		orr	r3, r3, #32768
+ 2165 00b6 5364     		str	r3, [r2, #68]
+ 2166 00b8 0020     		movs	r0, #0
+ 2167 00ba 38BD     		pop	{r3, r4, r5, pc}
+ 2168              	.L275:
+ 2169 00bc 0120     		movs	r0, #1
+ 2170 00be 38BD     		pop	{r3, r4, r5, pc}
+ 2172              		.section	.text.HAL_TIMEx_OnePulseN_Stop,"ax",%progbits
+ 2173              		.align	2
+ 2174              		.global	HAL_TIMEx_OnePulseN_Stop
+ 2175              		.thumb
+ 2176              		.thumb_func
+ 2178              	HAL_TIMEx_OnePulseN_Stop:
+ 2179              		@ args = 0, pretend = 0, frame = 0
+ 2180              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2181 0000 70B5     		push	{r4, r5, r6, lr}
+ 2182 0002 0446     		mov	r4, r0
+ 2183 0004 0D46     		mov	r5, r1
+ 2184 0006 09B9     		cbnz	r1, .L291
+ 2185 0008 0426     		movs	r6, #4
+ 2186 000a 00E0     		b	.L278
+ 2187              	.L291:
+ 2188 000c 0026     		movs	r6, #0
+ 2189              	.L278:
+ 2190 000e 0022     		movs	r2, #0
+ 2191 0010 2946     		mov	r1, r5
+ 2192 0012 2068     		ldr	r0, [r4]
+ 2193 0014 FFF7FEFF 		bl	TIM_CCxNChannelCmd
+ 2194 0018 0022     		movs	r2, #0
+ 2195 001a 3146     		mov	r1, r6
+ 2196 001c 2068     		ldr	r0, [r4]
+ 2197 001e FFF7FEFF 		bl	TIM_CCxChannelCmd
+ 2198 0022 2368     		ldr	r3, [r4]
+ 2199 0024 196A     		ldr	r1, [r3, #32]
+ 2200 0026 41F21112 		movw	r2, #4369
+ 2201 002a 1142     		tst	r1, r2
+ 2202 002c 08D1     		bne	.L279
+ 2203 002e 196A     		ldr	r1, [r3, #32]
+ 2204 0030 40F24442 		movw	r2, #1092
+ 2205 0034 1142     		tst	r1, r2
+ 2206 0036 03D1     		bne	.L279
+ 2207 0038 5A6C     		ldr	r2, [r3, #68]
+ 2208 003a 22F40042 		bic	r2, r2, #32768
+ 2209 003e 5A64     		str	r2, [r3, #68]
+ 2210              	.L279:
+ 2211 0040 2368     		ldr	r3, [r4]
+ 2212 0042 196A     		ldr	r1, [r3, #32]
+ 2213 0044 41F21112 		movw	r2, #4369
+ 2214 0048 1142     		tst	r1, r2
+ 2215 004a 08D1     		bne	.L280
+ 2216 004c 196A     		ldr	r1, [r3, #32]
+ 2217 004e 40F24442 		movw	r2, #1092
+ 2218 0052 1142     		tst	r1, r2
+ 2219 0054 03D1     		bne	.L280
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 39
+
+
+ 2220 0056 1A68     		ldr	r2, [r3]
+ 2221 0058 22F00102 		bic	r2, r2, #1
+ 2222 005c 1A60     		str	r2, [r3]
+ 2223              	.L280:
+ 2224 005e 1DB9     		cbnz	r5, .L281
+ 2225 0060 0123     		movs	r3, #1
+ 2226 0062 84F84430 		strb	r3, [r4, #68]
+ 2227 0066 0EE0     		b	.L282
+ 2228              	.L281:
+ 2229 0068 042D     		cmp	r5, #4
+ 2230 006a 03D1     		bne	.L283
+ 2231 006c 0123     		movs	r3, #1
+ 2232 006e 84F84530 		strb	r3, [r4, #69]
+ 2233 0072 08E0     		b	.L282
+ 2234              	.L283:
+ 2235 0074 082D     		cmp	r5, #8
+ 2236 0076 03D1     		bne	.L284
+ 2237 0078 0123     		movs	r3, #1
+ 2238 007a 84F84630 		strb	r3, [r4, #70]
+ 2239 007e 02E0     		b	.L282
+ 2240              	.L284:
+ 2241 0080 0123     		movs	r3, #1
+ 2242 0082 84F84730 		strb	r3, [r4, #71]
+ 2243              	.L282:
+ 2244 0086 1EB9     		cbnz	r6, .L285
+ 2245 0088 0123     		movs	r3, #1
+ 2246 008a 84F83E30 		strb	r3, [r4, #62]
+ 2247 008e 07E0     		b	.L286
+ 2248              	.L285:
+ 2249 0090 1EB1     		cbz	r6, .L290
+ 2250 0092 0123     		movs	r3, #1
+ 2251 0094 84F83F30 		strb	r3, [r4, #63]
+ 2252 0098 02E0     		b	.L286
+ 2253              	.L290:
+ 2254 009a 0123     		movs	r3, #1
+ 2255 009c 84F84330 		strb	r3, [r4, #67]
+ 2256              	.L286:
+ 2257 00a0 0020     		movs	r0, #0
+ 2258 00a2 70BD     		pop	{r4, r5, r6, pc}
+ 2260              		.section	.text.HAL_TIMEx_OnePulseN_Start_IT,"ax",%progbits
+ 2261              		.align	2
+ 2262              		.global	HAL_TIMEx_OnePulseN_Start_IT
+ 2263              		.thumb
+ 2264              		.thumb_func
+ 2266              	HAL_TIMEx_OnePulseN_Start_IT:
+ 2267              		@ args = 0, pretend = 0, frame = 0
+ 2268              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2269 0000 38B5     		push	{r3, r4, r5, lr}
+ 2270 0002 0B46     		mov	r3, r1
+ 2271 0004 09B9     		cbnz	r1, .L316
+ 2272 0006 0425     		movs	r5, #4
+ 2273 0008 00E0     		b	.L294
+ 2274              	.L316:
+ 2275 000a 0025     		movs	r5, #0
+ 2276              	.L294:
+ 2277 000c 1DB9     		cbnz	r5, .L295
+ 2278 000e 90F83E10 		ldrb	r1, [r0, #62]	@ zero_extendqisi2
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 40
+
+
+ 2279 0012 C9B2     		uxtb	r1, r1
+ 2280 0014 07E0     		b	.L296
+ 2281              	.L295:
+ 2282 0016 1DB1     		cbz	r5, .L300
+ 2283 0018 90F83F10 		ldrb	r1, [r0, #63]	@ zero_extendqisi2
+ 2284 001c C9B2     		uxtb	r1, r1
+ 2285 001e 02E0     		b	.L296
+ 2286              	.L300:
+ 2287 0020 90F84310 		ldrb	r1, [r0, #67]	@ zero_extendqisi2
+ 2288 0024 C9B2     		uxtb	r1, r1
+ 2289              	.L296:
+ 2290 0026 1BB9     		cbnz	r3, .L301
+ 2291 0028 90F84420 		ldrb	r2, [r0, #68]	@ zero_extendqisi2
+ 2292 002c D2B2     		uxtb	r2, r2
+ 2293 002e 0EE0     		b	.L302
+ 2294              	.L301:
+ 2295 0030 042B     		cmp	r3, #4
+ 2296 0032 03D1     		bne	.L303
+ 2297 0034 90F84520 		ldrb	r2, [r0, #69]	@ zero_extendqisi2
+ 2298 0038 D2B2     		uxtb	r2, r2
+ 2299 003a 08E0     		b	.L302
+ 2300              	.L303:
+ 2301 003c 082B     		cmp	r3, #8
+ 2302 003e 03D1     		bne	.L304
+ 2303 0040 90F84620 		ldrb	r2, [r0, #70]	@ zero_extendqisi2
+ 2304 0044 D2B2     		uxtb	r2, r2
+ 2305 0046 02E0     		b	.L302
+ 2306              	.L304:
+ 2307 0048 90F84720 		ldrb	r2, [r0, #71]	@ zero_extendqisi2
+ 2308 004c D2B2     		uxtb	r2, r2
+ 2309              	.L302:
+ 2310 004e 0129     		cmp	r1, #1
+ 2311 0050 08BF     		it	eq
+ 2312 0052 012A     		cmpeq	r2, #1
+ 2313 0054 3CD1     		bne	.L317
+ 2314 0056 1BB9     		cbnz	r3, .L306
+ 2315 0058 0222     		movs	r2, #2
+ 2316 005a 80F84420 		strb	r2, [r0, #68]
+ 2317 005e 0EE0     		b	.L307
+ 2318              	.L306:
+ 2319 0060 042B     		cmp	r3, #4
+ 2320 0062 03D1     		bne	.L308
+ 2321 0064 0222     		movs	r2, #2
+ 2322 0066 80F84520 		strb	r2, [r0, #69]
+ 2323 006a 08E0     		b	.L307
+ 2324              	.L308:
+ 2325 006c 082B     		cmp	r3, #8
+ 2326 006e 03D1     		bne	.L309
+ 2327 0070 0222     		movs	r2, #2
+ 2328 0072 80F84620 		strb	r2, [r0, #70]
+ 2329 0076 02E0     		b	.L307
+ 2330              	.L309:
+ 2331 0078 0222     		movs	r2, #2
+ 2332 007a 80F84720 		strb	r2, [r0, #71]
+ 2333              	.L307:
+ 2334 007e 1DB9     		cbnz	r5, .L310
+ 2335 0080 0222     		movs	r2, #2
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 41
+
+
+ 2336 0082 80F83E20 		strb	r2, [r0, #62]
+ 2337 0086 07E0     		b	.L311
+ 2338              	.L310:
+ 2339 0088 1DB1     		cbz	r5, .L315
+ 2340 008a 0222     		movs	r2, #2
+ 2341 008c 80F83F20 		strb	r2, [r0, #63]
+ 2342 0090 02E0     		b	.L311
+ 2343              	.L315:
+ 2344 0092 0222     		movs	r2, #2
+ 2345 0094 80F84320 		strb	r2, [r0, #67]
+ 2346              	.L311:
+ 2347 0098 1946     		mov	r1, r3
+ 2348 009a 0446     		mov	r4, r0
+ 2349 009c 0268     		ldr	r2, [r0]
+ 2350 009e D368     		ldr	r3, [r2, #12]
+ 2351 00a0 43F00203 		orr	r3, r3, #2
+ 2352 00a4 D360     		str	r3, [r2, #12]
+ 2353 00a6 0268     		ldr	r2, [r0]
+ 2354 00a8 D368     		ldr	r3, [r2, #12]
+ 2355 00aa 43F00403 		orr	r3, r3, #4
+ 2356 00ae D360     		str	r3, [r2, #12]
+ 2357 00b0 0422     		movs	r2, #4
+ 2358 00b2 0068     		ldr	r0, [r0]
+ 2359 00b4 FFF7FEFF 		bl	TIM_CCxNChannelCmd
+ 2360 00b8 0122     		movs	r2, #1
+ 2361 00ba 2946     		mov	r1, r5
+ 2362 00bc 2068     		ldr	r0, [r4]
+ 2363 00be FFF7FEFF 		bl	TIM_CCxChannelCmd
+ 2364 00c2 2268     		ldr	r2, [r4]
+ 2365 00c4 536C     		ldr	r3, [r2, #68]
+ 2366 00c6 43F40043 		orr	r3, r3, #32768
+ 2367 00ca 5364     		str	r3, [r2, #68]
+ 2368 00cc 0020     		movs	r0, #0
+ 2369 00ce 38BD     		pop	{r3, r4, r5, pc}
+ 2370              	.L317:
+ 2371 00d0 0120     		movs	r0, #1
+ 2372 00d2 38BD     		pop	{r3, r4, r5, pc}
+ 2374              		.section	.text.HAL_TIMEx_OnePulseN_Stop_IT,"ax",%progbits
+ 2375              		.align	2
+ 2376              		.global	HAL_TIMEx_OnePulseN_Stop_IT
+ 2377              		.thumb
+ 2378              		.thumb_func
+ 2380              	HAL_TIMEx_OnePulseN_Stop_IT:
+ 2381              		@ args = 0, pretend = 0, frame = 0
+ 2382              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2383 0000 70B5     		push	{r4, r5, r6, lr}
+ 2384 0002 0446     		mov	r4, r0
+ 2385 0004 0D46     		mov	r5, r1
+ 2386 0006 09B9     		cbnz	r1, .L333
+ 2387 0008 0426     		movs	r6, #4
+ 2388 000a 00E0     		b	.L320
+ 2389              	.L333:
+ 2390 000c 0026     		movs	r6, #0
+ 2391              	.L320:
+ 2392 000e 2268     		ldr	r2, [r4]
+ 2393 0010 D368     		ldr	r3, [r2, #12]
+ 2394 0012 23F00203 		bic	r3, r3, #2
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 42
+
+
+ 2395 0016 D360     		str	r3, [r2, #12]
+ 2396 0018 2268     		ldr	r2, [r4]
+ 2397 001a D368     		ldr	r3, [r2, #12]
+ 2398 001c 23F00403 		bic	r3, r3, #4
+ 2399 0020 D360     		str	r3, [r2, #12]
+ 2400 0022 0022     		movs	r2, #0
+ 2401 0024 2946     		mov	r1, r5
+ 2402 0026 2068     		ldr	r0, [r4]
+ 2403 0028 FFF7FEFF 		bl	TIM_CCxNChannelCmd
+ 2404 002c 0022     		movs	r2, #0
+ 2405 002e 3146     		mov	r1, r6
+ 2406 0030 2068     		ldr	r0, [r4]
+ 2407 0032 FFF7FEFF 		bl	TIM_CCxChannelCmd
+ 2408 0036 2368     		ldr	r3, [r4]
+ 2409 0038 196A     		ldr	r1, [r3, #32]
+ 2410 003a 41F21112 		movw	r2, #4369
+ 2411 003e 1142     		tst	r1, r2
+ 2412 0040 08D1     		bne	.L321
+ 2413 0042 196A     		ldr	r1, [r3, #32]
+ 2414 0044 40F24442 		movw	r2, #1092
+ 2415 0048 1142     		tst	r1, r2
+ 2416 004a 03D1     		bne	.L321
+ 2417 004c 5A6C     		ldr	r2, [r3, #68]
+ 2418 004e 22F40042 		bic	r2, r2, #32768
+ 2419 0052 5A64     		str	r2, [r3, #68]
+ 2420              	.L321:
+ 2421 0054 2368     		ldr	r3, [r4]
+ 2422 0056 196A     		ldr	r1, [r3, #32]
+ 2423 0058 41F21112 		movw	r2, #4369
+ 2424 005c 1142     		tst	r1, r2
+ 2425 005e 08D1     		bne	.L322
+ 2426 0060 196A     		ldr	r1, [r3, #32]
+ 2427 0062 40F24442 		movw	r2, #1092
+ 2428 0066 1142     		tst	r1, r2
+ 2429 0068 03D1     		bne	.L322
+ 2430 006a 1A68     		ldr	r2, [r3]
+ 2431 006c 22F00102 		bic	r2, r2, #1
+ 2432 0070 1A60     		str	r2, [r3]
+ 2433              	.L322:
+ 2434 0072 1DB9     		cbnz	r5, .L323
+ 2435 0074 0123     		movs	r3, #1
+ 2436 0076 84F84430 		strb	r3, [r4, #68]
+ 2437 007a 0EE0     		b	.L324
+ 2438              	.L323:
+ 2439 007c 042D     		cmp	r5, #4
+ 2440 007e 03D1     		bne	.L325
+ 2441 0080 0123     		movs	r3, #1
+ 2442 0082 84F84530 		strb	r3, [r4, #69]
+ 2443 0086 08E0     		b	.L324
+ 2444              	.L325:
+ 2445 0088 082D     		cmp	r5, #8
+ 2446 008a 03D1     		bne	.L326
+ 2447 008c 0123     		movs	r3, #1
+ 2448 008e 84F84630 		strb	r3, [r4, #70]
+ 2449 0092 02E0     		b	.L324
+ 2450              	.L326:
+ 2451 0094 0123     		movs	r3, #1
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 43
+
+
+ 2452 0096 84F84730 		strb	r3, [r4, #71]
+ 2453              	.L324:
+ 2454 009a 1EB9     		cbnz	r6, .L327
+ 2455 009c 0123     		movs	r3, #1
+ 2456 009e 84F83E30 		strb	r3, [r4, #62]
+ 2457 00a2 07E0     		b	.L328
+ 2458              	.L327:
+ 2459 00a4 1EB1     		cbz	r6, .L332
+ 2460 00a6 0123     		movs	r3, #1
+ 2461 00a8 84F83F30 		strb	r3, [r4, #63]
+ 2462 00ac 02E0     		b	.L328
+ 2463              	.L332:
+ 2464 00ae 0123     		movs	r3, #1
+ 2465 00b0 84F84330 		strb	r3, [r4, #67]
+ 2466              	.L328:
+ 2467 00b4 0020     		movs	r0, #0
+ 2468 00b6 70BD     		pop	{r4, r5, r6, pc}
+ 2470              		.section	.text.HAL_TIMEx_ConfigCommutEvent,"ax",%progbits
+ 2471              		.align	2
+ 2472              		.global	HAL_TIMEx_ConfigCommutEvent
+ 2473              		.thumb
+ 2474              		.thumb_func
+ 2476              	HAL_TIMEx_ConfigCommutEvent:
+ 2477              		@ args = 0, pretend = 0, frame = 0
+ 2478              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2479              		@ link register save eliminated.
+ 2480 0000 90F83C30 		ldrb	r3, [r0, #60]	@ zero_extendqisi2
+ 2481 0004 012B     		cmp	r3, #1
+ 2482 0006 3DD0     		beq	.L340
+ 2483 0008 30B4     		push	{r4, r5}
+ 2484 000a 0123     		movs	r3, #1
+ 2485 000c 80F83C30 		strb	r3, [r0, #60]
+ 2486 0010 1029     		cmp	r1, #16
+ 2487 0012 18BF     		it	ne
+ 2488 0014 0029     		cmpne	r1, #0
+ 2489 0016 0FD0     		beq	.L337
+ 2490 0018 3029     		cmp	r1, #48
+ 2491 001a 14BF     		ite	ne
+ 2492 001c 0023     		movne	r3, #0
+ 2493 001e 0123     		moveq	r3, #1
+ 2494 0020 2029     		cmp	r1, #32
+ 2495 0022 09D0     		beq	.L337
+ 2496 0024 43B9     		cbnz	r3, .L337
+ 2497 0026 194B     		ldr	r3, .L343
+ 2498 0028 9942     		cmp	r1, r3
+ 2499 002a 14BF     		ite	ne
+ 2500 002c 0023     		movne	r3, #0
+ 2501 002e 0123     		moveq	r3, #1
+ 2502 0030 B1F5001F 		cmp	r1, #2097152
+ 2503 0034 00D0     		beq	.L337
+ 2504 0036 43B1     		cbz	r3, .L338
+ 2505              	.L337:
+ 2506 0038 0468     		ldr	r4, [r0]
+ 2507 003a A568     		ldr	r5, [r4, #8]
+ 2508 003c 144B     		ldr	r3, .L343+4
+ 2509 003e 2B40     		ands	r3, r3, r5
+ 2510 0040 A360     		str	r3, [r4, #8]
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 44
+
+
+ 2511 0042 0468     		ldr	r4, [r0]
+ 2512 0044 A368     		ldr	r3, [r4, #8]
+ 2513 0046 1943     		orrs	r1, r1, r3
+ 2514 0048 A160     		str	r1, [r4, #8]
+ 2515              	.L338:
+ 2516 004a 0168     		ldr	r1, [r0]
+ 2517 004c 4B68     		ldr	r3, [r1, #4]
+ 2518 004e 43F00103 		orr	r3, r3, #1
+ 2519 0052 4B60     		str	r3, [r1, #4]
+ 2520 0054 0168     		ldr	r1, [r0]
+ 2521 0056 4B68     		ldr	r3, [r1, #4]
+ 2522 0058 23F00403 		bic	r3, r3, #4
+ 2523 005c 4B60     		str	r3, [r1, #4]
+ 2524 005e 0368     		ldr	r3, [r0]
+ 2525 0060 5968     		ldr	r1, [r3, #4]
+ 2526 0062 0A43     		orrs	r2, r2, r1
+ 2527 0064 5A60     		str	r2, [r3, #4]
+ 2528 0066 0268     		ldr	r2, [r0]
+ 2529 0068 D368     		ldr	r3, [r2, #12]
+ 2530 006a 23F02003 		bic	r3, r3, #32
+ 2531 006e D360     		str	r3, [r2, #12]
+ 2532 0070 0268     		ldr	r2, [r0]
+ 2533 0072 D368     		ldr	r3, [r2, #12]
+ 2534 0074 23F40053 		bic	r3, r3, #8192
+ 2535 0078 D360     		str	r3, [r2, #12]
+ 2536 007a 0023     		movs	r3, #0
+ 2537 007c 80F83C30 		strb	r3, [r0, #60]
+ 2538 0080 1846     		mov	r0, r3
+ 2539 0082 01E0     		b	.L336
+ 2540              	.L340:
+ 2541 0084 0220     		movs	r0, #2
+ 2542 0086 7047     		bx	lr
+ 2543              	.L336:
+ 2544 0088 30BC     		pop	{r4, r5}
+ 2545 008a 7047     		bx	lr
+ 2546              	.L344:
+ 2547              		.align	2
+ 2548              	.L343:
+ 2549 008c 10002000 		.word	2097168
+ 2550 0090 8FFFCFFF 		.word	-3145841
+ 2552              		.section	.text.HAL_TIMEx_ConfigCommutEvent_IT,"ax",%progbits
+ 2553              		.align	2
+ 2554              		.global	HAL_TIMEx_ConfigCommutEvent_IT
+ 2555              		.thumb
+ 2556              		.thumb_func
+ 2558              	HAL_TIMEx_ConfigCommutEvent_IT:
+ 2559              		@ args = 0, pretend = 0, frame = 0
+ 2560              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2561              		@ link register save eliminated.
+ 2562 0000 90F83C30 		ldrb	r3, [r0, #60]	@ zero_extendqisi2
+ 2563 0004 012B     		cmp	r3, #1
+ 2564 0006 3DD0     		beq	.L350
+ 2565 0008 30B4     		push	{r4, r5}
+ 2566 000a 0123     		movs	r3, #1
+ 2567 000c 80F83C30 		strb	r3, [r0, #60]
+ 2568 0010 1029     		cmp	r1, #16
+ 2569 0012 18BF     		it	ne
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 45
+
+
+ 2570 0014 0029     		cmpne	r1, #0
+ 2571 0016 0FD0     		beq	.L347
+ 2572 0018 3029     		cmp	r1, #48
+ 2573 001a 14BF     		ite	ne
+ 2574 001c 0023     		movne	r3, #0
+ 2575 001e 0123     		moveq	r3, #1
+ 2576 0020 2029     		cmp	r1, #32
+ 2577 0022 09D0     		beq	.L347
+ 2578 0024 43B9     		cbnz	r3, .L347
+ 2579 0026 194B     		ldr	r3, .L353
+ 2580 0028 9942     		cmp	r1, r3
+ 2581 002a 14BF     		ite	ne
+ 2582 002c 0023     		movne	r3, #0
+ 2583 002e 0123     		moveq	r3, #1
+ 2584 0030 B1F5001F 		cmp	r1, #2097152
+ 2585 0034 00D0     		beq	.L347
+ 2586 0036 43B1     		cbz	r3, .L348
+ 2587              	.L347:
+ 2588 0038 0468     		ldr	r4, [r0]
+ 2589 003a A568     		ldr	r5, [r4, #8]
+ 2590 003c 144B     		ldr	r3, .L353+4
+ 2591 003e 2B40     		ands	r3, r3, r5
+ 2592 0040 A360     		str	r3, [r4, #8]
+ 2593 0042 0468     		ldr	r4, [r0]
+ 2594 0044 A368     		ldr	r3, [r4, #8]
+ 2595 0046 1943     		orrs	r1, r1, r3
+ 2596 0048 A160     		str	r1, [r4, #8]
+ 2597              	.L348:
+ 2598 004a 0168     		ldr	r1, [r0]
+ 2599 004c 4B68     		ldr	r3, [r1, #4]
+ 2600 004e 43F00103 		orr	r3, r3, #1
+ 2601 0052 4B60     		str	r3, [r1, #4]
+ 2602 0054 0168     		ldr	r1, [r0]
+ 2603 0056 4B68     		ldr	r3, [r1, #4]
+ 2604 0058 23F00403 		bic	r3, r3, #4
+ 2605 005c 4B60     		str	r3, [r1, #4]
+ 2606 005e 0368     		ldr	r3, [r0]
+ 2607 0060 5968     		ldr	r1, [r3, #4]
+ 2608 0062 0A43     		orrs	r2, r2, r1
+ 2609 0064 5A60     		str	r2, [r3, #4]
+ 2610 0066 0268     		ldr	r2, [r0]
+ 2611 0068 D368     		ldr	r3, [r2, #12]
+ 2612 006a 23F40053 		bic	r3, r3, #8192
+ 2613 006e D360     		str	r3, [r2, #12]
+ 2614 0070 0268     		ldr	r2, [r0]
+ 2615 0072 D368     		ldr	r3, [r2, #12]
+ 2616 0074 43F02003 		orr	r3, r3, #32
+ 2617 0078 D360     		str	r3, [r2, #12]
+ 2618 007a 0023     		movs	r3, #0
+ 2619 007c 80F83C30 		strb	r3, [r0, #60]
+ 2620 0080 1846     		mov	r0, r3
+ 2621 0082 01E0     		b	.L346
+ 2622              	.L350:
+ 2623 0084 0220     		movs	r0, #2
+ 2624 0086 7047     		bx	lr
+ 2625              	.L346:
+ 2626 0088 30BC     		pop	{r4, r5}
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 46
+
+
+ 2627 008a 7047     		bx	lr
+ 2628              	.L354:
+ 2629              		.align	2
+ 2630              	.L353:
+ 2631 008c 10002000 		.word	2097168
+ 2632 0090 8FFFCFFF 		.word	-3145841
+ 2634              		.section	.text.HAL_TIMEx_ConfigCommutEvent_DMA,"ax",%progbits
+ 2635              		.align	2
+ 2636              		.global	HAL_TIMEx_ConfigCommutEvent_DMA
+ 2637              		.thumb
+ 2638              		.thumb_func
+ 2640              	HAL_TIMEx_ConfigCommutEvent_DMA:
+ 2641              		@ args = 0, pretend = 0, frame = 0
+ 2642              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2643              		@ link register save eliminated.
+ 2644 0000 90F83C30 		ldrb	r3, [r0, #60]	@ zero_extendqisi2
+ 2645 0004 012B     		cmp	r3, #1
+ 2646 0006 46D0     		beq	.L360
+ 2647 0008 30B4     		push	{r4, r5}
+ 2648 000a 0123     		movs	r3, #1
+ 2649 000c 80F83C30 		strb	r3, [r0, #60]
+ 2650 0010 1029     		cmp	r1, #16
+ 2651 0012 18BF     		it	ne
+ 2652 0014 0029     		cmpne	r1, #0
+ 2653 0016 0FD0     		beq	.L357
+ 2654 0018 3029     		cmp	r1, #48
+ 2655 001a 14BF     		ite	ne
+ 2656 001c 0023     		movne	r3, #0
+ 2657 001e 0123     		moveq	r3, #1
+ 2658 0020 2029     		cmp	r1, #32
+ 2659 0022 09D0     		beq	.L357
+ 2660 0024 43B9     		cbnz	r3, .L357
+ 2661 0026 1E4B     		ldr	r3, .L363
+ 2662 0028 9942     		cmp	r1, r3
+ 2663 002a 14BF     		ite	ne
+ 2664 002c 0023     		movne	r3, #0
+ 2665 002e 0123     		moveq	r3, #1
+ 2666 0030 B1F5001F 		cmp	r1, #2097152
+ 2667 0034 00D0     		beq	.L357
+ 2668 0036 43B1     		cbz	r3, .L358
+ 2669              	.L357:
+ 2670 0038 0468     		ldr	r4, [r0]
+ 2671 003a A568     		ldr	r5, [r4, #8]
+ 2672 003c 194B     		ldr	r3, .L363+4
+ 2673 003e 2B40     		ands	r3, r3, r5
+ 2674 0040 A360     		str	r3, [r4, #8]
+ 2675 0042 0468     		ldr	r4, [r0]
+ 2676 0044 A368     		ldr	r3, [r4, #8]
+ 2677 0046 1943     		orrs	r1, r1, r3
+ 2678 0048 A160     		str	r1, [r4, #8]
+ 2679              	.L358:
+ 2680 004a 0168     		ldr	r1, [r0]
+ 2681 004c 4B68     		ldr	r3, [r1, #4]
+ 2682 004e 43F00103 		orr	r3, r3, #1
+ 2683 0052 4B60     		str	r3, [r1, #4]
+ 2684 0054 0168     		ldr	r1, [r0]
+ 2685 0056 4B68     		ldr	r3, [r1, #4]
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 47
+
+
+ 2686 0058 23F00403 		bic	r3, r3, #4
+ 2687 005c 4B60     		str	r3, [r1, #4]
+ 2688 005e 0368     		ldr	r3, [r0]
+ 2689 0060 5968     		ldr	r1, [r3, #4]
+ 2690 0062 0A43     		orrs	r2, r2, r1
+ 2691 0064 5A60     		str	r2, [r3, #4]
+ 2692 0066 436B     		ldr	r3, [r0, #52]
+ 2693 0068 0F4A     		ldr	r2, .L363+8
+ 2694 006a DA63     		str	r2, [r3, #60]
+ 2695 006c 436B     		ldr	r3, [r0, #52]
+ 2696 006e 0F4A     		ldr	r2, .L363+12
+ 2697 0070 1A64     		str	r2, [r3, #64]
+ 2698 0072 436B     		ldr	r3, [r0, #52]
+ 2699 0074 0E4A     		ldr	r2, .L363+16
+ 2700 0076 DA64     		str	r2, [r3, #76]
+ 2701 0078 0268     		ldr	r2, [r0]
+ 2702 007a D368     		ldr	r3, [r2, #12]
+ 2703 007c 23F02003 		bic	r3, r3, #32
+ 2704 0080 D360     		str	r3, [r2, #12]
+ 2705 0082 0268     		ldr	r2, [r0]
+ 2706 0084 D368     		ldr	r3, [r2, #12]
+ 2707 0086 43F40053 		orr	r3, r3, #8192
+ 2708 008a D360     		str	r3, [r2, #12]
+ 2709 008c 0023     		movs	r3, #0
+ 2710 008e 80F83C30 		strb	r3, [r0, #60]
+ 2711 0092 1846     		mov	r0, r3
+ 2712 0094 01E0     		b	.L356
+ 2713              	.L360:
+ 2714 0096 0220     		movs	r0, #2
+ 2715 0098 7047     		bx	lr
+ 2716              	.L356:
+ 2717 009a 30BC     		pop	{r4, r5}
+ 2718 009c 7047     		bx	lr
+ 2719              	.L364:
+ 2720 009e 00BF     		.align	2
+ 2721              	.L363:
+ 2722 00a0 10002000 		.word	2097168
+ 2723 00a4 8FFFCFFF 		.word	-3145841
+ 2724 00a8 00000000 		.word	TIMEx_DMACommutationCplt
+ 2725 00ac 00000000 		.word	TIMEx_DMACommutationHalfCplt
+ 2726 00b0 00000000 		.word	TIM_DMAError
+ 2728              		.section	.text.HAL_TIMEx_MasterConfigSynchronization,"ax",%progbits
+ 2729              		.align	2
+ 2730              		.global	HAL_TIMEx_MasterConfigSynchronization
+ 2731              		.thumb
+ 2732              		.thumb_func
+ 2734              	HAL_TIMEx_MasterConfigSynchronization:
+ 2735              		@ args = 0, pretend = 0, frame = 0
+ 2736              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2737              		@ link register save eliminated.
+ 2738 0000 90F83C30 		ldrb	r3, [r0, #60]	@ zero_extendqisi2
+ 2739 0004 012B     		cmp	r3, #1
+ 2740 0006 40D0     		beq	.L370
+ 2741 0008 70B4     		push	{r4, r5, r6}
+ 2742 000a 0123     		movs	r3, #1
+ 2743 000c 80F83C30 		strb	r3, [r0, #60]
+ 2744 0010 0223     		movs	r3, #2
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 48
+
+
+ 2745 0012 80F83D30 		strb	r3, [r0, #61]
+ 2746 0016 0368     		ldr	r3, [r0]
+ 2747 0018 5A68     		ldr	r2, [r3, #4]
+ 2748 001a 9D68     		ldr	r5, [r3, #8]
+ 2749 001c 1D4C     		ldr	r4, .L373
+ 2750 001e 1E4E     		ldr	r6, .L373+4
+ 2751 0020 A342     		cmp	r3, r4
+ 2752 0022 18BF     		it	ne
+ 2753 0024 B342     		cmpne	r3, r6
+ 2754 0026 03D1     		bne	.L367
+ 2755 0028 22F47002 		bic	r2, r2, #15728640
+ 2756 002c 4C68     		ldr	r4, [r1, #4]
+ 2757 002e 2243     		orrs	r2, r2, r4
+ 2758              	.L367:
+ 2759 0030 22F07002 		bic	r2, r2, #112
+ 2760 0034 0C68     		ldr	r4, [r1]
+ 2761 0036 2243     		orrs	r2, r2, r4
+ 2762 0038 5A60     		str	r2, [r3, #4]
+ 2763 003a 0368     		ldr	r3, [r0]
+ 2764 003c 164A     		ldr	r2, .L373+4
+ 2765 003e B3F1804F 		cmp	r3, #1073741824
+ 2766 0042 18BF     		it	ne
+ 2767 0044 9342     		cmpne	r3, r2
+ 2768 0046 13D0     		beq	.L368
+ 2769 0048 A2F57C42 		sub	r2, r2, #64512
+ 2770 004c 9342     		cmp	r3, r2
+ 2771 004e 0FD0     		beq	.L368
+ 2772 0050 02F58062 		add	r2, r2, #1024
+ 2773 0054 9342     		cmp	r3, r2
+ 2774 0056 0BD0     		beq	.L368
+ 2775 0058 02F58062 		add	r2, r2, #1024
+ 2776 005c 9342     		cmp	r3, r2
+ 2777 005e 07D0     		beq	.L368
+ 2778 0060 02F57842 		add	r2, r2, #63488
+ 2779 0064 9342     		cmp	r3, r2
+ 2780 0066 03D0     		beq	.L368
+ 2781 0068 A2F56C42 		sub	r2, r2, #60416
+ 2782 006c 9342     		cmp	r3, r2
+ 2783 006e 04D1     		bne	.L369
+ 2784              	.L368:
+ 2785 0070 25F08005 		bic	r5, r5, #128
+ 2786 0074 8A68     		ldr	r2, [r1, #8]
+ 2787 0076 1543     		orrs	r5, r5, r2
+ 2788 0078 9D60     		str	r5, [r3, #8]
+ 2789              	.L369:
+ 2790 007a 0123     		movs	r3, #1
+ 2791 007c 80F83D30 		strb	r3, [r0, #61]
+ 2792 0080 0023     		movs	r3, #0
+ 2793 0082 80F83C30 		strb	r3, [r0, #60]
+ 2794 0086 1846     		mov	r0, r3
+ 2795 0088 01E0     		b	.L366
+ 2796              	.L370:
+ 2797 008a 0220     		movs	r0, #2
+ 2798 008c 7047     		bx	lr
+ 2799              	.L366:
+ 2800 008e 70BC     		pop	{r4, r5, r6}
+ 2801 0090 7047     		bx	lr
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 49
+
+
+ 2802              	.L374:
+ 2803 0092 00BF     		.align	2
+ 2804              	.L373:
+ 2805 0094 00040140 		.word	1073808384
+ 2806 0098 00000140 		.word	1073807360
+ 2808              		.section	.text.HAL_TIMEx_ConfigBreakDeadTime,"ax",%progbits
+ 2809              		.align	2
+ 2810              		.global	HAL_TIMEx_ConfigBreakDeadTime
+ 2811              		.thumb
+ 2812              		.thumb_func
+ 2814              	HAL_TIMEx_ConfigBreakDeadTime:
+ 2815              		@ args = 0, pretend = 0, frame = 0
+ 2816              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2817              		@ link register save eliminated.
+ 2818 0000 90F83C30 		ldrb	r3, [r0, #60]	@ zero_extendqisi2
+ 2819 0004 012B     		cmp	r3, #1
+ 2820 0006 3BD0     		beq	.L378
+ 2821 0008 30B4     		push	{r4, r5}
+ 2822 000a 0123     		movs	r3, #1
+ 2823 000c 80F83C30 		strb	r3, [r0, #60]
+ 2824 0010 CB68     		ldr	r3, [r1, #12]
+ 2825 0012 23F44072 		bic	r2, r3, #768
+ 2826 0016 8B68     		ldr	r3, [r1, #8]
+ 2827 0018 1343     		orrs	r3, r3, r2
+ 2828 001a 23F48062 		bic	r2, r3, #1024
+ 2829 001e 4B68     		ldr	r3, [r1, #4]
+ 2830 0020 1343     		orrs	r3, r3, r2
+ 2831 0022 23F40062 		bic	r2, r3, #2048
+ 2832 0026 0B68     		ldr	r3, [r1]
+ 2833 0028 1343     		orrs	r3, r3, r2
+ 2834 002a 23F48052 		bic	r2, r3, #4096
+ 2835 002e 0B69     		ldr	r3, [r1, #16]
+ 2836 0030 1343     		orrs	r3, r3, r2
+ 2837 0032 23F40052 		bic	r2, r3, #8192
+ 2838 0036 4B69     		ldr	r3, [r1, #20]
+ 2839 0038 1343     		orrs	r3, r3, r2
+ 2840 003a 23F48042 		bic	r2, r3, #16384
+ 2841 003e 8B6A     		ldr	r3, [r1, #40]
+ 2842 0040 1343     		orrs	r3, r3, r2
+ 2843 0042 23F47023 		bic	r3, r3, #983040
+ 2844 0046 8A69     		ldr	r2, [r1, #24]
+ 2845 0048 43EA0243 		orr	r3, r3, r2, lsl #16
+ 2846 004c 0268     		ldr	r2, [r0]
+ 2847 004e 0E4C     		ldr	r4, .L381
+ 2848 0050 0E4D     		ldr	r5, .L381+4
+ 2849 0052 A242     		cmp	r2, r4
+ 2850 0054 18BF     		it	ne
+ 2851 0056 AA42     		cmpne	r2, r5
+ 2852 0058 0CD1     		bne	.L377
+ 2853 005a 23F47003 		bic	r3, r3, #15728640
+ 2854 005e 4C6A     		ldr	r4, [r1, #36]
+ 2855 0060 43EA0453 		orr	r3, r3, r4, lsl #20
+ 2856 0064 23F08073 		bic	r3, r3, #16777216
+ 2857 0068 CC69     		ldr	r4, [r1, #28]
+ 2858 006a 2343     		orrs	r3, r3, r4
+ 2859 006c 23F00074 		bic	r4, r3, #33554432
+ 2860 0070 0B6A     		ldr	r3, [r1, #32]
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 50
+
+
+ 2861 0072 2343     		orrs	r3, r3, r4
+ 2862              	.L377:
+ 2863 0074 5364     		str	r3, [r2, #68]
+ 2864 0076 0023     		movs	r3, #0
+ 2865 0078 80F83C30 		strb	r3, [r0, #60]
+ 2866 007c 1846     		mov	r0, r3
+ 2867 007e 01E0     		b	.L376
+ 2868              	.L378:
+ 2869 0080 0220     		movs	r0, #2
+ 2870 0082 7047     		bx	lr
+ 2871              	.L376:
+ 2872 0084 30BC     		pop	{r4, r5}
+ 2873 0086 7047     		bx	lr
+ 2874              	.L382:
+ 2875              		.align	2
+ 2876              	.L381:
+ 2877 0088 00040140 		.word	1073808384
+ 2878 008c 00000140 		.word	1073807360
+ 2880              		.section	.text.HAL_TIMEx_ConfigBreakInput,"ax",%progbits
+ 2881              		.align	2
+ 2882              		.global	HAL_TIMEx_ConfigBreakInput
+ 2883              		.thumb
+ 2884              		.thumb_func
+ 2886              	HAL_TIMEx_ConfigBreakInput:
+ 2887              		@ args = 0, pretend = 0, frame = 0
+ 2888              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2889 0000 90F83C30 		ldrb	r3, [r0, #60]	@ zero_extendqisi2
+ 2890 0004 012B     		cmp	r3, #1
+ 2891 0006 60D0     		beq	.L396
+ 2892 0008 F0B5     		push	{r4, r5, r6, r7, lr}
+ 2893 000a 0123     		movs	r3, #1
+ 2894 000c 80F83C30 		strb	r3, [r0, #60]
+ 2895 0010 1468     		ldr	r4, [r2]
+ 2896 0012 631E     		subs	r3, r4, #1
+ 2897 0014 072B     		cmp	r3, #7
+ 2898 0016 1AD8     		bhi	.L385
+ 2899 0018 DFE803F0 		tbb	[pc, r3]
+ 2900              	.L387:
+ 2901 001c 04       		.byte	(.L386-.L387)/2
+ 2902 001d 1E       		.byte	(.L397-.L387)/2
+ 2903 001e 19       		.byte	(.L385-.L387)/2
+ 2904 001f 0B       		.byte	(.L389-.L387)/2
+ 2905 0020 19       		.byte	(.L385-.L387)/2
+ 2906 0021 19       		.byte	(.L385-.L387)/2
+ 2907 0022 19       		.byte	(.L385-.L387)/2
+ 2908 0023 12       		.byte	(.L390-.L387)/2
+ 2909              		.p2align 1
+ 2910              	.L386:
+ 2911 0024 0925     		movs	r5, #9
+ 2912 0026 4FF0000C 		mov	ip, #0
+ 2913 002a 4FF40076 		mov	r6, #512
+ 2914 002e 0127     		movs	r7, #1
+ 2915 0030 18E0     		b	.L388
+ 2916              	.L389:
+ 2917 0032 0B25     		movs	r5, #11
+ 2918 0034 4FF0020C 		mov	ip, #2
+ 2919 0038 4FF40066 		mov	r6, #2048
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 51
+
+
+ 2920 003c 0427     		movs	r7, #4
+ 2921 003e 11E0     		b	.L388
+ 2922              	.L390:
+ 2923 0040 0025     		movs	r5, #0
+ 2924 0042 4FF0080C 		mov	ip, #8
+ 2925 0046 2E46     		mov	r6, r5
+ 2926 0048 4FF48077 		mov	r7, #256
+ 2927 004c 0AE0     		b	.L388
+ 2928              	.L385:
+ 2929 004e 0025     		movs	r5, #0
+ 2930 0050 AC46     		mov	ip, r5
+ 2931 0052 2E46     		mov	r6, r5
+ 2932 0054 2F46     		mov	r7, r5
+ 2933 0056 05E0     		b	.L388
+ 2934              	.L397:
+ 2935 0058 0A25     		movs	r5, #10
+ 2936 005a 4FF0010C 		mov	ip, #1
+ 2937 005e 4FF48066 		mov	r6, #1024
+ 2938 0062 0227     		movs	r7, #2
+ 2939              	.L388:
+ 2940 0064 0129     		cmp	r1, #1
+ 2941 0066 02D0     		beq	.L392
+ 2942 0068 0229     		cmp	r1, #2
+ 2943 006a 15D0     		beq	.L393
+ 2944 006c 28E0     		b	.L391
+ 2945              	.L392:
+ 2946 006e D0F800E0 		ldr	lr, [r0]
+ 2947 0072 DEF86010 		ldr	r1, [lr, #96]
+ 2948 0076 5368     		ldr	r3, [r2, #4]
+ 2949 0078 03FA0CF3 		lsl	r3, r3, ip
+ 2950 007c 4B40     		eors	r3, r3, r1
+ 2951 007e 3B40     		ands	r3, r3, r7
+ 2952 0080 4B40     		eors	r3, r3, r1
+ 2953 0082 082C     		cmp	r4, #8
+ 2954 0084 05D0     		beq	.L394
+ 2955 0086 9268     		ldr	r2, [r2, #8]
+ 2956 0088 02FA05F5 		lsl	r5, r2, r5
+ 2957 008c 5D40     		eors	r5, r5, r3
+ 2958 008e 2E40     		ands	r6, r6, r5
+ 2959 0090 7340     		eors	r3, r3, r6
+ 2960              	.L394:
+ 2961 0092 CEF86030 		str	r3, [lr, #96]
+ 2962 0096 13E0     		b	.L391
+ 2963              	.L393:
+ 2964 0098 D0F800E0 		ldr	lr, [r0]
+ 2965 009c DEF86410 		ldr	r1, [lr, #100]
+ 2966 00a0 5368     		ldr	r3, [r2, #4]
+ 2967 00a2 03FA0CF3 		lsl	r3, r3, ip
+ 2968 00a6 4B40     		eors	r3, r3, r1
+ 2969 00a8 3B40     		ands	r3, r3, r7
+ 2970 00aa 4B40     		eors	r3, r3, r1
+ 2971 00ac 082C     		cmp	r4, #8
+ 2972 00ae 05D0     		beq	.L395
+ 2973 00b0 9268     		ldr	r2, [r2, #8]
+ 2974 00b2 02FA05F5 		lsl	r5, r2, r5
+ 2975 00b6 5D40     		eors	r5, r5, r3
+ 2976 00b8 2E40     		ands	r6, r6, r5
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 52
+
+
+ 2977 00ba 7340     		eors	r3, r3, r6
+ 2978              	.L395:
+ 2979 00bc CEF86430 		str	r3, [lr, #100]
+ 2980              	.L391:
+ 2981 00c0 0023     		movs	r3, #0
+ 2982 00c2 80F83C30 		strb	r3, [r0, #60]
+ 2983 00c6 1846     		mov	r0, r3
+ 2984 00c8 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 2985              	.L396:
+ 2986 00ca 0220     		movs	r0, #2
+ 2987 00cc 7047     		bx	lr
+ 2989 00ce 00BF     		.section	.text.HAL_TIMEx_RemapConfig,"ax",%progbits
+ 2990              		.align	2
+ 2991              		.global	HAL_TIMEx_RemapConfig
+ 2992              		.thumb
+ 2993              		.thumb_func
+ 2995              	HAL_TIMEx_RemapConfig:
+ 2996              		@ args = 0, pretend = 0, frame = 0
+ 2997              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2998              		@ link register save eliminated.
+ 2999 0000 90F83C30 		ldrb	r3, [r0, #60]	@ zero_extendqisi2
+ 3000 0004 012B     		cmp	r3, #1
+ 3001 0006 0DD0     		beq	.L402
+ 3002 0008 0123     		movs	r3, #1
+ 3003 000a 80F83C30 		strb	r3, [r0, #60]
+ 3004 000e 0268     		ldr	r2, [r0]
+ 3005 0010 136E     		ldr	r3, [r2, #96]
+ 3006 0012 23F47033 		bic	r3, r3, #245760
+ 3007 0016 1943     		orrs	r1, r1, r3
+ 3008 0018 1166     		str	r1, [r2, #96]
+ 3009 001a 0023     		movs	r3, #0
+ 3010 001c 80F83C30 		strb	r3, [r0, #60]
+ 3011 0020 1846     		mov	r0, r3
+ 3012 0022 7047     		bx	lr
+ 3013              	.L402:
+ 3014 0024 0220     		movs	r0, #2
+ 3015 0026 7047     		bx	lr
+ 3017              		.section	.text.HAL_TIMEx_TISelection,"ax",%progbits
+ 3018              		.align	2
+ 3019              		.global	HAL_TIMEx_TISelection
+ 3020              		.thumb
+ 3021              		.thumb_func
+ 3023              	HAL_TIMEx_TISelection:
+ 3024              		@ args = 0, pretend = 0, frame = 0
+ 3025              		@ frame_needed = 0, uses_anonymous_args = 0
+ 3026              		@ link register save eliminated.
+ 3027 0000 90F83C30 		ldrb	r3, [r0, #60]	@ zero_extendqisi2
+ 3028 0004 012B     		cmp	r3, #1
+ 3029 0006 33D0     		beq	.L411
+ 3030 0008 0123     		movs	r3, #1
+ 3031 000a 80F83C30 		strb	r3, [r0, #60]
+ 3032 000e 0C2A     		cmp	r2, #12
+ 3033 0010 28D8     		bhi	.L412
+ 3034 0012 DFE802F0 		tbb	[pc, r2]
+ 3035              	.L407:
+ 3036 0016 07       		.byte	(.L406-.L407)/2
+ 3037 0017 27       		.byte	(.L412-.L407)/2
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 53
+
+
+ 3038 0018 27       		.byte	(.L412-.L407)/2
+ 3039 0019 27       		.byte	(.L412-.L407)/2
+ 3040 001a 0F       		.byte	(.L408-.L407)/2
+ 3041 001b 27       		.byte	(.L412-.L407)/2
+ 3042 001c 27       		.byte	(.L412-.L407)/2
+ 3043 001d 27       		.byte	(.L412-.L407)/2
+ 3044 001e 17       		.byte	(.L409-.L407)/2
+ 3045 001f 27       		.byte	(.L412-.L407)/2
+ 3046 0020 27       		.byte	(.L412-.L407)/2
+ 3047 0021 27       		.byte	(.L412-.L407)/2
+ 3048 0022 1F       		.byte	(.L410-.L407)/2
+ 3049 0023 00       		.p2align 1
+ 3050              	.L406:
+ 3051 0024 0268     		ldr	r2, [r0]
+ 3052 0026 936E     		ldr	r3, [r2, #104]
+ 3053 0028 23F00F03 		bic	r3, r3, #15
+ 3054 002c 1943     		orrs	r1, r1, r3
+ 3055 002e 9166     		str	r1, [r2, #104]
+ 3056 0030 0023     		movs	r3, #0
+ 3057 0032 18E0     		b	.L405
+ 3058              	.L408:
+ 3059 0034 0268     		ldr	r2, [r0]
+ 3060 0036 936E     		ldr	r3, [r2, #104]
+ 3061 0038 23F47063 		bic	r3, r3, #3840
+ 3062 003c 1943     		orrs	r1, r1, r3
+ 3063 003e 9166     		str	r1, [r2, #104]
+ 3064 0040 0023     		movs	r3, #0
+ 3065 0042 10E0     		b	.L405
+ 3066              	.L409:
+ 3067 0044 0268     		ldr	r2, [r0]
+ 3068 0046 936E     		ldr	r3, [r2, #104]
+ 3069 0048 23F47023 		bic	r3, r3, #983040
+ 3070 004c 1943     		orrs	r1, r1, r3
+ 3071 004e 9166     		str	r1, [r2, #104]
+ 3072 0050 0023     		movs	r3, #0
+ 3073 0052 08E0     		b	.L405
+ 3074              	.L410:
+ 3075 0054 0268     		ldr	r2, [r0]
+ 3076 0056 936E     		ldr	r3, [r2, #104]
+ 3077 0058 23F07063 		bic	r3, r3, #251658240
+ 3078 005c 1943     		orrs	r1, r1, r3
+ 3079 005e 9166     		str	r1, [r2, #104]
+ 3080 0060 0023     		movs	r3, #0
+ 3081 0062 00E0     		b	.L405
+ 3082              	.L412:
+ 3083 0064 0123     		movs	r3, #1
+ 3084              	.L405:
+ 3085 0066 0022     		movs	r2, #0
+ 3086 0068 80F83C20 		strb	r2, [r0, #60]
+ 3087 006c 1846     		mov	r0, r3
+ 3088 006e 7047     		bx	lr
+ 3089              	.L411:
+ 3090 0070 0220     		movs	r0, #2
+ 3091 0072 7047     		bx	lr
+ 3093              		.section	.text.HAL_TIMEx_GroupChannel5,"ax",%progbits
+ 3094              		.align	2
+ 3095              		.global	HAL_TIMEx_GroupChannel5
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 54
+
+
+ 3096              		.thumb
+ 3097              		.thumb_func
+ 3099              	HAL_TIMEx_GroupChannel5:
+ 3100              		@ args = 0, pretend = 0, frame = 0
+ 3101              		@ frame_needed = 0, uses_anonymous_args = 0
+ 3102              		@ link register save eliminated.
+ 3103 0000 90F83C30 		ldrb	r3, [r0, #60]	@ zero_extendqisi2
+ 3104 0004 012B     		cmp	r3, #1
+ 3105 0006 16D0     		beq	.L415
+ 3106 0008 10B4     		push	{r4}
+ 3107 000a 0122     		movs	r2, #1
+ 3108 000c 80F83C20 		strb	r2, [r0, #60]
+ 3109 0010 0223     		movs	r3, #2
+ 3110 0012 80F83D30 		strb	r3, [r0, #61]
+ 3111 0016 0468     		ldr	r4, [r0]
+ 3112 0018 A36D     		ldr	r3, [r4, #88]
+ 3113 001a 23F06043 		bic	r3, r3, #-536870912
+ 3114 001e A365     		str	r3, [r4, #88]
+ 3115 0020 0368     		ldr	r3, [r0]
+ 3116 0022 9C6D     		ldr	r4, [r3, #88]
+ 3117 0024 2143     		orrs	r1, r1, r4
+ 3118 0026 9965     		str	r1, [r3, #88]
+ 3119 0028 80F83D20 		strb	r2, [r0, #61]
+ 3120 002c 0023     		movs	r3, #0
+ 3121 002e 80F83C30 		strb	r3, [r0, #60]
+ 3122 0032 1846     		mov	r0, r3
+ 3123 0034 01E0     		b	.L414
+ 3124              	.L415:
+ 3125 0036 0220     		movs	r0, #2
+ 3126 0038 7047     		bx	lr
+ 3127              	.L414:
+ 3128 003a 5DF8044B 		ldr	r4, [sp], #4
+ 3129 003e 7047     		bx	lr
+ 3131              		.section	.text.HAL_TIMEx_CommutCallback,"ax",%progbits
+ 3132              		.align	2
+ 3133              		.weak	HAL_TIMEx_CommutCallback
+ 3134              		.thumb
+ 3135              		.thumb_func
+ 3137              	HAL_TIMEx_CommutCallback:
+ 3138              		@ args = 0, pretend = 0, frame = 0
+ 3139              		@ frame_needed = 0, uses_anonymous_args = 0
+ 3140              		@ link register save eliminated.
+ 3141 0000 7047     		bx	lr
+ 3143 0002 00BF     		.section	.text.TIMEx_DMACommutationCplt,"ax",%progbits
+ 3144              		.align	2
+ 3145              		.global	TIMEx_DMACommutationCplt
+ 3146              		.thumb
+ 3147              		.thumb_func
+ 3149              	TIMEx_DMACommutationCplt:
+ 3150              		@ args = 0, pretend = 0, frame = 0
+ 3151              		@ frame_needed = 0, uses_anonymous_args = 0
+ 3152 0000 08B5     		push	{r3, lr}
+ 3153 0002 806B     		ldr	r0, [r0, #56]
+ 3154 0004 0123     		movs	r3, #1
+ 3155 0006 80F83D30 		strb	r3, [r0, #61]
+ 3156 000a FFF7FEFF 		bl	HAL_TIMEx_CommutCallback
+ 3157 000e 08BD     		pop	{r3, pc}
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 55
+
+
+ 3159              		.section	.text.HAL_TIMEx_CommutHalfCpltCallback,"ax",%progbits
+ 3160              		.align	2
+ 3161              		.weak	HAL_TIMEx_CommutHalfCpltCallback
+ 3162              		.thumb
+ 3163              		.thumb_func
+ 3165              	HAL_TIMEx_CommutHalfCpltCallback:
+ 3166              		@ args = 0, pretend = 0, frame = 0
+ 3167              		@ frame_needed = 0, uses_anonymous_args = 0
+ 3168              		@ link register save eliminated.
+ 3169 0000 7047     		bx	lr
+ 3171 0002 00BF     		.section	.text.TIMEx_DMACommutationHalfCplt,"ax",%progbits
+ 3172              		.align	2
+ 3173              		.global	TIMEx_DMACommutationHalfCplt
+ 3174              		.thumb
+ 3175              		.thumb_func
+ 3177              	TIMEx_DMACommutationHalfCplt:
+ 3178              		@ args = 0, pretend = 0, frame = 0
+ 3179              		@ frame_needed = 0, uses_anonymous_args = 0
+ 3180 0000 08B5     		push	{r3, lr}
+ 3181 0002 806B     		ldr	r0, [r0, #56]
+ 3182 0004 0123     		movs	r3, #1
+ 3183 0006 80F83D30 		strb	r3, [r0, #61]
+ 3184 000a FFF7FEFF 		bl	HAL_TIMEx_CommutHalfCpltCallback
+ 3185 000e 08BD     		pop	{r3, pc}
+ 3187              		.section	.text.HAL_TIMEx_BreakCallback,"ax",%progbits
+ 3188              		.align	2
+ 3189              		.weak	HAL_TIMEx_BreakCallback
+ 3190              		.thumb
+ 3191              		.thumb_func
+ 3193              	HAL_TIMEx_BreakCallback:
+ 3194              		@ args = 0, pretend = 0, frame = 0
+ 3195              		@ frame_needed = 0, uses_anonymous_args = 0
+ 3196              		@ link register save eliminated.
+ 3197 0000 7047     		bx	lr
+ 3199 0002 00BF     		.section	.text.HAL_TIMEx_Break2Callback,"ax",%progbits
+ 3200              		.align	2
+ 3201              		.weak	HAL_TIMEx_Break2Callback
+ 3202              		.thumb
+ 3203              		.thumb_func
+ 3205              	HAL_TIMEx_Break2Callback:
+ 3206              		@ args = 0, pretend = 0, frame = 0
+ 3207              		@ frame_needed = 0, uses_anonymous_args = 0
+ 3208              		@ link register save eliminated.
+ 3209 0000 7047     		bx	lr
+ 3211 0002 00BF     		.section	.text.HAL_TIMEx_HallSensor_GetState,"ax",%progbits
+ 3212              		.align	2
+ 3213              		.global	HAL_TIMEx_HallSensor_GetState
+ 3214              		.thumb
+ 3215              		.thumb_func
+ 3217              	HAL_TIMEx_HallSensor_GetState:
+ 3218              		@ args = 0, pretend = 0, frame = 0
+ 3219              		@ frame_needed = 0, uses_anonymous_args = 0
+ 3220              		@ link register save eliminated.
+ 3221 0000 90F83D00 		ldrb	r0, [r0, #61]	@ zero_extendqisi2
+ 3222 0004 7047     		bx	lr
+ 3224 0006 00BF     		.section	.text.HAL_TIMEx_GetChannelNState,"ax",%progbits
+ 3225              		.align	2
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 56
+
+
+ 3226              		.global	HAL_TIMEx_GetChannelNState
+ 3227              		.thumb
+ 3228              		.thumb_func
+ 3230              	HAL_TIMEx_GetChannelNState:
+ 3231              		@ args = 0, pretend = 0, frame = 0
+ 3232              		@ frame_needed = 0, uses_anonymous_args = 0
+ 3233              		@ link register save eliminated.
+ 3234 0000 19B9     		cbnz	r1, .L428
+ 3235 0002 90F84400 		ldrb	r0, [r0, #68]	@ zero_extendqisi2
+ 3236 0006 C0B2     		uxtb	r0, r0
+ 3237 0008 7047     		bx	lr
+ 3238              	.L428:
+ 3239 000a 0429     		cmp	r1, #4
+ 3240 000c 03D1     		bne	.L430
+ 3241 000e 90F84500 		ldrb	r0, [r0, #69]	@ zero_extendqisi2
+ 3242 0012 C0B2     		uxtb	r0, r0
+ 3243 0014 7047     		bx	lr
+ 3244              	.L430:
+ 3245 0016 0829     		cmp	r1, #8
+ 3246 0018 03D1     		bne	.L431
+ 3247 001a 90F84600 		ldrb	r0, [r0, #70]	@ zero_extendqisi2
+ 3248 001e C0B2     		uxtb	r0, r0
+ 3249 0020 7047     		bx	lr
+ 3250              	.L431:
+ 3251 0022 90F84700 		ldrb	r0, [r0, #71]	@ zero_extendqisi2
+ 3252 0026 C0B2     		uxtb	r0, r0
+ 3253 0028 7047     		bx	lr
+ 3255 002a 00BF     		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160919 (release) [ARM/embedded-5-bran
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 57
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32h7xx_hal_tim_ex.c
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:18     .text.TIM_CCxNChannelCmd:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:22     .text.TIM_CCxNChannelCmd:00000000 TIM_CCxNChannelCmd
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:41     .text.TIM_DMAErrorCCxN:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:45     .text.TIM_DMAErrorCCxN:00000000 TIM_DMAErrorCCxN
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:82     .text.TIM_DMADelayPulseNCplt:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:86     .text.TIM_DMADelayPulseNCplt:00000000 TIM_DMADelayPulseNCplt
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:141    .text.HAL_TIMEx_HallSensor_MspInit:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:146    .text.HAL_TIMEx_HallSensor_MspInit:00000000 HAL_TIMEx_HallSensor_MspInit
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:153    .text.HAL_TIMEx_HallSensor_Init:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:158    .text.HAL_TIMEx_HallSensor_Init:00000000 HAL_TIMEx_HallSensor_Init
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:255    .text.HAL_TIMEx_HallSensor_Init:000000d8 $d
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:259    .text.HAL_TIMEx_HallSensor_MspDeInit:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:264    .text.HAL_TIMEx_HallSensor_MspDeInit:00000000 HAL_TIMEx_HallSensor_MspDeInit
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:271    .text.HAL_TIMEx_HallSensor_DeInit:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:276    .text.HAL_TIMEx_HallSensor_DeInit:00000000 HAL_TIMEx_HallSensor_DeInit
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:309    .text.HAL_TIMEx_HallSensor_Start:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:314    .text.HAL_TIMEx_HallSensor_Start:00000000 HAL_TIMEx_HallSensor_Start
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:371    .text.HAL_TIMEx_HallSensor_Start:00000078 $d
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:374    .text.HAL_TIMEx_HallSensor_Stop:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:379    .text.HAL_TIMEx_HallSensor_Stop:00000000 HAL_TIMEx_HallSensor_Stop
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:410    .text.HAL_TIMEx_HallSensor_Start_IT:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:415    .text.HAL_TIMEx_HallSensor_Start_IT:00000000 HAL_TIMEx_HallSensor_Start_IT
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:476    .text.HAL_TIMEx_HallSensor_Start_IT:00000084 $d
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:479    .text.HAL_TIMEx_HallSensor_Stop_IT:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:484    .text.HAL_TIMEx_HallSensor_Stop_IT:00000000 HAL_TIMEx_HallSensor_Stop_IT
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:519    .text.HAL_TIMEx_HallSensor_Start_DMA:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:524    .text.HAL_TIMEx_HallSensor_Start_DMA:00000000 HAL_TIMEx_HallSensor_Start_DMA
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:607    .text.HAL_TIMEx_HallSensor_Start_DMA:000000a4 $d
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:613    .text.HAL_TIMEx_HallSensor_Stop_DMA:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:618    .text.HAL_TIMEx_HallSensor_Stop_DMA:00000000 HAL_TIMEx_HallSensor_Stop_DMA
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:653    .text.HAL_TIMEx_OCN_Start:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:658    .text.HAL_TIMEx_OCN_Start:00000000 HAL_TIMEx_OCN_Start
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:747    .text.HAL_TIMEx_OCN_Start:000000b4 $d
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:750    .text.HAL_TIMEx_OCN_Stop:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:755    .text.HAL_TIMEx_OCN_Stop:00000000 HAL_TIMEx_OCN_Stop
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:814    .text.HAL_TIMEx_OCN_Start_IT:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:819    .text.HAL_TIMEx_OCN_Start_IT:00000000 HAL_TIMEx_OCN_Start_IT
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:935    .text.HAL_TIMEx_OCN_Start_IT:000000ec $d
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:938    .text.HAL_TIMEx_OCN_Stop_IT:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:943    .text.HAL_TIMEx_OCN_Stop_IT:00000000 HAL_TIMEx_OCN_Stop_IT
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:1034   .text.HAL_TIMEx_OCN_Start_DMA:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:1039   .text.HAL_TIMEx_OCN_Start_DMA:00000000 HAL_TIMEx_OCN_Start_DMA
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:1261   .text.HAL_TIMEx_OCN_Start_DMA:000001b4 $d
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:1267   .text.HAL_TIMEx_OCN_Stop_DMA:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:1272   .text.HAL_TIMEx_OCN_Stop_DMA:00000000 HAL_TIMEx_OCN_Stop_DMA
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:1360   .text.HAL_TIMEx_PWMN_Start:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:1365   .text.HAL_TIMEx_PWMN_Start:00000000 HAL_TIMEx_PWMN_Start
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:1454   .text.HAL_TIMEx_PWMN_Start:000000b4 $d
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:1457   .text.HAL_TIMEx_PWMN_Stop:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:1462   .text.HAL_TIMEx_PWMN_Stop:00000000 HAL_TIMEx_PWMN_Stop
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:1521   .text.HAL_TIMEx_PWMN_Start_IT:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:1526   .text.HAL_TIMEx_PWMN_Start_IT:00000000 HAL_TIMEx_PWMN_Start_IT
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:1642   .text.HAL_TIMEx_PWMN_Start_IT:000000ec $d
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:1645   .text.HAL_TIMEx_PWMN_Stop_IT:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:1650   .text.HAL_TIMEx_PWMN_Stop_IT:00000000 HAL_TIMEx_PWMN_Stop_IT
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 58
+
+
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:1741   .text.HAL_TIMEx_PWMN_Start_DMA:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:1746   .text.HAL_TIMEx_PWMN_Start_DMA:00000000 HAL_TIMEx_PWMN_Start_DMA
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:1968   .text.HAL_TIMEx_PWMN_Start_DMA:000001b4 $d
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:1974   .text.HAL_TIMEx_PWMN_Stop_DMA:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:1979   .text.HAL_TIMEx_PWMN_Stop_DMA:00000000 HAL_TIMEx_PWMN_Stop_DMA
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:2067   .text.HAL_TIMEx_OnePulseN_Start:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:2072   .text.HAL_TIMEx_OnePulseN_Start:00000000 HAL_TIMEx_OnePulseN_Start
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:2173   .text.HAL_TIMEx_OnePulseN_Stop:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:2178   .text.HAL_TIMEx_OnePulseN_Stop:00000000 HAL_TIMEx_OnePulseN_Stop
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:2261   .text.HAL_TIMEx_OnePulseN_Start_IT:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:2266   .text.HAL_TIMEx_OnePulseN_Start_IT:00000000 HAL_TIMEx_OnePulseN_Start_IT
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:2375   .text.HAL_TIMEx_OnePulseN_Stop_IT:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:2380   .text.HAL_TIMEx_OnePulseN_Stop_IT:00000000 HAL_TIMEx_OnePulseN_Stop_IT
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:2471   .text.HAL_TIMEx_ConfigCommutEvent:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:2476   .text.HAL_TIMEx_ConfigCommutEvent:00000000 HAL_TIMEx_ConfigCommutEvent
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:2549   .text.HAL_TIMEx_ConfigCommutEvent:0000008c $d
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:2553   .text.HAL_TIMEx_ConfigCommutEvent_IT:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:2558   .text.HAL_TIMEx_ConfigCommutEvent_IT:00000000 HAL_TIMEx_ConfigCommutEvent_IT
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:2631   .text.HAL_TIMEx_ConfigCommutEvent_IT:0000008c $d
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:2635   .text.HAL_TIMEx_ConfigCommutEvent_DMA:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:2640   .text.HAL_TIMEx_ConfigCommutEvent_DMA:00000000 HAL_TIMEx_ConfigCommutEvent_DMA
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:2722   .text.HAL_TIMEx_ConfigCommutEvent_DMA:000000a0 $d
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:3149   .text.TIMEx_DMACommutationCplt:00000000 TIMEx_DMACommutationCplt
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:3177   .text.TIMEx_DMACommutationHalfCplt:00000000 TIMEx_DMACommutationHalfCplt
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:2729   .text.HAL_TIMEx_MasterConfigSynchronization:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:2734   .text.HAL_TIMEx_MasterConfigSynchronization:00000000 HAL_TIMEx_MasterConfigSynchronization
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:2805   .text.HAL_TIMEx_MasterConfigSynchronization:00000094 $d
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:2809   .text.HAL_TIMEx_ConfigBreakDeadTime:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:2814   .text.HAL_TIMEx_ConfigBreakDeadTime:00000000 HAL_TIMEx_ConfigBreakDeadTime
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:2877   .text.HAL_TIMEx_ConfigBreakDeadTime:00000088 $d
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:2881   .text.HAL_TIMEx_ConfigBreakInput:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:2886   .text.HAL_TIMEx_ConfigBreakInput:00000000 HAL_TIMEx_ConfigBreakInput
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:2901   .text.HAL_TIMEx_ConfigBreakInput:0000001c $d
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:2909   .text.HAL_TIMEx_ConfigBreakInput:00000024 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:2990   .text.HAL_TIMEx_RemapConfig:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:2995   .text.HAL_TIMEx_RemapConfig:00000000 HAL_TIMEx_RemapConfig
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:3018   .text.HAL_TIMEx_TISelection:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:3023   .text.HAL_TIMEx_TISelection:00000000 HAL_TIMEx_TISelection
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:3036   .text.HAL_TIMEx_TISelection:00000016 $d
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:3094   .text.HAL_TIMEx_GroupChannel5:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:3099   .text.HAL_TIMEx_GroupChannel5:00000000 HAL_TIMEx_GroupChannel5
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:3132   .text.HAL_TIMEx_CommutCallback:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:3137   .text.HAL_TIMEx_CommutCallback:00000000 HAL_TIMEx_CommutCallback
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:3144   .text.TIMEx_DMACommutationCplt:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:3160   .text.HAL_TIMEx_CommutHalfCpltCallback:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:3165   .text.HAL_TIMEx_CommutHalfCpltCallback:00000000 HAL_TIMEx_CommutHalfCpltCallback
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:3172   .text.TIMEx_DMACommutationHalfCplt:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:3188   .text.HAL_TIMEx_BreakCallback:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:3193   .text.HAL_TIMEx_BreakCallback:00000000 HAL_TIMEx_BreakCallback
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:3200   .text.HAL_TIMEx_Break2Callback:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:3205   .text.HAL_TIMEx_Break2Callback:00000000 HAL_TIMEx_Break2Callback
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:3212   .text.HAL_TIMEx_HallSensor_GetState:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:3217   .text.HAL_TIMEx_HallSensor_GetState:00000000 HAL_TIMEx_HallSensor_GetState
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:3225   .text.HAL_TIMEx_GetChannelNState:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:3230   .text.HAL_TIMEx_GetChannelNState:00000000 HAL_TIMEx_GetChannelNState
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:3049   .text.HAL_TIMEx_TISelection:00000023 $d
+C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s:3049   .text.HAL_TIMEx_TISelection:00000024 $t
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccPxgEEe.s 			page 59
+
+
+
+UNDEFINED SYMBOLS
+HAL_TIM_ErrorCallback
+HAL_TIM_PWM_PulseFinishedCallback
+TIM_Base_SetConfig
+TIM_TI1_SetConfig
+TIM_OC2_SetConfig
+TIM_CCxChannelCmd
+HAL_DMA_Start_IT
+TIM_DMACaptureCplt
+TIM_DMACaptureHalfCplt
+TIM_DMAError
+HAL_DMA_Abort_IT
+TIM_DMADelayPulseHalfCplt

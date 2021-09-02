@@ -22,6 +22,8 @@ TARGET = h750
 # debug build?
 DEBUG = 0
 # optimization
+#-Os可以减小程序大小
+#-O3可以加快代码执行速度
 OPT = -Og
 
 
@@ -138,7 +140,7 @@ C_INCLUDES =  \
 -IMiddlewares/Third_Party/FreeRTOS/Source/include \
 -IMiddlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS \
 -IMiddlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F \
--IMiddlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc\ \
+-IMiddlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc\
 -IDrivers/BSP
 
 # compile gcc flags

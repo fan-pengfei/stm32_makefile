@@ -1,0 +1,282 @@
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccWYsMgi.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m7
+   3              		.eabi_attribute 28, 1
+   4              		.fpu fpv5-d16
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.thumb
+  15              		.syntax unified
+  16              		.file	"stm32h7xx_hal_hsem.c"
+  17              		.section	.text.HAL_HSEM_Take,"ax",%progbits
+  18              		.align	2
+  19              		.global	HAL_HSEM_Take
+  20              		.thumb
+  21              		.thumb_func
+  23              	HAL_HSEM_Take:
+  24              		@ args = 0, pretend = 0, frame = 0
+  25              		@ frame_needed = 0, uses_anonymous_args = 0
+  26              		@ link register save eliminated.
+  27 0000 064B     		ldr	r3, .L4
+  28 0002 0B43     		orrs	r3, r3, r1
+  29 0004 064A     		ldr	r2, .L4+4
+  30 0006 42F82030 		str	r3, [r2, r0, lsl #2]
+  31 000a 52F82020 		ldr	r2, [r2, r0, lsl #2]
+  32 000e 9342     		cmp	r3, r2
+  33 0010 01D1     		bne	.L3
+  34 0012 0020     		movs	r0, #0
+  35 0014 7047     		bx	lr
+  36              	.L3:
+  37 0016 0120     		movs	r0, #1
+  38 0018 7047     		bx	lr
+  39              	.L5:
+  40 001a 00BF     		.align	2
+  41              	.L4:
+  42 001c 00030080 		.word	-2147482880
+  43 0020 00640258 		.word	1476551680
+  45              		.section	.text.HAL_HSEM_FastTake,"ax",%progbits
+  46              		.align	2
+  47              		.global	HAL_HSEM_FastTake
+  48              		.thumb
+  49              		.thumb_func
+  51              	HAL_HSEM_FastTake:
+  52              		@ args = 0, pretend = 0, frame = 0
+  53              		@ frame_needed = 0, uses_anonymous_args = 0
+  54              		@ link register save eliminated.
+  55 0000 2030     		adds	r0, r0, #32
+  56 0002 054B     		ldr	r3, .L9
+  57 0004 53F82020 		ldr	r2, [r3, r0, lsl #2]
+  58 0008 044B     		ldr	r3, .L9+4
+  59 000a 9A42     		cmp	r2, r3
+  60 000c 01D1     		bne	.L8
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccWYsMgi.s 			page 2
+
+
+  61 000e 0020     		movs	r0, #0
+  62 0010 7047     		bx	lr
+  63              	.L8:
+  64 0012 0120     		movs	r0, #1
+  65 0014 7047     		bx	lr
+  66              	.L10:
+  67 0016 00BF     		.align	2
+  68              	.L9:
+  69 0018 00640258 		.word	1476551680
+  70 001c 00030080 		.word	-2147482880
+  72              		.section	.text.HAL_HSEM_IsSemTaken,"ax",%progbits
+  73              		.align	2
+  74              		.global	HAL_HSEM_IsSemTaken
+  75              		.thumb
+  76              		.thumb_func
+  78              	HAL_HSEM_IsSemTaken:
+  79              		@ args = 0, pretend = 0, frame = 0
+  80              		@ frame_needed = 0, uses_anonymous_args = 0
+  81              		@ link register save eliminated.
+  82 0000 044B     		ldr	r3, .L14
+  83 0002 53F82030 		ldr	r3, [r3, r0, lsl #2]
+  84 0006 002B     		cmp	r3, #0
+  85 0008 01DA     		bge	.L13
+  86 000a 0120     		movs	r0, #1
+  87 000c 7047     		bx	lr
+  88              	.L13:
+  89 000e 0020     		movs	r0, #0
+  90 0010 7047     		bx	lr
+  91              	.L15:
+  92 0012 00BF     		.align	2
+  93              	.L14:
+  94 0014 00640258 		.word	1476551680
+  96              		.section	.text.HAL_HSEM_Release,"ax",%progbits
+  97              		.align	2
+  98              		.global	HAL_HSEM_Release
+  99              		.thumb
+ 100              		.thumb_func
+ 102              	HAL_HSEM_Release:
+ 103              		@ args = 0, pretend = 0, frame = 0
+ 104              		@ frame_needed = 0, uses_anonymous_args = 0
+ 105              		@ link register save eliminated.
+ 106 0000 41F44071 		orr	r1, r1, #768
+ 107 0004 014B     		ldr	r3, .L17
+ 108 0006 43F82010 		str	r1, [r3, r0, lsl #2]
+ 109 000a 7047     		bx	lr
+ 110              	.L18:
+ 111              		.align	2
+ 112              	.L17:
+ 113 000c 00640258 		.word	1476551680
+ 115              		.section	.text.HAL_HSEM_ReleaseAll,"ax",%progbits
+ 116              		.align	2
+ 117              		.global	HAL_HSEM_ReleaseAll
+ 118              		.thumb
+ 119              		.thumb_func
+ 121              	HAL_HSEM_ReleaseAll:
+ 122              		@ args = 0, pretend = 0, frame = 0
+ 123              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccWYsMgi.s 			page 3
+
+
+ 124              		@ link register save eliminated.
+ 125 0000 0902     		lsls	r1, r1, #8
+ 126 0002 41EA0040 		orr	r0, r1, r0, lsl #16
+ 127 0006 024B     		ldr	r3, .L20
+ 128 0008 C3F84001 		str	r0, [r3, #320]
+ 129 000c 7047     		bx	lr
+ 130              	.L21:
+ 131 000e 00BF     		.align	2
+ 132              	.L20:
+ 133 0010 00640258 		.word	1476551680
+ 135              		.section	.text.HAL_HSEM_SetClearKey,"ax",%progbits
+ 136              		.align	2
+ 137              		.global	HAL_HSEM_SetClearKey
+ 138              		.thumb
+ 139              		.thumb_func
+ 141              	HAL_HSEM_SetClearKey:
+ 142              		@ args = 0, pretend = 0, frame = 0
+ 143              		@ frame_needed = 0, uses_anonymous_args = 0
+ 144              		@ link register save eliminated.
+ 145 0000 044A     		ldr	r2, .L23
+ 146 0002 D2F84431 		ldr	r3, [r2, #324]
+ 147 0006 9BB2     		uxth	r3, r3
+ 148 0008 43EA0040 		orr	r0, r3, r0, lsl #16
+ 149 000c C2F84401 		str	r0, [r2, #324]
+ 150 0010 7047     		bx	lr
+ 151              	.L24:
+ 152 0012 00BF     		.align	2
+ 153              	.L23:
+ 154 0014 00640258 		.word	1476551680
+ 156              		.section	.text.HAL_HSEM_GetClearKey,"ax",%progbits
+ 157              		.align	2
+ 158              		.global	HAL_HSEM_GetClearKey
+ 159              		.thumb
+ 160              		.thumb_func
+ 162              	HAL_HSEM_GetClearKey:
+ 163              		@ args = 0, pretend = 0, frame = 0
+ 164              		@ frame_needed = 0, uses_anonymous_args = 0
+ 165              		@ link register save eliminated.
+ 166 0000 024B     		ldr	r3, .L26
+ 167 0002 D3F84401 		ldr	r0, [r3, #324]
+ 168 0006 000C     		lsrs	r0, r0, #16
+ 169 0008 7047     		bx	lr
+ 170              	.L27:
+ 171 000a 00BF     		.align	2
+ 172              	.L26:
+ 173 000c 00640258 		.word	1476551680
+ 175              		.section	.text.HAL_HSEM_ActivateNotification,"ax",%progbits
+ 176              		.align	2
+ 177              		.global	HAL_HSEM_ActivateNotification
+ 178              		.thumb
+ 179              		.thumb_func
+ 181              	HAL_HSEM_ActivateNotification:
+ 182              		@ args = 0, pretend = 0, frame = 0
+ 183              		@ frame_needed = 0, uses_anonymous_args = 0
+ 184              		@ link register save eliminated.
+ 185 0000 024A     		ldr	r2, .L29
+ 186 0002 1368     		ldr	r3, [r2]
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccWYsMgi.s 			page 4
+
+
+ 187 0004 1843     		orrs	r0, r0, r3
+ 188 0006 1060     		str	r0, [r2]
+ 189 0008 7047     		bx	lr
+ 190              	.L30:
+ 191 000a 00BF     		.align	2
+ 192              	.L29:
+ 193 000c 00650258 		.word	1476551936
+ 195              		.section	.text.HAL_HSEM_DeactivateNotification,"ax",%progbits
+ 196              		.align	2
+ 197              		.global	HAL_HSEM_DeactivateNotification
+ 198              		.thumb
+ 199              		.thumb_func
+ 201              	HAL_HSEM_DeactivateNotification:
+ 202              		@ args = 0, pretend = 0, frame = 0
+ 203              		@ frame_needed = 0, uses_anonymous_args = 0
+ 204              		@ link register save eliminated.
+ 205 0000 024A     		ldr	r2, .L32
+ 206 0002 1368     		ldr	r3, [r2]
+ 207 0004 23EA0000 		bic	r0, r3, r0
+ 208 0008 1060     		str	r0, [r2]
+ 209 000a 7047     		bx	lr
+ 210              	.L33:
+ 211              		.align	2
+ 212              	.L32:
+ 213 000c 00650258 		.word	1476551936
+ 215              		.section	.text.HAL_HSEM_FreeCallback,"ax",%progbits
+ 216              		.align	2
+ 217              		.weak	HAL_HSEM_FreeCallback
+ 218              		.thumb
+ 219              		.thumb_func
+ 221              	HAL_HSEM_FreeCallback:
+ 222              		@ args = 0, pretend = 0, frame = 0
+ 223              		@ frame_needed = 0, uses_anonymous_args = 0
+ 224              		@ link register save eliminated.
+ 225 0000 7047     		bx	lr
+ 227 0002 00BF     		.section	.text.HAL_HSEM_IRQHandler,"ax",%progbits
+ 228              		.align	2
+ 229              		.global	HAL_HSEM_IRQHandler
+ 230              		.thumb
+ 231              		.thumb_func
+ 233              	HAL_HSEM_IRQHandler:
+ 234              		@ args = 0, pretend = 0, frame = 0
+ 235              		@ frame_needed = 0, uses_anonymous_args = 0
+ 236 0000 08B5     		push	{r3, lr}
+ 237 0002 054B     		ldr	r3, .L37
+ 238 0004 D868     		ldr	r0, [r3, #12]
+ 239 0006 1A68     		ldr	r2, [r3]
+ 240 0008 22EA0002 		bic	r2, r2, r0
+ 241 000c 1A60     		str	r2, [r3]
+ 242 000e 5860     		str	r0, [r3, #4]
+ 243 0010 FFF7FEFF 		bl	HAL_HSEM_FreeCallback
+ 244 0014 08BD     		pop	{r3, pc}
+ 245              	.L38:
+ 246 0016 00BF     		.align	2
+ 247              	.L37:
+ 248 0018 00650258 		.word	1476551936
+ 250              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160919 (release) [ARM/embedded-5-bran
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccWYsMgi.s 			page 5
+
+
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccWYsMgi.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32h7xx_hal_hsem.c
+C:\Users\xiaofei\AppData\Local\Temp\ccWYsMgi.s:18     .text.HAL_HSEM_Take:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccWYsMgi.s:23     .text.HAL_HSEM_Take:00000000 HAL_HSEM_Take
+C:\Users\xiaofei\AppData\Local\Temp\ccWYsMgi.s:42     .text.HAL_HSEM_Take:0000001c $d
+C:\Users\xiaofei\AppData\Local\Temp\ccWYsMgi.s:46     .text.HAL_HSEM_FastTake:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccWYsMgi.s:51     .text.HAL_HSEM_FastTake:00000000 HAL_HSEM_FastTake
+C:\Users\xiaofei\AppData\Local\Temp\ccWYsMgi.s:69     .text.HAL_HSEM_FastTake:00000018 $d
+C:\Users\xiaofei\AppData\Local\Temp\ccWYsMgi.s:73     .text.HAL_HSEM_IsSemTaken:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccWYsMgi.s:78     .text.HAL_HSEM_IsSemTaken:00000000 HAL_HSEM_IsSemTaken
+C:\Users\xiaofei\AppData\Local\Temp\ccWYsMgi.s:94     .text.HAL_HSEM_IsSemTaken:00000014 $d
+C:\Users\xiaofei\AppData\Local\Temp\ccWYsMgi.s:97     .text.HAL_HSEM_Release:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccWYsMgi.s:102    .text.HAL_HSEM_Release:00000000 HAL_HSEM_Release
+C:\Users\xiaofei\AppData\Local\Temp\ccWYsMgi.s:113    .text.HAL_HSEM_Release:0000000c $d
+C:\Users\xiaofei\AppData\Local\Temp\ccWYsMgi.s:116    .text.HAL_HSEM_ReleaseAll:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccWYsMgi.s:121    .text.HAL_HSEM_ReleaseAll:00000000 HAL_HSEM_ReleaseAll
+C:\Users\xiaofei\AppData\Local\Temp\ccWYsMgi.s:133    .text.HAL_HSEM_ReleaseAll:00000010 $d
+C:\Users\xiaofei\AppData\Local\Temp\ccWYsMgi.s:136    .text.HAL_HSEM_SetClearKey:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccWYsMgi.s:141    .text.HAL_HSEM_SetClearKey:00000000 HAL_HSEM_SetClearKey
+C:\Users\xiaofei\AppData\Local\Temp\ccWYsMgi.s:154    .text.HAL_HSEM_SetClearKey:00000014 $d
+C:\Users\xiaofei\AppData\Local\Temp\ccWYsMgi.s:157    .text.HAL_HSEM_GetClearKey:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccWYsMgi.s:162    .text.HAL_HSEM_GetClearKey:00000000 HAL_HSEM_GetClearKey
+C:\Users\xiaofei\AppData\Local\Temp\ccWYsMgi.s:173    .text.HAL_HSEM_GetClearKey:0000000c $d
+C:\Users\xiaofei\AppData\Local\Temp\ccWYsMgi.s:176    .text.HAL_HSEM_ActivateNotification:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccWYsMgi.s:181    .text.HAL_HSEM_ActivateNotification:00000000 HAL_HSEM_ActivateNotification
+C:\Users\xiaofei\AppData\Local\Temp\ccWYsMgi.s:193    .text.HAL_HSEM_ActivateNotification:0000000c $d
+C:\Users\xiaofei\AppData\Local\Temp\ccWYsMgi.s:196    .text.HAL_HSEM_DeactivateNotification:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccWYsMgi.s:201    .text.HAL_HSEM_DeactivateNotification:00000000 HAL_HSEM_DeactivateNotification
+C:\Users\xiaofei\AppData\Local\Temp\ccWYsMgi.s:213    .text.HAL_HSEM_DeactivateNotification:0000000c $d
+C:\Users\xiaofei\AppData\Local\Temp\ccWYsMgi.s:216    .text.HAL_HSEM_FreeCallback:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccWYsMgi.s:221    .text.HAL_HSEM_FreeCallback:00000000 HAL_HSEM_FreeCallback
+C:\Users\xiaofei\AppData\Local\Temp\ccWYsMgi.s:228    .text.HAL_HSEM_IRQHandler:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccWYsMgi.s:233    .text.HAL_HSEM_IRQHandler:00000000 HAL_HSEM_IRQHandler
+C:\Users\xiaofei\AppData\Local\Temp\ccWYsMgi.s:248    .text.HAL_HSEM_IRQHandler:00000018 $d
+
+NO UNDEFINED SYMBOLS

@@ -1,0 +1,223 @@
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccDPHedN.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m7
+   3              		.eabi_attribute 28, 1
+   4              		.fpu fpv5-d16
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.thumb
+  15              		.syntax unified
+  16              		.file	"main.c"
+  17              		.section	.text.HAL_TIM_PeriodElapsedCallback,"ax",%progbits
+  18              		.align	2
+  19              		.global	HAL_TIM_PeriodElapsedCallback
+  20              		.thumb
+  21              		.thumb_func
+  23              	HAL_TIM_PeriodElapsedCallback:
+  24              		@ args = 0, pretend = 0, frame = 0
+  25              		@ frame_needed = 0, uses_anonymous_args = 0
+  26 0000 08B5     		push	{r3, lr}
+  27 0002 0268     		ldr	r2, [r0]
+  28 0004 024B     		ldr	r3, .L4
+  29 0006 9A42     		cmp	r2, r3
+  30 0008 01D1     		bne	.L1
+  31 000a FFF7FEFF 		bl	HAL_IncTick
+  32              	.L1:
+  33 000e 08BD     		pop	{r3, pc}
+  34              	.L5:
+  35              		.align	2
+  36              	.L4:
+  37 0010 00100040 		.word	1073745920
+  39              		.section	.text.Error_Handler,"ax",%progbits
+  40              		.align	2
+  41              		.global	Error_Handler
+  42              		.thumb
+  43              		.thumb_func
+  45              	Error_Handler:
+  46              		@ Volatile: function does not return.
+  47              		@ args = 0, pretend = 0, frame = 0
+  48              		@ frame_needed = 0, uses_anonymous_args = 0
+  49              		@ link register save eliminated.
+  50              		.syntax unified
+  51              	@ 142 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
+  52 0000 72B6     		cpsid i
+  53              	@ 0 "" 2
+  54              		.thumb
+  55              		.syntax unified
+  56              	.L7:
+  57 0002 FEE7     		b	.L7
+  59              		.section	.text.SystemClock_Config,"ax",%progbits
+  60              		.align	2
+  61              		.global	SystemClock_Config
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccDPHedN.s 			page 2
+
+
+  62              		.thumb
+  63              		.thumb_func
+  65              	SystemClock_Config:
+  66              		@ args = 0, pretend = 0, frame = 304
+  67              		@ frame_needed = 0, uses_anonymous_args = 0
+  68 0000 00B5     		push	{lr}
+  69 0002 CDB0     		sub	sp, sp, #308
+  70 0004 4C22     		movs	r2, #76
+  71 0006 0021     		movs	r1, #0
+  72 0008 39A8     		add	r0, sp, #228
+  73 000a FFF7FEFF 		bl	memset
+  74 000e 2022     		movs	r2, #32
+  75 0010 0021     		movs	r1, #0
+  76 0012 31A8     		add	r0, sp, #196
+  77 0014 FFF7FEFF 		bl	memset
+  78 0018 BC22     		movs	r2, #188
+  79 001a 0021     		movs	r1, #0
+  80 001c 02A8     		add	r0, sp, #8
+  81 001e FFF7FEFF 		bl	memset
+  82 0022 0220     		movs	r0, #2
+  83 0024 FFF7FEFF 		bl	HAL_PWREx_ConfigSupply
+  84 0028 0023     		movs	r3, #0
+  85 002a 0193     		str	r3, [sp, #4]
+  86 002c 2A4B     		ldr	r3, .L14
+  87 002e 9A69     		ldr	r2, [r3, #24]
+  88 0030 42F44042 		orr	r2, r2, #49152
+  89 0034 9A61     		str	r2, [r3, #24]
+  90 0036 9B69     		ldr	r3, [r3, #24]
+  91 0038 03F44043 		and	r3, r3, #49152
+  92 003c 0193     		str	r3, [sp, #4]
+  93 003e 274B     		ldr	r3, .L14+4
+  94 0040 DA6A     		ldr	r2, [r3, #44]
+  95 0042 42F00102 		orr	r2, r2, #1
+  96 0046 DA62     		str	r2, [r3, #44]
+  97 0048 DB6A     		ldr	r3, [r3, #44]
+  98 004a 03F00103 		and	r3, r3, #1
+  99 004e 0193     		str	r3, [sp, #4]
+ 100 0050 019B     		ldr	r3, [sp, #4]
+ 101              	.L9:
+ 102 0052 214B     		ldr	r3, .L14
+ 103 0054 9B69     		ldr	r3, [r3, #24]
+ 104 0056 13F4005F 		tst	r3, #8192
+ 105 005a FAD0     		beq	.L9
+ 106 005c 0123     		movs	r3, #1
+ 107 005e 3993     		str	r3, [sp, #228]
+ 108 0060 4FF48033 		mov	r3, #65536
+ 109 0064 3A93     		str	r3, [sp, #232]
+ 110 0066 0223     		movs	r3, #2
+ 111 0068 4293     		str	r3, [sp, #264]
+ 112 006a 4393     		str	r3, [sp, #268]
+ 113 006c 0522     		movs	r2, #5
+ 114 006e 4492     		str	r2, [sp, #272]
+ 115 0070 C022     		movs	r2, #192
+ 116 0072 4592     		str	r2, [sp, #276]
+ 117 0074 4693     		str	r3, [sp, #280]
+ 118 0076 4793     		str	r3, [sp, #284]
+ 119 0078 4893     		str	r3, [sp, #288]
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccDPHedN.s 			page 3
+
+
+ 120 007a 0823     		movs	r3, #8
+ 121 007c 4993     		str	r3, [sp, #292]
+ 122 007e 0023     		movs	r3, #0
+ 123 0080 4A93     		str	r3, [sp, #296]
+ 124 0082 4B93     		str	r3, [sp, #300]
+ 125 0084 39A8     		add	r0, sp, #228
+ 126 0086 FFF7FEFF 		bl	HAL_RCC_OscConfig
+ 127 008a 08B1     		cbz	r0, .L10
+ 128 008c FFF7FEFF 		bl	Error_Handler
+ 129              	.L10:
+ 130 0090 3F23     		movs	r3, #63
+ 131 0092 3193     		str	r3, [sp, #196]
+ 132 0094 0323     		movs	r3, #3
+ 133 0096 3293     		str	r3, [sp, #200]
+ 134 0098 0023     		movs	r3, #0
+ 135 009a 3393     		str	r3, [sp, #204]
+ 136 009c 0823     		movs	r3, #8
+ 137 009e 3493     		str	r3, [sp, #208]
+ 138 00a0 4023     		movs	r3, #64
+ 139 00a2 3593     		str	r3, [sp, #212]
+ 140 00a4 3693     		str	r3, [sp, #216]
+ 141 00a6 4FF48062 		mov	r2, #1024
+ 142 00aa 3792     		str	r2, [sp, #220]
+ 143 00ac 3893     		str	r3, [sp, #224]
+ 144 00ae 0421     		movs	r1, #4
+ 145 00b0 31A8     		add	r0, sp, #196
+ 146 00b2 FFF7FEFF 		bl	HAL_RCC_ClockConfig
+ 147 00b6 08B1     		cbz	r0, .L11
+ 148 00b8 FFF7FEFF 		bl	Error_Handler
+ 149              	.L11:
+ 150 00bc 0123     		movs	r3, #1
+ 151 00be 0293     		str	r3, [sp, #8]
+ 152 00c0 0023     		movs	r3, #0
+ 153 00c2 2093     		str	r3, [sp, #128]
+ 154 00c4 02A8     		add	r0, sp, #8
+ 155 00c6 FFF7FEFF 		bl	HAL_RCCEx_PeriphCLKConfig
+ 156 00ca 08B1     		cbz	r0, .L8
+ 157 00cc FFF7FEFF 		bl	Error_Handler
+ 158              	.L8:
+ 159 00d0 4DB0     		add	sp, sp, #308
+ 160              		@ sp needed
+ 161 00d2 5DF804FB 		ldr	pc, [sp], #4
+ 162              	.L15:
+ 163 00d6 00BF     		.align	2
+ 164              	.L14:
+ 165 00d8 00480258 		.word	1476544512
+ 166 00dc 00040058 		.word	1476396032
+ 168              		.section	.text.main,"ax",%progbits
+ 169              		.align	2
+ 170              		.global	main
+ 171              		.thumb
+ 172              		.thumb_func
+ 174              	main:
+ 175              		@ Volatile: function does not return.
+ 176              		@ args = 0, pretend = 0, frame = 0
+ 177              		@ frame_needed = 0, uses_anonymous_args = 0
+ 178 0000 08B5     		push	{r3, lr}
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccDPHedN.s 			page 4
+
+
+ 179 0002 FFF7FEFF 		bl	HAL_Init
+ 180 0006 FFF7FEFF 		bl	SystemClock_Config
+ 181 000a FFF7FEFF 		bl	MX_GPIO_Init
+ 182 000e FFF7FEFF 		bl	MX_USART1_UART_Init
+ 183 0012 FFF7FEFF 		bl	MX_FREERTOS_Init
+ 184 0016 FFF7FEFF 		bl	osKernelStart
+ 185              	.L17:
+ 186 001a C820     		movs	r0, #200
+ 187 001c FFF7FEFF 		bl	HAL_Delay
+ 188 0020 FBE7     		b	.L17
+ 190 0022 00BF     		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160919 (release) [ARM/embedded-5-bran
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccDPHedN.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+C:\Users\xiaofei\AppData\Local\Temp\ccDPHedN.s:18     .text.HAL_TIM_PeriodElapsedCallback:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccDPHedN.s:23     .text.HAL_TIM_PeriodElapsedCallback:00000000 HAL_TIM_PeriodElapsedCallback
+C:\Users\xiaofei\AppData\Local\Temp\ccDPHedN.s:37     .text.HAL_TIM_PeriodElapsedCallback:00000010 $d
+C:\Users\xiaofei\AppData\Local\Temp\ccDPHedN.s:40     .text.Error_Handler:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccDPHedN.s:45     .text.Error_Handler:00000000 Error_Handler
+C:\Users\xiaofei\AppData\Local\Temp\ccDPHedN.s:60     .text.SystemClock_Config:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccDPHedN.s:65     .text.SystemClock_Config:00000000 SystemClock_Config
+C:\Users\xiaofei\AppData\Local\Temp\ccDPHedN.s:165    .text.SystemClock_Config:000000d8 $d
+C:\Users\xiaofei\AppData\Local\Temp\ccDPHedN.s:169    .text.main:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccDPHedN.s:174    .text.main:00000000 main
+
+UNDEFINED SYMBOLS
+HAL_IncTick
+memset
+HAL_PWREx_ConfigSupply
+HAL_RCC_OscConfig
+HAL_RCC_ClockConfig
+HAL_RCCEx_PeriphCLKConfig
+HAL_Init
+MX_GPIO_Init
+MX_USART1_UART_Init
+MX_FREERTOS_Init
+osKernelStart
+HAL_Delay

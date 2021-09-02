@@ -1,0 +1,350 @@
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccdHbElf.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m7
+   3              		.eabi_attribute 28, 1
+   4              		.fpu fpv5-d16
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.thumb
+  15              		.syntax unified
+  16              		.file	"system_stm32h7xx.c"
+  17              		.section	.text.SystemInit,"ax",%progbits
+  18              		.align	2
+  19              		.global	SystemInit
+  20              		.thumb
+  21              		.thumb_func
+  23              	SystemInit:
+  24              		@ args = 0, pretend = 0, frame = 0
+  25              		@ frame_needed = 0, uses_anonymous_args = 0
+  26              		@ link register save eliminated.
+  27 0000 294A     		ldr	r2, .L5
+  28 0002 D2F88830 		ldr	r3, [r2, #136]
+  29 0006 43F47003 		orr	r3, r3, #15728640
+  30 000a C2F88830 		str	r3, [r2, #136]
+  31 000e 274B     		ldr	r3, .L5+4
+  32 0010 1B68     		ldr	r3, [r3]
+  33 0012 03F00F03 		and	r3, r3, #15
+  34 0016 062B     		cmp	r3, #6
+  35 0018 06D8     		bhi	.L2
+  36 001a 244A     		ldr	r2, .L5+4
+  37 001c 1368     		ldr	r3, [r2]
+  38 001e 23F00F03 		bic	r3, r3, #15
+  39 0022 43F00703 		orr	r3, r3, #7
+  40 0026 1360     		str	r3, [r2]
+  41              	.L2:
+  42 0028 214B     		ldr	r3, .L5+8
+  43 002a 1A68     		ldr	r2, [r3]
+  44 002c 42F00102 		orr	r2, r2, #1
+  45 0030 1A60     		str	r2, [r3]
+  46 0032 0022     		movs	r2, #0
+  47 0034 1A61     		str	r2, [r3, #16]
+  48 0036 1968     		ldr	r1, [r3]
+  49 0038 1E4A     		ldr	r2, .L5+12
+  50 003a 0A40     		ands	r2, r2, r1
+  51 003c 1A60     		str	r2, [r3]
+  52 003e 1B4B     		ldr	r3, .L5+4
+  53 0040 1B68     		ldr	r3, [r3]
+  54 0042 03F00F03 		and	r3, r3, #15
+  55 0046 072B     		cmp	r3, #7
+  56 0048 06D9     		bls	.L3
+  57 004a 184A     		ldr	r2, .L5+4
+  58 004c 1368     		ldr	r3, [r2]
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccdHbElf.s 			page 2
+
+
+  59 004e 23F00F03 		bic	r3, r3, #15
+  60 0052 43F00703 		orr	r3, r3, #7
+  61 0056 1360     		str	r3, [r2]
+  62              	.L3:
+  63 0058 154B     		ldr	r3, .L5+8
+  64 005a 0022     		movs	r2, #0
+  65 005c 9A61     		str	r2, [r3, #24]
+  66 005e DA61     		str	r2, [r3, #28]
+  67 0060 1A62     		str	r2, [r3, #32]
+  68 0062 1549     		ldr	r1, .L5+16
+  69 0064 9962     		str	r1, [r3, #40]
+  70 0066 1549     		ldr	r1, .L5+20
+  71 0068 D962     		str	r1, [r3, #44]
+  72 006a 1549     		ldr	r1, .L5+24
+  73 006c 1963     		str	r1, [r3, #48]
+  74 006e 5A63     		str	r2, [r3, #52]
+  75 0070 9963     		str	r1, [r3, #56]
+  76 0072 DA63     		str	r2, [r3, #60]
+  77 0074 1964     		str	r1, [r3, #64]
+  78 0076 5A64     		str	r2, [r3, #68]
+  79 0078 1968     		ldr	r1, [r3]
+  80 007a 21F48021 		bic	r1, r1, #262144
+  81 007e 1960     		str	r1, [r3]
+  82 0080 1A66     		str	r2, [r3, #96]
+  83 0082 104B     		ldr	r3, .L5+28
+  84 0084 1A68     		ldr	r2, [r3]
+  85 0086 104B     		ldr	r3, .L5+32
+  86 0088 1340     		ands	r3, r3, r2
+  87 008a B3F1005F 		cmp	r3, #536870912
+  88 008e 02D2     		bcs	.L4
+  89 0090 0122     		movs	r2, #1
+  90 0092 0E4B     		ldr	r3, .L5+36
+  91 0094 1A60     		str	r2, [r3]
+  92              	.L4:
+  93 0096 43F2D202 		movw	r2, #12498
+  94 009a 0D4B     		ldr	r3, .L5+40
+  95 009c 1A60     		str	r2, [r3]
+  96 009e 4FF00062 		mov	r2, #134217728
+  97 00a2 014B     		ldr	r3, .L5
+  98 00a4 9A60     		str	r2, [r3, #8]
+  99 00a6 7047     		bx	lr
+ 100              	.L6:
+ 101              		.align	2
+ 102              	.L5:
+ 103 00a8 00ED00E0 		.word	-536810240
+ 104 00ac 00200052 		.word	1375739904
+ 105 00b0 00440258 		.word	1476543488
+ 106 00b4 7FEDF6EA 		.word	-352916097
+ 107 00b8 00020202 		.word	33686016
+ 108 00bc 0000FF01 		.word	33488896
+ 109 00c0 80020101 		.word	16843392
+ 110 00c4 0010005C 		.word	1543507968
+ 111 00c8 0000FFFF 		.word	-65536
+ 112 00cc 08810051 		.word	1358987528
+ 113 00d0 00400052 		.word	1375748096
+ 115              		.section	.text.SystemCoreClockUpdate,"ax",%progbits
+ 116              		.align	2
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccdHbElf.s 			page 3
+
+
+ 117              		.global	SystemCoreClockUpdate
+ 118              		.thumb
+ 119              		.thumb_func
+ 121              	SystemCoreClockUpdate:
+ 122              		@ args = 0, pretend = 0, frame = 0
+ 123              		@ frame_needed = 0, uses_anonymous_args = 0
+ 124              		@ link register save eliminated.
+ 125 0000 10B4     		push	{r4}
+ 126 0002 694B     		ldr	r3, .L21
+ 127 0004 1B69     		ldr	r3, [r3, #16]
+ 128 0006 03F03803 		and	r3, r3, #56
+ 129 000a 102B     		cmp	r3, #16
+ 130 000c 00F0B280 		beq	.L17
+ 131 0010 182B     		cmp	r3, #24
+ 132 0012 09D0     		beq	.L10
+ 133 0014 0BB1     		cbz	r3, .L11
+ 134 0016 654B     		ldr	r3, .L21+4
+ 135 0018 AFE0     		b	.L9
+ 136              	.L11:
+ 137 001a 634B     		ldr	r3, .L21
+ 138 001c 1A68     		ldr	r2, [r3]
+ 139 001e C2F3C102 		ubfx	r2, r2, #3, #2
+ 140 0022 634B     		ldr	r3, .L21+8
+ 141 0024 D340     		lsrs	r3, r3, r2
+ 142 0026 A8E0     		b	.L9
+ 143              	.L10:
+ 144 0028 5F49     		ldr	r1, .L21
+ 145 002a 886A     		ldr	r0, [r1, #40]
+ 146 002c 00F00300 		and	r0, r0, #3
+ 147 0030 8A6A     		ldr	r2, [r1, #40]
+ 148 0032 C2F30512 		ubfx	r2, r2, #4, #6
+ 149 0036 CB6A     		ldr	r3, [r1, #44]
+ 150 0038 03F00104 		and	r4, r3, #1
+ 151 003c 4B6B     		ldr	r3, [r1, #52]
+ 152 003e C3F3CC03 		ubfx	r3, r3, #3, #13
+ 153 0042 03FB04F3 		mul	r3, r3, r4
+ 154 0046 07EE903A 		vmov	s15, r3	@ int
+ 155 004a F8EE677A 		vcvt.f32.u32	s15, s15
+ 156 004e 002A     		cmp	r2, #0
+ 157 0050 00F09280 		beq	.L18
+ 158 0054 0128     		cmp	r0, #1
+ 159 0056 27D0     		beq	.L13
+ 160 0058 10B1     		cbz	r0, .L14
+ 161 005a 0228     		cmp	r0, #2
+ 162 005c 41D0     		beq	.L15
+ 163 005e 5DE0     		b	.L19
+ 164              	.L14:
+ 165 0060 5148     		ldr	r0, .L21
+ 166 0062 0368     		ldr	r3, [r0]
+ 167 0064 C3F3C101 		ubfx	r1, r3, #3, #2
+ 168 0068 514B     		ldr	r3, .L21+8
+ 169 006a CB40     		lsrs	r3, r3, r1
+ 170 006c 07EE103A 		vmov	s14, r3	@ int
+ 171 0070 F8EE476A 		vcvt.f32.u32	s13, s14
+ 172 0074 07EE102A 		vmov	s14, r2	@ int
+ 173 0078 B8EE477A 		vcvt.f32.u32	s14, s14
+ 174 007c 86EE876A 		vdiv.f32	s12, s13, s14
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccdHbElf.s 			page 4
+
+
+ 175 0080 036B     		ldr	r3, [r0, #48]
+ 176 0082 C3F30803 		ubfx	r3, r3, #0, #9
+ 177 0086 06EE903A 		vmov	s13, r3	@ int
+ 178 008a F8EE666A 		vcvt.f32.u32	s13, s13
+ 179 008e 9FED497A 		vldr.32	s14, .L21+12
+ 180 0092 67EE877A 		vmul.f32	s15, s15, s14
+ 181 0096 76EEA77A 		vadd.f32	s15, s13, s15
+ 182 009a F7EE006A 		vmov.f32	s13, #1.0e+0
+ 183 009e 77EEA66A 		vadd.f32	s13, s15, s13
+ 184 00a2 66EE266A 		vmul.f32	s13, s12, s13
+ 185 00a6 55E0     		b	.L16
+ 186              	.L13:
+ 187 00a8 07EE102A 		vmov	s14, r2	@ int
+ 188 00ac B8EE477A 		vcvt.f32.u32	s14, s14
+ 189 00b0 DFED416A 		vldr.32	s13, .L21+16
+ 190 00b4 86EE876A 		vdiv.f32	s12, s13, s14
+ 191 00b8 3B4B     		ldr	r3, .L21
+ 192 00ba 1B6B     		ldr	r3, [r3, #48]
+ 193 00bc C3F30803 		ubfx	r3, r3, #0, #9
+ 194 00c0 06EE903A 		vmov	s13, r3	@ int
+ 195 00c4 F8EE666A 		vcvt.f32.u32	s13, s13
+ 196 00c8 9FED3A7A 		vldr.32	s14, .L21+12
+ 197 00cc 67EE877A 		vmul.f32	s15, s15, s14
+ 198 00d0 76EEA77A 		vadd.f32	s15, s13, s15
+ 199 00d4 F7EE006A 		vmov.f32	s13, #1.0e+0
+ 200 00d8 77EEA66A 		vadd.f32	s13, s15, s13
+ 201 00dc 66EE266A 		vmul.f32	s13, s12, s13
+ 202 00e0 38E0     		b	.L16
+ 203              	.L15:
+ 204 00e2 07EE102A 		vmov	s14, r2	@ int
+ 205 00e6 B8EE477A 		vcvt.f32.u32	s14, s14
+ 206 00ea DFED346A 		vldr.32	s13, .L21+20
+ 207 00ee 86EE876A 		vdiv.f32	s12, s13, s14
+ 208 00f2 2D4B     		ldr	r3, .L21
+ 209 00f4 1B6B     		ldr	r3, [r3, #48]
+ 210 00f6 C3F30803 		ubfx	r3, r3, #0, #9
+ 211 00fa 06EE903A 		vmov	s13, r3	@ int
+ 212 00fe F8EE666A 		vcvt.f32.u32	s13, s13
+ 213 0102 9FED2C7A 		vldr.32	s14, .L21+12
+ 214 0106 67EE877A 		vmul.f32	s15, s15, s14
+ 215 010a 76EEA77A 		vadd.f32	s15, s13, s15
+ 216 010e F7EE006A 		vmov.f32	s13, #1.0e+0
+ 217 0112 77EEA66A 		vadd.f32	s13, s15, s13
+ 218 0116 66EE266A 		vmul.f32	s13, s12, s13
+ 219 011a 1BE0     		b	.L16
+ 220              	.L19:
+ 221 011c 07EE102A 		vmov	s14, r2	@ int
+ 222 0120 B8EE477A 		vcvt.f32.u32	s14, s14
+ 223 0124 DFED246A 		vldr.32	s13, .L21+16
+ 224 0128 86EE876A 		vdiv.f32	s12, s13, s14
+ 225 012c 1E4B     		ldr	r3, .L21
+ 226 012e 1B6B     		ldr	r3, [r3, #48]
+ 227 0130 C3F30803 		ubfx	r3, r3, #0, #9
+ 228 0134 06EE903A 		vmov	s13, r3	@ int
+ 229 0138 F8EE666A 		vcvt.f32.u32	s13, s13
+ 230 013c 9FED1D7A 		vldr.32	s14, .L21+12
+ 231 0140 67EE877A 		vmul.f32	s15, s15, s14
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccdHbElf.s 			page 5
+
+
+ 232 0144 76EEA77A 		vadd.f32	s15, s13, s15
+ 233 0148 F7EE006A 		vmov.f32	s13, #1.0e+0
+ 234 014c 77EEA66A 		vadd.f32	s13, s15, s13
+ 235 0150 66EE266A 		vmul.f32	s13, s12, s13
+ 236              	.L16:
+ 237 0154 144B     		ldr	r3, .L21
+ 238 0156 1B6B     		ldr	r3, [r3, #48]
+ 239 0158 C3F34623 		ubfx	r3, r3, #9, #7
+ 240 015c 0133     		adds	r3, r3, #1
+ 241 015e 07EE903A 		vmov	s15, r3	@ int
+ 242 0162 B8EE677A 		vcvt.f32.u32	s14, s15
+ 243 0166 C6EE877A 		vdiv.f32	s15, s13, s14
+ 244 016a FCEEE77A 		vcvt.u32.f32	s15, s15
+ 245 016e 17EE903A 		vmov	r3, s15	@ int
+ 246 0172 02E0     		b	.L9
+ 247              	.L17:
+ 248 0174 124B     		ldr	r3, .L21+24
+ 249 0176 00E0     		b	.L9
+ 250              	.L18:
+ 251 0178 0023     		movs	r3, #0
+ 252              	.L9:
+ 253 017a 0B48     		ldr	r0, .L21
+ 254 017c 8269     		ldr	r2, [r0, #24]
+ 255 017e C2F30322 		ubfx	r2, r2, #8, #4
+ 256 0182 1049     		ldr	r1, .L21+28
+ 257 0184 8A5C     		ldrb	r2, [r1, r2]	@ zero_extendqisi2
+ 258 0186 23FA02F2 		lsr	r2, r3, r2
+ 259 018a 8369     		ldr	r3, [r0, #24]
+ 260 018c 03F00F03 		and	r3, r3, #15
+ 261 0190 CB5C     		ldrb	r3, [r1, r3]	@ zero_extendqisi2
+ 262 0192 03F01F03 		and	r3, r3, #31
+ 263 0196 22FA03F3 		lsr	r3, r2, r3
+ 264 019a 0B49     		ldr	r1, .L21+32
+ 265 019c 0B60     		str	r3, [r1]
+ 266 019e 0B4B     		ldr	r3, .L21+36
+ 267 01a0 1A60     		str	r2, [r3]
+ 268 01a2 5DF8044B 		ldr	r4, [sp], #4
+ 269 01a6 7047     		bx	lr
+ 270              	.L22:
+ 271              		.align	2
+ 272              	.L21:
+ 273 01a8 00440258 		.word	1476543488
+ 274 01ac 00093D00 		.word	4000000
+ 275 01b0 0090D003 		.word	64000000
+ 276 01b4 00000039 		.word	956301312
+ 277 01b8 0024744A 		.word	1249125376
+ 278 01bc 20BCBE4B 		.word	1270791200
+ 279 01c0 40787D01 		.word	25000000
+ 280 01c4 00000000 		.word	.LANCHOR0
+ 281 01c8 00000000 		.word	.LANCHOR1
+ 282 01cc 00000000 		.word	.LANCHOR2
+ 284              		.global	D1CorePrescTable
+ 285              		.global	SystemD2Clock
+ 286              		.global	SystemCoreClock
+ 287              		.section	.data.SystemD2Clock,"aw",%progbits
+ 288              		.align	2
+ 289              		.set	.LANCHOR1,. + 0
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccdHbElf.s 			page 6
+
+
+ 292              	SystemD2Clock:
+ 293 0000 0090D003 		.word	64000000
+ 294              		.section	.rodata.D1CorePrescTable,"a",%progbits
+ 295              		.align	2
+ 296              		.set	.LANCHOR0,. + 0
+ 299              	D1CorePrescTable:
+ 300 0000 00       		.byte	0
+ 301 0001 00       		.byte	0
+ 302 0002 00       		.byte	0
+ 303 0003 00       		.byte	0
+ 304 0004 01       		.byte	1
+ 305 0005 02       		.byte	2
+ 306 0006 03       		.byte	3
+ 307 0007 04       		.byte	4
+ 308 0008 01       		.byte	1
+ 309 0009 02       		.byte	2
+ 310 000a 03       		.byte	3
+ 311 000b 04       		.byte	4
+ 312 000c 06       		.byte	6
+ 313 000d 07       		.byte	7
+ 314 000e 08       		.byte	8
+ 315 000f 09       		.byte	9
+ 316              		.section	.data.SystemCoreClock,"aw",%progbits
+ 317              		.align	2
+ 318              		.set	.LANCHOR2,. + 0
+ 321              	SystemCoreClock:
+ 322 0000 0090D003 		.word	64000000
+ 323              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160919 (release) [ARM/embedded-5-bran
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccdHbElf.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 system_stm32h7xx.c
+C:\Users\xiaofei\AppData\Local\Temp\ccdHbElf.s:18     .text.SystemInit:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccdHbElf.s:23     .text.SystemInit:00000000 SystemInit
+C:\Users\xiaofei\AppData\Local\Temp\ccdHbElf.s:103    .text.SystemInit:000000a8 $d
+C:\Users\xiaofei\AppData\Local\Temp\ccdHbElf.s:116    .text.SystemCoreClockUpdate:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccdHbElf.s:121    .text.SystemCoreClockUpdate:00000000 SystemCoreClockUpdate
+C:\Users\xiaofei\AppData\Local\Temp\ccdHbElf.s:273    .text.SystemCoreClockUpdate:000001a8 $d
+C:\Users\xiaofei\AppData\Local\Temp\ccdHbElf.s:299    .rodata.D1CorePrescTable:00000000 D1CorePrescTable
+C:\Users\xiaofei\AppData\Local\Temp\ccdHbElf.s:292    .data.SystemD2Clock:00000000 SystemD2Clock
+C:\Users\xiaofei\AppData\Local\Temp\ccdHbElf.s:321    .data.SystemCoreClock:00000000 SystemCoreClock
+C:\Users\xiaofei\AppData\Local\Temp\ccdHbElf.s:288    .data.SystemD2Clock:00000000 $d
+C:\Users\xiaofei\AppData\Local\Temp\ccdHbElf.s:295    .rodata.D1CorePrescTable:00000000 $d
+C:\Users\xiaofei\AppData\Local\Temp\ccdHbElf.s:317    .data.SystemCoreClock:00000000 $d
+
+NO UNDEFINED SYMBOLS

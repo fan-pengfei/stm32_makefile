@@ -1,0 +1,710 @@
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccDuN86a.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m7
+   3              		.eabi_attribute 28, 1
+   4              		.fpu fpv5-d16
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.thumb
+  15              		.syntax unified
+  16              		.file	"event_groups.c"
+  17              		.section	.text.prvTestWaitCondition,"ax",%progbits
+  18              		.align	2
+  19              		.thumb
+  20              		.thumb_func
+  22              	prvTestWaitCondition:
+  23              		@ args = 0, pretend = 0, frame = 0
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25              		@ link register save eliminated.
+  26 0000 1AB9     		cbnz	r2, .L2
+  27 0002 0842     		tst	r0, r1
+  28 0004 06D1     		bne	.L4
+  29 0006 0020     		movs	r0, #0
+  30 0008 7047     		bx	lr
+  31              	.L2:
+  32 000a 31EA0003 		bics	r3, r1, r0
+  33 000e 03D0     		beq	.L5
+  34 0010 0020     		movs	r0, #0
+  35 0012 7047     		bx	lr
+  36              	.L4:
+  37 0014 0120     		movs	r0, #1
+  38 0016 7047     		bx	lr
+  39              	.L5:
+  40 0018 0120     		movs	r0, #1
+  41 001a 7047     		bx	lr
+  43              		.section	.text.xEventGroupCreateStatic,"ax",%progbits
+  44              		.align	2
+  45              		.global	xEventGroupCreateStatic
+  46              		.thumb
+  47              		.thumb_func
+  49              	xEventGroupCreateStatic:
+  50              		@ args = 0, pretend = 0, frame = 8
+  51              		@ frame_needed = 0, uses_anonymous_args = 0
+  52 0000 40B9     		cbnz	r0, .L7
+  53              		.syntax unified
+  54              	@ 195 "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h" 1
+  55 0002 4FF05003 			mov r3, #80												
+  56 0006 83F31188 		msr basepri, r3											
+  57 000a BFF36F8F 		isb														
+  58 000e BFF34F8F 		dsb														
+  59              	
+  60              	@ 0 "" 2
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccDuN86a.s 			page 2
+
+
+  61              		.thumb
+  62              		.syntax unified
+  63              	.L8:
+  64 0012 FEE7     		b	.L8
+  65              	.L7:
+  66 0014 10B5     		push	{r4, lr}
+  67 0016 82B0     		sub	sp, sp, #8
+  68 0018 0446     		mov	r4, r0
+  69 001a 1C23     		movs	r3, #28
+  70 001c 0193     		str	r3, [sp, #4]
+  71 001e 019B     		ldr	r3, [sp, #4]
+  72 0020 1C2B     		cmp	r3, #28
+  73 0022 08D0     		beq	.L9
+  74              		.syntax unified
+  75              	@ 195 "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h" 1
+  76 0024 4FF05003 			mov r3, #80												
+  77 0028 83F31188 		msr basepri, r3											
+  78 002c BFF36F8F 		isb														
+  79 0030 BFF34F8F 		dsb														
+  80              	
+  81              	@ 0 "" 2
+  82              		.thumb
+  83              		.syntax unified
+  84              	.L10:
+  85 0034 FEE7     		b	.L10
+  86              	.L9:
+  87 0036 30B1     		cbz	r0, .L11
+  88 0038 0023     		movs	r3, #0
+  89 003a 40F8043B 		str	r3, [r0], #4
+  90 003e FFF7FEFF 		bl	vListInitialise
+  91 0042 0123     		movs	r3, #1
+  92 0044 2376     		strb	r3, [r4, #24]
+  93              	.L11:
+  94 0046 2046     		mov	r0, r4
+  95 0048 02B0     		add	sp, sp, #8
+  96              		@ sp needed
+  97 004a 10BD     		pop	{r4, pc}
+  99              		.section	.text.xEventGroupCreate,"ax",%progbits
+ 100              		.align	2
+ 101              		.global	xEventGroupCreate
+ 102              		.thumb
+ 103              		.thumb_func
+ 105              	xEventGroupCreate:
+ 106              		@ args = 0, pretend = 0, frame = 0
+ 107              		@ frame_needed = 0, uses_anonymous_args = 0
+ 108 0000 38B5     		push	{r3, r4, r5, lr}
+ 109 0002 1C20     		movs	r0, #28
+ 110 0004 FFF7FEFF 		bl	pvPortMalloc
+ 111 0008 0446     		mov	r4, r0
+ 112 000a 28B1     		cbz	r0, .L14
+ 113 000c 0025     		movs	r5, #0
+ 114 000e 40F8045B 		str	r5, [r0], #4
+ 115 0012 FFF7FEFF 		bl	vListInitialise
+ 116 0016 2576     		strb	r5, [r4, #24]
+ 117              	.L14:
+ 118 0018 2046     		mov	r0, r4
+ 119 001a 38BD     		pop	{r3, r4, r5, pc}
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccDuN86a.s 			page 3
+
+
+ 121              		.section	.text.xEventGroupWaitBits,"ax",%progbits
+ 122              		.align	2
+ 123              		.global	xEventGroupWaitBits
+ 124              		.thumb
+ 125              		.thumb_func
+ 127              	xEventGroupWaitBits:
+ 128              		@ args = 4, pretend = 0, frame = 0
+ 129              		@ frame_needed = 0, uses_anonymous_args = 0
+ 130 0000 2DE9F843 		push	{r3, r4, r5, r6, r7, r8, r9, lr}
+ 131 0004 089F     		ldr	r7, [sp, #32]
+ 132 0006 40B9     		cbnz	r0, .L17
+ 133              		.syntax unified
+ 134              	@ 195 "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h" 1
+ 135 0008 4FF05003 			mov r3, #80												
+ 136 000c 83F31188 		msr basepri, r3											
+ 137 0010 BFF36F8F 		isb														
+ 138 0014 BFF34F8F 		dsb														
+ 139              	
+ 140              	@ 0 "" 2
+ 141              		.thumb
+ 142              		.syntax unified
+ 143              	.L18:
+ 144 0018 FEE7     		b	.L18
+ 145              	.L17:
+ 146 001a 0646     		mov	r6, r0
+ 147 001c 11F07F4F 		tst	r1, #-16777216
+ 148 0020 08D0     		beq	.L19
+ 149              		.syntax unified
+ 150              	@ 195 "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h" 1
+ 151 0022 4FF05003 			mov r3, #80												
+ 152 0026 83F31188 		msr basepri, r3											
+ 153 002a BFF36F8F 		isb														
+ 154 002e BFF34F8F 		dsb														
+ 155              	
+ 156              	@ 0 "" 2
+ 157              		.thumb
+ 158              		.syntax unified
+ 159              	.L20:
+ 160 0032 FEE7     		b	.L20
+ 161              	.L19:
+ 162 0034 41B9     		cbnz	r1, .L21
+ 163              		.syntax unified
+ 164              	@ 195 "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h" 1
+ 165 0036 4FF05003 			mov r3, #80												
+ 166 003a 83F31188 		msr basepri, r3											
+ 167 003e BFF36F8F 		isb														
+ 168 0042 BFF34F8F 		dsb														
+ 169              	
+ 170              	@ 0 "" 2
+ 171              		.thumb
+ 172              		.syntax unified
+ 173              	.L22:
+ 174 0046 FEE7     		b	.L22
+ 175              	.L21:
+ 176 0048 9946     		mov	r9, r3
+ 177 004a 9046     		mov	r8, r2
+ 178 004c 0D46     		mov	r5, r1
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccDuN86a.s 			page 4
+
+
+ 179 004e FFF7FEFF 		bl	xTaskGetSchedulerState
+ 180 0052 10B9     		cbnz	r0, .L34
+ 181 0054 1FB9     		cbnz	r7, .L35
+ 182 0056 0123     		movs	r3, #1
+ 183 0058 02E0     		b	.L23
+ 184              	.L34:
+ 185 005a 0123     		movs	r3, #1
+ 186 005c 00E0     		b	.L23
+ 187              	.L35:
+ 188 005e 0023     		movs	r3, #0
+ 189              	.L23:
+ 190 0060 43B9     		cbnz	r3, .L24
+ 191              		.syntax unified
+ 192              	@ 195 "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h" 1
+ 193 0062 4FF05003 			mov r3, #80												
+ 194 0066 83F31188 		msr basepri, r3											
+ 195 006a BFF36F8F 		isb														
+ 196 006e BFF34F8F 		dsb														
+ 197              	
+ 198              	@ 0 "" 2
+ 199              		.thumb
+ 200              		.syntax unified
+ 201              	.L25:
+ 202 0072 FEE7     		b	.L25
+ 203              	.L24:
+ 204 0074 FFF7FEFF 		bl	vTaskSuspendAll
+ 205 0078 3468     		ldr	r4, [r6]
+ 206 007a 4A46     		mov	r2, r9
+ 207 007c 2946     		mov	r1, r5
+ 208 007e 2046     		mov	r0, r4
+ 209 0080 FFF7FEFF 		bl	prvTestWaitCondition
+ 210 0084 38B1     		cbz	r0, .L26
+ 211 0086 B8F1000F 		cmp	r8, #0
+ 212 008a 18D0     		beq	.L36
+ 213 008c 24EA0503 		bic	r3, r4, r5
+ 214 0090 3360     		str	r3, [r6]
+ 215 0092 0027     		movs	r7, #0
+ 216 0094 14E0     		b	.L27
+ 217              	.L26:
+ 218 0096 9FB1     		cbz	r7, .L27
+ 219 0098 B8F1000F 		cmp	r8, #0
+ 220 009c 01D1     		bne	.L37
+ 221 009e 0021     		movs	r1, #0
+ 222 00a0 01E0     		b	.L28
+ 223              	.L37:
+ 224 00a2 4FF08071 		mov	r1, #16777216
+ 225              	.L28:
+ 226 00a6 B9F1000F 		cmp	r9, #0
+ 227 00aa 01D0     		beq	.L29
+ 228 00ac 41F08061 		orr	r1, r1, #67108864
+ 229              	.L29:
+ 230 00b0 3A46     		mov	r2, r7
+ 231 00b2 2943     		orrs	r1, r1, r5
+ 232 00b4 301D     		adds	r0, r6, #4
+ 233 00b6 FFF7FEFF 		bl	vTaskPlaceOnUnorderedEventList
+ 234 00ba 0024     		movs	r4, #0
+ 235 00bc 00E0     		b	.L27
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccDuN86a.s 			page 5
+
+
+ 236              	.L36:
+ 237 00be 0027     		movs	r7, #0
+ 238              	.L27:
+ 239 00c0 FFF7FEFF 		bl	xTaskResumeAll
+ 240 00c4 0FB3     		cbz	r7, .L30
+ 241 00c6 38B9     		cbnz	r0, .L31
+ 242 00c8 4FF08052 		mov	r2, #268435456
+ 243 00cc 104B     		ldr	r3, .L39
+ 244 00ce 1A60     		str	r2, [r3]
+ 245              		.syntax unified
+ 246              	@ 403 "Middlewares/Third_Party/FreeRTOS/Source/event_groups.c" 1
+ 247 00d0 BFF34F8F 		dsb
+ 248              	@ 0 "" 2
+ 249              	@ 403 "Middlewares/Third_Party/FreeRTOS/Source/event_groups.c" 1
+ 250 00d4 BFF36F8F 		isb
+ 251              	@ 0 "" 2
+ 252              		.thumb
+ 253              		.syntax unified
+ 254              	.L31:
+ 255 00d8 FFF7FEFF 		bl	uxTaskResetEventItemValue
+ 256 00dc 0446     		mov	r4, r0
+ 257 00de 10F0007F 		tst	r0, #33554432
+ 258 00e2 10D1     		bne	.L32
+ 259 00e4 FFF7FEFF 		bl	vPortEnterCritical
+ 260 00e8 3468     		ldr	r4, [r6]
+ 261 00ea 4A46     		mov	r2, r9
+ 262 00ec 2946     		mov	r1, r5
+ 263 00ee 2046     		mov	r0, r4
+ 264 00f0 FFF7FEFF 		bl	prvTestWaitCondition
+ 265 00f4 28B1     		cbz	r0, .L33
+ 266 00f6 B8F1000F 		cmp	r8, #0
+ 267 00fa 02D0     		beq	.L33
+ 268 00fc 24EA0505 		bic	r5, r4, r5
+ 269 0100 3560     		str	r5, [r6]
+ 270              	.L33:
+ 271 0102 FFF7FEFF 		bl	vPortExitCritical
+ 272              	.L32:
+ 273 0106 24F07F44 		bic	r4, r4, #-16777216
+ 274              	.L30:
+ 275 010a 2046     		mov	r0, r4
+ 276 010c BDE8F883 		pop	{r3, r4, r5, r6, r7, r8, r9, pc}
+ 277              	.L40:
+ 278              		.align	2
+ 279              	.L39:
+ 280 0110 04ED00E0 		.word	-536810236
+ 282              		.section	.text.xEventGroupClearBits,"ax",%progbits
+ 283              		.align	2
+ 284              		.global	xEventGroupClearBits
+ 285              		.thumb
+ 286              		.thumb_func
+ 288              	xEventGroupClearBits:
+ 289              		@ args = 0, pretend = 0, frame = 0
+ 290              		@ frame_needed = 0, uses_anonymous_args = 0
+ 291 0000 40B9     		cbnz	r0, .L42
+ 292              		.syntax unified
+ 293              	@ 195 "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h" 1
+ 294 0002 4FF05003 			mov r3, #80												
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccDuN86a.s 			page 6
+
+
+ 295 0006 83F31188 		msr basepri, r3											
+ 296 000a BFF36F8F 		isb														
+ 297 000e BFF34F8F 		dsb														
+ 298              	
+ 299              	@ 0 "" 2
+ 300              		.thumb
+ 301              		.syntax unified
+ 302              	.L43:
+ 303 0012 FEE7     		b	.L43
+ 304              	.L42:
+ 305 0014 70B5     		push	{r4, r5, r6, lr}
+ 306 0016 0546     		mov	r5, r0
+ 307 0018 11F07F4F 		tst	r1, #-16777216
+ 308 001c 08D0     		beq	.L44
+ 309              		.syntax unified
+ 310              	@ 195 "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h" 1
+ 311 001e 4FF05003 			mov r3, #80												
+ 312 0022 83F31188 		msr basepri, r3											
+ 313 0026 BFF36F8F 		isb														
+ 314 002a BFF34F8F 		dsb														
+ 315              	
+ 316              	@ 0 "" 2
+ 317              		.thumb
+ 318              		.syntax unified
+ 319              	.L45:
+ 320 002e FEE7     		b	.L45
+ 321              	.L44:
+ 322 0030 0C46     		mov	r4, r1
+ 323 0032 FFF7FEFF 		bl	vPortEnterCritical
+ 324 0036 2E68     		ldr	r6, [r5]
+ 325 0038 26EA0401 		bic	r1, r6, r4
+ 326 003c 2960     		str	r1, [r5]
+ 327 003e FFF7FEFF 		bl	vPortExitCritical
+ 328 0042 3046     		mov	r0, r6
+ 329 0044 70BD     		pop	{r4, r5, r6, pc}
+ 331 0046 00BF     		.section	.text.xEventGroupGetBitsFromISR,"ax",%progbits
+ 332              		.align	2
+ 333              		.global	xEventGroupGetBitsFromISR
+ 334              		.thumb
+ 335              		.thumb_func
+ 337              	xEventGroupGetBitsFromISR:
+ 338              		@ args = 0, pretend = 0, frame = 0
+ 339              		@ frame_needed = 0, uses_anonymous_args = 0
+ 340              		@ link register save eliminated.
+ 341              		.syntax unified
+ 342              	@ 211 "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h" 1
+ 343 0000 EFF31183 			mrs r3, basepri											
+ 344 0004 4FF05002 		mov r2, #80												
+ 345 0008 82F31188 		msr basepri, r2											
+ 346 000c BFF36F8F 		isb														
+ 347 0010 BFF34F8F 		dsb														
+ 348              	
+ 349              	@ 0 "" 2
+ 350              		.thumb
+ 351              		.syntax unified
+ 352 0014 0068     		ldr	r0, [r0]
+ 353              		.syntax unified
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccDuN86a.s 			page 7
+
+
+ 354              	@ 229 "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h" 1
+ 355 0016 83F31188 			msr basepri, r3	
+ 356              	@ 0 "" 2
+ 357              		.thumb
+ 358              		.syntax unified
+ 359 001a 7047     		bx	lr
+ 361              		.section	.text.xEventGroupSetBits,"ax",%progbits
+ 362              		.align	2
+ 363              		.global	xEventGroupSetBits
+ 364              		.thumb
+ 365              		.thumb_func
+ 367              	xEventGroupSetBits:
+ 368              		@ args = 0, pretend = 0, frame = 0
+ 369              		@ frame_needed = 0, uses_anonymous_args = 0
+ 370 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 371 0002 40B9     		cbnz	r0, .L49
+ 372              		.syntax unified
+ 373              	@ 195 "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h" 1
+ 374 0004 4FF05003 			mov r3, #80												
+ 375 0008 83F31188 		msr basepri, r3											
+ 376 000c BFF36F8F 		isb														
+ 377 0010 BFF34F8F 		dsb														
+ 378              	
+ 379              	@ 0 "" 2
+ 380              		.thumb
+ 381              		.syntax unified
+ 382              	.L50:
+ 383 0014 FEE7     		b	.L50
+ 384              	.L49:
+ 385 0016 0446     		mov	r4, r0
+ 386 0018 11F07F4F 		tst	r1, #-16777216
+ 387 001c 08D0     		beq	.L51
+ 388              		.syntax unified
+ 389              	@ 195 "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h" 1
+ 390 001e 4FF05003 			mov r3, #80												
+ 391 0022 83F31188 		msr basepri, r3											
+ 392 0026 BFF36F8F 		isb														
+ 393 002a BFF34F8F 		dsb														
+ 394              	
+ 395              	@ 0 "" 2
+ 396              		.thumb
+ 397              		.syntax unified
+ 398              	.L52:
+ 399 002e FEE7     		b	.L52
+ 400              	.L51:
+ 401 0030 0D46     		mov	r5, r1
+ 402 0032 00F10C06 		add	r6, r0, #12
+ 403 0036 FFF7FEFF 		bl	vTaskSuspendAll
+ 404 003a 2069     		ldr	r0, [r4, #16]
+ 405 003c 2168     		ldr	r1, [r4]
+ 406 003e 2943     		orrs	r1, r1, r5
+ 407 0040 2160     		str	r1, [r4]
+ 408 0042 0025     		movs	r5, #0
+ 409 0044 1FE0     		b	.L53
+ 410              	.L58:
+ 411 0046 4768     		ldr	r7, [r0, #4]
+ 412 0048 0168     		ldr	r1, [r0]
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccDuN86a.s 			page 8
+
+
+ 413 004a 21F07F42 		bic	r2, r1, #-16777216
+ 414 004e 11F0806F 		tst	r1, #67108864
+ 415 0052 04D1     		bne	.L54
+ 416 0054 2368     		ldr	r3, [r4]
+ 417 0056 1A42     		tst	r2, r3
+ 418 0058 07D1     		bne	.L59
+ 419 005a 0023     		movs	r3, #0
+ 420 005c 08E0     		b	.L55
+ 421              	.L54:
+ 422 005e 2368     		ldr	r3, [r4]
+ 423 0060 32EA0303 		bics	r3, r2, r3
+ 424 0064 03D0     		beq	.L60
+ 425 0066 0023     		movs	r3, #0
+ 426 0068 02E0     		b	.L55
+ 427              	.L59:
+ 428 006a 0123     		movs	r3, #1
+ 429 006c 00E0     		b	.L55
+ 430              	.L60:
+ 431 006e 0123     		movs	r3, #1
+ 432              	.L55:
+ 433 0070 43B1     		cbz	r3, .L56
+ 434 0072 11F0807F 		tst	r1, #16777216
+ 435 0076 00D0     		beq	.L57
+ 436 0078 1543     		orrs	r5, r5, r2
+ 437              	.L57:
+ 438 007a 2168     		ldr	r1, [r4]
+ 439 007c 41F00071 		orr	r1, r1, #33554432
+ 440 0080 FFF7FEFF 		bl	vTaskRemoveFromUnorderedEventList
+ 441              	.L56:
+ 442 0084 3846     		mov	r0, r7
+ 443              	.L53:
+ 444 0086 B042     		cmp	r0, r6
+ 445 0088 DDD1     		bne	.L58
+ 446 008a 2368     		ldr	r3, [r4]
+ 447 008c 23EA0503 		bic	r3, r3, r5
+ 448 0090 2360     		str	r3, [r4]
+ 449 0092 FFF7FEFF 		bl	xTaskResumeAll
+ 450 0096 2068     		ldr	r0, [r4]
+ 451 0098 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 453 009a 00BF     		.section	.text.xEventGroupSync,"ax",%progbits
+ 454              		.align	2
+ 455              		.global	xEventGroupSync
+ 456              		.thumb
+ 457              		.thumb_func
+ 459              	xEventGroupSync:
+ 460              		@ args = 0, pretend = 0, frame = 0
+ 461              		@ frame_needed = 0, uses_anonymous_args = 0
+ 462 0000 12F07F4F 		tst	r2, #-16777216
+ 463 0004 08D0     		beq	.L63
+ 464              		.syntax unified
+ 465              	@ 195 "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h" 1
+ 466 0006 4FF05003 			mov r3, #80												
+ 467 000a 83F31188 		msr basepri, r3											
+ 468 000e BFF36F8F 		isb														
+ 469 0012 BFF34F8F 		dsb														
+ 470              	
+ 471              	@ 0 "" 2
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccDuN86a.s 			page 9
+
+
+ 472              		.thumb
+ 473              		.syntax unified
+ 474              	.L64:
+ 475 0016 FEE7     		b	.L64
+ 476              	.L63:
+ 477 0018 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 478 001c 0646     		mov	r6, r0
+ 479 001e 0C46     		mov	r4, r1
+ 480 0020 1546     		mov	r5, r2
+ 481 0022 1F46     		mov	r7, r3
+ 482 0024 42B9     		cbnz	r2, .L65
+ 483              		.syntax unified
+ 484              	@ 195 "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h" 1
+ 485 0026 4FF05003 			mov r3, #80												
+ 486 002a 83F31188 		msr basepri, r3											
+ 487 002e BFF36F8F 		isb														
+ 488 0032 BFF34F8F 		dsb														
+ 489              	
+ 490              	@ 0 "" 2
+ 491              		.thumb
+ 492              		.syntax unified
+ 493              	.L66:
+ 494 0036 FEE7     		b	.L66
+ 495              	.L65:
+ 496 0038 FFF7FEFF 		bl	xTaskGetSchedulerState
+ 497 003c 10B9     		cbnz	r0, .L77
+ 498 003e 1FB9     		cbnz	r7, .L78
+ 499 0040 0123     		movs	r3, #1
+ 500 0042 02E0     		b	.L67
+ 501              	.L77:
+ 502 0044 0123     		movs	r3, #1
+ 503 0046 00E0     		b	.L67
+ 504              	.L78:
+ 505 0048 0023     		movs	r3, #0
+ 506              	.L67:
+ 507 004a 43B9     		cbnz	r3, .L68
+ 508              		.syntax unified
+ 509              	@ 195 "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h" 1
+ 510 004c 4FF05003 			mov r3, #80												
+ 511 0050 83F31188 		msr basepri, r3											
+ 512 0054 BFF36F8F 		isb														
+ 513 0058 BFF34F8F 		dsb														
+ 514              	
+ 515              	@ 0 "" 2
+ 516              		.thumb
+ 517              		.syntax unified
+ 518              	.L69:
+ 519 005c FEE7     		b	.L69
+ 520              	.L68:
+ 521 005e FFF7FEFF 		bl	vTaskSuspendAll
+ 522 0062 D6F80080 		ldr	r8, [r6]
+ 523 0066 2146     		mov	r1, r4
+ 524 0068 3046     		mov	r0, r6
+ 525 006a FFF7FEFF 		bl	xEventGroupSetBits
+ 526 006e 48EA0404 		orr	r4, r8, r4
+ 527 0072 35EA0403 		bics	r3, r5, r4
+ 528 0076 05D1     		bne	.L70
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccDuN86a.s 			page 10
+
+
+ 529 0078 3368     		ldr	r3, [r6]
+ 530 007a 23EA0503 		bic	r3, r3, r5
+ 531 007e 3360     		str	r3, [r6]
+ 532 0080 0027     		movs	r7, #0
+ 533 0082 09E0     		b	.L71
+ 534              	.L70:
+ 535 0084 3FB1     		cbz	r7, .L72
+ 536 0086 3A46     		mov	r2, r7
+ 537 0088 45F0A061 		orr	r1, r5, #83886080
+ 538 008c 301D     		adds	r0, r6, #4
+ 539 008e FFF7FEFF 		bl	vTaskPlaceOnUnorderedEventList
+ 540 0092 0024     		movs	r4, #0
+ 541 0094 00E0     		b	.L71
+ 542              	.L72:
+ 543 0096 3468     		ldr	r4, [r6]
+ 544              	.L71:
+ 545 0098 FFF7FEFF 		bl	xTaskResumeAll
+ 546 009c DFB1     		cbz	r7, .L73
+ 547 009e 38B9     		cbnz	r0, .L74
+ 548 00a0 4FF08052 		mov	r2, #268435456
+ 549 00a4 0D4B     		ldr	r3, .L80
+ 550 00a6 1A60     		str	r2, [r3]
+ 551              		.syntax unified
+ 552              	@ 255 "Middlewares/Third_Party/FreeRTOS/Source/event_groups.c" 1
+ 553 00a8 BFF34F8F 		dsb
+ 554              	@ 0 "" 2
+ 555              	@ 255 "Middlewares/Third_Party/FreeRTOS/Source/event_groups.c" 1
+ 556 00ac BFF36F8F 		isb
+ 557              	@ 0 "" 2
+ 558              		.thumb
+ 559              		.syntax unified
+ 560              	.L74:
+ 561 00b0 FFF7FEFF 		bl	uxTaskResetEventItemValue
+ 562 00b4 0446     		mov	r4, r0
+ 563 00b6 10F0007F 		tst	r0, #33554432
+ 564 00ba 0AD1     		bne	.L75
+ 565 00bc FFF7FEFF 		bl	vPortEnterCritical
+ 566 00c0 3468     		ldr	r4, [r6]
+ 567 00c2 35EA0403 		bics	r3, r5, r4
+ 568 00c6 02D1     		bne	.L76
+ 569 00c8 24EA0505 		bic	r5, r4, r5
+ 570 00cc 3560     		str	r5, [r6]
+ 571              	.L76:
+ 572 00ce FFF7FEFF 		bl	vPortExitCritical
+ 573              	.L75:
+ 574 00d2 24F07F44 		bic	r4, r4, #-16777216
+ 575              	.L73:
+ 576 00d6 2046     		mov	r0, r4
+ 577 00d8 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 578              	.L81:
+ 579              		.align	2
+ 580              	.L80:
+ 581 00dc 04ED00E0 		.word	-536810236
+ 583              		.section	.text.vEventGroupDelete,"ax",%progbits
+ 584              		.align	2
+ 585              		.global	vEventGroupDelete
+ 586              		.thumb
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccDuN86a.s 			page 11
+
+
+ 587              		.thumb_func
+ 589              	vEventGroupDelete:
+ 590              		@ args = 0, pretend = 0, frame = 0
+ 591              		@ frame_needed = 0, uses_anonymous_args = 0
+ 592 0000 10B5     		push	{r4, lr}
+ 593 0002 0446     		mov	r4, r0
+ 594 0004 FFF7FEFF 		bl	vTaskSuspendAll
+ 595 0008 11E0     		b	.L83
+ 596              	.L86:
+ 597 000a 2069     		ldr	r0, [r4, #16]
+ 598 000c 04F10C03 		add	r3, r4, #12
+ 599 0010 9842     		cmp	r0, r3
+ 600 0012 08D1     		bne	.L84
+ 601              		.syntax unified
+ 602              	@ 195 "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h" 1
+ 603 0014 4FF05003 			mov r3, #80												
+ 604 0018 83F31188 		msr basepri, r3											
+ 605 001c BFF36F8F 		isb														
+ 606 0020 BFF34F8F 		dsb														
+ 607              	
+ 608              	@ 0 "" 2
+ 609              		.thumb
+ 610              		.syntax unified
+ 611              	.L85:
+ 612 0024 FEE7     		b	.L85
+ 613              	.L84:
+ 614 0026 4FF00071 		mov	r1, #33554432
+ 615 002a FFF7FEFF 		bl	vTaskRemoveFromUnorderedEventList
+ 616              	.L83:
+ 617 002e 6368     		ldr	r3, [r4, #4]
+ 618 0030 002B     		cmp	r3, #0
+ 619 0032 EAD1     		bne	.L86
+ 620 0034 237E     		ldrb	r3, [r4, #24]	@ zero_extendqisi2
+ 621 0036 13B9     		cbnz	r3, .L87
+ 622 0038 2046     		mov	r0, r4
+ 623 003a FFF7FEFF 		bl	vPortFree
+ 624              	.L87:
+ 625 003e FFF7FEFF 		bl	xTaskResumeAll
+ 626 0042 10BD     		pop	{r4, pc}
+ 628              		.section	.text.vEventGroupSetBitsCallback,"ax",%progbits
+ 629              		.align	2
+ 630              		.global	vEventGroupSetBitsCallback
+ 631              		.thumb
+ 632              		.thumb_func
+ 634              	vEventGroupSetBitsCallback:
+ 635              		@ args = 0, pretend = 0, frame = 0
+ 636              		@ frame_needed = 0, uses_anonymous_args = 0
+ 637 0000 08B5     		push	{r3, lr}
+ 638 0002 FFF7FEFF 		bl	xEventGroupSetBits
+ 639 0006 08BD     		pop	{r3, pc}
+ 641              		.section	.text.vEventGroupClearBitsCallback,"ax",%progbits
+ 642              		.align	2
+ 643              		.global	vEventGroupClearBitsCallback
+ 644              		.thumb
+ 645              		.thumb_func
+ 647              	vEventGroupClearBitsCallback:
+ 648              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccDuN86a.s 			page 12
+
+
+ 649              		@ frame_needed = 0, uses_anonymous_args = 0
+ 650 0000 08B5     		push	{r3, lr}
+ 651 0002 FFF7FEFF 		bl	xEventGroupClearBits
+ 652 0006 08BD     		pop	{r3, pc}
+ 654              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160919 (release) [ARM/embedded-5-bran
+ARM GAS  C:\Users\xiaofei\AppData\Local\Temp\ccDuN86a.s 			page 13
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 event_groups.c
+C:\Users\xiaofei\AppData\Local\Temp\ccDuN86a.s:18     .text.prvTestWaitCondition:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccDuN86a.s:22     .text.prvTestWaitCondition:00000000 prvTestWaitCondition
+C:\Users\xiaofei\AppData\Local\Temp\ccDuN86a.s:44     .text.xEventGroupCreateStatic:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccDuN86a.s:49     .text.xEventGroupCreateStatic:00000000 xEventGroupCreateStatic
+C:\Users\xiaofei\AppData\Local\Temp\ccDuN86a.s:100    .text.xEventGroupCreate:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccDuN86a.s:105    .text.xEventGroupCreate:00000000 xEventGroupCreate
+C:\Users\xiaofei\AppData\Local\Temp\ccDuN86a.s:122    .text.xEventGroupWaitBits:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccDuN86a.s:127    .text.xEventGroupWaitBits:00000000 xEventGroupWaitBits
+C:\Users\xiaofei\AppData\Local\Temp\ccDuN86a.s:280    .text.xEventGroupWaitBits:00000110 $d
+C:\Users\xiaofei\AppData\Local\Temp\ccDuN86a.s:283    .text.xEventGroupClearBits:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccDuN86a.s:288    .text.xEventGroupClearBits:00000000 xEventGroupClearBits
+C:\Users\xiaofei\AppData\Local\Temp\ccDuN86a.s:332    .text.xEventGroupGetBitsFromISR:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccDuN86a.s:337    .text.xEventGroupGetBitsFromISR:00000000 xEventGroupGetBitsFromISR
+C:\Users\xiaofei\AppData\Local\Temp\ccDuN86a.s:362    .text.xEventGroupSetBits:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccDuN86a.s:367    .text.xEventGroupSetBits:00000000 xEventGroupSetBits
+C:\Users\xiaofei\AppData\Local\Temp\ccDuN86a.s:454    .text.xEventGroupSync:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccDuN86a.s:459    .text.xEventGroupSync:00000000 xEventGroupSync
+C:\Users\xiaofei\AppData\Local\Temp\ccDuN86a.s:581    .text.xEventGroupSync:000000dc $d
+C:\Users\xiaofei\AppData\Local\Temp\ccDuN86a.s:584    .text.vEventGroupDelete:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccDuN86a.s:589    .text.vEventGroupDelete:00000000 vEventGroupDelete
+C:\Users\xiaofei\AppData\Local\Temp\ccDuN86a.s:629    .text.vEventGroupSetBitsCallback:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccDuN86a.s:634    .text.vEventGroupSetBitsCallback:00000000 vEventGroupSetBitsCallback
+C:\Users\xiaofei\AppData\Local\Temp\ccDuN86a.s:642    .text.vEventGroupClearBitsCallback:00000000 $t
+C:\Users\xiaofei\AppData\Local\Temp\ccDuN86a.s:647    .text.vEventGroupClearBitsCallback:00000000 vEventGroupClearBitsCallback
+
+UNDEFINED SYMBOLS
+vListInitialise
+pvPortMalloc
+xTaskGetSchedulerState
+vTaskSuspendAll
+vTaskPlaceOnUnorderedEventList
+xTaskResumeAll
+uxTaskResetEventItemValue
+vPortEnterCritical
+vPortExitCritical
+vTaskRemoveFromUnorderedEventList
+vPortFree
