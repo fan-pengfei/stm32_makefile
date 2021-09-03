@@ -14,7 +14,7 @@ CC = gcc
 
 main: $(OBJ)
 	$(CC) $(OBJ) -o $(DIR_BIN)/$(TARGET)
-	./bin/main.exe
+	./bin/main.exe	
 $(DIR_OBJ)/%.o: $(DIR_SRC)/%.c	
 	$(CC) -c $< -o $@ -I $(DIR_INC)
 	
