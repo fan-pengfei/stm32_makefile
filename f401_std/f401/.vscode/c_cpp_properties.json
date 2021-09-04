@@ -1,0 +1,30 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "D:/Program Files (x86)/GNU Tools ARM Embedded/5.4 2016q3/lib/gcc/arm-none-eabi/5.4.1/include",
+                "${workspaceFolder}/Drivers/CMSIS/Include",
+                "${workspaceFolder}/Core/Bsp/Inc",
+                "${workspaceFolder}/Drivers/STM32F4xx_STD_Driver/inc",
+                "${workspaceFolder}/Core/User/Inc",
+                "${workspaceFolder}/Drivers/FATFS/Inc"
+            ],
+            "defines": [
+                "USE_STDPERIPH_DRIVER ",
+                "STM32F401xx"
+            ],
+            "compilerPath": "D:/Program Files (x86)/GNU Tools ARM Embedded/5.4 2016q3/bin/arm-none-eabi-gcc.exe",
+            "intelliSenseMode": "gcc-x64",
+            "browse": {
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": "",
+                "path": [
+                    "${workspaceFolder}"
+                ]
+            }
+        }
+    ],
+    "version": 4
+}
