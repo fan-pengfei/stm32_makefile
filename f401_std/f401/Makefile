@@ -96,7 +96,15 @@ Drivers/USB/STM32_USB_Device_Library/Class/msc/src/usbd_msc_bot.c\
 Drivers/USB/STM32_USB_Device_Library/Class/msc/src/usbd_msc_core.c\
 Drivers/USB/STM32_USB_Device_Library/Class/msc/src/usbd_msc_data.c\
 Drivers/USB/STM32_USB_Device_Library/Class/msc/src/usbd_msc_scsi.c\
- 
+Drivers/FreeRTOS/croutine.c\
+Drivers/FreeRTOS/event_groups.c\
+Drivers/FreeRTOS/list.c\
+Drivers/FreeRTOS/queue.c\
+Drivers/FreeRTOS/tasks.c\
+Drivers/FreeRTOS/timers.c\
+Drivers/FreeRTOS/portable/GCC/ARM_CM4F/port.c\
+Drivers/FreeRTOS/portable/MemMang/heap_4.c\
+Core/Task/Src/start_task.c\
 # ASM sources
 ASM_SOURCES =  \
 startup_stm32f401xc.s
@@ -163,7 +171,9 @@ C_INCLUDES =  \
 -IDrivers/USB/STM32_USB_OTG_Driver/inc\
 -IDrivers/USB/STM32_USB_Device_Library/Class/msc/inc\
 -IDrivers/USB/STM32_USB_Device_Library/Core/inc\
-
+-IDrivers/FreeRTOS/include\
+-IDrivers/FreeRTOS/portable/GCC/ARM_CM4F\
+-ICore/Task/Inc\
 # compile gcc flags
 ASFLAGS = $(MCU) $(AS_DEFS) $(AS_INCLUDES) $(OPT) -Wall -fdata-sections -ffunction-sections
 

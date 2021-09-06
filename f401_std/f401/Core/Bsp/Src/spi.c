@@ -59,15 +59,13 @@ void SPI1_SetSpeed(u8 SPI_BaudRatePrescaler)
 u8 SPI1_ReadWriteByte(u8 TxData)
 {
 
-    while (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_TXE) == RESET)
+    while (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_TXE) == RESET) //等待发送区空
     {
-    } //等待发送区空
+    }
+    SPI_I2S_SendData(SPI1, TxData); //通过外设SPIx发送一个byte数据
 
-    SPI_I2S_SendData(SPI1, TxData); //通过外设SPIx发送一个byte  数据
-
-    while (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_RXNE) == RESET)
+    while (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_RXNE) == RESET) //等待接收完一个byte
     {
-    } //等待接收完一个byte
-
+    }
     return SPI_I2S_ReceiveData(SPI1); //返回通过SPIx最近接收的数据
 }
